@@ -34,20 +34,7 @@ PjTClosedBlockClosure >> convertToJsUsing: aPjTranspiler [
 
 { #category : #public }
 PjTClosedBlockClosure >> externalValueForVariable: variable startingFrom: context scope: scope [
-
-	"	scope = variable scope ifTrue: [ 
-		^ variable readFromLocalContext: context ].
-	^ self
-		  externalValueForVariable: variable
-		  startingFrom: (scope nextOuterScopeContextOf: context)
-		  scope: scope outerScope"
-
-	| definingContext definingScope |
-	definingContext := scope
-		                   lookupDefiningContextForVariable: variable
-		                   startingFrom: context.
-	definingScope := definingContext sourceNode scope.
-	^ variable readFromContext: definingContext scope: definingScope closure: self
+	^ variable readFromContext: context scope: scope closure: self
 ]
 
 { #category : #public }

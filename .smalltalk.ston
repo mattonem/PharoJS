@@ -7,10 +7,6 @@ SmalltalkCISpec {
     }
   ],
   #testing : {
-    #packages : [ 'pharoJs.*' ],
-    #coverage : {
-      #packages : [ 'pharoJs.*' ],
-      #format : #coveralls
-      }
+    #packages : [ 'pharoJs.*' ]
   }
 }

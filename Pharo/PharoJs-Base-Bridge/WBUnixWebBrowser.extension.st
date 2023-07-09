@@ -22,8 +22,6 @@ WBUnixWebBrowser class >> openBrowser: browserName on: anURLString inBackground:
 
 { #category : #'*PharoJs-Base-Bridge' }
 WBUnixWebBrowser class >> openTerminalWithNodeOn: theFileName inFolder: anObject [
-	self system: 'npm i -g ws'.
-	self system: 'npm i ws'.
 	self system: 'npm -g list'.
 	self system: ('node {1} &' format: { theFileName })
 ]

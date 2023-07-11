@@ -26,5 +26,6 @@ WBUnixWebBrowser class >> openTerminalWithNodeOn: theFileName inFolder: anObject
 	self system: 'pwd'.
 	self system: 'npm -g list'.
 	self system: 'which node'.
+	self system: 'npm config get prefix'.
 	self system: ('node {1} &' format: { theFileName })
 ]

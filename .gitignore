@@ -2,3 +2,5 @@
 HTML/**/index.js
 .obsidian
 HTML/**/node_modules/
+node_modules/*
+package-lock.json

@@ -33,6 +33,7 @@ jobs:
       - run: npm install
       - run: npm list 
       - run: npm list -g
+      - run: npm config get prefix 
       - name: Cache apt-install
         uses: daaku/gh-action-apt-install@v4
         with:

@@ -24,7 +24,7 @@ WBUnixWebBrowser class >> openBrowser: browserName on: anURLString inBackground:
 WBUnixWebBrowser class >> openTerminalWithNodeOn: theFileName inFolder: anObject [
 	self system: 'npm -g list'.
 	self system: 'pwd'.
-	self system: 'npm -g list'.
+	self system: 'npm list'.
 	self system: 'which node'.
 	self system: 'npm config get prefix'.
 	self system: ('node {1} &' format: { theFileName })

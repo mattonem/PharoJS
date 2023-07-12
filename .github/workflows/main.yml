@@ -48,22 +48,4 @@ jobs:
         with:
           # Command to execute using xvfb
           run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
-      - name: Coveralls GitHub Action
-        if: always()
-        uses: coverallsapp/github-action@v1.1.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          # This name must be unique for each job
-          flag-name: ubuntu-pharo10
-          parallel: true
-  finish:
-    needs: build
-    runs-on: ubuntu-latest
-    env: 
-      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-    steps:
-      - name: Coveralls Finished
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
+          

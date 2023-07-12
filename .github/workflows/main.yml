@@ -20,6 +20,8 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
+    env: 
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -50,16 +52,18 @@ jobs:
         if: always()
         uses: coverallsapp/github-action@v1.1.1
         with:
-          github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           # This name must be unique for each job
           flag-name: ubuntu-pharo10
           parallel: true
   finish:
     needs: build
     runs-on: ubuntu-latest
+    env: 
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     steps:
       - name: Coveralls Finished
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true

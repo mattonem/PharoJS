@@ -10,7 +10,9 @@ SmalltalkCISpec {
     'scripts/setup.st'
   ],
   #testing : {
-    #packages : [ 'PharoJs.*' ],
+    #include : {
+      #packages : [ 'PharoJS.*' ]
+    },
     #exclude : {
       #classes : [ #PjNodeAppExportTest, #PjBridgeTestCase, #PjPlaygroundTest, #PjLoadingTest, #PjAliasTest, #PjReflectionTest, #PhxBridgedDateAndDateAndTimeTests, #PjHelloWorldExpressClientAppTest, #PjMinimalNodeApplicationTest, #PjHelloWorldExpressAppApiTest ]
     },

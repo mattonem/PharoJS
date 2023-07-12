@@ -14,7 +14,7 @@ SmalltalkCISpec {
       #packages : [ 'PharoJS.*' ]
     },
     #exclude : {
-      #classes : [#PjDependentTranspilerTest, #PhxBridgedJsonSerialisationTests, #PjNodeAppExportTest, #PjBridgeTestCase, #PjPlaygroundTest, #PjLoadingTest, #PjAliasTest, #PjReflectionTest, #PhxBridgedDateAndDateAndTimeTests, #PjHelloWorldExpressClientAppTest, #PjMinimalNodeApplicationTest, #PjHelloWorldExpressAppApiTest ]
+      #classes : [#PjDependentTranspilerTest, #PjHtmlCollectionTest, #PhxJavascriptJsonSerialisationTests, #PhxBridgedJsonSerialisationTests, #PjNodeAppExportTest, #PjBridgeTestCase, #PjPlaygroundTest, #PjLoadingTest, #PjAliasTest, #PjReflectionTest, #PhxBridgedDateAndDateAndTimeTests, #PjHelloWorldExpressClientAppTest, #PjMinimalNodeApplicationTest, #PjHelloWorldExpressAppApiTest ]
     },
     #coverage : {
       #packages : [ 'PharoJs.*' ]

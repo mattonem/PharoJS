@@ -45,6 +45,7 @@ jobs:
           # Command to execute using xvfb
           run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
       - name: Coveralls GitHub Action
+        if: always()
         uses: coverallsapp/github-action@v1.1.1
         with:
           github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}

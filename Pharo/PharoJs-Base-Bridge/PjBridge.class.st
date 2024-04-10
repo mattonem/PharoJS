@@ -41,8 +41,8 @@ server
 
 "
 Class {
-	#name : #PjBridge,
-	#superclass : #Object,
+	#name : 'PjBridge',
+	#superclass : 'Object',
 	#instVars : [
 		'server',
 		'timeout',
@@ -53,16 +53,18 @@ Class {
 		'monitor',
 		'incomingMessageFrames'
 	],
-	#category : #'PharoJs-Base-Bridge-Kernel'
+	#category : 'PharoJs-Base-Bridge-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Kernel'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjBridge class >> bridgeForAppClass: appClass [
 
 	^ self bridgeForAppClass: appClass client: appClass newBridgeClient
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjBridge class >> bridgeForAppClass: appClass client: bridgeClient [
 
 	^ self new
@@ -71,25 +73,25 @@ PjBridge class >> bridgeForAppClass: appClass client: bridgeClient [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge class >> debugClass [
 
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge class >> defaultApp [
 
 	^ PjWebApplication
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge class >> defaultClientClass [
 
 	^ self defaultApp bridgeClientClass
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjBridge class >> openOn: portNumber title: title [
 
 	^ self new
@@ -97,7 +99,7 @@ PjBridge class >> openOn: portNumber title: title [
 		  yourself
 ]
 
-{ #category : #'bridge handling' }
+{ #category : 'bridge handling' }
 PjBridge class >> soleBridge [
 	^ PjProxyLocalBridge value
 	" the following is a hack to make debugging workable if there is only 1 bridge in existence "
@@ -107,13 +109,13 @@ PjBridge class >> soleBridge [
 		]
 ]
 
-{ #category : #'bridge handling' }
+{ #category : 'bridge handling' }
 PjBridge class >> soleBridge: aBridge [
 
 	PjProxyLocalBridge value: aBridge
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjBridge class >> startOn: portNumber title: title [
 
 	^ (self bridgeForAppClass: self defaultApp)
@@ -121,7 +123,7 @@ PjBridge class >> startOn: portNumber title: title [
 		  yourself
 ]
 
-{ #category : #'bridge handling' }
+{ #category : 'bridge handling' }
 PjBridge class >> stop [
 	<script>
 	
@@ -131,7 +133,7 @@ PjBridge class >> stop [
 		Smalltalk garbageCollect ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> acceptIncomingMessageFromClient: aMessage [
 
 	aMessage shouldEvaluateImmediately
@@ -143,62 +145,62 @@ PjBridge >> acceptIncomingMessageFromClient: aMessage [
 			monitor signal ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> app [
 
 	^ self evalSelector: #currentInstance sentTo: self appClassName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> appClass [
 	client ifNil: [ ^nil ].
 	^client appClass
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> appClassName [
 	self appClass ifNil: [ ^nil ].
 	^self appClass name
 ]
 
-{ #category : #'closure handling' }
+{ #category : 'closure handling' }
 PjBridge >> blockClosures [
 
 	^ blockClosures ifNil: [ blockClosures := IdentityDictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> client [
 
 	^ client
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> clientTitle [
 
 	^ self client title
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> convertToJs: anObject [
 
 	^ self exporter convertToJs: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> defaultClientClass [
 
 	^ self class defaultClientClass
 ]
 
-{ #category : #'closure handling' }
+{ #category : 'closure handling' }
 PjBridge >> deleteBlockClosure: aBlockClosure [
 
 	self blockClosures removeKey: aBlockClosure ifAbsent: [  ]
 ]
 
-{ #category : #'bridge handling' }
+{ #category : 'bridge handling' }
 PjBridge >> deleteJsValue: jsName [
 	"Called by proxy finalizer see methode PjProxy>>jsName:onBridge:"
 	<PjTodo: 'should use PjProxyInfo'>
@@ -209,19 +211,19 @@ PjBridge >> deleteJsValue: jsName [
 	^ proxies
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 PjBridge >> disableWriteDnuDuring: aBlockClosure [
 
 	^ self transpiler disableWriteDnuDuring: aBlockClosure
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 PjBridge >> dnuJsString [
 
 	^ self transpiler dnuJsString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> doInNewFrame: aBlock [
 
 	incomingMessageFrames add: OrderedCollection new.
@@ -229,13 +231,13 @@ PjBridge >> doInNewFrame: aBlock [
 	incomingMessageFrames removeLast
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> enableClientLogging [
 
 	self initializeWithClient: self client withClientLogging
 ]
 
-{ #category : #'closure handling' }
+{ #category : 'closure handling' }
 PjBridge >> ensureProxyForEventListenerBlock: aBlockClosure [
 
 	^ self blockClosures at: aBlockClosure ifAbsentPut: [
@@ -255,13 +257,13 @@ PjBridge >> ensureProxyForEventListenerBlock: aBlockClosure [
 		  proxy ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> evalBlock: aBlock [
 
 	^ self evalJavascript: (self convertToJs: aBlock asValuedBlock)
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> evalJavascript: javaScriptString [
 
 	| msg |
@@ -270,7 +272,7 @@ PjBridge >> evalJavascript: javaScriptString [
 	^ self sendMessageAndWaitForResponse: msg
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> evalJavascriptWithDnuFrom: aBlock [
 
 	| jsBlockCode jsDnuCode |
@@ -279,26 +281,26 @@ PjBridge >> evalJavascriptWithDnuFrom: aBlock [
 	^ self evalJavascript: jsDnuCode , jsBlockCode
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> evalMessage: jsMessage [
 
 	^ self evalJavascriptWithDnuFrom: [ self convertToJs: jsMessage ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> evalMessage: aMessage sentTo: receiverJsID [
 
 	^self evalSelector: aMessage selector sentTo: receiverJsID args: aMessage arguments
 
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> evalSelector: aSymbol sentTo: receiverJsID [
 
 	^self evalSelector: aSymbol sentTo: receiverJsID args: #()
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> evalSelector: aSymbol sentTo: receiverJsID args: args [
 
 	| jsMessage |
@@ -309,7 +311,7 @@ PjBridge >> evalSelector: aSymbol sentTo: receiverJsID args: args [
 	^ self evalMessage: jsMessage
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> executeCallbacksUntilDepletion [
 
 	[ 
@@ -319,19 +321,19 @@ PjBridge >> executeCallbacksUntilDepletion [
 		self doInNewFrame: [ cb processCallbackWithBridge: self ] ] ] repeat
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> exporter [
 
 	^ self client exporter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> incomingMessages [
 
 	^ incomingMessageFrames last
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 PjBridge >> incomingResponseMessageForSentMessage: aMsg [
 
 	^ self incomingMessages
@@ -340,7 +342,7 @@ PjBridge >> incomingResponseMessageForSentMessage: aMsg [
 		  ifNone: [ nil ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> initialize [
 
 	super initialize.
@@ -355,58 +357,58 @@ PjBridge >> initialize [
 	monitor := Monitor new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> initializeWithAppClass: aPharoJsAppClass [
 
 	self client initializeWithAppClass: aPharoJsAppClass.
 	self client initializeWithBridge: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> initializeWithClient: aClient [
 
 	client := aClient.
 	client initializeWithBridge: self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> isClientIdReceived [
 
 	^ self client clientId notNil
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> isConnected [
 
 	self webSocket ifNil: [ ^ false ].
 	^ self webSocket isConnected
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> isListening [
 
 	^ self server isListening
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> isServerStarted [
 
 	^ self server ifNil: [ false ] ifNotNil: [ :s | s isStarted ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> isServerStopped [
 
 	^ self server ifNil: [ true ] ifNotNil: [ self server isStarted not ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> jsGlobalAt: globalID [
 
 	^ self evalJavascript: globalID
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> loadAllClasses: classes [
 
 	| javaScriptClassesDefinition |
@@ -416,32 +418,32 @@ PjBridge >> loadAllClasses: classes [
 	^ classes
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> loadClass: aClass [
 
 	self loadAllClasses: { aClass }.
 	^ aClass
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> minimumStepDuration [
 
 	^ 25 milliSeconds
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> openOn: portNumber [
 
 	self openOn: portNumber title: 'PharoJS'
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> openOn: portNumber test: aTestCase [
 
 	^ self openOn: portNumber title: (self titleForTest: aTestCase)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> openOn: portNumber title: title [
 
 	| clientGenerator |
@@ -450,25 +452,25 @@ PjBridge >> openOn: portNumber title: title [
 	self port: portNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> port [
 
 	^ self server port
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> port: portNumber [
 
 	self server port: portNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> proxies [
 
 	^ proxies ifNil: [ proxies := WeakValueDictionary new ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> resetClient [
 
 	| oldWebSocket |
@@ -483,7 +485,7 @@ PjBridge >> resetClient [
 	self waitForClientToStart
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> resetProxiesImmediately [
 	"Leaving this to garbage collection leads to inpredictable results,
 	because finalizations might occur in a next (reloaded) client JS session"
@@ -499,7 +501,7 @@ PjBridge >> resetProxiesImmediately [
 	"Smalltalk garbageCollect. "
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> restart [
 
 	self
@@ -507,7 +509,7 @@ PjBridge >> restart [
 		start
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> sendMessage: aMessage [
 
 	[ 
@@ -518,7 +520,7 @@ PjBridge >> sendMessage: aMessage [
 		do: [ :ex | ex return ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> sendMessageAndWaitForResponse: msg [
 
 	| responseMsg resultForSentMessage |
@@ -532,62 +534,62 @@ PjBridge >> sendMessageAndWaitForResponse: msg [
 	^ resultForSentMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> server [
 
 	^ server
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> server: aServer [
 
 	server := aServer.
 	aServer ifNotNil: [ aServer bridge: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> serverAddress [
 
 	self shouldBeImplemented
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> serverClass [
 
 	^ PjBridgeServer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> serverUrl [
 
 	^ self server url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> serverUrl: aString [
 
 	^ self server serverUrl: aString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> setExtraBindings: aDictionary [
 
 	^ self exporter setExtraBindings: aDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> shouldStartJsInterpreter [
 
 	^ shouldStartJsInterpreter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> shouldStartJsInterpreter: aBoolean [
 
 	shouldStartJsInterpreter := aBoolean
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> start [
 
 	self
@@ -595,14 +597,14 @@ PjBridge >> start [
 		waitForClientToStart
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> startJsInterpreter [
 
 	self client startJsInterpreter.
 	self waitForClientToStart
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> startOn: portNumber title: title [
 
 	self
@@ -610,21 +612,21 @@ PjBridge >> startOn: portNumber title: title [
 		start
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> startWithoutWaitingForClient [
 
 	self server start.
 	self client start
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> stop [
 
 	self client stop.
 	self server ifNotNil: [ self server stop ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> takeNextCallbackFromIncomingMessages [
 
 	self incomingMessages
@@ -635,7 +637,7 @@ PjBridge >> takeNextCallbackFromIncomingMessages [
 		ifNone: [ ^ nil ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> tearDown [
 
 	self stop.
@@ -644,7 +646,7 @@ PjBridge >> tearDown [
 		self server: nil ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridge >> terminateClient [
 
 	self isConnected ifFalse: [ ^ self ].
@@ -652,13 +654,13 @@ PjBridge >> terminateClient [
 	self webSocket close
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 PjBridge >> timeout [
 
 	^ timeout ifNil: [ 10 seconds ]
 ]
 
-{ #category : #evaluating }
+{ #category : 'evaluating' }
 PjBridge >> timeout: aDuration [
 
 	timeout := (aDuration isKindOf: Duration)
@@ -666,19 +668,19 @@ PjBridge >> timeout: aDuration [
 		           ifFalse: [ aDuration seconds ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> titleForTest: aTest [
 
 	^ aTest className , '>>#' , aTest selector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> transpiler [
 
 	^ self exporter transpiler
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> valueFromResponseMessage: responseMsg [
 
 	| result |
@@ -690,13 +692,13 @@ PjBridge >> valueFromResponseMessage: responseMsg [
 	^ result
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> waitForClientToStart [
 
 	self waitForClientToStartFor: self client startTimeout
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> waitForClientToStartFor: time [
 
 	monitor critical: [ 
@@ -707,7 +709,7 @@ PjBridge >> waitForClientToStartFor: time [
 		self error: 'Javascript interpreter NOT available' ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> waitForClientToStartFor: time doing: aBlock [
 
 	self
@@ -719,31 +721,31 @@ PjBridge >> waitForClientToStartFor: time doing: aBlock [
 		timeOutDuration: time
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> webSocket [
 
 	^ self server webSocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridge >> webSocketUrlTag [
 
 	^ self server webSocketUrlTag
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> websocketDelegateClass [
 
 	^ self client websocketDelegateClass
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridge >> websocketDelegateClassName [
 
 	^ self client websocketDelegateClassName
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridge >> when: conditionBlock do: actionBlock onTimeOutDo: failureBlock timeOutDuration: maxWaitDuration [
 
 	| waitTime |

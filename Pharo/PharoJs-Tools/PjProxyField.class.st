@@ -1,27 +1,29 @@
 Class {
-	#name : #PjProxyField,
-	#superclass : #Association,
+	#name : 'PjProxyField',
+	#superclass : 'Association',
 	#instVars : [
 		'proxy'
 	],
-	#category : #'PharoJs-Tools-Inspector'
+	#category : 'PharoJs-Tools-Inspector',
+	#package : 'PharoJs-Tools',
+	#tag : 'Inspector'
 }
 
-{ #category : #creating }
+{ #category : 'creating' }
 PjProxyField class >> proxy: aPjProxy key: aString [
 	^ self new
 		proxy: aPjProxy key: aString;
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjProxyField >> proxy: aPjProxy key: aString [
 	proxy := aPjProxy.
 	key := aString.
 	value := self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyField >> value [
 	value == self ifFalse: [ ^ value ].
 	value := proxy gefFieldValueFor: key.

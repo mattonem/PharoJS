@@ -1,31 +1,33 @@
 Class {
-	#name : #PjMessageSetClientId,
-	#superclass : #PjMessageC2s,
+	#name : 'PjMessageSetClientId',
+	#superclass : 'PjMessageC2s',
 	#instVars : [
 		'clientId'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetClientId >> clientId [
 
 	^ clientId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetClientId >> clientId: anObject [
 
 	clientId := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageSetClientId >> isCallback [
 
 	^ false
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageSetClientId >> logDescription [
 
 	^ String streamContents: [ :ws | 
@@ -36,19 +38,19 @@ PjMessageSetClientId >> logDescription [
 		  ws nextPutAll: self clientId ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageSetClientId >> needsToBeQueued [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageSetClientId >> processWithBridge: aBridge [
 
 	aBridge client clientId: self clientId
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageSetClientId >> shouldEvaluateImmediately [
 
 	^ true

@@ -1,16 +1,18 @@
 Class {
-	#name : #PjMessageGetKeysResponse,
-	#superclass : #PjMessageC2sInResponseTo,
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#name : 'PjMessageGetKeysResponse',
+	#superclass : 'PjMessageC2sInResponseTo',
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageGetKeysResponse >> getValueWithBridge: aBridge [
 
 	^ self contents
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageGetKeysResponse >> logDescription [
 
 	^ String streamContents: [ :ws | 
@@ -27,7 +29,7 @@ PjMessageGetKeysResponse >> logDescription [
 			  nextPutAll: ' key-value pairs' ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageGetKeysResponse >> printOn: ws [
 	<pharoJsSkip>
 	

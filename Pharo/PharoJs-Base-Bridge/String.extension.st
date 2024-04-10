@@ -1,6 +1,6 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 String >> asRawJSONString [
 
 	^ self

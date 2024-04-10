@@ -1,6 +1,6 @@
-Extension { #name : #WBMacWebBrowser }
+Extension { #name : 'WBMacWebBrowser' }
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WBMacWebBrowser class >> openBrowser: browserName on: urlString inBackground: backgroundFlag [
 
 	"Open the webbrowser on the given URL
@@ -32,7 +32,7 @@ WBMacWebBrowser class >> openBrowser: browserName on: urlString inBackground: ba
 	self system: command
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WBMacWebBrowser class >> openTerminalWithNodeOn: theFileName inFolder: theFolder [
 
 	| cd |

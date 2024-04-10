@@ -1,6 +1,6 @@
-Extension { #name : #WBWindowsWebBrowser }
+Extension { #name : 'WBWindowsWebBrowser' }
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WBWindowsWebBrowser class >> openBrowser: browserName on: anURLString inBackground: backgroundFlag [
 
 	"Open the webbrowser on the given URL
@@ -21,7 +21,7 @@ WBWindowsWebBrowser class >> openBrowser: browserName on: anURLString inBackgrou
 		  show: 5 "SW_SHOW"
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WBWindowsWebBrowser class >> openTerminalWithNodeOn: theFileName inFolder: anObject [
 
 	self

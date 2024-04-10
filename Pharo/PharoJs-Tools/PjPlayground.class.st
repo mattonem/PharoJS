@@ -1,29 +1,31 @@
 Class {
-	#name : #PjPlayground,
-	#superclass : #StPlayground,
+	#name : 'PjPlayground',
+	#superclass : 'StPlayground',
 	#instVars : [
 		'bridge'
 	],
 	#classInstVars : [
 		'pharoJsIcon'
 	],
-	#category : #'PharoJs-Tools-Playground'
+	#category : 'PharoJs-Tools-Playground',
+	#package : 'PharoJs-Tools',
+	#tag : 'Playground'
 }
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 PjPlayground class >> applicationList [
 	^ (PjApplication allSubclasses select: [ :class |
 				class isAbstract not and: [ (class hasClassMethod: #playgroundDoNotList) not ]
 		]) sort: [ : l : r | l name <= r name ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPlayground class >> defaultTitle [
 
 	^ 'PharoJS Playground'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground class >> initialize [
 
 	SystemAnnouncer uniqueInstance
@@ -32,7 +34,7 @@ PjPlayground class >> initialize [
 	MicDocumentBrowser reset.
 ]
 
-{ #category : #opening }
+{ #category : 'opening' }
 PjPlayground class >> open [
 
 	| playground |
@@ -41,7 +43,7 @@ PjPlayground class >> open [
 	^ playground
 ]
 
-{ #category : #opening }
+{ #category : 'opening' }
 PjPlayground class >> openFor: aPjBridge [
 
 	| playground |
@@ -50,7 +52,7 @@ PjPlayground class >> openFor: aPjBridge [
 	^ playground
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 PjPlayground class >> pharoJsIcon [
 
 	^ pharoJsIcon ifNil: [  [pharoJsIcon := ImageReadWriter formFromFileNamed: self pharoJsIconFile ]
@@ -58,14 +60,14 @@ PjPlayground class >> pharoJsIcon [
 		  do: [ nil ]]
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 PjPlayground class >> pharoJsIconFile [
 
 	^ self pharoJsRepositoryFolder / 'Graphics'
 	  / 'oWithJsInside-16x16.png'
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 PjPlayground class >> pharoJsMenuOn: aBuilder [
 
 	<worldMenu>
@@ -102,44 +104,44 @@ PjPlayground class >> pharoJsMenuOn: aBuilder [
 							action: [ class browseFiles ] ] ] ]
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 PjPlayground class >> pharoJsRepositoryFolder [
 
 	^PjApplication repositoryFolder
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 PjPlayground class >> resetMenuBar [
 
 	<script>
 	MenubarMorph reset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPlayground >> addBinding: anAssociation [
 
 	self firstPage addBinding: anAssociation
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> addWorkspaceVariableNamed: jsGlobalName value: jsGlobal [
 
 	^ self addBinding:
 		  (WorkspaceVariable key: jsGlobalName value: jsGlobal)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPlayground >> bridge [
 	^bridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPlayground >> bridge: aBridge [
 	bridge := aBridge 
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> displayWaitingForConnectionMessageForDuration: aDuration [
 
 	| waitDescription |
@@ -158,7 +160,7 @@ PjPlayground >> displayWaitingForConnectionMessageForDuration: aDuration [
 	self contents: waitDescription
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> initBindings [
 
 	| jsGlobal |
@@ -168,7 +170,7 @@ PjPlayground >> initBindings [
 		self addWorkspaceVariableNamed: jsGlobalName value: jsGlobal ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> initTitleWithBridge [
 
 	| newTitle |
@@ -180,21 +182,21 @@ PjPlayground >> initTitleWithBridge [
 	self title: newTitle
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> initialContents [
 
 	^ String streamContents: [ :str | 
 		  self writePlaygroundContentsOn: str ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> initializeWindow: aWindowPresenter [
 
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter whenClosedDo: [ bridge stop ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> initializeWithBridge: aPjBridge [
 
 	bridge := aPjBridge.
@@ -205,20 +207,20 @@ PjPlayground >> initializeWithBridge: aPjBridge [
 	self contents: self initialContents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPlayground >> title [
 	
 	self hasWindow ifFalse: [ ^nil ].
 	^ self window title
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPlayground >> title: aString [
 
 	self window title: aString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPlayground >> waitForClientToStart [
 
 	| waitTime endTime |
@@ -230,7 +232,7 @@ PjPlayground >> waitForClientToStart [
 		World doOneCycle ].
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PjPlayground >> writePlaygroundContentsOn: aWriteStream [ 
 	self bridge writePlaygroundContentsOn: aWriteStream 
 ]

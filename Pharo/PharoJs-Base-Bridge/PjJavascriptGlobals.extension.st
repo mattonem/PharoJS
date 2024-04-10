@@ -1,6 +1,6 @@
-Extension { #name : #PjJavascriptGlobals }
+Extension { #name : 'PjJavascriptGlobals' }
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 PjJavascriptGlobals class >> ensureProxyForGlobal: varName [
 
 	| binding |
@@ -9,7 +9,7 @@ PjJavascriptGlobals class >> ensureProxyForGlobal: varName [
 	self initProxyForGlobal: varName
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 PjJavascriptGlobals class >> initProxyForGlobal: varName [
 
 	| newProxy |
@@ -18,7 +18,7 @@ PjJavascriptGlobals class >> initProxyForGlobal: varName [
 	self classVarNamed: varName put: newProxy
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 PjJavascriptGlobals class >> localBindingOf: varName [
 
 	self ensureProxyForGlobal: varName.

@@ -1,15 +1,17 @@
 Class {
-	#name : #PjMessageSetEventListener,
-	#superclass : #PjMessageS2c,
+	#name : 'PjMessageSetEventListener',
+	#superclass : 'PjMessageS2c',
 	#instVars : [
 		'targetProxyInfo',
 		'listenerProxyInfo',
 		'eventName'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageSetEventListener >> evaluateInContext: aMessageContext [
 
 	| result responseMsg |
@@ -20,7 +22,7 @@ PjMessageSetEventListener >> evaluateInContext: aMessageContext [
 	aMessageContext websocketDelegate tryToSendMessage: responseMsg
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageSetEventListener >> evaluateInContextPrivate: aMessageContext [
 
 	| targetObject listener fullTriggerName oldlistener |
@@ -45,37 +47,37 @@ PjMessageSetEventListener >> evaluateInContextPrivate: aMessageContext [
 	^ 'true'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetEventListener >> eventName [
 
 	^ eventName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetEventListener >> eventName: anObject [
 
 	eventName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetEventListener >> listenerProxyInfo [
 
 	^ listenerProxyInfo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetEventListener >> listenerProxyInfo: anObject [
 
 	listenerProxyInfo := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetEventListener >> targetProxyInfo [
 
 	^ targetProxyInfo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageSetEventListener >> targetProxyInfo: anObject [
 
 	targetProxyInfo := anObject

@@ -1,14 +1,16 @@
 Class {
-	#name : #PjMessageMakeBlockClosureProxy,
-	#superclass : #PjMessageS2c,
+	#name : 'PjMessageMakeBlockClosureProxy',
+	#superclass : 'PjMessageS2c',
 	#instVars : [
 		'stopPropagation',
 		'includeEventTarget'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageMakeBlockClosureProxy >> evaluateInContext: aMessageContext [
 
 	| aProxyInfo responseMsg |
@@ -22,19 +24,19 @@ PjMessageMakeBlockClosureProxy >> evaluateInContext: aMessageContext [
 	aMessageContext websocketDelegate tryToSendMessage: responseMsg
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageMakeBlockClosureProxy >> includeEventTarget [
 
 	^ includeEventTarget
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageMakeBlockClosureProxy >> includeEventTarget: anObject [
 
 	includeEventTarget := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjMessageMakeBlockClosureProxy >> initialize [
 
 	super initialize.
@@ -42,12 +44,12 @@ PjMessageMakeBlockClosureProxy >> initialize [
 	includeEventTarget := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageMakeBlockClosureProxy >> stopPropagation [
 	^ stopPropagation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageMakeBlockClosureProxy >> stopPropagation: anObject [
 	stopPropagation := anObject
 ]

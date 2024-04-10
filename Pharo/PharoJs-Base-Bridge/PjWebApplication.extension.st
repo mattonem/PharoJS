@@ -1,6 +1,6 @@
-Extension { #name : #PjWebApplication }
+Extension { #name : 'PjWebApplication' }
 
-{ #category : #'*PharoJs-Base-Bridge-App' }
+{ #category : '*PharoJs-Base-Bridge-App' }
 PjWebApplication class >> bridgeClientClass [
 	<pharoJsSkip>
 	^ PjBrowserBridgeClient

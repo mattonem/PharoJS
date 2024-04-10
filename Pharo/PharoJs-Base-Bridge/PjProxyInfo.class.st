@@ -1,6 +1,6 @@
 Class {
-	#name : #PjProxyInfo,
-	#superclass : #Object,
+	#name : 'PjProxyInfo',
+	#superclass : 'Object',
 	#instVars : [
 		'remove',
 		'oid',
@@ -9,28 +9,30 @@ Class {
 	#pools : [
 		'PjNodeGlobals'
 	],
-	#category : #'PharoJs-Base-Bridge-Proxy'
+	#category : 'PharoJs-Base-Bridge-Proxy',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Proxy'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjProxyInfo >> getJsObject [
 
 	^ globalThis instVarNamed: self globalName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyInfo >> globalName [
 
 	^ globalName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyInfo >> globalName: anObject [
 
 	globalName := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjProxyInfo >> logDescription [
 
 	^ String streamContents: [ :ws | 
@@ -45,19 +47,19 @@ PjProxyInfo >> logDescription [
 				   ifFalse: [ 'false' ]) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyInfo >> oid [
 
 	^ oid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyInfo >> oid: anObject [
 
 	oid := anObject
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjProxyInfo >> proxyForBridge: aBridge [
 
 	"jsName globalRef"
@@ -83,13 +85,13 @@ PjProxyInfo >> proxyForBridge: aBridge [
 	^ proxy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyInfo >> remove [
 
 	^ remove
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyInfo >> remove: anObject [
 
 	remove := anObject

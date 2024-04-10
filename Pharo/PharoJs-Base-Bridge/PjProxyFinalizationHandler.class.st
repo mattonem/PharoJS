@@ -2,16 +2,18 @@
 I am the finilizer for temporary proxy values so they can be removed from the Javascript engine side when no longer referenced by the Pharo side
 "
 Class {
-	#name : #PjProxyFinalizationHandler,
-	#superclass : #Object,
+	#name : 'PjProxyFinalizationHandler',
+	#superclass : 'Object',
 	#instVars : [
 		'weakBridgeArray',
 		'proxyJsName'
 	],
-	#category : #'PharoJs-Base-Bridge-Proxy'
+	#category : 'PharoJs-Base-Bridge-Proxy',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Proxy'
 }
 
-{ #category : #'finalization support' }
+{ #category : 'finalization support' }
 PjProxyFinalizationHandler class >> finalizerForProxyNamed: aString onBridge: aBridge [
 	| instance |
 	instance := self new
@@ -21,45 +23,45 @@ PjProxyFinalizationHandler class >> finalizerForProxyNamed: aString onBridge: aB
 	^ instance finalizer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyFinalizationHandler >> bridge [
 
 	^ weakBridgeArray at: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyFinalizationHandler >> bridge: aBridge [
 
 	weakBridgeArray at: 1 put: aBridge
 ]
 
-{ #category : #finalization }
+{ #category : 'finalization' }
 PjProxyFinalizationHandler >> cleanUpJsSide [
 
 	self bridge ifNotNil: [ :br | 
 		br isServerStopped ifFalse: [ br deleteJsValue: self proxyJsName ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyFinalizationHandler >> finalize [
 
 	^ self cleanUpJsSide
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjProxyFinalizationHandler >> initialize [
 
 	super initialize.
 	weakBridgeArray := WeakArray new: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyFinalizationHandler >> proxyJsName [
 
 	^ proxyJsName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxyFinalizationHandler >> proxyJsName: anObject [
 
 	proxyJsName := anObject

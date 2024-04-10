@@ -2,19 +2,21 @@
 I represent a null bridge client i.e. no interpreter is actually launched upon start
 "
 Class {
-	#name : #PjNullBridgeClient,
-	#superclass : #PjBridgeClient,
-	#category : #'PharoJs-Base-Bridge-Client-Kernel'
+	#name : 'PjNullBridgeClient',
+	#superclass : 'PjBridgeClient',
+	#category : 'PharoJs-Base-Bridge-Client-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-Kernel'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjNullBridgeClient >> start [
 	"start interpreter"
 
 	^ self
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjNullBridgeClient >> stop [
 
 	^ self

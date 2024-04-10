@@ -11,8 +11,8 @@ webSocket
 
 "
 Class {
-	#name : #PjWebsocketDelegate,
-	#superclass : #PjObject,
+	#name : 'PjWebsocketDelegate',
+	#superclass : 'PjObject',
 	#instVars : [
 		'webSocket',
 		'id'
@@ -20,16 +20,18 @@ Class {
 	#pools : [
 		'PjNodeGlobals'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-WebSocketDelegate'
+	#category : 'PharoJs-Base-Bridge-Client-WebSocketDelegate',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-WebSocketDelegate'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjWebsocketDelegate class >> connectToTag: tagString [
 
 	^ self connectToUrl: 'ws://' , location host , '/' , tagString
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjWebsocketDelegate class >> connectToUrl: urlString [
 
 	| newInstance |
@@ -38,7 +40,7 @@ PjWebsocketDelegate class >> connectToUrl: urlString [
 	^ newInstance
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjWebsocketDelegate class >> new [
 
 	^ super new
@@ -46,7 +48,7 @@ PjWebsocketDelegate class >> new [
 		  yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjWebsocketDelegate class >> randomIdForNewInstance [
 
 	| charPool id size |
@@ -60,28 +62,28 @@ PjWebsocketDelegate class >> randomIdForNewInstance [
 	^ id
 ]
 
-{ #category : #connecting }
+{ #category : 'connecting' }
 PjWebsocketDelegate >> close [
 	webSocket close
 ]
 
-{ #category : #connecting }
+{ #category : 'connecting' }
 PjWebsocketDelegate >> connectTo: urlString [
 	webSocket := WebSocket new: urlString.
 	self initWebSocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjWebsocketDelegate >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjWebsocketDelegate >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #connecting }
+{ #category : 'connecting' }
 PjWebsocketDelegate >> initWebSocket [
 	webSocket instVarNamed:#onopen put: [: event | self onOpen: event].
 	webSocket instVarNamed:#onmessage put: [: event | self onMessage: event]..
@@ -89,25 +91,25 @@ PjWebsocketDelegate >> initWebSocket [
 	webSocket instVarNamed:#onerror put: [: event | self onError: event].
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjWebsocketDelegate >> initialize [
 	super initialize.
 	id := self class randomIdForNewInstance.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjWebsocketDelegate >> isClosed [
 	webSocket ifNil: [ ^true ].
 	^ webSocket readyState == WebSocket CLOSED
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjWebsocketDelegate >> isConnected [
 	webSocket ifNil: [ ^false ].
 	^webSocket readyState == WebSocket OPEN
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjWebsocketDelegate >> newMessageContext [
 	| mc |
 	mc := PjMessageContext new.
@@ -115,22 +117,22 @@ PjWebsocketDelegate >> newMessageContext [
 	^mc
 ]
 
-{ #category : #'socket behavior' }
+{ #category : 'socket behavior' }
 PjWebsocketDelegate >> onClose: event [
 	^self
 ]
 
-{ #category : #'socket behavior' }
+{ #category : 'socket behavior' }
 PjWebsocketDelegate >> onError: event [
 	^self
 ]
 
-{ #category : #'socket behavior' }
+{ #category : 'socket behavior' }
 PjWebsocketDelegate >> onMessage: event [
 	^self
 ]
 
-{ #category : #'socket behavior' }
+{ #category : 'socket behavior' }
 PjWebsocketDelegate >> onOpen: event [
 	^self
 ]

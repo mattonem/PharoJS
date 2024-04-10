@@ -1,13 +1,15 @@
 Class {
-	#name : #PjMessageGetKeys,
-	#superclass : #PjMessageS2c,
+	#name : 'PjMessageGetKeys',
+	#superclass : 'PjMessageS2c',
 	#instVars : [
 		'proxyInfo'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageGetKeys >> evaluateInContext: aMessageContext [
 
 	| wsd responseMsg jsObject assocs |
@@ -22,7 +24,7 @@ PjMessageGetKeys >> evaluateInContext: aMessageContext [
 	wsd tryToSendMessage: responseMsg
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageGetKeys >> keyValuePairsOf: anObject [
 
 	| results |
@@ -34,7 +36,7 @@ PjMessageGetKeys >> keyValuePairsOf: anObject [
 	^ results
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageGetKeys >> logDescription [
 
 	^ String streamContents: [ :ws | 
@@ -46,13 +48,13 @@ PjMessageGetKeys >> logDescription [
 			  ws nextPutAll: pi logDescription ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageGetKeys >> proxyInfo [
 
 	^ proxyInfo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageGetKeys >> proxyInfo: anObject [
 
 	proxyInfo := anObject

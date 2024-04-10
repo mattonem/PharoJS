@@ -1,6 +1,6 @@
 Class {
-	#name : #PjMessage,
-	#superclass : #PjDomController,
+	#name : 'PjMessage',
+	#superclass : 'PjDomController',
 	#instVars : [
 		'contents',
 		'id'
@@ -8,10 +8,12 @@ Class {
 	#classVars : [
 		'currentId'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjMessage class >> newWithContents: contents [
 
 	^ self newWithId
@@ -19,7 +21,7 @@ PjMessage class >> newWithContents: contents [
 		  yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjMessage class >> newWithId [
 
 	^ self new
@@ -27,44 +29,44 @@ PjMessage class >> newWithId [
 		  yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjMessage class >> nextMessageId [
 
 	currentId := currentId ifNil: [ 1 ] ifNotNil: [ :id | id + 1 ].
 	^ currentId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessage >> contents [
 
 	^ contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessage >> contents: anObject [
 
 	contents := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessage >> id [
 
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessage >> id: anObject [
 
 	id := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjMessage >> initialize [
 
 	super initialize
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessage >> logDescription [
 	^ String
 		streamContents: [ :ws | 
@@ -77,13 +79,13 @@ PjMessage >> logDescription [
 					ws nextPutAll: c ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessage >> needsToBeQueued [
 
 	^ true
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessage >> printOn: ws [
 	<pharoJsSkip>
 

@@ -6,15 +6,17 @@ I extend the standard Message class, with a receiver.
 The transpiler converts me to Javascript in a special way.
 "
 Class {
-	#name : #PjJavascriptMessage,
-	#superclass : #Message,
+	#name : 'PjJavascriptMessage',
+	#superclass : 'Message',
 	#instVars : [
 		'receiverId'
 	],
-	#category : #'PharoJs-Base-Bridge-Kernel'
+	#category : 'PharoJs-Base-Bridge-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Kernel'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjJavascriptMessage class >> receiverId: receiverId selector: selector arguments: arguments [
 
 	^ (self selector: selector arguments: arguments)
@@ -22,25 +24,25 @@ PjJavascriptMessage class >> receiverId: receiverId selector: selector arguments
 		  yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjJavascriptMessage >> asJsAstUsing: aConverter [
 
 	^ aConverter convertJavascriptMessage: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjJavascriptMessage >> convertToJsUsing: aTranspiler [
 
 	aTranspiler convertJavascriptMessage: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjJavascriptMessage >> receiverId [
 
 	^ receiverId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjJavascriptMessage >> receiverId: anObject [
 
 	receiverId := anObject

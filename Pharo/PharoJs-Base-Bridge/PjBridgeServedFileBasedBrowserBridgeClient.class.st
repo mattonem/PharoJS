@@ -1,15 +1,17 @@
 Class {
-	#name : #PjBridgeServedFileBasedBrowserBridgeClient,
-	#superclass : #PjFileBasedBrowserBridgeClient,
-	#category : #'PharoJs-Base-Bridge-Client-Kernel'
+	#name : 'PjBridgeServedFileBasedBrowserBridgeClient',
+	#superclass : 'PjFileBasedBrowserBridgeClient',
+	#category : 'PharoJs-Base-Bridge-Client-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-Kernel'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridgeServedFileBasedBrowserBridgeClient >> appUrlPrefixString [
 	^self appClass name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServedFileBasedBrowserBridgeClient >> initializeWithBridge: aBridge [
 
 	| staticFileDelegate |
@@ -21,13 +23,13 @@ PjBridgeServedFileBasedBrowserBridgeClient >> initializeWithBridge: aBridge [
 	self server delegate map: self appUrlPrefixString to: staticFileDelegate
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBridgeServedFileBasedBrowserBridgeClient >> url [
 
 	^ self server url / self appUrlPrefixString 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServedFileBasedBrowserBridgeClient >> urlString [
 
 	^ self url asString

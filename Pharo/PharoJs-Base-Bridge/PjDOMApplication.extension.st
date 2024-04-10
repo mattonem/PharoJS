@@ -1,6 +1,6 @@
-Extension { #name : #PjDOMApplication }
+Extension { #name : 'PjDOMApplication' }
 
-{ #category : #'*PharoJs-Base-Bridge-App' }
+{ #category : '*PharoJs-Base-Bridge-App' }
 PjDOMApplication class >> css [	
 	" might want to override with:
 	^ self cssFromFile
@@ -10,21 +10,21 @@ PjDOMApplication class >> css [
 	^ nil
 ]
 
-{ #category : #'*PharoJs-Base-Bridge-App' }
+{ #category : '*PharoJs-Base-Bridge-App' }
 PjDOMApplication class >> cssFile: anObject [
 	<pharoJsSkip>
 	
 	cssFile := anObject
 ]
 
-{ #category : #'*PharoJs-Base-Bridge-App' }
+{ #category : '*PharoJs-Base-Bridge-App' }
 PjDOMApplication class >> favicon [
 	<pharoJsSkip>
 	
 	^ nil
 ]
 
-{ #category : #'*PharoJs-Base-Bridge-App' }
+{ #category : '*PharoJs-Base-Bridge-App' }
 PjDOMApplication class >> generateHtmlUsing: aPjHtmlGenerator [
 	<pharoJsSkip>
 	
@@ -32,7 +32,7 @@ PjDOMApplication class >> generateHtmlUsing: aPjHtmlGenerator [
 	" consider overriding with '^ self generateHtmlFromFileUsing: aPjHtmlGenerator' "
 ]
 
-{ #category : #'*PharoJs-Base-Bridge-App' }
+{ #category : '*PharoJs-Base-Bridge-App' }
 PjDOMApplication class >> htmlFile: anObject [
 	<pharoJsSkip>
 	

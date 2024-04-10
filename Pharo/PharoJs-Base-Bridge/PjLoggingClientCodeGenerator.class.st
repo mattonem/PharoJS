@@ -3,18 +3,20 @@ A PjLoggingClientCodeGenerator is a generator for HTML/Javascript client code th
 
 "
 Class {
-	#name : #PjLoggingClientCodeGenerator,
-	#superclass : #PjClientCodeGenerator,
-	#category : #'PharoJs-Base-Bridge-Client-CodeGenerator'
+	#name : 'PjLoggingClientCodeGenerator',
+	#superclass : 'PjClientCodeGenerator',
+	#category : 'PharoJs-Base-Bridge-Client-CodeGenerator',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-CodeGenerator'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLoggingClientCodeGenerator class >> bridgeAppClassDecoratorClass [
 
 	^ PjLoggingClientBridgeAppClassDecorator
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjLoggingClientCodeGenerator >> generateHtmlUsing: aHtmlGenerator [
 
 	super generateHtmlUsing: aHtmlGenerator.
@@ -22,13 +24,13 @@ PjLoggingClientCodeGenerator >> generateHtmlUsing: aHtmlGenerator [
 	aHtmlGenerator cr
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjLoggingClientCodeGenerator >> htmlLogElementId [
 
 	^ PjLoggingEvaluatorWebsocketDelegate logElementId
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjLoggingClientCodeGenerator >> logoHtmlString [
 
 	^ '<div style="position:relative;width:100%;max-width:471px;">
@@ -37,13 +39,13 @@ PjLoggingClientCodeGenerator >> logoHtmlString [
 </div>'
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjLoggingClientCodeGenerator >> logoUrlString [
 
 	^(PjMinimalFileBasedWebApp appFolder / 'pharoJsLogo.png') pathString 
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjLoggingClientCodeGenerator >> printClientSmalltalkLaunchStringOn: smalltalkWriteStream [
 
 	smalltalkWriteStream

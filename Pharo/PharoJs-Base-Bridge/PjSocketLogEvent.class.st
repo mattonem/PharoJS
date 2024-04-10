@@ -4,28 +4,30 @@ I am a log event subclassed from ZnLogEvent that is used to log webSocket I/O
 I am usually used at an extended loglevel of 4
 "
 Class {
-	#name : #PjSocketLogEvent,
-	#superclass : #ZnServerLogEvent,
+	#name : 'PjSocketLogEvent',
+	#superclass : 'ZnServerLogEvent',
 	#instVars : [
 		'direction',
 		'contents'
 	],
-	#category : #'PharoJs-Base-Bridge-Kernel'
+	#category : 'PharoJs-Base-Bridge-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Kernel'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSocketLogEvent >> contents: anObject [
 
 	contents := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSocketLogEvent >> direction: anObject [
 
 	direction := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjSocketLogEvent >> printContentsOn: stream [
 
 	| limitedString |

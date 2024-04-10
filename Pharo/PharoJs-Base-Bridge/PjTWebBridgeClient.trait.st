@@ -2,26 +2,28 @@
 Utility trait to control the webbrowser
 "
 Trait {
-	#name : #PjTWebBridgeClient,
+	#name : 'PjTWebBridgeClient',
 	#instVars : [
 		'openBrowserInBackground'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-Kernel'
+	#category : 'PharoJs-Base-Bridge-Client-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-Kernel'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjTWebBridgeClient >> openBrowserInBackground [
 
 	^ openBrowserInBackground ifNil: [ false ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjTWebBridgeClient >> openBrowserInBackground: aBoolean [
 
 	openBrowserInBackground := aBoolean
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjTWebBridgeClient >> openWebBrowserOn: urlString [
 
 	WebBrowser
@@ -29,19 +31,19 @@ PjTWebBridgeClient >> openWebBrowserOn: urlString [
 		inBackground: self openBrowserInBackground
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjTWebBridgeClient >> reset [
 	self sendMessage: PjMessageReload new.
 	self resetProxiesImmediately.
 	super reset
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjTWebBridgeClient >> sendMessage: aMessage [
 	self bridge sendMessage: aMessage
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjTWebBridgeClient >> startJsInterpreter [
 
 	WebBrowser
@@ -49,7 +51,7 @@ PjTWebBridgeClient >> startJsInterpreter [
 		inBackground: self openBrowserInBackground
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTWebBridgeClient >> urlString [
 
 	self explicitRequirement

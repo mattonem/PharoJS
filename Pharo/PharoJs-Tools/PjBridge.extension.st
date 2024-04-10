@@ -1,13 +1,13 @@
-Extension { #name : #PjBridge }
+Extension { #name : 'PjBridge' }
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjBridge >> playground [
 
 	^ PjPlayground openFor: self
 
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjBridge >> writePlaygroundContentsOn: str [
 
 	str

@@ -1,6 +1,6 @@
-Extension { #name : #PjBridgeClient }
+Extension { #name : 'PjBridgeClient' }
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjBridgeClient >> writePlaygroundContentsOn: str [
 
 	^ self appClass writePlaygroundContentsOn: str

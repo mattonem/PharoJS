@@ -7,8 +7,8 @@ Instance Variables
 
 "
 Class {
-	#name : #PjServer,
-	#superclass : #ZnSingleThreadedServer,
+	#name : 'PjServer',
+	#superclass : 'ZnSingleThreadedServer',
 	#instVars : [
 		'timing',
 		'webSocket'
@@ -16,20 +16,22 @@ Class {
 	#classVars : [
 		'LastUsedPort'
 	],
-	#category : #'PharoJs-Base-Bridge-Obsolete'
+	#category : 'PharoJs-Base-Bridge-Obsolete',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Obsolete'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer class >> portsCurrentlyInUse [
 	^(self allInstances select: #isRunning thenCollect: #port) asSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer class >> webSocketUrlTag [
 	^'javascript-bridge'
 ]
 
-{ #category : #'request handling' }
+{ #category : 'request handling' }
 PjServer >> basicExecutePlainRequest: request sendResponseThrough: stream [
 
 	| response |
@@ -39,30 +41,30 @@ PjServer >> basicExecutePlainRequest: request sendResponseThrough: stream [
 		self writeResponse: response on: stream timing: timing ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> css [
 	^self delegate css
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> css: jsString [
 	self delegate css: jsString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjServer >> delegateClass [
 
 	^ PjParametrizableServerDelegate
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjServer >> ensureProcessAlive [
 
 	self isProcessDead ifFalse: [ ^ self ].
 	super start
 ]
 
-{ #category : #'request handling' }
+{ #category : 'request handling' }
 PjServer >> executePlainRequest: request sendReponseThrough: stream and: socket [
 
 	[ 
@@ -74,22 +76,22 @@ PjServer >> executePlainRequest: request sendReponseThrough: stream and: socket 
 		socket destroy ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> favicon [
 	^self delegate favicon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> favicon: jsString [
 	self delegate favicon: jsString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> fingerPrint [
 	^self delegate fingerPrint
 ]
 
-{ #category : #'request handling' }
+{ #category : 'request handling' }
 PjServer >> handleRequest: request forWebSocketOn: stream [
 
 	| acceptKey response |
@@ -104,48 +106,48 @@ PjServer >> handleRequest: request forWebSocketOn: stream [
 	response useConnection: stream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> html [
 	^self delegate html
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> html: htmlString [
 	self delegate html: htmlString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjServer >> initialize [
 
 	super initialize.
 	self delegate: self delegateClass new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjServer >> isProcessDead [
 
 	^ self process isNil or: [ 
 		  self process isTerminating or: [ self process isTerminated ] ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjServer >> isWebSocketConnected [
 
 	self webSocket ifNil: [ ^ false ].
 	^ self webSocket isConnected
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> javascript [
 	^self delegate javascript
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> javascript: jsString [
 	self delegate javascript: jsString
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjServer >> logSocketRead: aString [
 
 	logLevel < 4 ifTrue: [ ^ self ].
@@ -155,7 +157,7 @@ PjServer >> logSocketRead: aString [
 		emit
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjServer >> logSocketWritten: aString [
 
 	logLevel < 4 ifTrue: [ ^ self ].
@@ -165,23 +167,23 @@ PjServer >> logSocketWritten: aString [
 		emit
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjServer >> loggingOn [
 
 	logLevel := 4 " extended for websocket tracking "
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> maxPortNumber [
 	^65535
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> minPortNumber [
 	^1024
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> nextPortNumber [
 	LastUsedPort ifNil: [ ^LastUsedPort := self minPortNumber ].
 	LastUsedPort = self maxPortNumber ifTrue: [^LastUsedPort := self minPortNumber].
@@ -189,7 +191,7 @@ PjServer >> nextPortNumber [
 	^LastUsedPort
 ]
 
-{ #category : #'request handling' }
+{ #category : 'request handling' }
 PjServer >> responseHeadersForKey: key [
 
 	"Return the headers for a WebSocket setup response, given key"
@@ -201,7 +203,7 @@ PjServer >> responseHeadersForKey: key [
 		  yourself
 ]
 
-{ #category : #'request handling' }
+{ #category : 'request handling' }
 PjServer >> serveConnectionOn: listeningSocket [
 	"We wait up to acceptWaitTimeout seconds for an incoming connection.
 	If we get one we wrap it in a SocketStream and #executeOneRequestResponseOn: on it.
@@ -221,7 +223,7 @@ PjServer >> serveConnectionOn: listeningSocket [
 		and: socket
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjServer >> start [
 
 	| candidatePort usedPorts |
@@ -232,21 +234,21 @@ PjServer >> start [
 	self startOnPort: candidatePort
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjServer >> startOnPort: aPort [
 
 	self port: aPort.
 	super start
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjServer >> stop [
 
 	self stopWebSocket.
 	super stop
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjServer >> stopWebSocket [
 
 	self webSocket ifNil: [ ^ self ].
@@ -256,17 +258,17 @@ PjServer >> stopWebSocket [
 		do: [ " nothing: the socket's gone away " ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> urlString [
 	^self url asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> webSocket [
 	^webSocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjServer >> webSocketUrlTag [
 	^self class webSocketUrlTag
 ]

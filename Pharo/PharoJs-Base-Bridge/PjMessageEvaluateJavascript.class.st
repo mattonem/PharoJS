@@ -1,10 +1,12 @@
 Class {
-	#name : #PjMessageEvaluateJavascript,
-	#superclass : #PjMessageS2c,
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#name : 'PjMessageEvaluateJavascript',
+	#superclass : 'PjMessageS2c',
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageEvaluateJavascript >> evaluateInContext: aMessageContext [
 
 	self
@@ -12,7 +14,7 @@ PjMessageEvaluateJavascript >> evaluateInContext: aMessageContext [
 		afterMilliseconds: 0
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjMessageEvaluateJavascript >> evaluateInContextPrivate: aMessageContext [
 
 	| responseMsg |
@@ -26,7 +28,7 @@ PjMessageEvaluateJavascript >> evaluateInContextPrivate: aMessageContext [
 	aMessageContext websocketDelegate tryToSendMessage: responseMsg
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageEvaluateJavascript >> evaluateJsString: aString [
 
 	| resultObject resultString |

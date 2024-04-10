@@ -42,18 +42,20 @@ Internal Representation and Key Implementation Points.
 
 "
 Class {
-	#name : #PjProxy,
-	#superclass : #Object,
+	#name : 'PjProxy',
+	#superclass : 'Object',
 	#instVars : [
 		'jsName',
 		'oid',
 		'closure',
 		'proxySpecificBridge'
 	],
-	#category : #'PharoJs-Base-Bridge-Proxy'
+	#category : 'PharoJs-Base-Bridge-Proxy',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Proxy'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxy class >> newProxyNamed: proxyName onBridge: aBridge oid: anOid [
 	^ ((proxyName beginsWith: '$_')
 		ifTrue: [ PjProxy ]
@@ -62,13 +64,13 @@ PjProxy class >> newProxyNamed: proxyName onBridge: aBridge oid: anOid [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxy class >> proxyNamed: proxyName onBridge: aBridge [
 	"Useful for building proxies on JS globals"
 	^ self proxyNamed: proxyName onBridge: aBridge oid: proxyName
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxy class >> proxyNamed: proxyName onBridge: aBridge oid: anOid [
 	| proxy |
 	aBridge
@@ -85,7 +87,7 @@ PjProxy class >> proxyNamed: proxyName onBridge: aBridge oid: anOid [
 			^ aBridge proxies at: proxyName put: proxy ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjProxy >> = anObject [
 
 	| equalMessage |
@@ -97,7 +99,7 @@ PjProxy >> = anObject [
 		  bridge evalMessage: equalMessage sentTo: jsName ]
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjProxy >> addEventListener: type block: aBlock [
 
 	^ self jsBridge: [ :bridge | 
@@ -112,19 +114,19 @@ PjProxy >> addEventListener: type block: aBlock [
 		  bridge sendMessageAndWaitForResponse: msg ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjProxy >> asJSON [
 
 	^ jsName
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjProxy >> asJsObjectUsing: converter [
 
 	^ self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjProxy >> asLocalObject [
 
 	| size |
@@ -135,20 +137,20 @@ PjProxy >> asLocalObject [
 		  1 to: size do: [ :index | s nextPut: (self at: index) ] ]
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjProxy >> asRawJSONString [
 
 	^ self jsBridge: [ :bridge | 
 		  bridge evalJavascript: 'JSON.stringify(' , jsName , ')' ]
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> at: index [
 
 	^ self doesNotUnderstand: (Message selector: #at: argument: index)
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> at: index put: anObject [
 
 	^ self doesNotUnderstand: (Message selector: #at:put: arguments: { 
@@ -156,7 +158,7 @@ PjProxy >> at: index put: anObject [
 				   anObject })
 ]
 
-{ #category : #'closure handling' }
+{ #category : 'closure handling' }
 PjProxy >> closure: aBlockClosure [
 
 	closure ifNotNil: [ 
@@ -164,33 +166,33 @@ PjProxy >> closure: aBlockClosure [
 	closure := aBlockClosure
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> confirm: aString [
 
 	^ self doesNotUnderstand:
 		  (Message selector: #confirm: argument: aString)
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjProxy >> convertToJavascriptAstUsing: aPjAstConverter [
 
 	^ PjGlobalNode identifier: jsName
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjProxy >> doesNotUnderstand: aMessage [
 
 	^ self jsBridge: [ :bridge | 
 		  bridge evalMessage: aMessage sentTo: jsName ]
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> head [
 
 	^ self doesNotUnderstand: (Message selector: #head)
 ]
 
-{ #category : #introspection }
+{ #category : 'introspection' }
 PjProxy >> instVarNamed: aString [
 
 	^ self jsBridge: [ :bridge | 
@@ -199,7 +201,7 @@ PjProxy >> instVarNamed: aString [
 		  bridge evalJavascript: selector ]
 ]
 
-{ #category : #introspection }
+{ #category : 'introspection' }
 PjProxy >> instVarNamed: aString put: aValue [
 
 	^ self jsBridge: [ :bridge | 
@@ -207,13 +209,13 @@ PjProxy >> instVarNamed: aString put: aValue [
 			  jsName , '.' , aString , '=' , (bridge convertToJs: aValue) ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjProxy >> isLiteralJavascriptValue [
 
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjProxy >> isPjProxyNil [
 
 	jsName = 'undefined' ifTrue: [ ^ true ].
@@ -221,38 +223,38 @@ PjProxy >> isPjProxyNil [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjProxy >> isPjProxyOrNil [
 
 	^ true
 ]
 
-{ #category : #'javascript generation' }
+{ #category : 'javascript generation' }
 PjProxy >> javascriptName [
 
 	^ jsName
 ]
 
-{ #category : #'javascript generation' }
+{ #category : 'javascript generation' }
 PjProxy >> javascriptValid [
 
 	^ true
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> join: aCollection [
 
 	^ self doesNotUnderstand:
 		  (Message selector: #join: argument: aCollection)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxy >> jsBridge [
 
 	^ proxySpecificBridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxy >> jsBridge: aBlock [
 
 	proxySpecificBridge ifNotNil: [ :bridge | ^ aBlock value: bridge ].
@@ -260,20 +262,20 @@ PjProxy >> jsBridge: aBlock [
 	self error: 'no bridge for proxy: ' , jsName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxy >> jsClass [
 
 	^ self jsBridge: [ :bridge |
 		  bridge evalSelector: #class sentTo: jsName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxy >> jsClassName [
 
 	^self jsBridge: [ :bridge | bridge evalSelector: #className sentTo: jsName]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjProxy >> jsName: aString onBridge: aBridge oid: anOid [
 
 	jsName := aString asSymbol.
@@ -287,37 +289,37 @@ PjProxy >> jsName: aString onBridge: aBridge oid: anOid [
 	proxySpecificBridge := aBridge
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> log: aString [
 
 	^ self doesNotUnderstand: (Message selector: #log: argument: aString)
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> name [
 
 	^ self doesNotUnderstand: (Message selector: #name)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxy >> oid [
 
 	^ oid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjProxy >> oid: anObject [
 
 	oid := anObject
 ]
 
-{ #category : #'javascript generation' }
+{ #category : 'javascript generation' }
 PjProxy >> printJsOn: aStream [
 
 	aStream nextPutAll: jsName
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjProxy >> printOn: ws [
 
 	ws << 'JS: '.
@@ -330,31 +332,31 @@ PjProxy >> printOn: ws [
 	ws << $)
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjProxy >> removeEventListener: type [
 
 	^ self addEventListener: type block: nil
 ]
 
-{ #category : #'closure handling' }
+{ #category : 'closure handling' }
 PjProxy >> runBlockClosure: ev with: this [
 
 	closure ifNotNil: [ closure cull: ev cull: this ]
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> size [
 
 	^ self doesNotUnderstand: (Message selector: #size)
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> value [
 
 	^ self doesNotUnderstand: (Message selector: #value)
 ]
 
-{ #category : #'force proxy' }
+{ #category : 'force proxy' }
 PjProxy >> value: anObject [
 
 	^ self doesNotUnderstand:

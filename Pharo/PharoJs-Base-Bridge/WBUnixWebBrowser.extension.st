@@ -1,6 +1,6 @@
-Extension { #name : #WBUnixWebBrowser }
+Extension { #name : 'WBUnixWebBrowser' }
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WBUnixWebBrowser class >> openBrowser: browserName on: anURLString inBackground: backgroundFlag [
 	"Open the webbrowser on the given URL
 	self openBrowser: 'Firefox' on: 'http://pharojs.org' inBackground: false.
@@ -20,7 +20,7 @@ WBUnixWebBrowser class >> openBrowser: browserName on: anURLString inBackground:
 	self system: openCommand
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WBUnixWebBrowser class >> openTerminalWithNodeOn: theFileName inFolder: anObject [
 
 	self system: ('node {1} &' format: { theFileName })

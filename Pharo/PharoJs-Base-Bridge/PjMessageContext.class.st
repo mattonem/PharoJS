@@ -1,19 +1,21 @@
 Class {
-	#name : #PjMessageContext,
-	#superclass : #Object,
+	#name : 'PjMessageContext',
+	#superclass : 'Object',
 	#instVars : [
 		'websocketDelegate'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageContext >> websocketDelegate [
 
 	^ websocketDelegate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageContext >> websocketDelegate: anObject [
 
 	websocketDelegate := anObject

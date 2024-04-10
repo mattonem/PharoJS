@@ -2,66 +2,68 @@
 I represent a web bridge client i.e. an interactive interpreter is launched upon start
 "
 Class {
-	#name : #PjBrowserBridgeClient,
-	#superclass : #PjBridgeClient,
+	#name : 'PjBrowserBridgeClient',
+	#superclass : 'PjBridgeClient',
 	#traits : 'PjTWebBridgeClient',
 	#classTraits : 'PjTWebBridgeClient classTrait',
 	#classInstVars : [
 		'defaultWebBrowserName'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-Kernel'
+	#category : 'PharoJs-Base-Bridge-Client-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-Kernel'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 PjBrowserBridgeClient class >> defaultWebBrowserName [
 
 	^ defaultWebBrowserName ifNil: [ 'default' ]
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 PjBrowserBridgeClient class >> defaultWebBrowserName: aString [
 
 	defaultWebBrowserName := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBrowserBridgeClient class >> firefox [
 
 	^ #firefox
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 PjBrowserBridgeClient class >> makeFirefoxDefaultWebBrowser [
 	<script>
 	
 	self defaultWebBrowserName: self firefox
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 PjBrowserBridgeClient class >> makeSafariDefaultWebBrowser [
 	<script>
 	
 	self defaultWebBrowserName: self safari
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBrowserBridgeClient class >> safari [
 
 	^ #safari
 ]
 
-{ #category : #'initialization-release' }
+{ #category : 'initialization-release' }
 PjBrowserBridgeClient >> defaultAppClass [
 
 	^ PjMinimalWebApplication
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBrowserBridgeClient >> exporterClass [
 	^ PjExporter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBrowserBridgeClient >> initializeWithBridge: aBridge [
 	super initializeWithBridge: aBridge.
 	self codeGenerator resetHtmlGenerator.
@@ -70,12 +72,12 @@ PjBrowserBridgeClient >> initializeWithBridge: aBridge [
 	self server html: self codeGenerator html.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBrowserBridgeClient >> serverUrl [
 	^self server url
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjBrowserBridgeClient >> start [
 	self bridge server
 		javascript:
@@ -84,7 +86,7 @@ PjBrowserBridgeClient >> start [
 	super start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBrowserBridgeClient >> urlString [
 
 	^self server urlString

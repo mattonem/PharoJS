@@ -1,6 +1,6 @@
-Extension { #name : #PjMinimalWebApplication }
+Extension { #name : 'PjMinimalWebApplication' }
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjMinimalWebApplication class >> writePlaygroundContentsOn: str [
 
 	<pharoJsSkip>

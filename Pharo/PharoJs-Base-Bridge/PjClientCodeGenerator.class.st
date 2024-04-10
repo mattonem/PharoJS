@@ -9,64 +9,66 @@ converter
 
 "
 Class {
-	#name : #PjClientCodeGenerator,
-	#superclass : #Object,
+	#name : 'PjClientCodeGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'titleString',
 		'appClass',
 		'htmlGenerator',
 		'appClassDecorator'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-CodeGenerator'
+	#category : 'PharoJs-Base-Bridge-Client-CodeGenerator',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-CodeGenerator'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator class >> bridgeAppClassDecoratorClass [
 
 	^ PjBridgeAppClassDecorator
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjClientCodeGenerator class >> html [
 	^self new html
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjClientCodeGenerator class >> websocketDelegateClass [
 	^self bridgeAppClassDecoratorClass websocketDelegateClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> appClass [
 
 	^ appClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> appClassDecorator [
 
 	^ appClassDecorator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> bridge: aBridge [
 
 	appClassDecorator bridge: aBridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> bridgeAppClassDecoratorClass [
 
 	^ self class bridgeAppClassDecoratorClass
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjClientCodeGenerator >> css [
 
 	^ self cssUsing: self htmlGenerator
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjClientCodeGenerator >> cssUsing: aHtmlGenerator [
 
 	^ self appClass css ifNotNil: [ :css | 
@@ -74,7 +76,7 @@ PjClientCodeGenerator >> cssUsing: aHtmlGenerator [
 		  css ]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjClientCodeGenerator >> decorateAppClass: anAppClass [
 
 	appClass := anAppClass.
@@ -82,13 +84,13 @@ PjClientCodeGenerator >> decorateAppClass: anAppClass [
 	^ appClassDecorator
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjClientCodeGenerator >> favicon [
 
 	^ self appClass favicon
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjClientCodeGenerator >> generateHtmlUsing: aHtmlGenerator [
 
 	(self appClass generateHtmlUsing: aHtmlGenerator) ifFalse: [ 
@@ -100,50 +102,50 @@ PjClientCodeGenerator >> generateHtmlUsing: aHtmlGenerator [
 	aHtmlGenerator addScriptUrl: 'index.js'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjClientCodeGenerator >> html [
 
 	self generateHtmlUsing: self htmlGenerator.
 	^ self htmlGenerator html
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjClientCodeGenerator >> htmlGenerator [
 
 	^ htmlGenerator ifNil: [ htmlGenerator := PjHtmlGenerator new ]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 PjClientCodeGenerator >> resetHtmlGenerator [
 
 	htmlGenerator := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> titleString [
 
 	^ titleString ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> titleString: aString [
 
 	titleString := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> websocketDelegateClass [
 
 	^ self class websocketDelegateClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClientCodeGenerator >> websocketDelegateClassName [
 
 	^ self websocketDelegateClass name
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjClientCodeGenerator >> withClientLogging [
 
 	^ PjLoggingClientCodeGenerator new

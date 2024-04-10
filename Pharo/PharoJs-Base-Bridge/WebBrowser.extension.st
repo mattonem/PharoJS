@@ -1,6 +1,6 @@
-Extension { #name : #WebBrowser }
+Extension { #name : 'WebBrowser' }
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WebBrowser class >> openBrowser: browserName on: anURLString inBackground: backgroundFlag [
 	"Open the webbrowser on the given URL
 	self openBrowser: 'Firefox' on: 'http://pharojs.org' inBackground: false.
@@ -15,13 +15,13 @@ WebBrowser class >> openBrowser: browserName on: anURLString inBackground: backg
 		inBackground: backgroundFlag
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WebBrowser class >> openInBackgroundUrl: anURLString [
 
 	^ self openOn: anURLString inBackground: true
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WebBrowser class >> openOn: anURLString inBackground: backgroundFlag [
 	"Open the webbrowser on the given URL
 	self openOn: 'http://pharojs.org' inBackground: false.
@@ -31,7 +31,7 @@ WebBrowser class >> openOn: anURLString inBackground: backgroundFlag [
 	self openBrowser: nil on: anURLString inBackground: backgroundFlag
 ]
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 WebBrowser class >> openTerminalWithNodeOn: theFileName inFolder: theFolder [
 	"Open a terminal with node running on the given file"
 

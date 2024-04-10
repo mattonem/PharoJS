@@ -1,13 +1,15 @@
 Class {
-	#name : #PjLocalWebServedBridgeClient,
-	#superclass : #PjWebServedBridgeClient,
+	#name : 'PjLocalWebServedBridgeClient',
+	#superclass : 'PjWebServedBridgeClient',
 	#instVars : [
 		'serverBridge'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-Kernel'
+	#category : 'PharoJs-Base-Bridge-Client-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-Kernel'
 }
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjLocalWebServedBridgeClient >> initUrlString [
 
 	| serverPort serverApp |
@@ -19,36 +21,36 @@ PjLocalWebServedBridgeClient >> initUrlString [
 		'http://127.0.0.1:' , serverPort asString , self urlPath
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLocalWebServedBridgeClient >> serverApp [
 
 	^ serverBridge app
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLocalWebServedBridgeClient >> serverBridge [
 	^serverBridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLocalWebServedBridgeClient >> serverBridge: aBridge [ 
 
 	serverBridge := aBridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLocalWebServedBridgeClient >> serverBridgeClient [
 
 	^ serverBridge client
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjLocalWebServedBridgeClient >> serverClass [
 
 	^ appClass serverAppClass
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjLocalWebServedBridgeClient >> start [
 
 	serverBridge ifNil: [ self serverBridge: self serverClass bridge ].
@@ -57,7 +59,7 @@ PjLocalWebServedBridgeClient >> start [
 	super start
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjLocalWebServedBridgeClient >> stop [
 
 	serverBridge ifNotNil: [
@@ -65,7 +67,7 @@ PjLocalWebServedBridgeClient >> stop [
 	super stop
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjLocalWebServedBridgeClient >> urlPath [
 
 	| serverAppClass |

@@ -1,13 +1,15 @@
 Class {
-	#name : #PjMessageDeleteGlobalVar,
-	#superclass : #PjMessageS2c,
+	#name : 'PjMessageDeleteGlobalVar',
+	#superclass : 'PjMessageS2c',
 	#instVars : [
 		'varName'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjMessageDeleteGlobalVar class >> newForVarName: jsName [
 
 	^ self new
@@ -15,14 +17,14 @@ PjMessageDeleteGlobalVar class >> newForVarName: jsName [
 		  yourself
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageDeleteGlobalVar >> evaluateInContext: aMessageContext [
 	<PjTodo: 'should use PjProxyInfo'>
 	
 	PjProxyManager deleteGlobalVarNamed: self varName
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageDeleteGlobalVar >> logDescription [
 
 	^ String streamContents: [ :ws | 
@@ -34,13 +36,13 @@ PjMessageDeleteGlobalVar >> logDescription [
 		  ws nextPutAll: self varName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageDeleteGlobalVar >> varName [
 
 	^ varName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageDeleteGlobalVar >> varName: anObject [
 
 	varName := anObject

@@ -1,12 +1,12 @@
-Extension { #name : #PjApplication }
+Extension { #name : 'PjApplication' }
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> browseFiles [
 
 	self appFolder openInOSFileBrowser
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> classSubclassResponsibilitySet [
 	| set |
 	set := self == PjApplication ifTrue: [ Set new ] ifFalse: [ self superclass classSubclassResponsibilitySet ].
@@ -20,27 +20,27 @@ PjApplication class >> classSubclassResponsibilitySet [
 	^ set
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> fileList [
 
 	<pharoJsSkip>
 	(FileList openOn: self appFolder) 
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> isAbstract [
 	^ self subclassResponsibilitySet isNotEmpty or: [
 			self classSubclassResponsibilitySet isNotEmpty
 		]
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> playground [
 	<pharoJsSkip>
 	^ self bridge playground
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> subclassResponsibilitySet [
 	| set |
 	set := self == PjApplication ifTrue: [ Set new ] ifFalse: [ self superclass subclassResponsibilitySet ].
@@ -54,13 +54,13 @@ PjApplication class >> subclassResponsibilitySet [
 	^ set
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> title [
 	<pharoJsSkip>
 	^ self name
 ]
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjApplication class >> writePlaygroundContentsOn: str [
 
 	<pharoJsSkip>

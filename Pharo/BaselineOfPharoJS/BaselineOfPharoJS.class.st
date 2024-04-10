@@ -2,12 +2,14 @@
 Baseline managing the PharoJS project on Git
 "
 Class {
-	#name : #BaselineOfPharoJS,
-	#superclass : #BaselineOf,
-	#category : #'BaselineOfPharoJS-Base'
+	#name : 'BaselineOfPharoJS',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfPharoJS-Base',
+	#package : 'BaselineOfPharoJS',
+	#tag : 'Base'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfPharoJS >> baseline: spec [
 	<baseline>
 
@@ -21,7 +23,7 @@ BaselineOfPharoJS >> baseline: spec [
 	]
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 BaselineOfPharoJS >> compatibility: spec [
 	"Define a 'Compatibility' group that can be used as a dependency later to overcome differences in Pharo releases"
 	
@@ -38,7 +40,7 @@ BaselineOfPharoJS >> compatibility: spec [
 
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 BaselineOfPharoJS >> groups: spec [
 		"Define groups for loading"
 		
@@ -81,12 +83,12 @@ BaselineOfPharoJS >> groups: spec [
 		spec group: 'all' with: #('default' 'Express' 'Electron' 'Node' 'Seaside' 'LightweightObserverJS')
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 BaselineOfPharoJS >> packages: spec [
 		"Define and list all packages and their dependencies"
 		
 		"Transpiler"
-		spec package: 'PharoJs-Base-Transpiler' with: [ spec requires: #('Equals' 'Compatibility') ];
+		spec package: 'PharoJs-Base-Transpiler' with: [ spec requires: #('Compatibility') ];
 			  package: 'PharoJs-Base-Transpiler-Tests' with: [ spec requires: #('PharoJs-Base-Transpiler') ]; 
            package: 'PharoJs-Base-Transpiler-Optimizations' with: [ spec requires: #('PharoJs-Base-Transpiler') ];
 			  package: 'PharoJs-Base-Transpiler-Optimizations-Tests' with: [ spec requires: #('PharoJs-Base-Transpiler-Optimizations' 'PharoJs-Base-Bridge-Tests' 'PharoJs-Base-Transpiler-Tests') ].
@@ -137,14 +139,13 @@ BaselineOfPharoJS >> packages: spec [
 		 
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 BaselineOfPharoJS >> prerequisites: spec [
 	"Add the projects prerequisite definitions to the given spec"	
 
 	"Prerequisite Baselines"
 	spec
 		baseline: 'PharoExtra' with: [ spec repository: 'github://bouraqadi/PharoMisc' ];
-		baseline: 'Equals' with: [ spec repository: 'github://bouraqadi/PharoMisc' ];
 		baseline: 'LightweightObserver' with: [ spec repository: 'github://bouraqadi/PharoMisc' ];
 		baseline: 'Seaside3' with: [ spec repository: 'github://SeasideSt/Seaside:master/repository' ].	
 			

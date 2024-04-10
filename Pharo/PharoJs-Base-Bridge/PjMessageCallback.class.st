@@ -1,45 +1,47 @@
 Class {
-	#name : #PjMessageCallback,
-	#superclass : #PjMessageC2s,
+	#name : 'PjMessageCallback',
+	#superclass : 'PjMessageC2s',
 	#instVars : [
 		'receiverProxyInfo',
 		'eventProxyInfo',
 		'eventTargetProxyInfo'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageCallback >> eventProxyInfo [
 
 	^ eventProxyInfo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageCallback >> eventProxyInfo: anObject [
 
 	eventProxyInfo := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageCallback >> eventTargetProxyInfo [
 
 	^ eventTargetProxyInfo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageCallback >> eventTargetProxyInfo: anObject [
 
 	eventTargetProxyInfo := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageCallback >> isCallback [
 
 	^ true
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageCallback >> logDescription [
 
 	^ String streamContents: [ :ws | 
@@ -50,7 +52,7 @@ PjMessageCallback >> logDescription [
 		  self printDetailsOn: ws ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageCallback >> printDetailsOn: ws [
 
 	ws nextPutAll: ' rcvr: '.
@@ -63,7 +65,7 @@ PjMessageCallback >> printDetailsOn: ws [
 			 ifNil: [ '-' ])
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageCallback >> printOn: ws [
 	<pharoJsSkip>
 	
@@ -72,7 +74,7 @@ PjMessageCallback >> printOn: ws [
 	self printDetailsOn: ws
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageCallback >> processCallbackWithBridge: aBridge [
 	<pharoJsSkip>
 	
@@ -84,13 +86,13 @@ PjMessageCallback >> processCallbackWithBridge: aBridge [
 	proxy runBlockClosure: eventProxy with: eventTargetProxy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageCallback >> receiverProxyInfo [
 
 	^ receiverProxyInfo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageCallback >> receiverProxyInfo: anObject [
 
 	receiverProxyInfo := anObject

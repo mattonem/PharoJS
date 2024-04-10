@@ -3,31 +3,33 @@ A PjSinkObject is an object that accepts any message. The response is always its
 
 "
 Class {
-	#name : #PjSinkObject,
-	#superclass : #Object,
+	#name : 'PjSinkObject',
+	#superclass : 'Object',
 	#classInstVars : [
 		'default'
 	],
-	#category : #'PharoJs-Base-Bridge-Proxy'
+	#category : 'PharoJs-Base-Bridge-Proxy',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Proxy'
 }
 
-{ #category : #'default instance' }
+{ #category : 'default instance' }
 PjSinkObject class >> default [
 	^default ifNil: [ default := self new ]
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjSinkObject class >> doesNotUnderstand: aMessage [
 	^self
 ]
 
-{ #category : #'default instance' }
+{ #category : 'default instance' }
 PjSinkObject class >> resetDefault [
 	"self resetDefault"
 	default := nil
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjSinkObject >> doesNotUnderstand: aMessage [
 
 	^ self

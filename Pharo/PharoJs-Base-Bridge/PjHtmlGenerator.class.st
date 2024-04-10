@@ -17,24 +17,26 @@ scriptsStream
 
 "
 Class {
-	#name : #PjHtmlGenerator,
-	#superclass : #Object,
+	#name : 'PjHtmlGenerator',
+	#superclass : 'Object',
 	#instVars : [
 		'headerStream',
 		'bodyStream',
 		'scriptsStream',
 		'bodyAttributes'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-CodeGenerator'
+	#category : 'PharoJs-Base-Bridge-Client-CodeGenerator',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-CodeGenerator'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> add: tag contents: aString [
 
 	self add: tag do: [ bodyStream nextPutAll: aString ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> add: tag do: aBlock [
 
 	bodyStream
@@ -49,7 +51,7 @@ PjHtmlGenerator >> add: tag do: aBlock [
 		nextPut: $>
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> add: tag id: id class: class contents: aString [
 
 	self
@@ -59,7 +61,7 @@ PjHtmlGenerator >> add: tag id: id class: class contents: aString [
 		do: [ bodyStream nextPutAll: aString ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> add: tag id: id class: class do: aBlock [
 
 	bodyStream
@@ -77,7 +79,7 @@ PjHtmlGenerator >> add: tag id: id class: class do: aBlock [
 		nextPut: $>
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> add: tag id: id contents: aString [
 
 	self 
@@ -86,13 +88,13 @@ PjHtmlGenerator >> add: tag id: id contents: aString [
 		do: [ bodyStream nextPutAll: aString ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> add: tag id: id do: aBlock [
 
 	self add: tag id: id class: nil do: aBlock
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addButton: buttonLabel onClickDo: javaScript [
 
 	bodyStream 
@@ -103,31 +105,31 @@ PjHtmlGenerator >> addButton: buttonLabel onClickDo: javaScript [
 		nextPutAll: '" />'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addCssLink: aString [
 
 	headerStream 
 		nextPutAll: '<link rel="stylesheet" type="text/css" href="',aString,'">'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addDiv: id contents: aString [
 
 	self add: 'div' id: id contents: aString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addDiv: id do: aBlock [
 
 	self add: 'div' id: id do: aBlock
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addHtmlToBody: htmlString [
 	bodyStream nextPutAll: htmlString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addImage: imageUrl [
 
 	bodyStream
@@ -137,7 +139,7 @@ PjHtmlGenerator >> addImage: imageUrl [
 		nextPutAll: '" style="width:window.width%;"/>'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addScriptString: aString [
 
 	scriptsStream
@@ -146,7 +148,7 @@ PjHtmlGenerator >> addScriptString: aString [
 		nextPutAll: '</script>'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addScriptUrl: aString [
 
 	scriptsStream
@@ -155,19 +157,19 @@ PjHtmlGenerator >> addScriptUrl: aString [
 		nextPutAll: '"></script>'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addSpan: id contents: aString [
 
 	self add: 'span' id: id contents: aString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addSpan: id do: aBlock [
 
 	self add: 'span' id: id do: aBlock
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addStyle: aString [
 
 	headerStream
@@ -176,7 +178,7 @@ PjHtmlGenerator >> addStyle: aString [
 		nextPutAll: '</style>'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addTextInput: id hint: hintString on: eventName do: javaScript [
 	"eventName can take one of three values: keydown, keypress, keyup"
 	"Not keypress event is sent for actual characters and not when keys such as CTL or ALT are pressed"
@@ -193,31 +195,31 @@ PjHtmlGenerator >> addTextInput: id hint: hintString on: eventName do: javaScrip
 		nextPutAll: '" />'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addTextInput: id hint: hintString onKeyDownDo: javaScript [
 
 	self addTextInput: id hint: hintString on: 'keydown' do: javaScript
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addTextInput: id hint: hintString onKeyPressDo: javaScript [
 
 	self addTextInput: id hint: hintString on: 'keypress' do: javaScript
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> addTextInput: id hint: hintString onKeyUpDo: javaScript [
 
 	self addTextInput: id hint: hintString on: 'keyup' do: javaScript
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> cr [
 
 	bodyStream nextPutAll: '<br/>'
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> html [
 
 	| htmlStream |
@@ -248,7 +250,7 @@ PjHtmlGenerator >> html [
 	^htmlStream contents
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjHtmlGenerator >> initialize [
 
 	super initialize.
@@ -258,7 +260,7 @@ PjHtmlGenerator >> initialize [
 	scriptsStream := String new writeStream
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> loadFrom: aString [
 
 	| hStart hEnd bStart bAngle bEnd |
@@ -278,7 +280,7 @@ PjHtmlGenerator >> loadFrom: aString [
 		bodyStream nextPutAll: (aString copyFrom: bAngle+1 to: bEnd-1)]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjHtmlGenerator >> title: aString [
 
 	headerStream 

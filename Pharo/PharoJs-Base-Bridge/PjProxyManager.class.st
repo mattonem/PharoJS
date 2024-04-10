@@ -2,24 +2,26 @@
 Utility class to managed proxies
 "
 Class {
-	#name : #PjProxyManager,
-	#superclass : #Object,
+	#name : 'PjProxyManager',
+	#superclass : 'Object',
 	#classVars : [
 		'currentId'
 	],
 	#pools : [
 		'PjNodeGlobals'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-WebSocketDelegate'
+	#category : 'PharoJs-Base-Bridge-Client-WebSocketDelegate',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-WebSocketDelegate'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> atGlobalVarName: globalId put: anObject [
 
 	globalThis at: globalId put: anObject
 ]
 
-{ #category : #'default instance' }
+{ #category : 'default instance' }
 PjProxyManager class >> deleteGlobalVarNamed: globalId [
 
 	globalId ifNil: [ ^ self ].
@@ -28,7 +30,7 @@ PjProxyManager class >> deleteGlobalVarNamed: globalId [
 		obj ifNotNil: [ globalThis removeKey: globalId ] ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> ensureObjectRegistered: anObject [
 
 	| oid globalId |
@@ -38,7 +40,7 @@ PjProxyManager class >> ensureObjectRegistered: anObject [
 	^ oid -> globalId
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> ensureOidOnObject: anObject [
 
 	^ (self getOidFrom: anObject) ifNil: [ 
@@ -48,13 +50,13 @@ PjProxyManager class >> ensureOidOnObject: anObject [
 		  oid ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> getOidFrom: anObject [
 
 	^ anObject instVarNamed: self oidInstVarName
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> makeBlockClosureProxy: withThis stopPropagation: stop for: webSocketDelegate [
 
 	| blockClosure oid |
@@ -78,32 +80,32 @@ PjProxyManager class >> makeBlockClosureProxy: withThis stopPropagation: stop fo
 	^ blockClosure proxyResponse
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> nextGlobalVarName [
 
 	^ '$_' , self nextIdNumber asString
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> nextIdNumber [
 
 	currentId := currentId ifNil: [ 1 ] ifNotNil: [ :id | id + 1 ].
 	^ currentId
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> nextOid [
 
 	^ '$_' , self nextIdNumber asString
 ]
 
-{ #category : #'default instance' }
+{ #category : 'default instance' }
 PjProxyManager class >> oidInstVarName [
 
 	^ '$_oid'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjProxyManager class >> setOid: anOid on: anObject [
 
 	anObject instVarNamed: self oidInstVarName putHidden: anOid

@@ -1,6 +1,6 @@
 Class {
-	#name : #PjBridgeServer,
-	#superclass : #Object,
+	#name : 'PjBridgeServer',
+	#superclass : 'Object',
 	#instVars : [
 		'timing',
 		'html',
@@ -15,10 +15,12 @@ Class {
 	#classVars : [
 		'CurrentUsablePortNumber'
 	],
-	#category : #'PharoJs-Base-Bridge-Kernel'
+	#category : 'PharoJs-Base-Bridge-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Kernel'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer class >> currentUsablePortNumber [
 
 	CurrentUsablePortNumber ifNil: [ 
@@ -26,13 +28,13 @@ PjBridgeServer class >> currentUsablePortNumber [
 	^ CurrentUsablePortNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer class >> currentUsablePortNumber: aNumber [
 
 	CurrentUsablePortNumber := aNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer class >> incrementCurrentUsablePortNumber [
 
 	| p |
@@ -43,45 +45,45 @@ PjBridgeServer class >> incrementCurrentUsablePortNumber [
 	self currentUsablePortNumber: p
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer class >> maxPortNumber [
 
 	^ 65535
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer class >> minPortNumber [
 
 	^ 1024
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer class >> webSocketUrlTag [
 
 	^ 'javascript-bridge'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> bridge [
 	^ bridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> bridge: anObject [
 	bridge := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> css [
 	^ css ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> css: anObject [
 	css := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> defaultHTML [
 	^'<!DOCTYPE html>
 <html>
@@ -135,38 +137,38 @@ PjBridgeServer >> defaultHTML [
 '
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> delegate [
 
 	^ znServer delegate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> delegate: znServerDelegate [ 
 	znServer delegate: znServerDelegate 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> favicon [
 	^ favicon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> favicon: anObject [
 	favicon := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> fingerPrint [
 	^ fingerPrint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> fingerPrint: anObject [
 	fingerPrint := anObject
 ]
 
-{ #category : #websocket }
+{ #category : 'websocket' }
 PjBridgeServer >> handleMessage: rawSocketMessage forSocket: aWebSocket [
 	| msg |
 	msg := PhxJsonReader readFromString: rawSocketMessage.
@@ -174,39 +176,40 @@ PjBridgeServer >> handleMessage: rawSocketMessage forSocket: aWebSocket [
 	self logSocketRead: msg logDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> html [
 	^ html ifNil: [ self defaultHTML]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> html: anObject [
 	html := anObject
 ]
 
-{ #category : #start }
+{ #category : 'start' }
 PjBridgeServer >> incrementCurrentUsablePortNumber [
 	self class incrementCurrentUsablePortNumber
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridgeServer >> indexHtmlResponse [
 	^ ZnResponse ok: (ZnEntity html: self html)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridgeServer >> initialize [
+
 	super initialize.
 	znServer := self newZincServer.
-	fingerPrint := UUIDGenerator next asString.
+	fingerPrint := UUID new asString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjBridgeServer >> isStarted [
 	^ self znServer isRunning and: [ self isStartedCheckExternally ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjBridgeServer >> isStartedCheckExternally [
 	^ (ZnClient new
 		timeout: 1;
@@ -216,7 +219,7 @@ PjBridgeServer >> isStartedCheckExternally [
 				, '/serverFingerPrint') = self fingerPrint
 ]
 
-{ #category : #start }
+{ #category : 'start' }
 PjBridgeServer >> isStartedWithinTimeout [
 	| attempts |
 	attempts := 1.
@@ -228,22 +231,22 @@ PjBridgeServer >> isStartedWithinTimeout [
 	^ false
 ]
 
-{ #category : #websocket }
+{ #category : 'websocket' }
 PjBridgeServer >> isWebSocketConnected [
 	^self webSocket notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> javascript [
 	^ javascript
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> javascript: anObject [
 	javascript := anObject
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjBridgeServer >> logSocketRead: aString [
 	(self znServer newLogEvent: PjSocketLogEvent)
 		direction: 'read';
@@ -251,7 +254,7 @@ PjBridgeServer >> logSocketRead: aString [
 		emit
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjBridgeServer >> logSocketWritten: aString [
 	(self znServer newLogEvent: PjSocketLogEvent)
 		direction: 'wrote';
@@ -259,7 +262,7 @@ PjBridgeServer >> logSocketWritten: aString [
 		emit
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridgeServer >> newServerDelegate [
 
 	| newDelegate |
@@ -288,7 +291,7 @@ PjBridgeServer >> newServerDelegate [
 	^ newDelegate
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridgeServer >> newZincServer [
 
 	| srv |
@@ -297,19 +300,19 @@ PjBridgeServer >> newZincServer [
 	^ srv
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> port [
 
 	^ self znServer port
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjBridgeServer >> port: aPortNumber [
 
 	self znServer port: aPortNumber
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjBridgeServer >> printOn: ws [
 
 	super printOn: ws.
@@ -319,7 +322,7 @@ PjBridgeServer >> printOn: ws [
 		ifNotNil: [ :znSrv | znSrv printOn: ws ]
 ]
 
-{ #category : #websocket }
+{ #category : 'websocket' }
 PjBridgeServer >> safelyHandleMessage: aMessage forSocket: aWebSocket [
 
 	[ self handleMessage: aMessage forSocket: aWebSocket ]
@@ -329,7 +332,7 @@ PjBridgeServer >> safelyHandleMessage: aMessage forSocket: aWebSocket [
 			ex return ]
 ]
 
-{ #category : #start }
+{ #category : 'start' }
 PjBridgeServer >> start [
 
 	"We change the current usable port number before starting to avoid collision with potentially other bridge servers. This happens sometimes in tests before bridges are garbageCollected"
@@ -344,13 +347,13 @@ PjBridgeServer >> start [
 		self incrementCurrentUsablePortNumber ]
 ]
 
-{ #category : #start }
+{ #category : 'start' }
 PjBridgeServer >> startOnCurrentUsablePortNumber [
 
 	self startOnPort: self class currentUsablePortNumber
 ]
 
-{ #category : #start }
+{ #category : 'start' }
 PjBridgeServer >> startOnPort: aPort [
 
 	self isStarted ifTrue: [ ^ self ].
@@ -360,46 +363,46 @@ PjBridgeServer >> startOnPort: aPort [
 		start
 ]
 
-{ #category : #stop }
+{ #category : 'stop' }
 PjBridgeServer >> stop [
 
 	self znServer ifNotNil: [ :srv | srv stop ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> tearDown [
 
 	self stop.
 	self bridge: nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> timing [
 
 	self halt.
 	^ timing
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> timing: anObject [
 
 	self halt.
 	timing := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> url [
 
 	^ self znServer url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> urlString [
 
 	^ self url asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> value: aWebSocket [
 
 	[ 
@@ -410,31 +413,31 @@ PjBridgeServer >> value: aWebSocket [
 		do: [ ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> webSocket [
 
 	^ webSocket
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> webSocket: anObject [
 
 	webSocket := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> webSocketUrlTag [
 
 	^ self class webSocketUrlTag
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> znServer [
 
 	^ znServer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeServer >> znServer: anObject [
 
 	znServer := anObject

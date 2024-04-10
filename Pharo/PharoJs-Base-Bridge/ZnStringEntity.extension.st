@@ -1,6 +1,6 @@
-Extension { #name : #ZnStringEntity }
+Extension { #name : 'ZnStringEntity' }
 
-{ #category : #'*PharoJs-Base-Bridge-Exporter' }
+{ #category : '*PharoJs-Base-Bridge-Exporter' }
 ZnStringEntity class >> css: string [
 
 	^ (self type: ZnMimeType textCss)
@@ -8,7 +8,7 @@ ZnStringEntity class >> css: string [
 		  yourself
 ]
 
-{ #category : #'*PharoJs-Base-Bridge-Exporter' }
+{ #category : '*PharoJs-Base-Bridge-Exporter' }
 ZnStringEntity class >> javascript: string [
 
 	^ (self type: ZnMimeType textJavascript)

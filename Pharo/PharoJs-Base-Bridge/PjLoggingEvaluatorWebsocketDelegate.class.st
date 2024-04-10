@@ -12,28 +12,30 @@ logElementId
 
 "
 Class {
-	#name : #PjLoggingEvaluatorWebsocketDelegate,
-	#superclass : #PjEvaluatorWebsocketDelegate,
+	#name : 'PjLoggingEvaluatorWebsocketDelegate',
+	#superclass : 'PjEvaluatorWebsocketDelegate',
 	#instVars : [
 		'logElementId'
 	],
 	#classInstVars : [
 		'logElementId'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-WebSocketDelegate'
+	#category : 'PharoJs-Base-Bridge-Client-WebSocketDelegate',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-WebSocketDelegate'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLoggingEvaluatorWebsocketDelegate class >> logElementId [
 	^ logElementId ifNil: [ 'webSocketLog' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLoggingEvaluatorWebsocketDelegate class >> logElementId: aString [
 	logElementId := aString
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjLoggingEvaluatorWebsocketDelegate >> log: aString [
 	| logElement br text |
  	[
@@ -48,7 +50,7 @@ PjLoggingEvaluatorWebsocketDelegate >> log: aString [
 	]
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjLoggingEvaluatorWebsocketDelegate >> logElement [
 	| logElement |
 	logElement := document getElementById: self logElementId.
@@ -73,41 +75,41 @@ PjLoggingEvaluatorWebsocketDelegate >> logElement [
 	^ logElement
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjLoggingEvaluatorWebsocketDelegate >> logElementId [
 	^ logElementId ifNil: [ logElementId := self class logElementId ]
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 PjLoggingEvaluatorWebsocketDelegate >> logElementId: anObject [
 	logElementId := anObject
 ]
 
-{ #category : #'socket - behavior' }
+{ #category : 'socket - behavior' }
 PjLoggingEvaluatorWebsocketDelegate >> logReceived: aString [
 	self log: 'Received: ', aString
 ]
 
-{ #category : #'socket - behavior' }
+{ #category : 'socket - behavior' }
 PjLoggingEvaluatorWebsocketDelegate >> logSent: aString [
 	self log: 'Sent: ', aString.
 	^ aString
 ]
 
-{ #category : #'socket - event handling' }
+{ #category : 'socket - event handling' }
 PjLoggingEvaluatorWebsocketDelegate >> onClose: event [
 	super onClose: event.
 	self log: 'Closed.'
 ]
 
-{ #category : #'socket - event handling' }
+{ #category : 'socket - event handling' }
 PjLoggingEvaluatorWebsocketDelegate >> onError: event [
 
 	super onError: event.
 	self log: 'Error: ' , event message
 ]
 
-{ #category : #'socket - event handling' }
+{ #category : 'socket - event handling' }
 PjLoggingEvaluatorWebsocketDelegate >> onOpen: event [
 	super onOpen: event.
 	self log: 'Open (id: ' , self id , ')'

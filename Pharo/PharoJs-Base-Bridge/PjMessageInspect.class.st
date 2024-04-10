@@ -1,26 +1,28 @@
 Class {
-	#name : #PjMessageInspect,
-	#superclass : #PjMessageC2s,
+	#name : 'PjMessageInspect',
+	#superclass : 'PjMessageC2s',
 	#instVars : [
 		'subjectProxyInfo'
 	],
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageInspect >> isCallback [
 
 	^ true
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageInspect >> processCallbackWithBridge: aBridge [
 	<pharoJsSkip>
 	
 	(self serverObjectForSubjectWithBridge: aBridge) inspect
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageInspect >> serverObjectForSubjectWithBridge: aBridge [
 	<pharoJsSkip>
 	
@@ -29,13 +31,13 @@ PjMessageInspect >> serverObjectForSubjectWithBridge: aBridge [
 	^ subjectProxyInfo proxyForBridge: aBridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageInspect >> subjectProxyInfo [
 
 	^ subjectProxyInfo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageInspect >> subjectProxyInfo: anObject [
 
 	subjectProxyInfo := anObject

@@ -2,18 +2,20 @@
 I am the bridge client for applications to run on NodeJS
 "
 Class {
-	#name : #PjNodeBridgeClient,
-	#superclass : #PjFileBasedBridgeClient,
-	#category : #'PharoJs-Base-Bridge-Client-Kernel'
+	#name : 'PjNodeBridgeClient',
+	#superclass : 'PjFileBasedBridgeClient',
+	#category : 'PharoJs-Base-Bridge-Client-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-Kernel'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 PjNodeBridgeClient >> defaultAppClass [
 
 	^ PjMinimalNodeApplication 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjNodeBridgeClient >> reset [ 
 	self stop.
 	self resetProxiesImmediately.
@@ -21,13 +23,13 @@ PjNodeBridgeClient >> reset [
 	self startJsInterpreter
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjNodeBridgeClient >> runNodeOn: aFileName inFolder: aFolder [
 
 	WebBrowser openTerminalWithNodeOn: aFileName inFolder: aFolder
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PjNodeBridgeClient >> startJsInterpreter [
 
 	self

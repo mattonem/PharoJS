@@ -1,14 +1,16 @@
 Class {
-	#name : #PjBridgeAppClassDecorator,
-	#superclass : #Object,
+	#name : 'PjBridgeAppClassDecorator',
+	#superclass : 'Object',
 	#instVars : [
 		'rawAppClass',
 		'bridge'
 	],
-	#category : #'PharoJs-Base-Bridge-Client-CodeGenerator'
+	#category : 'PharoJs-Base-Bridge-Client-CodeGenerator',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Client-CodeGenerator'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjBridgeAppClassDecorator class >> rawAppClass: anAppClass [
 
 	^ self new
@@ -16,25 +18,25 @@ PjBridgeAppClassDecorator class >> rawAppClass: anAppClass [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator class >> websocketDelegateClass [
 
 	^ PjEvaluatorWebsocketDelegate
 ]
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 PjBridgeAppClassDecorator >> afterExportApp [
 
 	rawAppClass afterExportApp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> appClasses [
 
 	^ self rawAppClass appClasses , self classesForBridgeClient
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> appLaunchBlock [
 
 	| appClass webSocketDelegateClass url |
@@ -46,36 +48,36 @@ PjBridgeAppClassDecorator >> appLaunchBlock [
 	  webSocketDelegateClass connectDefaultToUrl: url ] asClosedBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> appPackages [
 
 	^ self rawAppClass appPackages
 ]
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 PjBridgeAppClassDecorator >> beforeExportApp [ 
 	rawAppClass beforeExportApp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> bridge [
 
 	^ bridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> bridge: anObject [
 
 	bridge := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> bridgeUrl [
 
 	^ self bridge serverUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> bridgeWebSocketUrl [
 
 	| rawUrl |
@@ -83,32 +85,32 @@ PjBridgeAppClassDecorator >> bridgeWebSocketUrl [
 	^ 'ws:' , (rawUrl asString copyAfter: $:)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> classesForBridgeClient [
 
 	^ self websocketDelegateClass allSuperclasses
 ]
 
-{ #category : #polyfill }
+{ #category : 'polyfill' }
 PjBridgeAppClassDecorator >> globalsPools [
 
 	^ self rawAppClass globalsPools
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> headerLine [
 
 	^ self rawAppClass headerLine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> pharoJsSelectorPrefix [
 	<pharoJsSkip>
 	
 	^ rawAppClass pharoJsSelectorPrefix
 ]
 
-{ #category : #polyfill }
+{ #category : 'polyfill' }
 PjBridgeAppClassDecorator >> polyfill: aPolyfillClass withTranspiler: aTranspiler unlessIn: aSet [
 
 	self rawAppClass
@@ -117,31 +119,31 @@ PjBridgeAppClassDecorator >> polyfill: aPolyfillClass withTranspiler: aTranspile
 		unlessIn: aSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> rawAppClass [
 
 	^ rawAppClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> rawAppClass: anObject [
 
 	rawAppClass := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> setupCode [
 
 	^ self rawAppClass setupCode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> webSocketUrlTag [
 
 	^ self bridge webSocketUrlTag
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeAppClassDecorator >> websocketDelegateClass [
 
 	^ self class websocketDelegateClass

@@ -1,27 +1,29 @@
 Class {
-	#name : #PjMessageC2s,
-	#superclass : #PjMessage,
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#name : 'PjMessageC2s',
+	#superclass : 'PjMessage',
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageC2s >> evaluateInContext: aMessageContext [
 	"self subclassResponsibility "
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMessageC2s >> inResponseToId [
 
 	^ nil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageC2s >> isCallback [
 
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMessageC2s >> shouldEvaluateImmediately [
 
 	^ false

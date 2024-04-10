@@ -1,6 +1,6 @@
-Extension { #name : #PjNodeApplication }
+Extension { #name : 'PjNodeApplication' }
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 PjNodeApplication class >> writePlaygroundContentsOn: str [
 
 	<pharoJsSkip>

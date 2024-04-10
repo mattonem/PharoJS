@@ -9,8 +9,8 @@ html
 
 "
 Class {
-	#name : #PjParametrizableServerDelegate,
-	#superclass : #Object,
+	#name : 'PjParametrizableServerDelegate',
+	#superclass : 'Object',
 	#instVars : [
 		'html',
 		'javascript',
@@ -18,53 +18,55 @@ Class {
 		'favicon',
 		'fingerPrint'
 	],
-	#category : #'PharoJs-Base-Bridge-Obsolete'
+	#category : 'PharoJs-Base-Bridge-Obsolete',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Obsolete'
 }
 
-{ #category : #'instance-creation' }
+{ #category : 'instance-creation' }
 PjParametrizableServerDelegate class >> new [
 	^ super new
 		initialize;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> css [
 
 	^ css
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> css: anObject [
 
 	css := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> favicon [
 
 	^ favicon
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> favicon: anObject [
 
 	favicon := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> fingerPrint [
 
 	^ fingerPrint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> fingerPrint: anObject [
 
 	fingerPrint := anObject
 ]
 
-{ #category : #handling }
+{ #category : 'handling' }
 PjParametrizableServerDelegate >> handleRequest: request [
 
 	| entity prefix |
@@ -85,32 +87,32 @@ PjParametrizableServerDelegate >> handleRequest: request [
 	^ ZnResponse notFound: request uri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> html [
 
 	^ html
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> html: aString [
 
 	html := aString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjParametrizableServerDelegate >> initialize [
 
 	super initialize.
 	fingerPrint := UUIDGenerator next asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> javascript [
 
 	^ javascript
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjParametrizableServerDelegate >> javascript: anObject [
 
 	javascript := anObject

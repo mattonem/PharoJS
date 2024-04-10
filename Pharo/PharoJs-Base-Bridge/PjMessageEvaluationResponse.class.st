@@ -1,17 +1,19 @@
 Class {
-	#name : #PjMessageEvaluationResponse,
-	#superclass : #PjMessageC2sInResponseTo,
-	#category : #'PharoJs-Base-Bridge-Messages'
+	#name : 'PjMessageEvaluationResponse',
+	#superclass : 'PjMessageC2sInResponseTo',
+	#category : 'PharoJs-Base-Bridge-Messages',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Messages'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageEvaluationResponse >> contentsDescription [
 	<javascript: 'return JSON.stringify(this.contents)'>
 	
 	^ contents displayString
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageEvaluationResponse >> contentsObject [
 	<pharoJsSkip>
 	
@@ -20,7 +22,7 @@ PjMessageEvaluationResponse >> contentsObject [
 		  ifFalse: [ self contents ]
 ]
 
-{ #category : #public }
+{ #category : 'public' }
 PjMessageEvaluationResponse >> getValueWithBridge: aBridge [
 	<PjTodo: 'Too much testing going here, further refactoring needed'>
 	
@@ -34,7 +36,7 @@ PjMessageEvaluationResponse >> getValueWithBridge: aBridge [
 	Error signal: 'unrecognized response from browser:' , contents
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageEvaluationResponse >> logDescription [
 
 	^ String streamContents: [ :ws | 
@@ -49,7 +51,7 @@ PjMessageEvaluationResponse >> logDescription [
 		  ws nextPutAll: self contentsDescription ]
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjMessageEvaluationResponse >> printOn: ws [
 	<pharoJsSkip>
 	

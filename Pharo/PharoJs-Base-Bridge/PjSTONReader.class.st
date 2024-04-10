@@ -2,12 +2,14 @@
 I extend STONReader to include Infinity -Infinity and NaN
 "
 Class {
-	#name : #PjSTONReader,
-	#superclass : #STONReader,
-	#category : #'PharoJs-Base-Bridge-Kernel'
+	#name : 'PjSTONReader',
+	#superclass : 'STONReader',
+	#category : 'PharoJs-Base-Bridge-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Kernel'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjSTONReader class >> from: readStreamOrString [
 
 	^ self new
@@ -15,13 +17,13 @@ PjSTONReader class >> from: readStreamOrString [
 		  next
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjSTONReader >> isClassStartChar: char [
 
 	^ false
 ]
 
-{ #category : #'parsing-internal' }
+{ #category : 'parsing-internal' }
 PjSTONReader >> parseConstantDo: block [
 
 	readStream peek = $I ifTrue: [ 
@@ -35,7 +37,7 @@ PjSTONReader >> parseConstantDo: block [
 	super parseConstantDo: block
 ]
 
-{ #category : #'parsing-internal' }
+{ #category : 'parsing-internal' }
 PjSTONReader >> parseNumberInteger [
 
 	readStream peek = $I ifTrue: [ 

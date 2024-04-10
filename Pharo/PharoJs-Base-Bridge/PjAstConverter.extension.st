@@ -1,6 +1,6 @@
-Extension { #name : #PjAstConverter }
+Extension { #name : 'PjAstConverter' }
 
-{ #category : #'*PharoJs-Base-Bridge' }
+{ #category : '*PharoJs-Base-Bridge' }
 PjAstConverter >> convertJavascriptMessage: aJavascriptMessage [
 
 	| args |

@@ -3,7 +3,9 @@ A PjJavaScriptError is an exception raised when the execution at the JavaScript 
 
 "
 Class {
-	#name : #PjJavascriptError,
-	#superclass : #Error,
-	#category : #'PharoJs-Base-Bridge-Kernel'
+	#name : 'PjJavascriptError',
+	#superclass : 'Error',
+	#category : 'PharoJs-Base-Bridge-Kernel',
+	#package : 'PharoJs-Base-Bridge',
+	#tag : 'Kernel'
 }

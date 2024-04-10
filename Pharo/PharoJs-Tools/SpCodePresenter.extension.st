@@ -1,6 +1,6 @@
-Extension { #name : #SpCodePresenter }
+Extension { #name : 'SpCodePresenter' }
 
-{ #category : #'*PharoJs-Tools' }
+{ #category : '*PharoJs-Tools' }
 SpCodePresenter >> addBinding: aVariable [
 
 	"Used by PharoJS Playground to add instances of WorkspaceVariable "

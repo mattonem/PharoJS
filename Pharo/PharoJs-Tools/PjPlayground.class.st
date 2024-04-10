@@ -25,13 +25,13 @@ PjPlayground class >> defaultTitle [
 	^ 'PharoJS Playground'
 ]
 
-{ #category : 'initialization' }
+{ #category : 'class initialization' }
 PjPlayground class >> initialize [
 
 	SystemAnnouncer uniqueInstance
 		unsubscribe: self;
-		when: ClassAnnouncement do: [ self resetMenuBar ].
-	MicDocumentBrowser reset.
+		when: ClassAnnouncement do: [ self resetMenuBar ] for: self.
+	MicDocumentBrowser reset
 ]
 
 { #category : 'opening' }

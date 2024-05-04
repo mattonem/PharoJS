@@ -250,6 +250,19 @@ PhxBridgedJsonSerialisationTests >> testSerializeInstRefsAvoidWhenDifferentInsta
 ]
 
 { #category : #tests }
+PhxBridgedJsonSerialisationTests >> testSerializeNestedDictionary [
+	self
+		assertAllWithInstantiationBlock: [ | d |
+			d := Dictionary new.
+			d at: 'a' put: 'abc'.
+			d at: 'b' put: Dictionary new.
+			d ]
+		literal: '{"class":"Dictionary","instance":{"a":"abc","b":{"class":"Dictionary","instance":{}}}}'
+		testEq: false "#assertEquivalent: doesn't work for this type of object"
+		test4Stages: true
+]
+
+{ #category : #tests }
 PhxBridgedJsonSerialisationTests >> testSerializeNil [
 	self
 		assertAllWithInstantiationBlock: [ nil  ]
@@ -317,4 +330,18 @@ PhxBridgedJsonSerialisationTests >> testSerializeString [
 				asPhxJsonString
 		testEq: true
 		test4Stages: true
+]
+
+{ #category : #tests }
+PhxBridgedJsonSerialisationTests >> test_true_is_string [
+
+	| var1 var2 |
+	var1 := true.
+	var2 := #Person.
+	self
+		assert: [
+			var1 = var2
+				ifFalse: [ #notEqual ]
+				ifTrue: [ #equal ] ]
+		evaluatesTo: #notEqual
 ]

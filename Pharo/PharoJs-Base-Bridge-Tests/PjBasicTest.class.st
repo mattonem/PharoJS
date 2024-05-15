@@ -17,6 +17,7 @@ PjBasicTest >> testBasicEquality [
 { #category : #tests }
 PjBasicTest >> testBooleanEquality [
 
+	| stringVar booleanVar |
 	self assertBlock: [ true = true ].
 	self assertBlock: [
 		| boolean otherValue |
@@ -60,6 +61,15 @@ PjBasicTest >> testBooleanEquality [
 		boolean := true.
 		otherValue := #Person.
 		boolean = otherValue ].
+	stringVar := #someString.
+	booleanVar := true.
+	self
+		denyBlock: [
+			booleanVar = stringVar ].
+	booleanVar := false.
+	self
+		denyBlock: [
+			booleanVar = stringVar ].
 	self denyBlock: [ false = nil ].
 	self denyBlock: [
 		| boolean otherValue |
@@ -84,6 +94,7 @@ PjBasicTest >> testBooleanEquality [
 { #category : #tests }
 PjBasicTest >> testBooleanInequality [
 
+	| stringVar booleanVar |
 	self denyBlock: [ true ~= true ].
 	self denyBlock: [
 		| boolean otherValue |
@@ -121,7 +132,16 @@ PjBasicTest >> testBooleanInequality [
 		boolean := true.
 		otherValue := #Person.
 		otherValue = boolean ].
-	self denyBlock: [ false = nil ].
+	stringVar := #someString.
+	booleanVar := true.
+	self
+		assertBlock: [
+			booleanVar ~= stringVar ].
+	booleanVar := false.
+	self
+		assertBlock: [
+			booleanVar ~= stringVar ].
+	self assertBlock: [ false ~= nil ].
 	self denyBlock: [
 		| boolean otherValue |
 		boolean := false.

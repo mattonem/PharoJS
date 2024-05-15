@@ -138,6 +138,12 @@ PhxBridgedJsonSerialisationTests >> testSerializeDateAndTime [
 { #category : #tests }
 PhxBridgedJsonSerialisationTests >> testSerializeDictionary [
 	self
+		assertAllWithInstantiationBlock: [
+			Dictionary new.]
+		literal: '{"class":"Dictionary","instance":{}}'
+		testEq: false "#assertEquivalent: doesn't work for this type of object"
+		test4Stages: true.	
+	self
 		assertAllWithInstantiationBlock: [ | d |
 			d := Dictionary new.
 			d at: 'a' put: 'abc'.
@@ -259,6 +265,19 @@ PhxBridgedJsonSerialisationTests >> testSerializeNestedDictionary [
 			d ]
 		literal: '{"class":"Dictionary","instance":{"a":"abc","b":{"class":"Dictionary","instance":{}}}}'
 		testEq: false "#assertEquivalent: doesn't work for this type of object"
+		test4Stages: true.
+	self
+		assertAllWithInstantiationBlock: [ | d1 d2 |
+			d2 := Dictionary new.
+			d2 at: #x put: 42.
+			d2 at: #y put: #(1 2 3).
+			d2 at: #z put: Dictionary new.
+			d1 := Dictionary new.
+			d1 at: 'a' put: 'abc'.
+			d1 at: 'b' put: d2.
+			d1 ]
+		literal: '{"class":"Dictionary","instance":{"a":"abc","b":{"class":"Dictionary","instance":{"x":42,"y":{"class":"Array","instance":[1,2,3]},"z":{"class":"Dictionary","instance":{}}}}}}'
+		testEq: false "#assertEquivalent: doesn't work for this type of object"
 		test4Stages: true
 ]
 
@@ -330,18 +349,4 @@ PhxBridgedJsonSerialisationTests >> testSerializeString [
 				asPhxJsonString
 		testEq: true
 		test4Stages: true
-]
-
-{ #category : #tests }
-PhxBridgedJsonSerialisationTests >> test_true_is_string [
-
-	| var1 var2 |
-	var1 := true.
-	var2 := #Person.
-	self
-		assert: [
-			var1 = var2
-				ifFalse: [ #notEqual ]
-				ifTrue: [ #equal ] ]
-		evaluatesTo: #notEqual
 ]

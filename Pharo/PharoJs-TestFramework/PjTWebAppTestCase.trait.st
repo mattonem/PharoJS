@@ -6,7 +6,7 @@ Trait {
 { #category : #asserting }
 PjTWebAppTestCase >> assertHidden: element [
 
-	self waitUntil: [(self computedDisplayStyleOf: element) = 'none']
+	self waitUntil: [ (self isHidden: element) ]
 ]
 
 { #category : #asserting }
@@ -25,7 +25,7 @@ PjTWebAppTestCase >> assertInnerHtmlOfElementById: id equals: expectedValue [
 { #category : #asserting }
 PjTWebAppTestCase >> assertShowing: element [
 
-	self waitWhile: [ (self computedDisplayStyleOf: element) = 'none' ]
+	self waitWhile: [ (self isShowing: element) ]
 ]
 
 { #category : #asserting }
@@ -78,6 +78,18 @@ PjTWebAppTestCase >> dispatchEvent: eventName to: htmlElement [
 { #category : #accessing }
 PjTWebAppTestCase >> document [
 	self explicitRequirement 
+]
+
+{ #category : #asserting }
+PjTWebAppTestCase >> isHidden: element [
+
+	^(self computedDisplayStyleOf: element) = 'none' 
+]
+
+{ #category : #asserting }
+PjTWebAppTestCase >> isShowing: element [
+
+	^ (self isHidden: element) not
 ]
 
 { #category : #'UI handling' }

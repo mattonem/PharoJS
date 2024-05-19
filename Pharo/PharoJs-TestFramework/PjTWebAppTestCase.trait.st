@@ -4,6 +4,12 @@ Trait {
 }
 
 { #category : #asserting }
+PjTWebAppTestCase >> assert: element hasCssClass: cssClassString [
+
+	element classList contains: cssClassString 
+]
+
+{ #category : #asserting }
 PjTWebAppTestCase >> assertHidden: element [
 
 	self waitUntil: [ (self isHidden: element) ]
@@ -25,7 +31,7 @@ PjTWebAppTestCase >> assertInnerHtmlOfElementById: id equals: expectedValue [
 { #category : #asserting }
 PjTWebAppTestCase >> assertShowing: element [
 
-	self waitWhile: [ (self isShowing: element) ]
+	self waitUntil: [ (self isShowing: element) ]
 ]
 
 { #category : #asserting }

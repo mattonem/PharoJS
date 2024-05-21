@@ -10,6 +10,13 @@ PjTWebAppTestCase >> assert: element hasCssClass: cssClassString [
 ]
 
 { #category : #asserting }
+PjTWebAppTestCase >> assert: domElement isShowing: aBoolean [
+	aBoolean ifTrue: [ ^self assertShowing: domElement ].
+	self assertHidden: domElement 
+
+]
+
+{ #category : #asserting }
 PjTWebAppTestCase >> assertHidden: element [
 
 	self waitUntil: [ (self isHidden: element) ]

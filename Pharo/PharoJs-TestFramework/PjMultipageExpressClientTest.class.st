@@ -45,11 +45,12 @@ PjMultipageExpressClientTest >> appClass [
 PjMultipageExpressClientTest >> assertShowingPage: anAppClass [
 
 	| otherBridges pageBridge |
-	pageBridge := pageBridgesDict
-		              at: anAppClass.
+	pageBridge := pageBridgesDict at: anAppClass.
 	self waitUntil: [ pageBridge isConnected ].
+	self waitWhile: [ pageBridge app isNil ].
 	self bridge: pageBridge.
 	self resetInstanceVariables.
+	self deny: app isNil.
 	self assert: app identicalTo: pageBridge app.
 	otherBridges := self pageBridges copyWithout: pageBridge.
 	otherBridges do: [ :each | self deny: each isConnected ]
@@ -82,6 +83,7 @@ PjMultipageExpressClientTest >> openPage: anAppClass [
 	| pageBridge |
 	pageBridge := pageBridgesDict at: anAppClass.
 	pageViewer open: pageBridge client urlString.
+	"Refereshing bridge and app is done in the assertion, since it can often be called after some action that make the browser open another page"
 	self assertShowingPage: anAppClass
 ]
 

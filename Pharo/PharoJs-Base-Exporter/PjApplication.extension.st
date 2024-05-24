@@ -100,6 +100,7 @@ PjApplication class >> defaultAppFolderParentName [
 PjApplication class >> defaultAppFolderPath [
 	<pharoJsSkip>
 
+	self defaultAppFolderName ifNil: [ ^ self defaultAppFolderParent ].
 	^ self defaultAppFolderParent / self defaultAppFolderName
 ]
 

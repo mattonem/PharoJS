@@ -7,6 +7,11 @@ Class {
 	#category : #'PharoJs-Examples-ExpressJS'
 }
 
+{ #category : #accessing }
+PjMinimalExpressApp class >> publicStaticFilesFolderName [
+	^#public
+]
+
 { #category : #initialization }
 PjMinimalExpressApp >> initialize [
 

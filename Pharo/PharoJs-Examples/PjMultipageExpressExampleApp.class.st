@@ -3,3 +3,9 @@ Class {
 	#superclass : #PjExpressApp,
 	#category : #'PharoJs-Examples-ExpressJS'
 }
+
+{ #category : #accessing }
+PjMultipageExpressExampleApp class >> publicStaticFilesFolderName [
+
+	^ 'pages'
+]

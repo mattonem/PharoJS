@@ -40,6 +40,11 @@ PjExpressApp class >> npmPackageNames [
 ]
 
 { #category : #accessing }
+PjExpressApp class >> publicStaticFilesFolderName [
+	^nil
+]
+
+{ #category : #accessing }
 PjExpressApp >> bodyParser [
 
 	^ self require: 'body-parser'

@@ -3,9 +3,3 @@ Class {
 	#superclass : #PjExpressApp,
 	#category : #'PharoJs-Examples-ExpressJS'
 }
-
-{ #category : #initialization }
-PjMultipageExpressExampleApp class >> staticFilesFolderName [
-
-	^ 'pages'
-]

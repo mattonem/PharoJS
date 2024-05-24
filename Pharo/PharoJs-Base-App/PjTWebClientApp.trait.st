@@ -25,7 +25,7 @@ PjTWebClientApp classSide >> defaultAppFolderParent [
 
 	<pharoJsSkip>
 	^ self serverAppClass appFolder
-	  / self serverAppClass staticFilesFolderName
+	  / self serverAppClass publicStaticFilesFolderName
 ]
 
 { #category : #exporting }

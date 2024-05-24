@@ -22,7 +22,7 @@ PjHelloWorldExpressApp class >> clientAppClasses [
 ]
 
 { #category : #accessing }
-PjHelloWorldExpressApp class >> staticFilesFolderName [
+PjHelloWorldExpressApp class >> publicStaticFilesFolderName [
 	^'public'
 ]
 

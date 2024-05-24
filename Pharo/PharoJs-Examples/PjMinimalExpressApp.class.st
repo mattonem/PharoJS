@@ -8,11 +8,6 @@ Class {
 }
 
 { #category : #initialization }
-PjMinimalExpressApp class >> staticFilesFolderName [
-	^#public
-]
-
-{ #category : #initialization }
 PjMinimalExpressApp >> initialize [
 
 	super initialize.

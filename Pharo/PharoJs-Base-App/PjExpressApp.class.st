@@ -35,13 +35,8 @@ PjExpressApp class >> npmPackageNames [
 	<pharoJsSkip>
 	| npmPackageNames |
 	npmPackageNames := super npmPackageNames, #( 'express' 'body-parser' ).
-	self staticFilesFolderName ifNil: [ ^ npmPackageNames ].
+	self publicStaticFilesFolderName ifNil: [ ^ npmPackageNames ].
 	^ npmPackageNames copyWith: 'serve-static'
-]
-
-{ #category : #initialization }
-PjExpressApp class >> staticFilesFolderName [
-	^nil
 ]
 
 { #category : #accessing }
@@ -71,7 +66,7 @@ PjExpressApp >> initialize [
 	server := self newServer.
 	self port: self defaultPort.
 	server use: self bodyParserMiddleware.
-	self serveStaticFilesIn: self staticFilesFolderName.
+	self serveStaticFilesIn: self publicStaticFilesFolderName.
 
 ]
 
@@ -91,6 +86,11 @@ PjExpressApp >> port [
 PjExpressApp >> port: anObject [
 
 	port := anObject
+]
+
+{ #category : #initialization }
+PjExpressApp >> publicStaticFilesFolderName [
+	^self class publicStaticFilesFolderName
 ]
 
 { #category : #initialization }
@@ -120,9 +120,4 @@ PjExpressApp >> startUpAction [
 
 	console log:
 		self className , ' web app started on port ' , self port asString
-]
-
-{ #category : #initialization }
-PjExpressApp >> staticFilesFolderName [
-	^self class staticFilesFolderName
 ]

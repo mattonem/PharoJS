@@ -200,8 +200,7 @@ PjAppTestCase >> setUp [
 	self
 		waitWhile: [ self currentApp isNil ]
 		timeOut: self timeOutForAppStartUp.
-	self resetInstanceVariables.
-"	Smalltalk garbageCollect"
+	self resetInstanceVariables
 ]
 
 { #category : #running }

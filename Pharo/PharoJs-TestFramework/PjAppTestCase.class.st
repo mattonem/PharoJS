@@ -196,9 +196,12 @@ PjAppTestCase >> runCaseAsFailure: aSemaphore [
 PjAppTestCase >> setUp [
 
 	super setUp.
-	self waitWhile: [ self currentApp isNil ] timeOut: self timeOutForAppStartUp.
+	self longTestCase.
+	self
+		waitWhile: [ self currentApp isNil ]
+		timeOut: self timeOutForAppStartUp.
 	self resetInstanceVariables.
-
+"	Smalltalk garbageCollect"
 ]
 
 { #category : #running }

@@ -33,8 +33,24 @@ PjDOMApplication class >> generateHtmlUsing: aPjHtmlGenerator [
 ]
 
 { #category : #'*PharoJs-Base-Bridge-App' }
+PjDOMApplication class >> html [
+	"See PjCodeGenerator >> #html"
+
+	<pharoJsSkip>
+	^ nil
+]
+
+{ #category : #'*PharoJs-Base-Bridge-App' }
 PjDOMApplication class >> htmlFile: anObject [
 	<pharoJsSkip>
 	
 	htmlFile := anObject
+]
+
+{ #category : #'*PharoJs-Base-Bridge-App' }
+PjDOMApplication class >> isHtmlGenerator [
+	"See PjCodeGenerator >> #html"
+	<pharoJsSkip>
+	^ false
+
 ]

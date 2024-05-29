@@ -1,6 +1,6 @@
-Extension { #name : #Duration }
+Extension { #name : 'Duration' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries-Chronology' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries-Chronology' }
 Duration class >> javascriptPlaceholder [
 	<pharoJsSkip>
 	^PjDuration

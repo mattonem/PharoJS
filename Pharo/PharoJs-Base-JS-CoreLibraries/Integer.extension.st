@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Integer class >> javascriptPlaceholder [
 	^ PjNumber
 ]

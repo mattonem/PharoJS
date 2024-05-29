@@ -1,6 +1,6 @@
-Extension { #name : #Rectangle }
+Extension { #name : 'Rectangle' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Rectangle class >> javascriptPlaceholder [
 	^PjRectangle
 ]

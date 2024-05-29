@@ -2,25 +2,27 @@
 I am the Javascript embodiment of Magnitude.
 "
 Class {
-	#name : #PjMagnitude,
-	#superclass : #PjObject,
+	#name : 'PjMagnitude',
+	#superclass : 'PjObject',
 	#traits : 'PjTMagnitude',
 	#classTraits : 'PjTMagnitude classTrait',
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjMagnitude class >> jsTranspilationImportMethods [
 	<pharoJsSkip>
 	^ self jsTranspilationImportMethodsMagnitude
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMagnitude >> < aMagnitude [
 	^self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMagnitude >> = aMagnitude [
 	^self subclassResponsibility
 ]

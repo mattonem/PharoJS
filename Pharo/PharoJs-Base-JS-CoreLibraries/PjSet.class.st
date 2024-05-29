@@ -2,36 +2,38 @@
 I am the Javascript embodiment of Set.
 "
 Class {
-	#name : #PjSet,
-	#superclass : #PjArray,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjSet',
+	#superclass : 'PjArray',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjSet class >> jsTranspilationImportMethods [
 	<pharoJsSkip>
 	^{Set -> #(asSet)}
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjSet >> addFirst: element [
 	(self includes: element) ifTrue: [ ^element ].
 	^super addFirst: element
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjSet >> addLast: element [
 	(self includes: element) ifTrue: [ ^element ].
 	^super addLast: element
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjSet >> like: anObject [
 	(self includes: anObject) ifTrue: [ ^ anObject ].
 	^ nil
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjSet >> like: anObject ifAbsent: aBlock [
 	(self includes: anObject) ifTrue: [ ^ anObject ].
 	^ aBlock value

@@ -1,6 +1,6 @@
-Extension { #name : #Time }
+Extension { #name : 'Time' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Time class >> javascriptPlaceholder [
 	^ PjTime
 ]

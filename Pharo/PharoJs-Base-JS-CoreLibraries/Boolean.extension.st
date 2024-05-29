@@ -1,11 +1,11 @@
-Extension { #name : #Boolean }
+Extension { #name : 'Boolean' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries-converting' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries-converting' }
 Boolean >> asJsObjectUsing: converter [
 	^self
 ]
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Boolean class >> javascriptPlaceholder [
 	^ PjBoolean
 ]

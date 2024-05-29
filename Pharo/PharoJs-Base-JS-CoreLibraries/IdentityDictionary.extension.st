@@ -1,6 +1,6 @@
-Extension { #name : #IdentityDictionary }
+Extension { #name : 'IdentityDictionary' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 IdentityDictionary class >> javascriptPlaceholder [
 	^ PjIdentityDictionary
 ]

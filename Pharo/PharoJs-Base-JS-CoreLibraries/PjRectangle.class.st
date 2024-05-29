@@ -2,12 +2,14 @@
 I am a minimal implementation of Rectangle, just so Point can create me.
 "
 Class {
-	#name : #PjRectangle,
-	#superclass : #PjObject,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjRectangle',
+	#superclass : 'PjObject',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjRectangle class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>

@@ -2,63 +2,65 @@
 Date representation as JavaScript Date
 "
 Class {
-	#name : #PjDate,
-	#superclass : #Object,
+	#name : 'PjDate',
+	#superclass : 'Object',
 	#traits : 'PjTDate',
 	#classTraits : 'PjTDate classTrait',
 	#pools : [
 		'ChronologyConstants'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Chronology'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Chronology',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Chronology'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDate class >> fromString: aString [
 	<javascript: 'return new this(aString)'>
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjDate class >> javascriptName [
 	<pharoJsSkip>
 	^ #Date
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDate class >> now [
 	<javascript: 'return new this()'>
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDate class >> today [
 	^self now
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjDate >> asDateAndTime [
 	^self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDate >> dayOfMonth [
 	^self getDate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDate >> dayOfWeek [
 	^self getDay + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDate >> monthIndex [
 	^self getMonth + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDate >> monthIndex: anInteger [
 	^self month: anInteger - 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDate >> year [
 	^self getFullYear
 ]

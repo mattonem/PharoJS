@@ -12,20 +12,22 @@ Example
 
 "
 Class {
-	#name : #PjJsObjectBuilder,
-	#superclass : #Object,
+	#name : 'PjJsObjectBuilder',
+	#superclass : 'Object',
 	#instVars : [
 		'convertedObjects'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjJsObjectBuilder class >> convert: anObject [
 	^self new convert: anObject
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjJsObjectBuilder >> convert: anObject [
 	| jsObject |
 	convertedObjects at: anObject ifPresent: [: cachedJsObject | ^cachedJsObject].
@@ -34,7 +36,7 @@ PjJsObjectBuilder >> convert: anObject [
 	^jsObject
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjJsObjectBuilder >> initialize [
 	super initialize.
 	convertedObjects := Dictionary new

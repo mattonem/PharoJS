@@ -2,22 +2,24 @@
 strings in Javascript world
 "
 Class {
-	#name : #PjString,
-	#superclass : #PjObject,
+	#name : 'PjString',
+	#superclass : 'PjObject',
 	#traits : 'PjTKernelClass + PjTArray',
 	#classTraits : 'PjTKernelClass classTrait + PjTArray classTrait',
 	#pools : [
 		'PjDomGlobals'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjString class >> defaultSize [
 	^10
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjString class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -32,22 +34,22 @@ PjString class >> jsTranspilationImportMethods [
 		  (Character -> #( isVowel isCharacter to: )) }
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjString class >> new [
 	^ ''
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjString class >> new: ignored [
 	^ self new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjString class >> new: anInteger streamContents: aBlock [
 	^ self streamContents: aBlock
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjString class >> streamContents: aBlock [
 	| stream |
 	stream := PjStringStream new.
@@ -55,167 +57,167 @@ PjString class >> streamContents: aBlock [
 	^ stream contents
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjString class >> value: anInteger [
 	^ String js_fromCharCode: anInteger
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 PjString >> , other [
 	<javascript: 'return this+other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> < other [
 	<javascript: 'return this<other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> <= other [
 	<javascript: 'return this<=other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> = other [
 	<javascript: 'return this==other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> > other [
 	<javascript: 'return this>other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> >= other [
 	<javascript: 'return this>=other'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> allButFirst [
 	^ self js_substring: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> allButFirst: n [
 	^ self js_substring: n
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> allButLast [
 	^ self js_substring: 0 to: self size - 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> allButLast: n [
 	^ self js_substring: 0 to: self size - n
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asCharacter [
 	^ self js_charAt: 0
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asElementId [
 	^ document getElementById: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asElementSelector [
 	^ document querySelector: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asInteger [
 	<javascript: 'return parseInt(this)'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asJsObject [
 	"Ensure we get a primitive type string and not a String object"
 	<javascript: 'return this.valueOf()'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asLowercase [
 	^ self js_toLowerCase
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asNumber [
 	<javascript: 'return parseFloat(this)'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asRegex [
 
 	^ PjRxParser new: self with: 'g'
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asString [
 	<javascript: 'return ""+this'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asSymbol [
 	<javascript: 'return ""+this'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> asUppercase [
 	^ self js_toUpperCase
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> asciiValue [
 	^ self js_charCodeAt: 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> at: index [
 	"JavaScript arrays first index is 0 "
 	<javascript: 'return this[index - 1];'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> at: index put: anObject [
 	<javascript: 'throw new Error("cannot mutate strings");'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> basicAt: aNumber [
 	^ 	self js_charCodeAt: aNumber-1
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> becomeJsObject [
 
 	^self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> beginsWith: prefix [
 	^ (self js_substring: 0 to: prefix size)=prefix
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> capitalized [
 	self isEmpty ifTrue: [ ^self ].
 	^ (self js_charAt:0) js_toUpperCase,(self js_substring: 1)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> charCode [
 	^ self basicAt: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> codePoint [
 	^ self js_charCodeAt: 0
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjString >> collect: aBlock [
 	| arr |
 	arr := self js_split: ''.
@@ -225,37 +227,37 @@ PjString >> collect: aBlock [
 	^ arr js_join: ''
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> copyFrom: start [
 	^ self js_substring: start-1
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> copyFrom: start to: stop [
 	^ self js_substring: start-1 to: stop
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> endsWith: suffix [
 	^ (self js_substring: self size - suffix size)=suffix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> findString: substring startingAt: start [
 	<javaScript: 'return this.indexOf(substring,start-1)+1'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> first [
 	^self at: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> first: n [
 	^ self js_substring: 0 to: n
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> hash [
 	"#hash is implemented, because #= is implemented"
 	"ar 4/10/2005: I had to change this to use ByteString hash as initial 
@@ -264,13 +266,13 @@ PjString >> hash [
 	^ self class stringHash: self initialHash: 0
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> ifEmpty: aBlock [
 	self isEmpty ifTrue: [^aBlock value].
 	^self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isAlphaNumeric [
 
 	| char |
@@ -278,84 +280,84 @@ PjString >> isAlphaNumeric [
 	^ char isLetter or: [ char isDigit ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isDigit [
 	^ (self js_charCodeAt: 0) between: 48 and: 57 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isEmpty [
 	^self = ''
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isJSPrimitiveType [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isLetter [
 	^self letterCharCodes includes: (self js_charCodeAt: 0)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isSelfEvaluating [ 
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isSelfEvaluating: alreadyVisited [
 
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isSeparator [ 
 	| in |
 	^ (in := (self js_charCodeAt: 0) asInteger) == 32 or: [ in == 13 or: [ in == 9 or: [ in == 10 or: [ in == 12 ] ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> isString [
 	^ true
 ]
 
-{ #category : #splitjoin }
+{ #category : 'splitjoin' }
 PjString >> join: anArray [
 	^ anArray js_join: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> last [
 	^self at: self size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> lastIndexOf: x [
 	<javascript: 'return this.lastIndexOf(x)+1'>
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> letterCharCodes [
 	^#(65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 170 181 186 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 248 249 250 251 252 253 254 255)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> notEmpty [
 	^self ~= ''
 ]
 
-{ #category : #proxy }
+{ #category : 'proxy' }
 PjString >> proxyResponse [
 	<javascript: 'return ""+this'>
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PjString >> readStream [
 	^ PjStringStream on: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 	<javascript: '
 	var repl=[],isString=typeof replacement=="string";
@@ -366,48 +368,48 @@ PjString >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 		return this.substring(0,start-1)+repl.join("")+this.substr(stop)'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> reversed [
 	^ '' join: self asArray reverse
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> shouldBePrintedAsLiteral [
 	^true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjString >> shouldBePrintedAsLiteral: alreadyVisited [
 	^true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjString >> size [
 	^self js_at:#length
 ]
 
-{ #category : #splitjoin }
+{ #category : 'splitjoin' }
 PjString >> split: aString [
 
 	^ aString js_split: self
 ]
 
-{ #category : #splitjoin }
+{ #category : 'splitjoin' }
 PjString >> splitOn: anArray [
 	^ anArray split: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjString >> value [
 	<javascript: 'return ""+this'>
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PjString >> writeStream [
 	^ PjStringStream new
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjString >> ~= other [
 	<javascript: 'return this!=other'>
 ]

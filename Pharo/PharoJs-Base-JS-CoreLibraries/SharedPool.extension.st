@@ -1,6 +1,6 @@
-Extension { #name : #SharedPool }
+Extension { #name : 'SharedPool' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 SharedPool class >> javascriptPlaceholder [
 	^PjSharedPool
 ]

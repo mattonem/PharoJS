@@ -2,15 +2,17 @@
 Duration representation
 "
 Class {
-	#name : #PjDuration,
-	#superclass : #PjMagnitude,
+	#name : 'PjDuration',
+	#superclass : 'PjMagnitude',
 	#pools : [
 		'ChronologyConstants'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Chronology'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Chronology',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Chronology'
 }
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjDuration class >> jsTranspilationImportMethods [
 	<pharoJsSkip>
 	| creationSelectors instanceSelectors |
@@ -24,7 +26,7 @@ PjDuration class >> jsTranspilationImportMethods [
 	Duration -> instanceSelectors }
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PjDuration >> addDateAndTime: aDateAndTime [
 	^(DateAndTime 
 		year: aDateAndTime year
@@ -37,7 +39,7 @@ PjDuration >> addDateAndTime: aDateAndTime [
 		yourself
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PjDuration >> printStringAsTimzoneOn: str [
 
 	self asNanoSeconds < 0
@@ -48,7 +50,7 @@ PjDuration >> printStringAsTimzoneOn: str [
 	self printWithLeading0: self minutesCount on: str
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PjDuration >> printStringOn: str [
 
 	self asNanoSeconds < 0
@@ -59,7 +61,7 @@ PjDuration >> printStringOn: str [
 	self printWithLeading0: self minutesCount on: str
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PjDuration >> printWithLeading0: aNumber [
 
 	^ String streamContents: [ :str | 
@@ -67,7 +69,7 @@ PjDuration >> printWithLeading0: aNumber [
 		  str print: aNumber abs asString]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PjDuration >> printWithLeading0: aNumber on: str [
 
 	aNumber abs < 10 ifTrue: [ str print: 0 ].

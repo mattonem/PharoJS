@@ -2,22 +2,24 @@
 I am a simplistic implementation of an Array ReadWriteStream
 "
 Class {
-	#name : #PjArrayStream,
-	#superclass : #PjReadWriteStream,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjArrayStream',
+	#superclass : 'PjReadWriteStream',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjArrayStream class >> on: aCollection [
 	^ self new on: aCollection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjArrayStream >> emptyCollection [
 	^ #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjArrayStream >> join [
 	| temp |
 	temp := OrderedCollection new.
@@ -29,7 +31,7 @@ PjArrayStream >> join [
 	^ temp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjArrayStream >> nextPut: aValue [
 	array addLast: {aValue}.
 	^ aValue

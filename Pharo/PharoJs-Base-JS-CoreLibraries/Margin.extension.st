@@ -1,6 +1,6 @@
-Extension { #name : #Margin }
+Extension { #name : 'Margin' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Margin class >> javascriptPlaceholder [
 	^ PjMargin
 ]

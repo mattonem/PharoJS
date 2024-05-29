@@ -6,8 +6,8 @@ All my direct subclasses exist as constructors/types in Javascript.  The classes
 Methods from these classes are added to the built-in constructor prototypes or directly in the constructors.
 "
 Class {
-	#name : #PjObject,
-	#superclass : #Object,
+	#name : 'PjObject',
+	#superclass : 'Object',
 	#traits : 'PjTKernelClass',
 	#classTraits : 'PjTKernelClass classTrait',
 	#pools : [
@@ -16,10 +16,12 @@ Class {
 	#classInstVars : [
 		'nextIdentityHash'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'doesNotUnderstand support' }
+{ #category : 'doesNotUnderstand support' }
 PjObject class >> addDnuSupportFor: selector [
 	<javascript: 'if(Object.prototype.hasOwnProperty(selector)){return;}
 		Object.prototype.selector =  function(){
@@ -28,14 +30,14 @@ PjObject class >> addDnuSupportFor: selector [
 	self flag: #todo "see JbObject>>#registerDNU:"
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject class >> allEnumeratableKeysDo_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^'for (var i in this){aBlock.', transpiler pharoJsSelectorPrefix, 'value_(i)};
 	return this;'
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjObject class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -58,43 +60,43 @@ PjObject class >> jsTranspilationImportMethods [
 		  (Dictionary class -> #( newFrom: newFromPairs: )) }
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject class >> keysAndValuesDo_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^'for (var i in this){if(this.hasOwnProperty(i))aBlock.', transpiler pharoJsSelectorPrefix, 'value_value_(i,this[i])};
 	return this;'
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject class >> keysDo_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^'for (var i in this){if(this.hasOwnProperty(i))aBlock.', transpiler pharoJsSelectorPrefix, 'value_(i)};
 	return this;'
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObject class >> nextIdentityHash [
 	^ nextIdentityHash := (nextIdentityHash ifNil: [12345]) hashMultiply
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject class >> valuesDo_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^'for (var i in this){if(this.hasOwnProperty(i))aBlock.', transpiler pharoJsSelectorPrefix, 'value_(this[i])};
 	return this;'
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObject >> = other [
 	<javascript: 'return this==other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObject >> == other [
 	<javascript: 'return this===other'>
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> add: assoc [
 	" this strange code is to install add: for objects that already have an add field or to do at:put: "
 
@@ -106,7 +108,7 @@ PjObject >> add: assoc [
 		  else: [ self js_at: assoc key put: assoc value ]
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> allEnumeratableKeys [
 	| allKeys |
 	allKeys := Set new.
@@ -114,87 +116,87 @@ PjObject >> allEnumeratableKeys [
 	^allKeys
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> allEnumeratableKeysDo: aBlock [
 	<jsGenerator: #allEnumeratableKeysDo_jsGenerator:>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjObject >> asJSON [
 	^ JSON stringify: self value
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjObject >> asJsObject [
 	^self
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> associationsDo: aBlock [
 	self keysAndValuesDo: [: key : value |
 		aBlock value: (Association key: key value: value)
 	]
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> at: key [
 	<javascript: 'return this[key]'>
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> at: key ifAbsent: aBlock [
 	(self js_hasOwnProperty: key) ifTrue: [ ^self js_at: key].
 	^ aBlock value
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> at: key ifPresent: aBlock [
 	(self js_hasOwnProperty: key) ifFalse: [ ^ nil].
 	^ aBlock cull: (self js_at: key)
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> at: key ifPresent: aBlock ifAbsent: anotherBlock [
 	(self js_hasOwnProperty: key) ifTrue: [ ^ aBlock cull: (self js_at: key)].
 	^ anotherBlock value
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> at: key put: value [
 	<javascript: 'return this[key]=value'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjObject >> becomeJsObject [
 
 	^ self
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> class [
 	^ self js_at: #constructor
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 PjObject >> copy [
 	^self shallowCopy postCopy
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> doesNotUnderstand: aMessage [
 	^ PjCore handleDNU: aMessage for: self
 ]
 
-{ #category : #flagging }
+{ #category : 'flagging' }
 PjObject >> flag: aSymbol [
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> halt [
 	<javascript: 'debugger'>
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjObject >> hasOrInheritsProperty: propertyName [
 	"The `in` operator cannot be used for some data types such as strings"
 
@@ -205,72 +207,72 @@ PjObject >> hasOrInheritsProperty: propertyName [
 	^ self hasOwnProperty: propertyName
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObject >> hash [
 	^ self identityHash
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObject >> identityHash [
 	^ (self instVarNamed: #_js_hash) ifNil: [
 		self instVarNamed: #_js_hash putHidden: self class nextIdentityHash ]
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> includesKey: key [
 	<javascript: 'return this.hasOwnProperty(key)'>
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjObject >> initialize [
 ]
 
-{ #category : #introspection }
+{ #category : 'introspection' }
 PjObject >> instVarNamed: aString [
 	^ self js_at: aString
 ]
 
-{ #category : #introspection }
+{ #category : 'introspection' }
 PjObject >> instVarNamed: aString put: anObject [
 	^ self js_at: aString put: anObject
 ]
 
-{ #category : #introspection }
+{ #category : 'introspection' }
 PjObject >> instVarNamed: aString putHidden: anObject [
 	<javascript: '
 	try{Object.defineProperty(this,aString,{value:anObject,writable:true})}catch(e){}
 	return anObject'>
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> isEmpty [
 	self keysDo: [ ^ false ].
 	^ true
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> isEmptyOrNil [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjObject >> isJSPrimitiveType [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjObject >> isObjectOrFunction [
 	| type |
 	type := self typeof.
 	^type = 'object' or: [ type = 'function' ]
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> jsHasOrInheritsProperty: propertyName [
 	<javascript: 'return propertyName in this'>
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> keys [
 	"Answer an Array containing the receiver's keys."
 	| result |
@@ -279,47 +281,47 @@ PjObject >> keys [
 	^ result
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> keysAndValuesDo: aBlock [
 	<jsGenerator: #keysAndValuesDo_jsGenerator:>
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> keysDo: aBlock [
 	<jsGenerator: #keysDo_jsGenerator:>
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 PjObject >> perform: selector [
 	^ (self js_at: (PjCore registerDnu: selector)) call: self
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 PjObject >> perform: selector with: arg [
 	^ (self js_at: (PjCore registerDnu: selector)) call: self with: arg
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 PjObject >> perform: selector with: arg1 with: arg2 [
 	^ (self js_at: (PjCore registerDnu: selector)) call: self with: arg1 with: arg2
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 PjObject >> perform: selector with: arg1 with: arg2 with: arg3 [
 	^ (self js_at: (PjCore registerDnu: selector)) call: self with: arg1 with: arg2 with: arg3
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 PjObject >> perform: selector withArguments: argArray [
 	^ (self js_at: (PjCore registerDnu: selector)) apply: self with: argArray
 ]
 
-{ #category : #'message performing' }
+{ #category : 'message performing' }
 PjObject >> perform: selector withArguments: argArray inSuperclass: lookupClass [
 	^ (lookupClass prototype js_at: (PjCore registerDnu: selector)) apply: self with: argArray
 ]
 
-{ #category : #'doesNotUnderstand support' }
+{ #category : 'doesNotUnderstand support' }
 PjObject >> pharoJsGetterDefaultValue [
 	"Used by getters dynamically generated. See PjCore class >> #makeGetter: "
 
@@ -327,18 +329,18 @@ PjObject >> pharoJsGetterDefaultValue [
 	^ nil
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 PjObject >> postCopy [
 	^self
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjObject >> printString [
 
 	^String streamContents: [ : stream | self printOn: stream ]
 ]
 
-{ #category : #proxy }
+{ #category : 'proxy' }
 PjObject >> proxyResponse [
 	<PjTodo: 'not sure if proxyResponse is a good name'>
 	| assoc p |
@@ -350,22 +352,22 @@ PjObject >> proxyResponse [
 	^ p
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjObject >> release [
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> removeKey: key [
 	<javascript: 'var result=this[key];delete this[key];return result'>
 ]
 
-{ #category : #'process operations' }
+{ #category : 'process operations' }
 PjObject >> setTimeout: aBlock afterMilliseconds: anInteger [
 	<javascript: 'globalThis.setTimeout(aBlock, anInteger)'>
 	super setTimeout: aBlock afterMilliseconds: anInteger
 ]
 
-{ #category : #copying }
+{ #category : 'copying' }
 PjObject >> shallowCopy [
 	| copy |
 	copy := self class basicNew.
@@ -374,7 +376,7 @@ PjObject >> shallowCopy [
 	^copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjObject >> size [
 	| count |
 	count := 0.
@@ -384,22 +386,22 @@ PjObject >> size [
 	^ count
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> species [
 	^ self class
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> typeof [
 	<javascript: 'return typeof this'>
 ]
 
-{ #category : #reflection }
+{ #category : 'reflection' }
 PjObject >> typeof: anObject [
 	<javascript: 'return typeof anObject'>
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjObject >> value [
 	" this strange code is to install _value for objects that already have a value field or to return self "
 
@@ -411,22 +413,22 @@ PjObject >> value [
 		  else: [ self ]
 ]
 
-{ #category : #'dictionary emulation' }
+{ #category : 'dictionary emulation' }
 PjObject >> valuesDo: aBlock [
 	<jsGenerator: #valuesDo_jsGenerator:>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjObject >> yourself [
 	^self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObject >> ~= other [
 	^ (self = other) not
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObject >> ~~ other [
 	^ (self == other) not
 ]

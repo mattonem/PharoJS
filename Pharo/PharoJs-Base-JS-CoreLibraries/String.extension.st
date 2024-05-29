@@ -1,11 +1,11 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries-converting' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries-converting' }
 String >> asJsObjectUsing: converter [
 	^self
 ]
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 String class >> javascriptPlaceholder [
 	^ PjString
 ]

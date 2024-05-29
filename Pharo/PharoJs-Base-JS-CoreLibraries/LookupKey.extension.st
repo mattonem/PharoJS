@@ -1,6 +1,6 @@
-Extension { #name : #LookupKey }
+Extension { #name : 'LookupKey' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 LookupKey class >> javascriptPlaceholder [
 	^PjLookupKey
 ]

@@ -2,24 +2,29 @@
 I represent the Javascript Array type.  I am the implementation for Arrays and OrderedCollections, since Javascript Arrays act pretty-much like Smalltalk OrderedCollections.
 "
 Class {
-	#name : #PjArray,
-	#superclass : #PjObject,
+	#name : 'PjArray',
+	#superclass : 'PjObject',
 	#traits : 'PjTArray + PjTKernelClass',
 	#classTraits : 'PjTArray classTrait + PjTKernelClass classTrait',
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PjArray class >> javascriptInitialize [ 
 	Smalltalk at: #OrderedCollection put: Array
 ]
 
-{ #category : #'instance creation' }
-PjArray class >> new: ignored [
-	^ self new
+{ #category : 'instance creation' }
+PjArray class >> new: newSize [
+	| newArray |
+	newArray := self new.
+	newSize timesRepeat: [ newArray js_push: nil ].
+	^newArray
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjArray class >> streamContents: aBlock [
 	| stream |
 	stream := PjArrayStream new.
@@ -27,39 +32,39 @@ PjArray class >> streamContents: aBlock [
 	^ stream contents
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjArray class >> with: anObject [ 
 	"Answer a new instance of me, containing only anObject."
 	<javascript: 'return [anObject]'>
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjArray class >> with: firstObject with: secondObject [ 
 	"Answer a new instance of me, containing firstObject and secondObject."
 	<javascript: 'return [firstObject,secondObject]'>
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjArray >> add: x [
 	^ self addLast: x
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjArray >> addFirst: x [
 	<javascript: 'this.unshift(x);return x'>
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjArray >> addLast: x [
 	<javascript: 'this.push(x);return x'>
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjArray >> at: i put: x [
 	<javascript: 'return this[i-1]=x'>
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjArray >> printOn: aStream [
 
 	"Merging printOn: methods of Array and Collection because JS Array directly inherits from Object"
@@ -74,12 +79,12 @@ PjArray >> printOn: aStream [
 	self printElementsOn: aStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjArray >> readStream [
 	^ PjArrayStream on: self
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PjArray >> remove: oldObject ifAbsent: absentBlock [
 	| index |
 	index := self findIndex: [ : each | oldObject = each ].
@@ -87,27 +92,27 @@ PjArray >> remove: oldObject ifAbsent: absentBlock [
 	^ absentBlock value
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PjArray >> removeAll [
 	self size timesRepeat: [ self removeFirst ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PjArray >> removeAt: aNumber [
 	<javascript: 'var result=this[aNumber-1];this.splice(aNumber - 1,1);return result'>
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PjArray >> removeFirst [
 	<javascript: 'return this.shift()'>
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PjArray >> removeLast [
 	<javascript: 'return this.pop()'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjArray >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 	<javascript: '
 	for(var mine=stop-1,other=mine+repStart-start;
@@ -116,7 +121,7 @@ PjArray >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 		)this[mine]=replacement[other];return this'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjArray >> writeStream [
 	^ PjArrayStream new
 ]

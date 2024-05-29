@@ -4,11 +4,13 @@ I am the Magnitude trait.
 Because Magnitude cannot be inserted between Number and Object in the Javascript world, I have all the pieces that are needed by both PjMagnitude and PjNumber.
 "
 Trait {
-	#name : #PjTMagnitude,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjTMagnitude',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjTMagnitude classSide >> jsTranspilationImportMethodsMagnitude [
 	<pharoJsSkip>
 	^ {Magnitude -> #(
@@ -19,12 +21,12 @@ PjTMagnitude classSide >> jsTranspilationImportMethodsMagnitude [
 		}
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjTMagnitude >> < aMagnitude [
 	^self explicitRequirement
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjTMagnitude >> = aMagnitude [
 	^self explicitRequirement
 ]

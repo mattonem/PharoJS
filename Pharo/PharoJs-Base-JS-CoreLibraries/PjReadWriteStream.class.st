@@ -5,18 +5,20 @@ Because strings and arrays are very different in Javascript,
 I have subclasses that implement those differences.
 "
 Class {
-	#name : #PjReadWriteStream,
-	#superclass : #PjObject,
+	#name : 'PjReadWriteStream',
+	#superclass : 'PjObject',
 	#instVars : [
 		'array',
 		'position',
 		'readLimit',
 		'collection'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjReadWriteStream class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -30,24 +32,24 @@ PjReadWriteStream class >> jsTranspilationImportMethods [
 		  (Stream -> #( print: )) }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> atEnd [
 	position >= readLimit ifTrue: [ self contents ].
 	^ position >= readLimit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> contents [
 	1 < array size ifTrue: [ self load: self join ].
 	^ collection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjReadWriteStream >> emptyCollection [
 	self subclassResponsibility
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjReadWriteStream >> initialize [
 	super initialize.
 	array := OrderedCollection with: (collection := self emptyCollection).
@@ -55,12 +57,12 @@ PjReadWriteStream >> initialize [
 	position := 0.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> join [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> load: temp [
 	array := OrderedCollection with: temp.
 	collection := temp.
@@ -68,30 +70,30 @@ PjReadWriteStream >> load: temp [
 	^ temp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> next [
 	self atEnd ifTrue: [ ^ nil ].
 	^ collection at: (position := position + 1)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> nextPut: aCharacter [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> nextPutAll: aCollection [
 	array addLast: aCollection.
 	^ aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> on: temp [
 	self load: temp.
 	self reset.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReadWriteStream >> skip: n [
 	position := position + n.
 ]

@@ -66,32 +66,34 @@ The old basic way would be to use the PharoJS asJsObject as following:
 ```
 "
 Class {
-	#name : #PjConfig,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjConfig',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjConfig class >> << aBlock [
 
 	^ self new
 		  << aBlock
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjConfig class >> jsObject: aBlock [
 
 	^ (self << aBlock) becomeJsObject
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjConfig >> << aBlock [
 
 	aBlock value: self.
 	^ self
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjConfig >> becomeJsObject [
 
 	Object adoptInstance: self.
@@ -99,7 +101,7 @@ PjConfig >> becomeJsObject [
 		each becomeJsObject ]
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjConfig >> doesNotUnderstand: aMessage [
 
 	| propertyName value |
@@ -113,7 +115,7 @@ PjConfig >> doesNotUnderstand: aMessage [
 	^ value ifNil: [ self js_at: propertyName put: self class new ]
 ]
 
-{ #category : #'doesNotUnderstand support' }
+{ #category : 'doesNotUnderstand support' }
 PjConfig >> pharoJsGetterDefaultValue [
 	"Used by getters dynamically generated. See PjCore class >> #makeGetter: "
 

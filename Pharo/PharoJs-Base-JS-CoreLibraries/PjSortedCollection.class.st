@@ -2,17 +2,19 @@
 I am the Javascript embodiment of SortedCollection.
 "
 Class {
-	#name : #PjSortedCollection,
-	#superclass : #PjArray,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjSortedCollection',
+	#superclass : 'PjArray',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjSortedCollection class >> jsSortUsing: aBlock [
    ^ (self respondsTo: #sortUsing:) ifTrue: [ self sortUsing: aBlock] ifFalse: [ self new sortBlock: aBlock ]
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjSortedCollection class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -23,12 +25,12 @@ PjSortedCollection class >> jsTranspilationImportMethods [
 		  (SortedCollection class -> #( sortBlock: sortUsing: )) }
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PjSortedCollection >> addAll: otherCollection [
 	otherCollection do: [ : each | self add: each ]
 ]
 
-{ #category : #enumerating }
+{ #category : 'enumerating' }
 PjSortedCollection >> collect: aBlock [ 
 	"Evaluate aBlock with each of my elements as the argument. Collect the 
 	resulting values into an OrderedCollection. Answer the new collection. 
@@ -41,7 +43,7 @@ PjSortedCollection >> collect: aBlock [
 	^ newCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjSortedCollection >> indexForInserting: newObject [
 	self ifEmpty: [ ^1 ].
 	self withIndexDo: [ : element : index | 
@@ -49,7 +51,7 @@ PjSortedCollection >> indexForInserting: newObject [
 	^self size + 1
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjSortedCollection >> initialize [
 	super initialize.
 	self instVarNamed: #firstIndex put: 1.
@@ -57,12 +59,12 @@ PjSortedCollection >> initialize [
 	self sortBlock: [ : a : b | a <= b ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSortedCollection >> insert: newObject before: index [
 	self splice: index - 1 remove: 0 element: newObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjSortedCollection >> reSort [
 	| copy |
 	copy := self species sortBlock: self sortBlock.
@@ -71,7 +73,7 @@ PjSortedCollection >> reSort [
 		super at: index put: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSortedCollection >> replaceFrom: start to: stop with: replacement startingAt: repStart [
 	| repStop |
 	repStop := repStart + stop - start.

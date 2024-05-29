@@ -1,6 +1,6 @@
-Extension { #name : #SmallInteger }
+Extension { #name : 'SmallInteger' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 SmallInteger class >> javascriptPlaceholder [
 	^ PjNumber
 ]

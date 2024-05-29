@@ -2,21 +2,23 @@
 I am the implementation for UndefinedObject. Any method calls translate the Javascript values ""undefined"" and ""null"" into my sole instance using the global function $isNil$, so that method dispatch will happen through me.
 "
 Class {
-	#name : #PjUndefinedObject,
-	#superclass : #PjObject,
+	#name : 'PjUndefinedObject',
+	#superclass : 'PjObject',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PjUndefinedObject class >> identityHash_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^'return ', nil identityHash asString
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PjUndefinedObject class >> javascriptInitialize [
 
 	uniqueInstance := self basicNew.
@@ -25,13 +27,13 @@ PjUndefinedObject class >> javascriptInitialize [
 	
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjUndefinedObject class >> javascriptName [
 	<pharoJsSkip>
 	^self name
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjUndefinedObject class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -40,48 +42,48 @@ PjUndefinedObject class >> jsTranspilationImportMethods [
 		      isNotNil notNil isEmptyOrNil isLiteral printOn: )) }
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PjUndefinedObject class >> new [
 	^PjCore signal: 'cannot create instances of UndefinedObject'
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjUndefinedObject >> = other [
 	<javascript: 'return null==other'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjUndefinedObject >> asJSON [
 	^ 'null'
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjUndefinedObject >> identityHash [
 	<jsGenerator: #identityHash_jsGenerator:>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjUndefinedObject >> isJSPrimitiveType [
 	^ true
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjUndefinedObject >> proxyResponse [
 	^ self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjUndefinedObject >> value [
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjUndefinedObject >> yourself [
 
 	^nil
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjUndefinedObject >> ~= other [
 
 	<javascript: 'return null!=other'>

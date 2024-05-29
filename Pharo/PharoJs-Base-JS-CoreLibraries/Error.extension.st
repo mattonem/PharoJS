@@ -1,6 +1,6 @@
-Extension { #name : #Error }
+Extension { #name : 'Error' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Error class >> javascriptPlaceholder [
 	^PjError
 ]

@@ -2,8 +2,8 @@
 DateAndTime representation as JavaScript Date
 "
 Class {
-	#name : #PjDateAndTime,
-	#superclass : #Object,
+	#name : 'PjDateAndTime',
+	#superclass : 'Object',
 	#traits : 'PjTDateAndTime',
 	#classTraits : 'PjTDateAndTime classTrait',
 	#instVars : [
@@ -12,15 +12,17 @@ Class {
 	#pools : [
 		'ChronologyConstants'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Chronology'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Chronology',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Chronology'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDateAndTime class >> basicfromString: aString [
 	<javascript: 'return new this(aString)'>
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDateAndTime class >> fromString: aString [
 
 	| offset |
@@ -37,13 +39,13 @@ PjDateAndTime class >> fromString: aString [
 		  yourself
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjDateAndTime class >> javascriptName [
 	<pharoJsSkip>
 	^ #Date
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjDateAndTime class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -53,12 +55,12 @@ PjDateAndTime class >> jsTranspilationImportMethods [
 		  (DateAndTime -> #( daysInYear )) }
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDateAndTime class >> now [
 	<javascript: 'return new this()'>
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDateAndTime class >> todayHour: hour minute: minute second: second [
 	"setXXX methods are defined in JS"
 	^self new
@@ -68,32 +70,32 @@ PjDateAndTime class >> todayHour: hour minute: minute second: second [
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDateAndTime class >> tomorrowHour: hour minute: minute second: second [
 	^(self todayHour: hour minute: minute second: second) + 1 day
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjDateAndTime class >> year: year month: month1To12 day: day1To31 hour: hour minute: minute second: second [
 	<javascript: 'return new this(year, month1To12 - 1, day1To31, hour, minute, second)'>
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjDateAndTime >> + otherObject [
 	^otherObject addDateAndTime: self
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjDateAndTime >> - anObject [
 	^anObject subtractFromDateAndTime: self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjDateAndTime >> asDateAndTime [
 	^self
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjDateAndTime >> basicPrintString [
 
 	<javascript: 'let d;
@@ -111,27 +113,27 @@ PjDateAndTime >> basicPrintString [
  
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjDateAndTime >> basicSubtractFromDateAndTime: other [
 	<javascript: 'return other - this;'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> dayOfMonth [
 	^self getDate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> dayOfWeek [
 	^self getDay + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> hour [
 	^self hour24
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> hour12 [
 	| hour24 |
 	hour24 := self hour24.
@@ -140,44 +142,44 @@ PjDateAndTime >> hour12 [
 	^hour24
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> hour24 [
 	^self getHours
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> milliSecond [
 	^self getMilliseconds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> minute [
 	^self getMinutes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> monthIndex [
 	^self getMonth + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> monthIndex: anInteger [
 	^self month: anInteger - 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> offset [
 
 	^ offset ifNil: [ offset := (-1 * self getTimezoneOffset) minutes ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> offset: aDuration [
 
 	offset := aDuration
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjDateAndTime >> printOn: str [
 
 	str << (self getTimezoneOffset minutes addDateAndTime:
@@ -185,17 +187,17 @@ PjDateAndTime >> printOn: str [
 	self offset printStringAsTimzoneOn: str
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> second [
 	^self getSeconds
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjDateAndTime >> subtractFromDateAndTime: aDateAndTime [
 	^Duration milliSeconds: (self basicSubtractFromDateAndTime: aDateAndTime)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDateAndTime >> year [
 	^self getFullYear
 ]

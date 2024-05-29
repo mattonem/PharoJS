@@ -1,6 +1,6 @@
-Extension { #name : #Stack }
+Extension { #name : 'Stack' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Stack class >> javascriptPlaceholder [
 	^ PjStack
 ]

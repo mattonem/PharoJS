@@ -2,27 +2,29 @@
 I am a simplistic implementation of a String ReadWriteStream
 "
 Class {
-	#name : #PjStringStream,
-	#superclass : #PjReadWriteStream,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjStringStream',
+	#superclass : 'PjReadWriteStream',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjStringStream class >> on: aCollection [
 	^ self new on: aCollection
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjStringStream >> emptyCollection [
 	^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjStringStream >> join [
 	^ '' join: array
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjStringStream >> nextPut: aCharacter [
 	array addLast: aCharacter asString.
 	^ aCharacter

@@ -1,6 +1,6 @@
-Extension { #name : #ClassDescription }
+Extension { #name : 'ClassDescription' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 ClassDescription >> selectorsInProtocols: protocols [
 	<pharoJsSkip>
 	| selectors |
@@ -10,7 +10,7 @@ ClassDescription >> selectorsInProtocols: protocols [
 	^selectors
 ]
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 ClassDescription >> selectorsInProtocols: protocols exclude: excludedSelectors [
 	<pharoJsSkip>
 	| selectors |

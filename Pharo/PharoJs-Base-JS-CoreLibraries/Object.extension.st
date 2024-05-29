@@ -1,11 +1,11 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries-converting' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries-converting' }
 Object >> asJsObject [
 	^PjJsObjectBuilder convert: self
 ]
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries-converting' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries-converting' }
 Object >> asJsObjectUsing: converter [
 	| dict value |
 	dict := Dictionary new.
@@ -15,17 +15,17 @@ Object >> asJsObjectUsing: converter [
 	^dict
 ]
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Object >> isPjProxyOrNil [
 	^ false
 ]
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Object class >> javascriptPlaceholder [
 	^PjObject
 ]
 
-{ #category : #'*PharoJs-Base-JS-CoreLibraries' }
+{ #category : '*PharoJs-Base-JS-CoreLibraries' }
 Object >> setTimeout: aBlock afterMilliseconds: anInteger [
 	[anInteger milliSeconds wait.
 	aBlock value] fork

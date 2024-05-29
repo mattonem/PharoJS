@@ -2,35 +2,37 @@
 Time in the Javascript world
 "
 Class {
-	#name : #PjTime,
-	#superclass : #Object,
+	#name : 'PjTime',
+	#superclass : 'Object',
 	#traits : 'PjTDateAndTime',
 	#classTraits : 'PjTDateAndTime classTrait',
 	#pools : [
 		'ChronologyConstants'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Chronology'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Chronology',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Chronology'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjTime class >> hour: hour minute: minute second: second milliSecond: milliseconds [
 	<javascript: '
 	var today = new Date();
 	return new Date(today.getFullYear(), today.getMonth(), today.getDate(), hour, minute, second, milliseconds);'>
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjTime class >> hour: hour minute: minute second: second nanoSecond: nanoCount [
 	^self hour: hour minute: minute second: second milliSecond: nanoCount // 1000000
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjTime class >> javascriptName [
 	<pharoJsSkip>
 	^ #Date
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjTime class >> jsTranspilationImportMethods [
 	<pharoJsSkip>
 	| classSelectors instanceSelectors |
@@ -46,24 +48,24 @@ PjTime class >> jsTranspilationImportMethods [
 	Time -> instanceSelectors }
 ]
 
-{ #category : #clock }
+{ #category : 'clock' }
 PjTime class >> millisecondClockValue [
 	<javascript: 'if(typeof performance=="object") return performance.now();
 if(typeof process=="object"){var hr=process.hrtime();return hr[0]*1000+hr[1]/1000000}
 return Date.now()'>
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjTime class >> now [
 	<javascript: 'return new this()'>
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjTime class >> seconds: seconds [
 	^self seconds: seconds nanoSeconds: 0
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjTime class >> seconds: seconds nanoSeconds: nanoCount [
 	"Answer a Time from midnight."
 	^self basicNew
@@ -71,32 +73,32 @@ PjTime class >> seconds: seconds nanoSeconds: nanoCount [
 		yourself
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjTime >> asDateAndTime [
 	^self
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjTime >> asSeconds [
 	^(self hour24 * 3600) + (self minute * 60) + self seconds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> dayOfMonth [
 	^self getDate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> dayOfWeek [
 	^self getDay + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> hour [
 	^self hour24
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> hour12 [
 	| hour24 |
 	hour24 := self hour24.
@@ -105,37 +107,37 @@ PjTime >> hour12 [
 	^hour24
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> hour24 [
 	^self getHours
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> milliSecond [
 	^self getMilliseconds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> minute [
 	^self getMinutes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> monthIndex [
 	^self getMonth + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> monthIndex: anInteger [
 	^self month: anInteger - 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> second [
 	^self getSeconds
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjTime >> seconds: secondCount [
 	| minuteSecondsCount |
 	self setHours: (secondCount quo: SecondsInHour).
@@ -144,19 +146,19 @@ PjTime >> seconds: secondCount [
 	self setSeconds: (minuteSecondsCount rem: SecondsInMinute).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjTime >> seconds: secondCount nanoSeconds: nanoCount [ 
 	self seconds: secondCount.
 	self setMilliseconds: nanoCount//1000000
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjTime >> ticks: anArray [
 	"ticks is an Array: { days. seconds. nanoSeconds }"
 	self seconds: (anArray at: 2) nanoSeconds: anArray last
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTime >> year [
 	^self getFullYear
 ]

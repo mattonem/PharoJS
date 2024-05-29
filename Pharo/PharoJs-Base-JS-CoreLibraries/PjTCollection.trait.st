@@ -4,18 +4,20 @@ I am the Collection trait.
 Because Collection cannot be inserted between Array and Object in the Javascript world, I have all the pieces that are needed by both PjCollection and PjArray.
 "
 Trait {
-	#name : #PjTCollection,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#name : 'PjTCollection',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #random }
+{ #category : 'random' }
 PjTCollection classSide >> atRandom_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^'var randomIndex = Math.floor((Math.random() * this.', transpiler pharoJsSelectorPrefix, 'size()) + 1);
 	return this.', transpiler pharoJsSelectorPrefix, 'at_(randomIndex);'
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjTCollection classSide >> jsTranspilationImportMethodsCollection [
 
 	<pharoJsSkip>
@@ -30,12 +32,12 @@ PjTCollection classSide >> jsTranspilationImportMethodsCollection [
 		  (OrderedCollection class -> #( newFrom: )) }
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjTCollection >> = aMagnitude [
 	^self explicitRequirement
 ]
 
-{ #category : #random }
+{ #category : 'random' }
 PjTCollection >> atRandom [
 	<jsGenerator: #atRandom_jsGenerator:>
 ]

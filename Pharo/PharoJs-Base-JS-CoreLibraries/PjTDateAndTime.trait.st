@@ -2,44 +2,46 @@
 A DateAndTime trait
 "
 Trait {
-	#name : #PjTDateAndTime,
+	#name : 'PjTDateAndTime',
 	#traits : 'PjTDate',
 	#classTraits : 'PjTDate classTrait',
-	#category : #'PharoJs-Base-JS-CoreLibraries-Chronology'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Chronology',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Chronology'
 }
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjTDateAndTime classSide >> javascriptName [
 	<pharoJsSkip>
 	^ #Date
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjTDateAndTime classSide >> now [
 	<javascript: 'return new this()'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjTDateAndTime >> asDateAndTime [
 	^self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> dayOfMonth [
 	^self getDate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> dayOfWeek [
 	^self getDay + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> hour [
 	^self hour24
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> hour12 [
 	| hour24 |
 	hour24 := self hour24.
@@ -48,37 +50,37 @@ PjTDateAndTime >> hour12 [
 	^hour24
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> hour24 [
 	^self getHours
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> milliSecond [
 	^self getMilliseconds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> minute [
 	^self getMinutes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> monthIndex [
 	^self getMonth + 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> monthIndex: anInteger [
 	^self month: anInteger - 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> second [
 	^self getSeconds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTDateAndTime >> year [
 	^self getFullYear
 ]

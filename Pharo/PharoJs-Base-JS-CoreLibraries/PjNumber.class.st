@@ -2,8 +2,8 @@
 I represent the Javascript Number type.  I am the implementation for Integer, Float, and Number, since Javascript Numbers are the only kind of numbers available.
 "
 Class {
-	#name : #PjNumber,
-	#superclass : #PjObject,
+	#name : 'PjNumber',
+	#superclass : 'PjObject',
 	#traits : 'PjTKernelClass + PjTMagnitude',
 	#classTraits : 'PjTKernelClass classTrait + PjTMagnitude classTrait',
 	#classVars : [
@@ -28,16 +28,18 @@ Class {
 	#pools : [
 		'PjUniversalGlobals'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Kernel'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Kernel'
 }
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber class >> divide_jsGenerator: transpiler [
 	<pharoJsSkip> 
 	^'if(anObject==0) return ZeroDivide.', transpiler pharoJsSelectorPrefix, 'signal();return this / anObject;'
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PjNumber class >> javascriptInitialize [
 	Pi := Math instVarNamed: #PI.
 	Halfpi := Pi / 2.0.
@@ -62,7 +64,7 @@ PjNumber class >> javascriptInitialize [
 	NegativeZero := 1.0 / NegativeInfinity.
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjNumber class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -96,169 +98,169 @@ PjNumber class >> jsTranspilationImportMethods [
 			      threePi twoPi zero )) }
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> % anObject [
 	<javascript: 'return Math.sign(anObject)*(Math.abs(this) % anObject)'>
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> * anObject [
 	<javascript: 'return this * anObject;'>
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> + anObject [
 	<javascript: 'return this + anObject;'>
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> - anObject [
 	<javascript: 'return this - anObject;'>
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> / anObject [
 	<jsGenerator: #divide_jsGenerator:>
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> // anObject [
 	^ Math floor: self / anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjNumber >> < other [
 	<javascript: 'return this < other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjNumber >> = other [
 	<javascript: 'return this == other'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjNumber >> == other [
 	<javascript: 'return this == other'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> @ y [ 
 	^Point x: self y: y
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> \\ anObject [
 	^ self % anObject
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> abs [
 	<javascript: 'return Math.abs(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> arcCos [
 	<javascript: 'return Math.acos(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> arcSin [
 	<javascript: 'return Math.asin(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> arcTan [
 	<javascript: 'return Math.atan(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> arcTan: denominator [
 	<javascript: 'return Math.atan2(this,denominator);'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> asFloat [
 	<javascript: 'return +this'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> asJsObject [
 	"Ensure we get a primitive type number and not a Number object"
 	<javascript: 'return this.valueOf()'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> asString [
 	<javascript: 'return this + ""'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjNumber >> between: min and: max [ 
 
 	^ self >= min and: [ self <= max ]
 ]
 
-{ #category : #'bit manipulation' }
+{ #category : 'bit manipulation' }
 PjNumber >> bitAnd: arg [ 
 	<javascript: 'return this&arg'>
 ]
 
-{ #category : #'bit manipulation' }
+{ #category : 'bit manipulation' }
 PjNumber >> bitInvert [
 	<javascript: 'return ~this'>
 ]
 
-{ #category : #'bit manipulation' }
+{ #category : 'bit manipulation' }
 PjNumber >> bitOr: arg [ 
 	<javascript: 'return this|arg'>
 ]
 
-{ #category : #'bit manipulation' }
+{ #category : 'bit manipulation' }
 PjNumber >> bitShift: shiftCount [
 	<javascript: 'if (shiftCount<0) return this>>(-shiftCount);return this<<shiftCount'>
 ]
 
-{ #category : #'bit manipulation' }
+{ #category : 'bit manipulation' }
 PjNumber >> bitXor: arg [ 
 	<javascript: 'return this^arg'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> ch [
 	<javascript: 'return this + "ch"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> cm [
 	<javascript: 'return this + "cm"'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> cos [
 	<javascript: 'return Math.cos(this);'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> degreesToRadians [
 	^ self * RadiansPerDegree
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> em [
 	<javascript: 'return this + "em"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> ex [
 	<javascript: 'return this + "ex"'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> exp [
 	<javascript: 'return Math.exp(this);'>
 ]
 
-{ #category : #'bit manipulation' }
+{ #category : 'bit manipulation' }
 PjNumber >> highBitOfPositiveReceiver [
 	| shifted bitNo |
 	"Answer the index of the high order bit of the receiver, or zero if the 
@@ -288,42 +290,42 @@ PjNumber >> highBitOfPositiveReceiver [
 	^ shifted+bitNo
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> in [
 	<javascript: 'return this + "in"'>
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjNumber >> isFloat [
 	^ self isInteger not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjNumber >> isInteger [
 	<javascript: 'return (this|0)==this'>
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjNumber >> isJSPrimitiveType [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjNumber >> isNaN [
 	<javascript: 'return isNaN(this)'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> ln [
 	<javascript: 'return Math.log(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> log [
 	<javascript: 'return Math.log10(this);'>
 ]
 
-{ #category : #'bit manipulation' }
+{ #category : 'bit manipulation' }
 PjNumber >> lowBit [
 	" Answer the index of the low order one bit.
 		2r00101000 lowBit       (Answers: 4)
@@ -346,22 +348,22 @@ PjNumber >> lowBit [
 	^ result
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> mm [
 	<javascript: 'return this + "mm"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> pc [
 	<javascript: 'return this + "pc"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> percnt [
 	<javascript: 'return this + "%"'>
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 PjNumber >> printOn: aStream [
 
 	self isNaN ifTrue: [ ^ aStream nextPutAll: 'Float nan' ].
@@ -370,57 +372,57 @@ PjNumber >> printOn: aStream [
 	aStream nextPutAll: self js_toString
 ]
 
-{ #category : #proxy }
+{ #category : 'proxy' }
 PjNumber >> proxyResponse [
 	<javascript: 'return 0+this'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> pt [
 	<javascript: 'return this + "pt"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> px [
 	<javascript: 'return this + "px"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> radiansToDegrees [
 	^ self / RadiansPerDegree
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> rem [
 	<javascript: 'return this + "rem"'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> sign [
 	<javascript: 'return Math.sign(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> sin [
 	<javascript: 'return Math.sin(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> sqrt [
 	<javascript: 'return Math.sqrt(this);'>
 ]
 
-{ #category : #'mathematical functions' }
+{ #category : 'mathematical functions' }
 PjNumber >> tan [
 	<javascript: 'return Math.tan(this);'>
 ]
 
-{ #category : #looping }
+{ #category : 'looping' }
 PjNumber >> timesRepeat: aBlock [
 	1 to: self do: aBlock
 ]
 
-{ #category : #looping }
+{ #category : 'looping' }
 PjNumber >> to: end [
 	| interval |
 	interval := OrderedCollection new.
@@ -428,7 +430,7 @@ PjNumber >> to: end [
 	^interval
 ]
 
-{ #category : #looping }
+{ #category : 'looping' }
 PjNumber >> to: end by: step do: aBlock [
 
 	step >= 0
@@ -436,59 +438,59 @@ PjNumber >> to: end by: step do: aBlock [
 		ifFalse: [ self to: end byNegative: step do: aBlock ]
 ]
 
-{ #category : #looping }
+{ #category : 'looping' }
 PjNumber >> to: end byNegative: step do: aBlock [
 	
 	<javascript: 'for(var i=this; i >= end; i += step){aBlock(i);}'>
 ]
 
-{ #category : #looping }
+{ #category : 'looping' }
 PjNumber >> to: end byPositive: step do: aBlock [
 	
 	<javascript: 'for(var i=this; i <= end; i += step){aBlock(i);}'>
 ]
 
-{ #category : #looping }
+{ #category : 'looping' }
 PjNumber >> to: end do: aBlock [
 	self to: end by: 1 do: aBlock
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> truncated [
 	<javascript: 'if (this>=0)return Math.floor(this);return Math.ceil(this)'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> value [
 	<javascript: 'return 0+this'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> vh [
 	<javascript: 'return this + "vh"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> vmax [
 	<javascript: 'return this + "vmax"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> vmin [
 	<javascript: 'return this + "vmin"'>
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjNumber >> vw [
 	<javascript: 'return this + "vw"'>
 ]
 
-{ #category : #arithmetics }
+{ #category : 'arithmetics' }
 PjNumber >> | anObject [
 	<javascript: 'return this | anObject;'>
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjNumber >> ~= other [
 	<javascript: 'return this != other'>
 ]

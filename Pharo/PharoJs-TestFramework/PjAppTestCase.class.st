@@ -198,7 +198,7 @@ PjAppTestCase >> runCaseAsFailure: aSemaphore [
 PjAppTestCase >> setUp [
 
 	super setUp.
-	self longTestCase.
+	self timeLimit: 60 seconds.
 	self
 		waitWhile: [ self currentApp isNil ]
 		timeOut: self timeOutForAppStartUp.

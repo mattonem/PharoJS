@@ -1,22 +1,24 @@
 Class {
-	#name : #PjMinimalFileBasedWebAppTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjMinimalFileBasedWebAppTest',
+	#superclass : 'PjWebAppTestCase',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
-	#category : #'PharoJs-TestFramework-Test'
+	#category : 'PharoJs-TestFramework-Test',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Test'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjMinimalFileBasedWebAppTest class >> appClass [
 	^PjMinimalFileBasedWebApp.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalFileBasedWebAppTest >> testAppReady [
 	self assert: [1+2] evaluatesTo: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalFileBasedWebAppTest >> testCounter [
 	| jsCounter |
 	jsCounter := self evalBlock: [PjCounter new].
@@ -24,7 +26,7 @@ PjMinimalFileBasedWebAppTest >> testCounter [
 	self assert: jsCounter count equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalFileBasedWebAppTest >> testCounterWithEvent [
 	| counter button |
 	counter := PjCounter new.
@@ -35,7 +37,7 @@ PjMinimalFileBasedWebAppTest >> testCounterWithEvent [
 	self assert: counter count equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalFileBasedWebAppTest >> testCounterWithSerialization [
 	| counter serializedCounter jsCounter |
 	counter := PjCounter new.
@@ -48,7 +50,7 @@ PjMinimalFileBasedWebAppTest >> testCounterWithSerialization [
 	self assert: jsCounter count equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalFileBasedWebAppTest >> testResetApp [
 	self evalBlock: [window instVarNamed:#forTest put: 3].
 	self assert: [window instVarNamed:#forTest] evaluatesTo: 3.

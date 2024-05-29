@@ -1,45 +1,46 @@
 Class {
-	#name : #PhxJsonObjectForTestWithAlphabeticallyOrderedIVs,
-	#superclass : #Object,
+	#name : 'PhxJsonObjectForTestWithAlphabeticallyOrderedIVs',
+	#superclass : 'Object',
 	#instVars : [
 		'aaaa',
 		'bbbb',
 		'cccc'
 	],
-	#category : #'PharoJs-Base-Serialization-Tests'
+	#category : 'PharoJs-Base-Serialization-Tests',
+	#package : 'PharoJs-Base-Serialization-Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhxJsonObjectForTestWithAlphabeticallyOrderedIVs >> aaaa [
 
 	^ aaaa
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhxJsonObjectForTestWithAlphabeticallyOrderedIVs >> aaaa: anObject [
 
 	aaaa := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhxJsonObjectForTestWithAlphabeticallyOrderedIVs >> bbbb [
 
 	^ bbbb
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhxJsonObjectForTestWithAlphabeticallyOrderedIVs >> bbbb: anObject [
 
 	bbbb := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhxJsonObjectForTestWithAlphabeticallyOrderedIVs >> cccc [
 
 	^ cccc
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhxJsonObjectForTestWithAlphabeticallyOrderedIVs >> cccc: anObject [
 
 	cccc := anObject

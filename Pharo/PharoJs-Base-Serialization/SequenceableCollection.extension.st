@@ -1,6 +1,6 @@
-Extension { #name : #SequenceableCollection }
+Extension { #name : 'SequenceableCollection' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 SequenceableCollection class >> instantiateWithPhxJsonReader: reader instanceJsonObject: jsonObject [
 	| resultCollection |
 	resultCollection := self ofSize: jsonObject size.

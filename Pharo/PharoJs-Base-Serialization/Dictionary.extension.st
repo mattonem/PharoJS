@@ -1,6 +1,6 @@
-Extension { #name : #Dictionary }
+Extension { #name : 'Dictionary' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Dictionary class >> instantiateWithPhxJsonReader: reader instanceJsonObject: jsonObject [
 	| newDict |
 	newDict := self new.
@@ -10,7 +10,7 @@ Dictionary class >> instantiateWithPhxJsonReader: reader instanceJsonObject: jso
 	^ newDict
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Dictionary >> writePhxJsonRepresentationOn: w [
 	w
 		doBetweenCurlyBraces: [ self keys

@@ -6,27 +6,29 @@ Charts are built using [ChartJS](https://www.chartjs.org) a Simple and flexible 
 Just like PharoJS, ChartJS open-source and distributed via GitHub under a MIT License.
 "
 Class {
-	#name : #PjES5vsES6BenchmarkChartsApp,
-	#superclass : #PjWebApplication,
+	#name : 'PjES5vsES6BenchmarkChartsApp',
+	#superclass : 'PjWebApplication',
 	#instVars : [
 		'chartsContainer'
 	],
-	#category : #'PharoJs-Examples-ChartJS'
+	#category : 'PharoJs-Examples-ChartJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ChartJS'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjES5vsES6BenchmarkChartsApp class >> appJsSubFolder [
 	<pharoJsSkip>
 	^ #js
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjES5vsES6BenchmarkChartsApp class >> bridgeClientClass [
 	<pharoJsSkip>
 	^ PjBridgeServedFileBasedBrowserBridgeClient
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6BenchmarkChartsApp >> chartCSVOLD: csvString yLabel: yAxisLabel title: titleString unit: unitString [
 
 	| csvData chartConfig es5Data es6Data es5DataLabel es6DataLabel p10Data p10DataLabel canvas |
@@ -58,7 +60,7 @@ PjES5vsES6BenchmarkChartsApp >> chartCSVOLD: csvString yLabel: yAxisLabel title:
 	self newChartIn: canvas config: chartConfig
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjES5vsES6BenchmarkChartsApp >> chartCSVString: csvString yLabel: yAxisLabel title: titleString unit: unitString [
 
 	| csvData chartFactoryClass |
@@ -71,7 +73,7 @@ PjES5vsES6BenchmarkChartsApp >> chartCSVString: csvString yLabel: yAxisLabel tit
 		unit: unitString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjES5vsES6BenchmarkChartsApp >> chartCsvFile: csvFileName label: label title: titleString unit: unitString [
 
 	(window fetch: csvFileName)
@@ -81,13 +83,13 @@ PjES5vsES6BenchmarkChartsApp >> chartCsvFile: csvFileName label: label title: ti
 		catch: [ :err | console log: err ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjES5vsES6BenchmarkChartsApp >> chartFactoryClassForCsvData: csvData [
 csvData last app = 'Pharo10' ifTrue: [^PjES5vsES6vsPharo10ChartJsFactory ]
 . ^PjES5vsES6ChartJsFactory 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjES5vsES6BenchmarkChartsApp >> dataFromCSV: csvString [
 
 	| csvParseResult |
@@ -97,7 +99,7 @@ PjES5vsES6BenchmarkChartsApp >> dataFromCSV: csvString [
 	^ csvParseResult data
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjES5vsES6BenchmarkChartsApp >> initialize [
 
 	super initialize.
@@ -125,7 +127,7 @@ PjES5vsES6BenchmarkChartsApp >> initialize [
 		unit: 'KB'
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6BenchmarkChartsApp >> withCsv: csvData initEs5: es5Data label: es5DataLabel es6: es6Data label: es6DataLabel unit: unitString pharo10: p10Data label: p10DataLabel [
 
 	| es5 es6 es5Label es6Label |

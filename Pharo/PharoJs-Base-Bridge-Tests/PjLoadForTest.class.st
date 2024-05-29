@@ -2,8 +2,8 @@
 I am a small, non-app class used in some interactive, manual, tests
 "
 Class {
-	#name : #PjLoadForTest,
-	#superclass : #Object,
+	#name : 'PjLoadForTest',
+	#superclass : 'Object',
 	#classVars : [
 		'X',
 		'Y',
@@ -12,16 +12,18 @@ Class {
 	#pools : [
 		'PjUniversalGlobals'
 	],
-	#category : #'PharoJs-Base-Bridge-Tests-Support'
+	#category : 'PharoJs-Base-Bridge-Tests-Support',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest class >> fortyTwo [
 
 	^ X ifNil: [ X := 42 ]
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest class >> initialize [
 
 	Y := 'Y original'.
@@ -29,52 +31,52 @@ PjLoadForTest class >> initialize [
 	X := nil
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest class >> literal [
 	<jsLiteralGenerator>
 	
 	^ 'abc','def'
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest class >> reset [
 	<pharoJsSkip>
 	
 	self initialize
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest class >> setupClassVars [
 
 	self classVarNames do: [ :key | 
 		self classVarNamed: key put: key , ' value' ]
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest class >> y [
 
 	^ Y
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest >> literal [
 	<jsLiteralGenerator>
 	^ 3 + 4
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest >> seventeen [
 
 	^ X
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest >> subtract: n [
 
 	^ X := X - n
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjLoadForTest >> z [
 
 	^ Z

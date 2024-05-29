@@ -1,22 +1,24 @@
 Class {
-	#name : #PjAliasTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#name : 'PjAliasTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjAliasTest >> loadClass: aClass [
 	self bridge loadClass: aClass
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAliasTest >> setUp [
 
 	super setUp.
 	self bridge loadClass: PjClassForTranspilationTest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testAlias2Methods0Arg [
 
 	self
@@ -27,7 +29,7 @@ PjAliasTest >> testAlias2Methods0Arg [
 		evaluatesTo: 42
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testAliasMethod0Args [
 
 	self assert:	 [ PjClassForTranspilationTest new aliasCaller ] evaluatesTo: 42.
@@ -36,14 +38,14 @@ PjAliasTest >> testAliasMethod0Args [
 	self assert:	 [ PjClassForTranspilationTest new aliasSpecialName ] evaluatesTo: 42.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testAliasMethod1Arg [
 
 	self assert:	 [ PjClassForTranspilationTest new alias1Caller: 41 ] evaluatesTo: 42.
 	self assert:	 [ PjClassForTranspilationTest new alias1: 41 ] evaluatesTo: 42
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testClassMethod1AliasInExtensionClass [
 
 	self loadClass: PjExtensionClassForAliasTest.
@@ -51,7 +53,7 @@ PjAliasTest >> testClassMethod1AliasInExtensionClass [
 	self assert: [ Object js_classM1alias ] evaluatesTo: 'classM1'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testClassMethod2AliasesInExtensionClass [
 
 	self loadClass: PjExtensionClassForAliasTest.
@@ -60,7 +62,7 @@ PjAliasTest >> testClassMethod2AliasesInExtensionClass [
 	self assert: [ Object js_classM2alias2 ] evaluatesTo: 'classM2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testInstanceMethod1AliasInExtensionClass [
 
 	self loadClass: PjExtensionClassForAliasTest.
@@ -68,7 +70,7 @@ PjAliasTest >> testInstanceMethod1AliasInExtensionClass [
 	self assert: [ Object new js_m1alias ] evaluatesTo: 'instanceM1'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testInstanceMethod3AliasesInExtensionClass [
 
 	self loadClass: PjExtensionClassForAliasTest.
@@ -78,7 +80,7 @@ PjAliasTest >> testInstanceMethod3AliasesInExtensionClass [
 	self assert: [ Object new js_m2alias3 ] evaluatesTo: 'instanceM2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testTwoAliasPragma [
 
 	self
@@ -92,7 +94,7 @@ PjAliasTest >> testTwoAliasPragma [
 		evaluatesTo: 200
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAliasTest >> testTwoAliasPragmaExtension [
 
 	self loadClass: PjExtensionClassForAliasTest.

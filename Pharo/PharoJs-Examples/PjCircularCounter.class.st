@@ -1,51 +1,53 @@
 Class {
-	#name : #PjCircularCounter,
-	#superclass : #PjCounter,
+	#name : 'PjCircularCounter',
+	#superclass : 'PjCounter',
 	#instVars : [
 		'max'
 	],
-	#category : #'PharoJs-Examples-Counter'
+	#category : 'PharoJs-Examples-Counter',
+	#package : 'PharoJs-Examples',
+	#tag : 'Counter'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjCircularCounter class >> createDefaultInstance [
 
 	super createDefaultInstance.
 	^defaultInstance max: 3; yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjCircularCounter class >> max: maxValue [
 	^self new
 		max: maxValue;
 		yourself 
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PjCircularCounter >> defaultMax [
 	^999
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 PjCircularCounter >> increment [ 
 	self count = self max ifTrue: [ ^self count: 0 ].
 	super increment
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PjCircularCounter >> initialize [
 
 	super initialize.
 	self max: self defaultMax
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjCircularCounter >> max [
 
 	^ max
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjCircularCounter >> max: anObject [
 
 	max := anObject

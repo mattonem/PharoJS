@@ -3,15 +3,16 @@ I am the abstract superclass that all web-based PharoJS applications should exte
 
 "
 Class {
-	#name : #PjWebApplication,
-	#superclass : #PjDOMApplication,
+	#name : 'PjWebApplication',
+	#superclass : 'PjDOMApplication',
 	#pools : [
 		'PjBrowserGlobals'
 	],
-	#category : #'PharoJs-Base-App'
+	#category : 'PharoJs-Base-App',
+	#package : 'PharoJs-Base-App'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjWebApplication class >> isAbstract [
 
 	^ self = PjWebApplication
@@ -19,7 +20,7 @@ PjWebApplication class >> isAbstract [
 		  ifFalse: [ super isAbstract ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjWebApplication class >> whenJsReady: aBlock [
 	"The subscription to the load event is done in JS code only to allow running applications as pharo object. This is useful during development stages when all Pharo code runs on Pharo side, while a web browser provides JS objects."
 	<javascript: 'window.addEventListener("load", aBlock)'>

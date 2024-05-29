@@ -6,27 +6,29 @@ Express-based app. Requires the following node packages be installed in the fold
 
 "
 Class {
-	#name : #PjHelloWorldExpressApp,
-	#superclass : #PjExpressApp,
+	#name : 'PjHelloWorldExpressApp',
+	#superclass : 'PjExpressApp',
 	#instVars : [
 		'name'
 	],
-	#category : #'PharoJs-Examples-ExpressJS'
+	#category : 'PharoJs-Examples-ExpressJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjHelloWorldExpressApp class >> clientAppClasses [
 
 	<pharoJsSkip>
 	^{PjHelloWorldExpressClientApp }
 ]
 
-{ #category : #accessing }
-PjHelloWorldExpressApp class >> staticFilesFolderName [
+{ #category : 'accessing' }
+PjHelloWorldExpressApp class >> publicStaticFilesFolderName [
 	^'public'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjHelloWorldExpressApp >> greetings [
 
 	^ String streamContents: [ :str | 
@@ -38,7 +40,7 @@ PjHelloWorldExpressApp >> greetings [
 		  str << $! ]
 ]
 
-{ #category : #handlers }
+{ #category : 'handlers' }
 PjHelloWorldExpressApp >> handlePostNameRequest: req response: res [
 
 	"See 
@@ -49,7 +51,7 @@ PjHelloWorldExpressApp >> handlePostNameRequest: req response: res [
 	res send: self name
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjHelloWorldExpressApp >> initialize [
 
 	super initialize.
@@ -63,13 +65,13 @@ PjHelloWorldExpressApp >> initialize [
 		handler: [ :req :res | res send: self greetings ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjHelloWorldExpressApp >> name [
 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjHelloWorldExpressApp >> name: anObject [
 
 	name := anObject

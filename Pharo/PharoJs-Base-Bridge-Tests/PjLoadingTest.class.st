@@ -1,13 +1,15 @@
 Class {
-	#name : #PjLoadingTest,
-	#superclass : #PjBridgeTestCase,
+	#name : 'PjLoadingTest',
+	#superclass : 'PjBridgeTestCase',
 	#pools : [
 		'PjBrowserGlobals'
 	],
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjLoadingTest >> testEvalBlock [
 	PjLoadForTest reset.
 	self bridge evalBlock: [ window js_at: #valueForEvalTest put: 42 ].
@@ -45,14 +47,14 @@ PjLoadingTest >> testEvalBlock [
 		equals: 'Z value'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjLoadingTest >> testLiteralGeneration [
 
 	self assertEquivalent: [ PjLoadForTest literal ].
 	self assertEquivalent: [ PjLoadForTest new literal ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjLoadingTest >> testLoadClass [
 
 	PjLoadForTest reset.
@@ -68,7 +70,7 @@ PjLoadingTest >> testLoadClass [
 		equals: PjLoadForTest new seventeen
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjLoadingTest >> testLoadClassContents [
 
 	| first firstBlock second secondBlock className third pjPrefix|

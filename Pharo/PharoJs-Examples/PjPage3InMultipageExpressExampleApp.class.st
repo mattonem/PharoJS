@@ -1,10 +1,12 @@
 Class {
-	#name : #PjPage3InMultipageExpressExampleApp,
-	#superclass : #PjMultipageExpressClientExampleApp,
-	#category : #'PharoJs-Examples-ExpressJS'
+	#name : 'PjPage3InMultipageExpressExampleApp',
+	#superclass : 'PjMultipageExpressClientExampleApp',
+	#category : 'PharoJs-Examples-ExpressJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 PjPage3InMultipageExpressExampleApp class >> defaultAppFolderName [
 
 	<pharoJsSkip>

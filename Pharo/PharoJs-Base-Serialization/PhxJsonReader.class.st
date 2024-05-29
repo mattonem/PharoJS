@@ -2,15 +2,17 @@
 A JSON Reader - to read an object from JSON format
 "
 Class {
-	#name : #PhxJsonReader,
-	#superclass : #PjDomController,
+	#name : 'PhxJsonReader',
+	#superclass : 'PjDomController',
 	#instVars : [
 		'knownObjects'
 	],
-	#category : #'PharoJs-Base-Serialization-Core'
+	#category : 'PharoJs-Base-Serialization-Core',
+	#package : 'PharoJs-Base-Serialization',
+	#tag : 'Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PhxJsonReader class >> materializeJsonString: aString [
 	<javascript: 'return JSON.parse(aString)'>
 	"returns a javascript object in js world"
@@ -19,24 +21,24 @@ PhxJsonReader class >> materializeJsonString: aString [
 	^ STONJSON fromString: aString readStream
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PhxJsonReader class >> readFromJsObjectOrDictionary: jsObjectOrDictionary [
 
 	^ self new readFromJsObjectOrDictionary: jsObjectOrDictionary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PhxJsonReader class >> readFromString: aString [
 
 	^ self readFromJsObjectOrDictionary: (self materializeJsonString: aString)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PhxJsonReader >> addKnownObject: anObject [
 	^knownObjects add: anObject
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PhxJsonReader >> classNameForJsonClassName: jsonClassName [
 	<javascript:
 		'if(jsonClassName == "DateAndTime") { return "Date"}
@@ -48,12 +50,12 @@ return jsonClassName;'>
 	^ jsonClassName
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PhxJsonReader >> initialize [
 	knownObjects := OrderedCollection new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PhxJsonReader >> readFromJsObjectOrDictionary: jsonObject [
 	| jsonClassName |
 	jsonObject ifNil: [ ^ nil ].

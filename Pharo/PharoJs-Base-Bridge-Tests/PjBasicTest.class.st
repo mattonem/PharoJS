@@ -1,10 +1,12 @@
 Class {
-	#name : #PjBasicTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#name : 'PjBasicTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testBasicEquality [
 
 	self assertBlock: [ 312 ] equalsBlock: [ 312 ].
@@ -14,9 +16,10 @@ PjBasicTest >> testBasicEquality [
 	self denyBlock: [ 'one two three' ] equalsBlock: [ 'one three' ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testBooleanEquality [
 
+	| stringVar booleanVar |
 	self assertBlock: [ true = true ].
 	self assertBlock: [
 		| boolean otherValue |
@@ -60,6 +63,15 @@ PjBasicTest >> testBooleanEquality [
 		boolean := true.
 		otherValue := #Person.
 		boolean = otherValue ].
+	stringVar := #someString.
+	booleanVar := true.
+	self
+		denyBlock: [
+			booleanVar = stringVar ].
+	booleanVar := false.
+	self
+		denyBlock: [
+			booleanVar = stringVar ].
 	self denyBlock: [ false = nil ].
 	self denyBlock: [
 		| boolean otherValue |
@@ -81,9 +93,10 @@ PjBasicTest >> testBooleanEquality [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testBooleanInequality [
 
+	| stringVar booleanVar |
 	self denyBlock: [ true ~= true ].
 	self denyBlock: [
 		| boolean otherValue |
@@ -121,7 +134,16 @@ PjBasicTest >> testBooleanInequality [
 		boolean := true.
 		otherValue := #Person.
 		otherValue = boolean ].
-	self denyBlock: [ false = nil ].
+	stringVar := #someString.
+	booleanVar := true.
+	self
+		assertBlock: [
+			booleanVar ~= stringVar ].
+	booleanVar := false.
+	self
+		assertBlock: [
+			booleanVar ~= stringVar ].
+	self assertBlock: [ false ~= nil ].
 	self denyBlock: [
 		| boolean otherValue |
 		boolean := false.
@@ -135,7 +157,7 @@ PjBasicTest >> testBooleanInequality [
 		otherValue ~= boolean ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testBooleanMethods [
 
 	self assertEquivalent: [ true asBit ].
@@ -158,7 +180,7 @@ PjBasicTest >> testBooleanMethods [
 		exceptionSignaled ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testCallingNewOnAJsConstructorViaFullProxy [
 
 	| o1 o2 |
@@ -188,7 +210,7 @@ PjBasicTest >> testCallingNewOnAJsConstructorViaFullProxy [
 	self assert: o2 z equals: 99
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testClosedBlocks [
 	<expectedFailure>
 	
@@ -200,7 +222,7 @@ PjBasicTest >> testClosedBlocks [
 	self assertEquivalent: [ x + 39 ] asClosedBlock
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testClosure [
 
 	self assertEquivalent: [| tot coll |
@@ -212,13 +234,13 @@ PjBasicTest >> testClosure [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testDifferentIdentities [
 
 	self assertEquivalent: [false ~~ true].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testEqualityAndDifferenceWithNil [
 
 	self assertEquivalent: [ 0 = nil ].
@@ -227,7 +249,7 @@ PjBasicTest >> testEqualityAndDifferenceWithNil [
 	self assertEquivalent: [ nil ~= 0 ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testEvalResult [
 
 	self checkBasic: 42.
@@ -243,7 +265,7 @@ PjBasicTest >> testEvalResult [
 		raise: PjJavascriptError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testExceptionHandling [
 
 	self assert: [|exceptionSignaled|
@@ -258,7 +280,7 @@ PjBasicTest >> testExceptionHandling [
 	  evaluatesTo: false.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testHash [
 
 	self assertEquivalent: [nil hash].
@@ -271,13 +293,13 @@ PjBasicTest >> testHash [
 	self assertEquivalent: [|x y| x:= Object new. y:= Object new. x hash ~= y hash].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testIdentity [
 
 	self assertEquivalent: [ false == false ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testIfNilIfNotNil [
 
 	self assertEquivalent: [ nil ifNil: [ 1 ] ].
@@ -292,7 +314,7 @@ PjBasicTest >> testIfNilIfNotNil [
 		evaluatesTo: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testIfTrueIfFalse [
 
 	self assertEquivalent: [ true ifTrue: [1] ] .
@@ -305,7 +327,7 @@ PjBasicTest >> testIfTrueIfFalse [
 	self assertEquivalent: [ false ifFalse: [2] ifTrue: [1] ] 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testJsGlobalAccess [
 
 	self
@@ -314,7 +336,7 @@ PjBasicTest >> testJsGlobalAccess [
 	self assert: (self bridge evalBlock: [ Object ]) equals: (self bridge jsGlobalAt: #Object)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testMethodsForBitManipulation [
 
 	self assertEquivalent: [ -257 bitShift: -4 ].
@@ -338,7 +360,7 @@ PjBasicTest >> testMethodsForBitManipulation [
 	self assertEquivalent: [ -12300000 lowBit ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testMethodsForNumbers [
 
 	self assertEquivalent: [ -3 abs ].
@@ -351,7 +373,7 @@ PjBasicTest >> testMethodsForNumbers [
 	self assertEquivalent: [ 1.78 radiansToDegrees ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testMultilineConstants [
 
 	self assertEquivalent: [ 
@@ -360,7 +382,7 @@ PjBasicTest >> testMultilineConstants [
 	self assertEquivalent: [ #( 1 2 3 4 5 6 ) size ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testNilEquality [
 
 	self assertBlock: [ nil = nil ].
@@ -389,7 +411,7 @@ PjBasicTest >> testNilEquality [
 		var1 = var2 ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testNilInequality [
 
 	self denyBlock: [ nil ~= nil ].
@@ -417,7 +439,7 @@ PjBasicTest >> testNilInequality [
 		var1 ~= var2 ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testNumber [
 
 	| x |
@@ -445,21 +467,21 @@ PjBasicTest >> testNumber [
 	self assertEquivalent: [ (x * x * 0) isNaN ]. " NaN "
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testResettingTheApp [
 
 	self resetApp.
 	self assert: app identicalTo: self currentApp.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testResettingTheClient [
 
 	self bridge resetClient.
 	self assert: self bridge isConnected
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testSignalingExceptionFromJavaScript [
 
 	self
@@ -469,7 +491,7 @@ PjBasicTest >> testSignalingExceptionFromJavaScript [
 		raise: PjJavascriptError
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testSimpleMathOperations [
 
 	self assertEquivalent: [ 1+2 ].
@@ -483,7 +505,7 @@ PjBasicTest >> testSimpleMathOperations [
 	self assertEquivalent: [ (3 * 4) even ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testTimesRepeat [
 
 	self
@@ -493,7 +515,7 @@ PjBasicTest >> testTimesRepeat [
 			counter].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testToDoBy [
 
 	self assertEquivalent: [ 
@@ -513,7 +535,7 @@ PjBasicTest >> testToDoBy [
 		tot ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testUnicode [
 
 	self assert: $€ asJSON equals: '"\u20AC"'.
@@ -521,19 +543,19 @@ PjBasicTest >> testUnicode [
 	self checkBasic: 'ab€cd'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testValueBlock0Arg [
 
 	self assertEquivalent: [ [1+2] value ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testValueBlock1Arg [
 
 	self assertEquivalent: [ [ : x | x + 2] value: 1 ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicTest >> testValues [
 
 	self assertEquivalent: [ 42 value ].

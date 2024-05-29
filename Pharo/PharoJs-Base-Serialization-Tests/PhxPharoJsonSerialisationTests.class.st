@@ -1,10 +1,11 @@
 Class {
-	#name : #PhxPharoJsonSerialisationTests,
-	#superclass : #TestCase,
-	#category : #'PharoJs-Base-Serialization-Tests'
+	#name : 'PhxPharoJsonSerialisationTests',
+	#superclass : 'TestCase',
+	#category : 'PharoJs-Base-Serialization-Tests',
+	#package : 'PharoJs-Base-Serialization-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxPharoJsonSerialisationTests >> testArraysCircularReferences [
 	| cClone aClone bClone a b c |
 	a := {'A'. nil. nil. nil}.
@@ -27,7 +28,7 @@ PhxPharoJsonSerialisationTests >> testArraysCircularReferences [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxPharoJsonSerialisationTests >> testDictionariesReferencingEachOther [
 	| cClone bClone aInBClone aInCClone  a b c |
 	a := Dictionary new.
@@ -54,7 +55,7 @@ PhxPharoJsonSerialisationTests >> testDictionariesReferencingEachOther [
 	self assert: aInBClone identicalTo: aInCClone.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxPharoJsonSerialisationTests >> testDictionariesWithCircularReferences [
 	| cClone aClone bClone  a b c |
 	a := Dictionary new.
@@ -80,7 +81,7 @@ PhxPharoJsonSerialisationTests >> testDictionariesWithCircularReferences [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxPharoJsonSerialisationTests >> testOrderedCollectionsCircularReferences [
 	| cClone aClone bClone a b c |
 	a := #('A') asOrderedCollection.
@@ -103,7 +104,7 @@ PhxPharoJsonSerialisationTests >> testOrderedCollectionsCircularReferences [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxPharoJsonSerialisationTests >> testProperInstRefOrderWhenUsingCollections [
 	| obj problemObject string |
 	obj := Object new.
@@ -113,7 +114,7 @@ PhxPharoJsonSerialisationTests >> testProperInstRefOrderWhenUsingCollections [
 	self shouldnt: [ PhxJsonReader readFromString: string ] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxPharoJsonSerialisationTests >> testSetsCircularReferences [
 	<expectedFailure>
 	| cClone aClone bClone  a b c |
@@ -137,7 +138,7 @@ PhxPharoJsonSerialisationTests >> testSetsCircularReferences [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxPharoJsonSerialisationTests >> testSetsReferencingEachOther [
 
 	| cClone bClone a b c aInBClone aInCClone |

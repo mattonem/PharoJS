@@ -1,10 +1,12 @@
 Class {
-	#name : #PjInfrastructureTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#name : 'PjInfrastructureTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testAccessorForClass [
 
 	| a jsObject |
@@ -16,7 +18,7 @@ PjInfrastructureTest >> testAccessorForClass [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testAccessorForInheritedPropertyWithNilNilValue [
 
 	| a b xValue otherXValue |
@@ -36,7 +38,7 @@ PjInfrastructureTest >> testAccessorForInheritedPropertyWithNilNilValue [
 	self assert: a xXx equals: otherXValue
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testAccessorInstalledOnClass [
 
 	| a b |
@@ -50,7 +52,7 @@ PjInfrastructureTest >> testAccessorInstalledOnClass [
 		[ a y: 444 ] } do: [ :aBlock | self should: aBlock raise: Error ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testAccessorInstalledOnObject [
 
 	| a b |
@@ -69,7 +71,7 @@ PjInfrastructureTest >> testAccessorInstalledOnObject [
 		[ a y: 444 ] } do: [ :aBlock | self should: aBlock raise: Error ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testAccessorInstalledOnPrototype [
 	"JS classes have a property named #prototype which references an object that acts as prototype for other instances. The prototype owns all instance methods."
 	| a b |
@@ -87,13 +89,13 @@ PjInfrastructureTest >> testAccessorInstalledOnPrototype [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testBridgePort [
 
 	self assert: self bridge port equals: self bridge server port
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testBugDnuInstallsSetterInsteadOfGetter [
 
 	self assertBlock: [
@@ -105,14 +107,14 @@ PjInfrastructureTest >> testBugDnuInstallsSetterInsteadOfGetter [
 			 o someProp = 10 ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testCallGetsTrampolined [
 
 	self assert: (self bridge evalBlock: [ 
 			 nil ~= (document getElementsByTagName: 'script') ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testDNUInstallsAGetterAndNotASetter [
     self assert: (self bridge evalBlock: [
              | obj |
@@ -124,7 +126,7 @@ PjInfrastructureTest >> testDNUInstallsAGetterAndNotASetter [
              obj someProp = 10 ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testDNUSetup [
 
 	| prefix |
@@ -145,13 +147,13 @@ PjInfrastructureTest >> testDNUSetup [
 				evalJavascript: 'HTMLDocument.prototype.', prefix, 'children === document.', prefix, 'children')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testGetterGetsTrampolined [
 
 	self assert: (self bridge evalBlock: [ document body ~= nil ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testIs [
 
 	self assertEquivalent: [ Object isBlock ].
@@ -164,7 +166,7 @@ PjInfrastructureTest >> testIs [
 	self assertEquivalent: [ Object isClass ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testJSSelector [
 
 	|prefix|
@@ -178,7 +180,7 @@ PjInfrastructureTest >> testJSSelector [
 	self assert: [PjCore makePharoJsSelector: #'$foo:'] evaluatesTo: prefix, '$foo_'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testOpenUrlWithParameters [
 
 	| clientUrl |
@@ -193,7 +195,7 @@ PjInfrastructureTest >> testOpenUrlWithParameters [
 	self assert: location search equals: '?paramA=valueA&paramB=valueB'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testSTSelector [
 
 	self assert: [ PjCore makeSmalltalkSelector: #foo ] evaluatesTo: 'foo'.
@@ -204,7 +206,7 @@ PjInfrastructureTest >> testSTSelector [
 	self assert: [ PjCore makeSmalltalkSelector: PjCore pharoJsSelectorPrefix, 'foo_' ] evaluatesTo: 'foo:'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testSetterGetsTrampolined [
 
 	self bridge evalBlock: [ document js_at: 'foo' put: 17 ].
@@ -212,7 +214,7 @@ PjInfrastructureTest >> testSetterGetsTrampolined [
 	self assert: (self bridge evalBlock: [ document foo = 42 ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInfrastructureTest >> testValueNonInterference [
 
 	self addToDOM: '<input id="theInput" type="text" value="Name:">'.

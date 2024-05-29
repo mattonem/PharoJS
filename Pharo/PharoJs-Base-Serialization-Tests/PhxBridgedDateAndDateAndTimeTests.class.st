@@ -1,10 +1,11 @@
 Class {
-	#name : #PhxBridgedDateAndDateAndTimeTests,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Serialization-Tests'
+	#name : 'PhxBridgedDateAndDateAndTimeTests',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Serialization-Tests',
+	#package : 'PharoJs-Base-Serialization-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedDateAndDateAndTimeTests >> testDateAndTimeNowEquivalence [
 	| pharoTs jsTsString jsTs |
 	pharoTs := DateAndTime now.
@@ -14,7 +15,7 @@ PhxBridgedDateAndDateAndTimeTests >> testDateAndTimeNowEquivalence [
 	self assert: (pharoTs asUTC asSeconds - jsTs asSeconds) abs < 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedDateAndDateAndTimeTests >> testDateAndTimePhxJsonAlwaysUTC [
 	| jsTs phxJson pharoTs pharoTs2 |
 	pharoTs := PhxJsonReader
@@ -32,7 +33,7 @@ PhxBridgedDateAndDateAndTimeTests >> testDateAndTimePhxJsonAlwaysUTC [
 	self assert: jsTs offset isZero
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedDateAndDateAndTimeTests >> testDateAndTimeRefCountWhileMaterializing [
 
 	| phxJson |

@@ -2,68 +2,70 @@
 It is important to have the behavior at the class side because the transpiler relies on the AST global node for classes.
 "
 Class {
-	#name : #PjAppWrapperForRunningInPharo,
-	#superclass : #Object,
+	#name : 'PjAppWrapperForRunningInPharo',
+	#superclass : 'Object',
 	#classInstVars : [
 		'currentAppClass'
 	],
-	#category : #'PharoJs-TestFramework-Kernel'
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #description }
+{ #category : 'description' }
 PjAppWrapperForRunningInPharo class >> appClass [
 	<pharoJsSkip>
 	^self
 ]
 
-{ #category : #description }
+{ #category : 'description' }
 PjAppWrapperForRunningInPharo class >> appClasses [
 	<pharoJsSkip>
 	^currentAppClass appClasses copyWithout: currentAppClass.
 ]
 
-{ #category : #description }
+{ #category : 'description' }
 PjAppWrapperForRunningInPharo class >> appLaunchBlock [
 	<pharoJsSkip>
 	^[]
 ]
 
-{ #category : #description }
+{ #category : 'description' }
 PjAppWrapperForRunningInPharo class >> appPackages [
 	<pharoJsSkip>
 	^#()
 ]
 
-{ #category : #'bridge handling' }
+{ #category : 'bridge handling' }
 PjAppWrapperForRunningInPharo class >> bridge [
 	<pharoJsSkip>
 	^ PjBridge bridgeForAppClass: self
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 PjAppWrapperForRunningInPharo class >> doesNotUnderstand: aMessage [
 	<pharoJsSkip>
 	^aMessage sendTo: currentAppClass
 ]
 
-{ #category : #'bridge handling' }
+{ #category : 'bridge handling' }
 PjAppWrapperForRunningInPharo class >> newBridgeClient [
 	<pharoJsSkip>
 	^self bridgeClientClass newWithAppClass: self
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PjAppWrapperForRunningInPharo class >> on: appClass [
 	<pharoJsSkip>
 	currentAppClass := appClass
 ]
 
-{ #category : #'start-stop' }
+{ #category : 'start-stop' }
 PjAppWrapperForRunningInPharo class >> start [
 	^self
 ]
 
-{ #category : #'start-stop' }
+{ #category : 'start-stop' }
 PjAppWrapperForRunningInPharo class >> stop [
 	^self
 ]

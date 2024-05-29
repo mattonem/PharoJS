@@ -1,10 +1,11 @@
 Class {
-	#name : #PhxBridgedJsonSerialisationTests,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Serialization-Tests'
+	#name : 'PhxBridgedJsonSerialisationTests',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Serialization-Tests',
+	#package : 'PharoJs-Base-Serialization-Tests'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 PhxBridgedJsonSerialisationTests >> assertAllWithInstantiationBlock: aBlock literal: jsonString testEq: testEq test4Stages: test4Stages [
 
 	| instanceProxy |
@@ -19,7 +20,7 @@ PhxBridgedJsonSerialisationTests >> assertAllWithInstantiationBlock: aBlock lite
 		self isEqualAfter4StageMarshalingInBothWorlds: aBlock ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PhxBridgedJsonSerialisationTests >> isEqualAfter4StageMarshalingInBothWorlds: aBlock [
 
 	| jsonStringOfObject objectProxy serializedInJsWorld materializedObjectSmalltalk serializedInSmalltalkWorld stringifiedAfterMaterializedInJsWorld |
@@ -40,7 +41,7 @@ PhxBridgedJsonSerialisationTests >> isEqualAfter4StageMarshalingInBothWorlds: aB
 		equals: jsonStringOfObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PhxBridgedJsonSerialisationTests >> isEqualAfterWriteReadInJs: aBlock [
 
 	| jsonStringAfterWriteRead jsonStringOfObject instanceProxy instanceJsonInJsWorld |
@@ -56,7 +57,7 @@ PhxBridgedJsonSerialisationTests >> isEqualAfterWriteReadInJs: aBlock [
 	self assert: jsonStringAfterWriteRead equals: jsonStringOfObject
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeArray [
 	self
 		assertAllWithInstantiationBlock:  [{}]  
@@ -65,7 +66,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeArray [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeAssociations [
 	self
 		assertAllWithInstantiationBlock: [{ 'een' -> 1. 'twee' -> 2 }  ]
@@ -74,7 +75,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeAssociations [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeBoolean [
 	self
 		assertAllWithInstantiationBlock: [ true  ]
@@ -88,7 +89,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeBoolean [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeChallengingObject [
 	self
 		assertAllWithInstantiationBlock: [ PhxJsonTestResources challingingObjectAvoidingDateAndTime  ]
@@ -97,7 +98,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeChallengingObject [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeDate [
 	<expectedFailure>
 	self fail: #ToDo.
@@ -116,7 +117,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeDate [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeDateAndTime [
 	<expectedFailure>
 	self fail: #ToDo.
@@ -135,8 +136,14 @@ PhxBridgedJsonSerialisationTests >> testSerializeDateAndTime [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeDictionary [
+	self
+		assertAllWithInstantiationBlock: [
+			Dictionary new.]
+		literal: '{"class":"Dictionary","instance":{}}'
+		testEq: false "#assertEquivalent: doesn't work for this type of object"
+		test4Stages: true.	
 	self
 		assertAllWithInstantiationBlock: [ | d |
 			d := Dictionary new.
@@ -148,7 +155,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeDictionary [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeDifferentObjectGraphs [
 
 	| jsString pharoString |
@@ -168,7 +175,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeDifferentObjectGraphs [
 			raise: Exception ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeEmptyObject [
 	self
 		assertAllWithInstantiationBlock: [ Object new  ]
@@ -177,7 +184,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeEmptyObject [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeIdentityDictionary1Entry [
 
 	self
@@ -200,7 +207,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeIdentityDictionary1Entry [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeIdentityDictionary2Entries [
 	"Entries in a dictionary are unordered. So, serialization may result into different valid results."
 	| serializationBlock validSerializationStrings jsSerialization pharoSerialization |
@@ -219,7 +226,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeIdentityDictionary2Entries [
 	]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeInstRefs [
 	"objects should be checked by identity!!!"
 
@@ -235,7 +242,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeInstRefs [
 			a} asPhxJsonString ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeInstRefsAvoidWhenDifferentInstances [
 	"objects should be checked by identity!!!"
 
@@ -249,7 +256,33 @@ PhxBridgedJsonSerialisationTests >> testSerializeInstRefsAvoidWhenDifferentInsta
 			{}} asPhxJsonString ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
+PhxBridgedJsonSerialisationTests >> testSerializeNestedDictionary [
+	self
+		assertAllWithInstantiationBlock: [ | d |
+			d := Dictionary new.
+			d at: 'a' put: 'abc'.
+			d at: 'b' put: Dictionary new.
+			d ]
+		literal: '{"class":"Dictionary","instance":{"a":"abc","b":{"class":"Dictionary","instance":{}}}}'
+		testEq: false "#assertEquivalent: doesn't work for this type of object"
+		test4Stages: true.
+	self
+		assertAllWithInstantiationBlock: [ | d1 d2 |
+			d2 := Dictionary new.
+			d2 at: #x put: 42.
+			d2 at: #y put: #(1 2 3).
+			d2 at: #z put: Dictionary new.
+			d1 := Dictionary new.
+			d1 at: 'a' put: 'abc'.
+			d1 at: 'b' put: d2.
+			d1 ]
+		literal: '{"class":"Dictionary","instance":{"a":"abc","b":{"class":"Dictionary","instance":{"x":42,"y":{"class":"Array","instance":[1,2,3]},"z":{"class":"Dictionary","instance":{}}}}}}'
+		testEq: false "#assertEquivalent: doesn't work for this type of object"
+		test4Stages: true
+]
+
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeNil [
 	self
 		assertAllWithInstantiationBlock: [ nil  ]
@@ -258,7 +291,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeNil [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeNumber [
 	self
 		assertAllWithInstantiationBlock: [ 123456789  ]
@@ -272,7 +305,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeNumber [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeOrderedCollection [
 	"On js side, OrderedCollection does not exist!!! "
 	"Auto transpiled to Array."
@@ -284,7 +317,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeOrderedCollection [
 		test4Stages: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeOrderedCollectionInPharoMatrializeInJs [
 
 	| originalCollection serializationString materializedCollection |
@@ -297,7 +330,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeOrderedCollectionInPharoMatrial
 		self assert: (materializedCollection at: index) equals: each ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeSet [
 
 	self
@@ -307,7 +340,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeSet [
 		test4Stages: true 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxBridgedJsonSerialisationTests >> testSerializeString [
 	self
 		assertAllWithInstantiationBlock: [ PhxJsonTestResources challengingStringRequiringUnicodeAndEscapement

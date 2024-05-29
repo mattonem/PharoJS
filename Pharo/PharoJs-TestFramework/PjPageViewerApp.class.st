@@ -3,15 +3,17 @@ Support multipage testing (see PjMultipageExpressClientAppTest). Opens URLs in a
 This viewer is needed when navigating between different pages, the web browser forbides closing a window by a script different from the initial one that opens the window in the first place.
 "
 Class {
-	#name : #PjPageViewerApp,
-	#superclass : #PjWebApplication,
+	#name : 'PjPageViewerApp',
+	#superclass : 'PjWebApplication',
 	#instVars : [
 		'frame'
 	],
-	#category : #'PharoJs-TestFramework-Kernel'
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjPageViewerApp >> initialize [
 
 	| firstElement |
@@ -22,7 +24,7 @@ PjPageViewerApp >> initialize [
 	document body insertBefore: frame existingNode: firstElement
 ]
 
-{ #category : #'page viewing' }
+{ #category : 'page viewing' }
 PjPageViewerApp >> open: url [
 
 	frame src: url

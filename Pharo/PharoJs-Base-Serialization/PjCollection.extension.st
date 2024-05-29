@@ -1,6 +1,6 @@
-Extension { #name : #PjCollection }
+Extension { #name : 'PjCollection' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjCollection >> writePhxJsonRepresentationOn: w [
 	w
 		doBetweenSquareBrackets: [ self

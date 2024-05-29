@@ -1,20 +1,22 @@
 Class {
-	#name : #PjHtmlGeneratingCounterApp,
-	#superclass : #PjFileBasedWebApp,
+	#name : 'PjHtmlGeneratingCounterApp',
+	#superclass : 'PjFileBasedWebApp',
 	#instVars : [
 		'count',
 		'countDisplay'
 	],
-	#category : #'PharoJs-Examples-Counter'
+	#category : 'PharoJs-Examples-Counter',
+	#package : 'PharoJs-Examples',
+	#tag : 'Counter'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjHtmlGeneratingCounterApp class >> pharoJsSelectorPrefix [
 	<pharoJsSkip>
 	^  '_'
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjHtmlGeneratingCounterApp >> buttonsSharedCss [
 	^ {
 	#border -> 'none'.
@@ -25,7 +27,7 @@ PjHtmlGeneratingCounterApp >> buttonsSharedCss [
 	#fontSize -> '16px'}
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjHtmlGeneratingCounterApp >> containerCss [
 	^ {
 	#width -> '100%'.
@@ -35,18 +37,18 @@ PjHtmlGeneratingCounterApp >> containerCss [
 	#boxSizing -> 'border-box'}
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjHtmlGeneratingCounterApp >> count [
 	^ count
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjHtmlGeneratingCounterApp >> count: newCount [
 	count := newCount.
 	countDisplay innerHTML: newCount
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjHtmlGeneratingCounterApp >> initialize [
 	| container incrementButton decrementButton |
 	super initialize.

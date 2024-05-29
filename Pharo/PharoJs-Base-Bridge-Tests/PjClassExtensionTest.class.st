@@ -1,10 +1,12 @@
 Class {
-	#name : #PjClassExtensionTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#name : 'PjClassExtensionTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTest >> setUp [
 
 	super setUp.
@@ -15,7 +17,7 @@ PjClassExtensionTest >> setUp [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTest >> testClassMessageToSuper [
 
 	self
@@ -23,7 +25,7 @@ PjClassExtensionTest >> testClassMessageToSuper [
 		evaluatesTo: 'Ultimate Answer'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTest >> testClassMethodAlias [
 
 	self
@@ -31,7 +33,7 @@ PjClassExtensionTest >> testClassMethodAlias [
 		evaluatesTo: 'Ultimate Answer'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTest >> testEmptyClassExtension [
 
 	self bridge loadClass: PjEmptyClassExtensionOfASuperClass.
@@ -39,13 +41,13 @@ PjClassExtensionTest >> testEmptyClassExtension [
 	self assertEquivalent: [ PjASuperClass new someNumber ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTest >> testInstanceMessageToSuper [
 
 	self assert: [ PjBSubClassOfA new someNumber ] evaluatesTo: 42
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTest >> testInstanceMethodAlias [
 
 	self assert: [ PjBSubClassOfA new someNumberAlias ] evaluatesTo: 42

@@ -1,6 +1,6 @@
-Extension { #name : #PjDate }
+Extension { #name : 'PjDate' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjDate class >> instantiateWithPhxJsonReader: reader instanceJsonObject: str [
 	"<javascript:
 		'  var y = str.substr(0,4),
@@ -11,17 +11,17 @@ PjDate class >> instantiateWithPhxJsonReader: reader instanceJsonObject: str [
 	<javascript: 'return new Date(str);'>
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjDate class >> phxJsonClassName [
 	^ 'DateAndTime'
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjDate >> writePhxJsonRepresentationOn: w [
 	w writeQuoted: "self yyyymmdd" self toISOString "toString"
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjDate >> yyyymmdd [
 	<javascript: ' var d = new Date(this),
         month = "" + (d.getMonth() + 1),

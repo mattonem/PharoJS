@@ -4,8 +4,8 @@ I am the class that all PharoJS applications should extend.
 I contain methods that DOM (Browser and PhoneGap) and NodeJS applications have in common.
 "
 Class {
-	#name : #PjApplication,
-	#superclass : #Object,
+	#name : 'PjApplication',
+	#superclass : 'Object',
 	#pools : [
 		'PjUniversalGlobals'
 	],
@@ -16,24 +16,25 @@ Class {
 		'status',
 		'exportVersion'
 	],
-	#category : #'PharoJs-Base-App'
+	#category : 'PharoJs-Base-App',
+	#package : 'PharoJs-Base-App'
 }
 
-{ #category : #'accessing - description' }
+{ #category : 'accessing - description' }
 PjApplication class >> appClass [
 	<pharoJsSkip>
 	
 	^ self
 ]
 
-{ #category : #'accessing - description' }
+{ #category : 'accessing - description' }
 PjApplication class >> appClasses [
 	<pharoJsSkip>
 
 	^ self appClass withAllSuperclasses
 ]
 
-{ #category : #'accessing - description' }
+{ #category : 'accessing - description' }
 PjApplication class >> appLaunchBlock [
 	<pharoJsSkip>
 
@@ -42,20 +43,20 @@ PjApplication class >> appLaunchBlock [
 	^[ appClass start ] asClosedBlock
 ]
 
-{ #category : #'accessing - description' }
+{ #category : 'accessing - description' }
 PjApplication class >> appPackages [
 	<pharoJsSkip>
 	
 	^ Set new
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjApplication class >> currentInstance [
 
 	^ currentInstance
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjApplication class >> ensureRequiredPackagesInstalled [
 
 	<pharoJsSkip>
@@ -74,14 +75,14 @@ PjApplication class >> ensureRequiredPackagesInstalled [
 				<< $; ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjApplication class >> headerLine [
 	<pharoJsSkip>
 	
 	^ nil
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjApplication class >> inAppFolderRunCommandLine: aBlock [
 
 	<pharoJsSkip>
@@ -95,46 +96,46 @@ PjApplication class >> inAppFolderRunCommandLine: aBlock [
 	LibC system: commandLine
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjApplication class >> isPackageInitialized [
 
 	^ (self packageJsonFile ) exists
 
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjApplication class >> modulesFolder [
 
 	<pharoJsSkip>
 	^ self appFullJsFolderPath / self modulesFolderName
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjApplication class >> modulesFolderName [
 	^'node_modules'
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjApplication class >> npmPackageNames [
 
 	<pharoJsSkip>
 	^#()
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjApplication class >> packageJsonFile [
 
 	^ (self appFullJsFolderPath / 'package.json')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjApplication class >> pharoJsSelectorPrefix [
 	<pharoJsSkip>
 	
 	^ 'pj_'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjApplication class >> resetCurrentInstance [
 	<script>
 	
@@ -142,28 +143,28 @@ PjApplication class >> resetCurrentInstance [
 	currentInstance := nil
 ]
 
-{ #category : #'accessing - description' }
+{ #category : 'accessing - description' }
 PjApplication class >> setupCode [
 	<pharoJsSkip>
 	
 	^ ''
 ]
 
-{ #category : #'start-stop application' }
+{ #category : 'start-stop application' }
 PjApplication class >> start [
 	<script>
 	
 	self whenJsReady: [ self startInstance ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjApplication class >> startInstance [
 	
 	self currentInstance ifNil: [ currentInstance := self new ].
 	self currentInstance start
 ]
 
-{ #category : #'start-stop application' }
+{ #category : 'start-stop application' }
 PjApplication class >> stop [
 	<script>
 	
@@ -171,27 +172,27 @@ PjApplication class >> stop [
 	self currentInstance stop
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjApplication class >> whenJsReady: aBlock [
 
 	self subclassResponsibility
 ]
 
-{ #category : #modules }
+{ #category : 'modules' }
 PjApplication >> modulesManager [
 	^PjNodeModulesManager default
 ]
 
-{ #category : #modules }
+{ #category : 'modules' }
 PjApplication >> require: aString [
 
 	^ self modulesManager require: aString
 ]
 
-{ #category : #'start-stop' }
+{ #category : 'start-stop' }
 PjApplication >> start [
 ]
 
-{ #category : #'start-stop' }
+{ #category : 'start-stop' }
 PjApplication >> stop [
 ]

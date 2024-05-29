@@ -5,11 +5,13 @@ This is useful for example for  test purpose. A subclass  can be defined for ena
 Another use is when defining variants of  the  same app, typically for experiment purpose.
 "
 Trait {
-	#name : #PjTAppFolderSharingSubclass,
-	#category : #'PharoJs-TestFramework-Kernel'
+	#name : 'PjTAppFolderSharingSubclass',
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 PjTAppFolderSharingSubclass classSide >> appFolder [
 	<pharoJsSkip>
 	^self superclass appFolder

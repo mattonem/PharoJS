@@ -1,13 +1,13 @@
-Extension { #name : #PjDOMApplication }
+Extension { #name : 'PjDOMApplication' }
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjDOMApplication class >> appFullHtmlFileName [
 	<pharoJsSkip>
 	
 	^self appFullHtmlFolderPath / self appHtmlFileName
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjDOMApplication class >> appFullHtmlFolderPath [
 
 	<pharoJsSkip>
@@ -15,7 +15,7 @@ PjDOMApplication class >> appFullHtmlFolderPath [
 	^ self ensureSubFolder: self appHtmlSubFolder in: self appFolder
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjDOMApplication class >> appFullJsFolderPath [
 
 	<pharoJsSkip>
@@ -23,13 +23,13 @@ PjDOMApplication class >> appFullJsFolderPath [
 	^self ensureSubFolder: self appJsSubFolder in: self appFullHtmlFolderPath
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjDOMApplication class >> appHtmlFileName [
 	<pharoJsSkip>
 	^ 'index.html'
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjDOMApplication class >> appHtmlSubFolder [
 	<pharoJsSkip>
 	"Subclass might return, e.g. 'www' if you want the html to be in the www sub-directory. 
@@ -37,7 +37,7 @@ PjDOMApplication class >> appHtmlSubFolder [
 	^ nil
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjDOMApplication class >> polyfill: aPolyfillClass withTranspiler: aTranspiler unlessIn: aSet [
 	<pharoJsSkip>
 	^ (super polyfill: aPolyfillClass withTranspiler: aTranspiler unlessIn: aSet) and: [

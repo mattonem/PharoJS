@@ -2,8 +2,8 @@
 I am a PjTranspiler where convertAllClasses: automatically includes any classes required by the given classes
 "
 Class {
-	#name : #PjDependentTranspiler,
-	#superclass : #PjTranspiler,
+	#name : 'PjDependentTranspiler',
+	#superclass : 'PjTranspiler',
 	#instVars : [
 		'convertedMethods',
 		'classesToConvert',
@@ -13,21 +13,23 @@ Class {
 		'alreadyVariablesDeclaredClasses',
 		'globalPools'
 	],
-	#category : #'PharoJs-Base-Exporter-Kernel'
+	#category : 'PharoJs-Base-Exporter-Kernel',
+	#package : 'PharoJs-Base-Exporter',
+	#tag : 'Kernel'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDependentTranspiler class >> lineEnding [
 	^Character lf
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDependentTranspiler >> addAlreadyDefinedClasses: classes [
 
 	alreadyDefinedClasses addAll: classes
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> addClassToConvert: aClass [
 
 	| addClass |
@@ -41,25 +43,25 @@ PjDependentTranspiler >> addClassToConvert: aClass [
 		classesToConvert add: addClass ]
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> addClassesToConvert: classes [
 
 	classes do: [ :aClass | self addClassToConvert: aClass ]
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 PjDependentTranspiler >> alreadyConvertedClasses: classes [
 
 	convertedClasses addAll: classes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDependentTranspiler >> beforeCodeOutputHook: aBlock [
 
 	super beforeCodeOutputHook: [ aBlock value: globalPools ]
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> convertAllClasses: classes [
 
 	| newClasses |
@@ -76,7 +78,7 @@ PjDependentTranspiler >> convertAllClasses: classes [
 	super convertAllClasses: newClasses
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> convertAndWriteClosedBlock: valuedBlock [
 
 	self convertAndWriteClosedBlock: valuedBlock with: [
@@ -84,13 +86,13 @@ PjDependentTranspiler >> convertAndWriteClosedBlock: valuedBlock [
 	]
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> convertClass: aClass [
 
 	self convertAllClasses: { aClass } writeDnu: self shouldWriteDnu
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> convertMethodAst: aMethod [
 	(self shouldSkipMethodNode: aMethod) ifTrue: [ ^self ].
 	^convertedMethods at: aMethod ifAbsentPut: [
@@ -99,7 +101,7 @@ PjDependentTranspiler >> convertMethodAst: aMethod [
 			convertAst: aMethod ast withPrimitive: aMethod primitive]
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> convertMethodAsts: aClass newClasses: newClasses [
 
 	(convertedClasses includes: aClass)
@@ -117,26 +119,26 @@ PjDependentTranspiler >> convertMethodAsts: aClass newClasses: newClasses [
 		do: [ :aMethod | self convertMethodAst: aMethod ]
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 PjDependentTranspiler >> discoveredGlobalsPool: aClass [
 
 	globalPools add: aClass
 ]
 
-{ #category : #loading }
+{ #category : 'loading' }
 PjDependentTranspiler >> discoveredReferenceToClass: aClass [
 
 	^ self addClassToConvert: aClass
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> generateCodeStringFrom: jsAst [
 
 	self convertAllClasses: classesToConvert.
 	super generateCodeStringFrom: jsAst
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> importMethodsAll: aCollection forClass: aClass [
 	| importMethods |
 	importMethods := Dictionary new.
@@ -152,7 +154,7 @@ PjDependentTranspiler >> importMethodsAll: aCollection forClass: aClass [
 	^ importMethods
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDependentTranspiler >> initialize [
 
 	super initialize.
@@ -165,7 +167,7 @@ PjDependentTranspiler >> initialize [
 	globalPools := Set new.
 ]
 
-{ #category : #invalidating }
+{ #category : 'invalidating' }
 PjDependentTranspiler >> invalidateClass: aClass [
 
 	convertedClasses remove: aClass ifAbsent: [  ].
@@ -176,31 +178,31 @@ PjDependentTranspiler >> invalidateClass: aClass [
 		aClass classToUseForJsConversion classSide methods
 ]
 
-{ #category : #invalidating }
+{ #category : 'invalidating' }
 PjDependentTranspiler >> invalidateMethod: aMethod [
 
 	convertedMethods removeKey: aMethod ifAbsent: [].
 ]
 
-{ #category : #invalidating }
+{ #category : 'invalidating' }
 PjDependentTranspiler >> invalidateMethods: aCollection [
 
 	aCollection do: [ : method | self invalidateMethod: method ]
 ]
 
-{ #category : #statistics }
+{ #category : 'statistics' }
 PjDependentTranspiler >> numberOfClasses [
 
 	^ convertedClasses size
 ]
 
-{ #category : #statistics }
+{ #category : 'statistics' }
 PjDependentTranspiler >> numberOfMethods [
 
 	^ convertedMethods size
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> transpileMethod: aMethod [
 
 	| jsAst |
@@ -208,7 +210,7 @@ PjDependentTranspiler >> transpileMethod: aMethod [
 	generator asString: jsAst on: self jsStream
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> withMethodsOf: aClass do: aBlock [
 
 	| nonOverriddenSelectors importMethods methodsToOutput |
@@ -226,21 +228,21 @@ PjDependentTranspiler >> withMethodsOf: aClass do: aBlock [
 	methodsToOutput do: aBlock.
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> writeClassDefinitionOf: aClass [
 
 	alreadyDefinedClasses addIfNotPresent: aClass ifPresentDo: [ ^ self ].
 	super writeClassDefinitionOf: aClass
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> writeClassInitializeOf: aClass [
 
 	alreadyInitializedClasses addIfNotPresent: aClass ifPresentDo: [ ^ self ].
 	super writeClassInitializeOf: aClass
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjDependentTranspiler >> writeClassVariableDeclarationsOf: aClass [
 
 	alreadyVariablesDeclaredClasses addIfNotPresent: aClass ifPresentDo: [ ^ self ].

@@ -2,40 +2,42 @@
 A JSON Writer - to write an object into JSON format
 "
 Class {
-	#name : #PhxJsonWriter,
-	#superclass : #PjDomController,
+	#name : 'PhxJsonWriter',
+	#superclass : 'PjDomController',
 	#instVars : [
 		'knownObjects',
 		'stream'
 	],
-	#category : #'PharoJs-Base-Serialization-Core'
+	#category : 'PharoJs-Base-Serialization-Core',
+	#package : 'PharoJs-Base-Serialization',
+	#tag : 'Core'
 }
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> << aString [
 	stream nextPutAll: aString
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> comma [
 	self << ','
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> doBetweenCurlyBraces: aBlock [
 	self << '{'.
 	aBlock value. 
 	self << '}'
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> doBetweenSquareBrackets: aBlock [
 	self << '['.
 	aBlock value. 
 	self << ']'
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> identityIndexOf: anObject [
 	knownObjects
 		doWithIndex: [ :obj :index | 
@@ -44,19 +46,19 @@ PhxJsonWriter >> identityIndexOf: anObject [
 	^ nil
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PhxJsonWriter >> initialize [
 	stream := '' writeStream.
 	knownObjects := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhxJsonWriter >> string [
 
 	^ stream contents
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> writeKeyName: key andValue: anObject [
 	self writeQuoted: key.
 	self << ':'.
@@ -67,12 +69,12 @@ PhxJsonWriter >> writeKeyName: key andValue: anObject [
 				ifNotNil: [ self << anObject asJSON ] ]
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> writeQuoted: aString [
 	self << '"' << aString << '"'
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 PhxJsonWriter >> writeReferenceFor: anObject or: aBlock [
 	(self identityIndexOf: anObject)
 		ifNotNil: [ :i | 

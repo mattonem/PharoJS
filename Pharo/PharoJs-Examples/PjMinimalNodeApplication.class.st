@@ -2,12 +2,14 @@
 I am a minimal application that runs in nodejs
 "
 Class {
-	#name : #PjMinimalNodeApplication,
-	#superclass : #PjNodeApplication,
-	#category : #'PharoJs-Examples-Minimal'
+	#name : 'PjMinimalNodeApplication',
+	#superclass : 'PjNodeApplication',
+	#category : 'PharoJs-Examples-Minimal',
+	#package : 'PharoJs-Examples',
+	#tag : 'Minimal'
 }
 
-{ #category : #'event handling' }
+{ #category : 'event handling' }
 PjMinimalNodeApplication class >> start [
 	super start.
 	console log: 'this is a minimal Node application'

@@ -1,6 +1,6 @@
-Extension { #name : #PjArray }
+Extension { #name : 'PjArray' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjArray >> writePhxJsonRepresentationOn: w [
 	w
 		doBetweenSquareBrackets: [ self

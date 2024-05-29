@@ -1,31 +1,33 @@
 Class {
-	#name : #PjExtensionOfBSubClassOfA,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-Bridge-Tests-Support'
+	#name : 'PjExtensionOfBSubClassOfA',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-Bridge-Tests-Support',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjExtensionOfBSubClassOfA class >> isJsClassPlaceholder [ 
 
 	<pharoJsSkip>
 	^ true
 ]
 
-{ #category : #'pharoJs support' }
+{ #category : 'pharoJs support' }
 PjExtensionOfBSubClassOfA class >> javascriptName [
 
 	<pharoJsSkip>
 	^ PjBSubClassOfA name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjExtensionOfBSubClassOfA class >> someString [
 
 	<jsAlias: #someStringAlias>
 	^ super someString , ' Answer'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjExtensionOfBSubClassOfA >> someNumber [
 
 		<jsAlias: #someNumberAlias>

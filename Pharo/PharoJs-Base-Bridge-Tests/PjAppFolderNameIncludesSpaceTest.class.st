@@ -1,18 +1,20 @@
 Class {
-	#name : #PjAppFolderNameIncludesSpaceTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjAppFolderNameIncludesSpaceTest',
+	#superclass : 'PjWebAppTestCase',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjAppFolderNameIncludesSpaceTest class >> appClass [
 
 	^ PjAppWithFolderNameIncludesSpace
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAppFolderNameIncludesSpaceTest >> testConnectionEstablished [
 
 	self assert: self bridge isConnected

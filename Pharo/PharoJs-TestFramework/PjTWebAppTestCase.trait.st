@@ -1,20 +1,35 @@
 Trait {
-	#name : #PjTWebAppTestCase,
-	#category : #'PharoJs-TestFramework-Kernel'
+	#name : 'PjTWebAppTestCase',
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #asserting }
-PjTWebAppTestCase >> assertHidden: element [
+{ #category : 'asserting' }
+PjTWebAppTestCase >> assert: element hasCssClass: cssClassString [
 
-	self waitUntil: [(self computedDisplayStyleOf: element) = 'none']
+	element classList contains: cssClassString 
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
+PjTWebAppTestCase >> assert: domElement isShowing: aBoolean [
+	aBoolean ifTrue: [ ^self assertShowing: domElement ].
+	self assertHidden: domElement 
+
+]
+
+{ #category : 'asserting' }
+PjTWebAppTestCase >> assertHidden: element [
+
+	self waitUntil: [ (self isHidden: element) ]
+]
+
+{ #category : 'asserting' }
 PjTWebAppTestCase >> assertInnerHtmlOfElement: domElement equals: expectedValue [
 	self assert: domElement innerHTML equals: expectedValue
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjTWebAppTestCase >> assertInnerHtmlOfElementById: id equals: expectedValue [
 
 	self
@@ -22,18 +37,18 @@ PjTWebAppTestCase >> assertInnerHtmlOfElementById: id equals: expectedValue [
 		equals: expectedValue
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjTWebAppTestCase >> assertShowing: element [
 
-	self waitWhile: [ (self computedDisplayStyleOf: element) = 'none' ]
+	self waitUntil: [ (self isShowing: element) ]
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjTWebAppTestCase >> assertValueOfElement: domElement equals: expectedValue [
 	self assert: domElement value equals: expectedValue
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjTWebAppTestCase >> assertValueOfElementById: id equals: expectedValue [
 
 	self
@@ -41,46 +56,58 @@ PjTWebAppTestCase >> assertValueOfElementById: id equals: expectedValue [
 		equals: expectedValue
 ]
 
-{ #category : #'UI handling' }
+{ #category : 'UI handling' }
 PjTWebAppTestCase >> changeElement: domElement value: newValue [
 	domElement value: newValue.
 	self dispatchEvent: #change to: domElement.
 ]
 
-{ #category : #'UI handling' }
+{ #category : 'UI handling' }
 PjTWebAppTestCase >> changeElementById: anId value: newValue [
 
 	self changeElement: (self document getElementById: anId) value: newValue
 ]
 
-{ #category : #'UI handling' }
+{ #category : 'UI handling' }
 PjTWebAppTestCase >> clickElement: domElement [ 
 	self dispatchEvent: #click to: domElement.
 ]
 
-{ #category : #'UI handling' }
+{ #category : 'UI handling' }
 PjTWebAppTestCase >> clickElementById: aString [
 
 	self clickElement: (self document getElementById: aString)
 ]
 
-{ #category : #'UI handling' }
+{ #category : 'UI handling' }
 PjTWebAppTestCase >> computedDisplayStyleOf: element [
 
 	^ (self window getComputedStyle: element) display
 ]
 
-{ #category : #'UI handling' }
+{ #category : 'UI handling' }
 PjTWebAppTestCase >> dispatchEvent: eventName to: htmlElement [
 	htmlElement dispatchEvent: (self newEvent: eventName)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTWebAppTestCase >> document [
 	self explicitRequirement 
 ]
 
-{ #category : #'UI handling' }
+{ #category : 'asserting' }
+PjTWebAppTestCase >> isHidden: element [
+
+	^(self computedDisplayStyleOf: element) = 'none' 
+]
+
+{ #category : 'asserting' }
+PjTWebAppTestCase >> isShowing: element [
+
+	^ (self isHidden: element) not
+]
+
+{ #category : 'UI handling' }
 PjTWebAppTestCase >> newEvent: eventName [
 
 	| event |
@@ -89,7 +116,7 @@ PjTWebAppTestCase >> newEvent: eventName [
 	^ event
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTWebAppTestCase >> window [
 
 	self explicitRequirement

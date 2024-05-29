@@ -1,15 +1,16 @@
 Class {
-	#name : #PhxJsonTestResources,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-Serialization-Tests'
+	#name : 'PhxJsonTestResources',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-Serialization-Tests',
+	#package : 'PharoJs-Base-Serialization-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJsonTestResources class >> challengingStringRequiringUnicodeAndEscapement [
 	^ 'Hi <there>, I''m just a "String", and I cost only 2€. Olé!'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJsonTestResources class >> challingingObjectAvoidingDateAndTime [
 	| org |
 	org := PhxJsonTestResources objectWithLiteralIVs.
@@ -25,7 +26,7 @@ PhxJsonTestResources class >> challingingObjectAvoidingDateAndTime [
 	1.33}}
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJsonTestResources class >> objectGraphWithCycleOfLength1 [
 
 	| leaf1 leaf2 node root |
@@ -52,7 +53,7 @@ PhxJsonTestResources class >> objectGraphWithCycleOfLength1 [
 	^ root
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJsonTestResources class >> objectGraphWithCycleOfLength2 [
 
 	| leaf1 leaf2 node root |
@@ -79,7 +80,7 @@ PhxJsonTestResources class >> objectGraphWithCycleOfLength2 [
 	^ root
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJsonTestResources class >> objectGraphWithSharedLeaves [
 
 	| leaf1 leaf2 node1 node2 node3 root |
@@ -116,7 +117,7 @@ PhxJsonTestResources class >> objectGraphWithSharedLeaves [
 	^ root
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJsonTestResources class >> objectWithLiteralIVs [
 
 	^ PhxJsonObjectForTestWithAlphabeticallyOrderedIVs new

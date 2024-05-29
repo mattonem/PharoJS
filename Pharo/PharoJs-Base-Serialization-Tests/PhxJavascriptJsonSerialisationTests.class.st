@@ -1,10 +1,11 @@
 Class {
-	#name : #PhxJavascriptJsonSerialisationTests,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Serialization-Tests'
+	#name : 'PhxJavascriptJsonSerialisationTests',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Serialization-Tests',
+	#package : 'PharoJs-Base-Serialization-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJavascriptJsonSerialisationTests >> testArraysCircularReferences [
 	| cClone aClone bClone |
 	cClone := self evalBlock: [
@@ -30,7 +31,7 @@ PhxJavascriptJsonSerialisationTests >> testArraysCircularReferences [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJavascriptJsonSerialisationTests >> testDictionariesReferencingEachOther [
 	<expectedFailure>
 	| cClone aClone bClone |
@@ -57,9 +58,8 @@ PhxJavascriptJsonSerialisationTests >> testDictionariesReferencingEachOther [
 	self assert: (bClone at: #b) identicalTo: aClone.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJavascriptJsonSerialisationTests >> testDictionariesWithCircularReferences [
-	<expectedFailure>
 	| cClone aClone bClone |
 	cClone := self evalBlock: [
 		| a b c |
@@ -87,7 +87,7 @@ PhxJavascriptJsonSerialisationTests >> testDictionariesWithCircularReferences [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJavascriptJsonSerialisationTests >> testOrderedCollectionsCircularReferences [
 	| cClone aClone bClone |
 	cClone := self evalBlock: [
@@ -113,7 +113,7 @@ PhxJavascriptJsonSerialisationTests >> testOrderedCollectionsCircularReferences 
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJavascriptJsonSerialisationTests >> testSetsCircularReferences [
 	<expectedFailure>
 	| cClone aClone bClone identitySet |
@@ -137,7 +137,7 @@ PhxJavascriptJsonSerialisationTests >> testSetsCircularReferences [
 	self assert: identitySet size equals: 3.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PhxJavascriptJsonSerialisationTests >> testSetsReferencingEachOther [
 	| cClone bClone aInBClone aInCClone |
 	cClone := self evalBlock: [

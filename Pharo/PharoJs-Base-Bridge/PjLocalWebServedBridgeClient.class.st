@@ -73,6 +73,6 @@ PjLocalWebServedBridgeClient >> urlPath [
 	| serverAppClass |
 	serverAppClass := self appClass serverAppClass.
 	^ self appClass appFullHtmlFileName pathString allButFirst:
-		  (serverAppClass appFolder / serverAppClass staticFilesFolderName)
+		  (serverAppClass appFolder / serverAppClass publicStaticFilesFolderName)
 			  pathString size
 ]

@@ -1,6 +1,6 @@
-Extension { #name : #PjExpressApp }
+Extension { #name : 'PjExpressApp' }
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjExpressApp class >> afterExportApp [
 
 	<pharoJsSkip>
@@ -8,7 +8,7 @@ PjExpressApp class >> afterExportApp [
 	self clientAppClasses do: #exportApp
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjExpressApp class >> clientAppClasses [
 
 	<pharoJsSkip>

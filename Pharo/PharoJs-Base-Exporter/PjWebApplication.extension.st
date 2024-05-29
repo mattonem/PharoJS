@@ -1,13 +1,13 @@
-Extension { #name : #PjWebApplication }
+Extension { #name : 'PjWebApplication' }
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjWebApplication class >> appHtmlUrlString [
 	<pharoJsSkip>
 	
 	^ 'file:' , self appFullHtmlFileName pathString asUrl asString
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjWebApplication class >> polyfill: aPolyfillClass withTranspiler: aTranspiler unlessIn: aSet [
 	<pharoJsSkip>
 	

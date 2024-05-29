@@ -29,7 +29,9 @@ Also DateAndTime becomes a Date in js.
 Suggestions or ideas anyone?
 "
 Class {
-	#name : #ManifestPharoJsBaseSerialization,
-	#superclass : #PackageManifest,
-	#category : #'PharoJs-Base-Serialization-Manifest'
+	#name : 'ManifestPharoJsBaseSerialization',
+	#superclass : 'PackageManifest',
+	#category : 'PharoJs-Base-Serialization-Manifest',
+	#package : 'PharoJs-Base-Serialization',
+	#tag : 'Manifest'
 }

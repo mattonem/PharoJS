@@ -1,1 +1,1 @@
-Package { #name : #'PharoJs-Base-Bridge-Tests' }
+Package { #name : 'PharoJs-Base-Bridge-Tests' }

@@ -1,10 +1,12 @@
 Class {
-	#name : #PjConfigTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#name : 'PjConfigTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjConfigTest >> testFlatObject [
 
 	| config |
@@ -22,7 +24,7 @@ PjConfigTest >> testFlatObject [
 	self assert: config array second equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjConfigTest >> testFreesingInnerObjects [
 
 	| config  |
@@ -42,7 +44,7 @@ PjConfigTest >> testFreesingInnerObjects [
 	self should: [ (config dict at: #y) foo ] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjConfigTest >> testFrozenObject [
 
 	| config |
@@ -57,7 +59,7 @@ PjConfigTest >> testFrozenObject [
 	self should: [ config c: 3 ] raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjConfigTest >> testMultiLevelsObject [
 
 	| config bar |
@@ -78,7 +80,7 @@ PjConfigTest >> testMultiLevelsObject [
 	self assert: bar y array second equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjConfigTest >> testPropertyAddedEveyIfAccessorExistsForOtherObject [
 
 	| config other |

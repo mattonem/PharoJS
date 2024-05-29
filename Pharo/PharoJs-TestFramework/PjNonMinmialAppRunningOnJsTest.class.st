@@ -1,7 +1,9 @@
 Class {
-	#name : #PjNonMinmialAppRunningOnJsTest,
-	#superclass : #PjNonMinmialAppRunningOnPharoTest,
+	#name : 'PjNonMinmialAppRunningOnJsTest',
+	#superclass : 'PjNonMinmialAppRunningOnPharoTest',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
-	#category : #'PharoJs-TestFramework-Test'
+	#category : 'PharoJs-TestFramework-Test',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Test'
 }

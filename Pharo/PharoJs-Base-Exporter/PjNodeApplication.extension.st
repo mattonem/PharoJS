@@ -1,6 +1,6 @@
-Extension { #name : #PjNodeApplication }
+Extension { #name : 'PjNodeApplication' }
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjNodeApplication class >> polyfill: aPolyfillClass withTranspiler: aTranspiler unlessIn: aSet [
 	<pharoJsSkip>
 	

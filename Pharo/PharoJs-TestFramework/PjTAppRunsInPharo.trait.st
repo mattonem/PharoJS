@@ -3,16 +3,18 @@ This trait makes a test case run the app under test on the Pharo VM. Only third 
 
 "
 Trait {
-	#name : #PjTAppRunsInPharo,
-	#category : #'PharoJs-TestFramework-Kernel'
+	#name : 'PjTAppRunsInPharo',
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTAppRunsInPharo >> appClassToExport [
 	^PjAppWrapperForRunningInPharo on: self appClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTAppRunsInPharo >> currentApp [
 	^self appClass
 		start; 

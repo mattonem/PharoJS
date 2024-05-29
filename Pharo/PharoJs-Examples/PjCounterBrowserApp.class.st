@@ -1,35 +1,37 @@
 Class {
-	#name : #PjCounterBrowserApp,
-	#superclass : #PjFileBasedWebApp,
+	#name : 'PjCounterBrowserApp',
+	#superclass : 'PjFileBasedWebApp',
 	#instVars : [
 		'counter',
 		'controller'
 	],
-	#category : #'PharoJs-Examples-Counter'
+	#category : 'PharoJs-Examples-Counter',
+	#package : 'PharoJs-Examples',
+	#tag : 'Counter'
 }
 
-{ #category : #description }
+{ #category : 'description' }
 PjCounterBrowserApp class >> appClasses [
 	<pharoJsSkip>
 	^super appClasses, {PjCounter. PjCounterController}
 ]
 
-{ #category : #description }
+{ #category : 'description' }
 PjCounterBrowserApp class >> appJsSubFolder [
 	^'js'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjCounterBrowserApp >> countDisplay [
 	^ self elementAt: 'countDisplay'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjCounterBrowserApp >> incrementButton [
 	^ self elementAt: 'incrementButton'
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjCounterBrowserApp >> initialize [
 	super initialize.
 	counter := PjCounter new.
@@ -40,7 +42,7 @@ PjCounterBrowserApp >> initialize [
 	self incrementButton addEventListener: #click block: [ controller increment ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjCounterBrowserApp >> resetButton [
 	^ self elementAt: 'resetButton'
 ]

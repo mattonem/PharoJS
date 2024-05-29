@@ -2,17 +2,19 @@
 I use PjTranspiler to export a PharoJs application to a file.
 "
 Class {
-	#name : #PjFileExporter,
-	#superclass : #PjExporter,
-	#category : #'PharoJs-Base-Exporter-Kernel'
+	#name : 'PjFileExporter',
+	#superclass : 'PjExporter',
+	#category : 'PharoJs-Base-Exporter-Kernel',
+	#package : 'PharoJs-Base-Exporter',
+	#tag : 'Kernel'
 }
 
-{ #category : #exporting }
+{ #category : 'exporting' }
 PjFileExporter class >> exportApp: aClass [
 	^ (self newWithAppClass: aClass) writeFiles
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> createFileNamed: someFileName startingWith: beginning and: string ifEditableDo: aBlock [
 
 	| fileReference |
@@ -26,7 +28,7 @@ PjFileExporter >> createFileNamed: someFileName startingWith: beginning and: str
 		do: aBlock
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> delete: fileReference ifMatches: string [
 
 	| fileStream first100 match |
@@ -43,31 +45,31 @@ PjFileExporter >> delete: fileReference ifMatches: string [
 		, '" in the first 100 bytes'
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> fileName [
 
 	^ self appClass appFullJsFileName
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> fileReferenceFrom: someFileName [
 
 	^ someFileName asFileReference
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> matchFrom: string [
 
 	^ string , ' *** DO NOT EDIT ***'
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> writeFiles [
 
 	self writeJavascriptFileNamed: self fileName
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> writeInto: fileReference match: string startingWith: beginning  do: aBlock [
 
 	| fileStream |
@@ -96,7 +98,7 @@ PjFileExporter >> writeInto: fileReference match: string startingWith: beginning
 	fileStream close
 ]
 
-{ #category : #files }
+{ #category : 'files' }
 PjFileExporter >> writeJavascriptFileNamed: aFileName [
 	"Delete file first, because Windows can't open it for writing later when the file is open."
 	

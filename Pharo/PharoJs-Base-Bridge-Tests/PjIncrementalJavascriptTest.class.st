@@ -1,13 +1,15 @@
 Class {
-	#name : #PjIncrementalJavascriptTest,
-	#superclass : #TestCase,
+	#name : 'PjIncrementalJavascriptTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'bridge'
 	],
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIncrementalJavascriptTest >> testPolyfillLoad [
 
 	| contents |

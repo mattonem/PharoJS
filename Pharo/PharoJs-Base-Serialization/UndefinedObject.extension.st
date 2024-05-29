@@ -1,6 +1,6 @@
-Extension { #name : #UndefinedObject }
+Extension { #name : 'UndefinedObject' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 UndefinedObject >> writePhxJsonOn: w [
 	w << 'null'
 ]

@@ -1,39 +1,40 @@
 Class {
-	#name : #PjNodeModulesManager,
-	#superclass : #Object,
+	#name : 'PjNodeModulesManager',
+	#superclass : 'Object',
 	#instVars : [
 		'modulesDict'
 	],
 	#classInstVars : [
 		'default'
 	],
-	#category : #'PharoJs-Base-App'
+	#category : 'PharoJs-Base-App',
+	#package : 'PharoJs-Base-App'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeModulesManager class >> default [
 	^default ifNil: [ default := self new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeModulesManager class >> require: aString [
 
 	^ self default require: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeModulesManager class >> resetDefault [
 
 	default := nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjNodeModulesManager >> initialize [ 
 	super initialize .
 	modulesDict := Dictionary new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeModulesManager >> require: aString [
 
 	^ modulesDict

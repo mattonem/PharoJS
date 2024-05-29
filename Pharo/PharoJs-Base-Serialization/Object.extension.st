@@ -1,11 +1,11 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object >> allPhxJsonInstvarNames [
 	^ self class allInstVarNames
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object >> asPhxJsonString [
 	| writer |
 	writer := self class newPhxJsonWriter.
@@ -13,7 +13,7 @@ Object >> asPhxJsonString [
 	^ writer string
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object class >> instantiateWithPhxJsonReader: reader instanceJsonObject: jsonObject [
 
 	| obj |
@@ -26,17 +26,17 @@ Object class >> instantiateWithPhxJsonReader: reader instanceJsonObject: jsonObj
 	^ obj
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object class >> newPhxJsonWriter [
 	^PhxJsonWriter new
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object class >> phxJsonClassName [
 	^ self name
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object >> writePhxJsonObjectOn: w [
 	^ w
 		doBetweenCurlyBraces: [ w writeKeyName: 'class' andValue: self class phxJsonClassName.
@@ -49,14 +49,14 @@ Object >> writePhxJsonObjectOn: w [
 				andValue: [ self writePhxJsonRepresentationOn: w ] ]
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object >> writePhxJsonOn: w [
 	w
 		writeReferenceFor: self
 		or: [ self writePhxJsonObjectOn: w ]
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Object >> writePhxJsonRepresentationOn: w [
 
 	w doBetweenCurlyBraces: [ 

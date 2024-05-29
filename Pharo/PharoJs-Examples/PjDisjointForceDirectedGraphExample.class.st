@@ -3,8 +3,8 @@ Example of app using data visualisation library D3JS https://d3js.org/
 Displays a graph with clickable and draggable nodes
 "
 Class {
-	#name : #PjDisjointForceDirectedGraphExample,
-	#superclass : #PjFileBasedWebApp,
+	#name : 'PjDisjointForceDirectedGraphExample',
+	#superclass : 'PjFileBasedWebApp',
 	#instVars : [
 		'simulation',
 		'svg',
@@ -16,16 +16,18 @@ Class {
 	#pools : [
 		'PjD3JsGlobals'
 	],
-	#category : #'PharoJs-Examples-D3JS'
+	#category : 'PharoJs-Examples-D3JS',
+	#package : 'PharoJs-Examples',
+	#tag : 'D3JS'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> addMouseActions [
 	svgNodes on: 'click' do: [ : event | self onClick: event].
 	svgNodes call: self onDrag.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> createSimulationWith: data [
 	| forceId distance strength |
 	dataNodes := data result nodes.
@@ -39,7 +41,7 @@ PjDisjointForceDirectedGraphExample >> createSimulationWith: data [
    simulation force: 'center' with: d3 forceCenter.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> createSvg [
 	| obj |
 	svg := d3 create: 'svg'.
@@ -61,12 +63,12 @@ PjDisjointForceDirectedGraphExample >> createSvg [
 	svgNodes := obj attr: 'fill' with: [self randomColor].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> d3 [
 	^d3
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> initialize [
 	super initialize.
 	(d3 json: 'graph.json')
@@ -82,17 +84,17 @@ PjDisjointForceDirectedGraphExample >> initialize [
 				do: [ self updateDisplay ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDisjointForceDirectedGraphExample >> maxOf: aCollection [
 	<javascript: 'return Math.max(...aCollection)'>
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDisjointForceDirectedGraphExample >> minOf: aCollection [
 	<javascript: 'return Math.min(...aCollection)'>
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> onClick: event [
 	| clickedNode index |
 	clickedNode := event target.
@@ -100,7 +102,7 @@ PjDisjointForceDirectedGraphExample >> onClick: event [
 	window alert: (dataNodes at: index) title.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> onDrag [
 	| dragStarted dragged dragEnded obj |
 	dragStarted := [: event |
@@ -123,7 +125,7 @@ PjDisjointForceDirectedGraphExample >> onDrag [
 	^obj on: 'end' with: dragEnded
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> randomColor [
 	| colors randomIndex |
 	colors := #(pink red blue green yellow orange purple).
@@ -131,14 +133,14 @@ PjDisjointForceDirectedGraphExample >> randomColor [
 	^colors at: randomIndex
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> randomIndexOf: aCollection [
 	<javascript: 'let min = 1;
   let max = aCollection.length;
   return Math.floor(Math.random() * (max - min) + min);'>
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjDisjointForceDirectedGraphExample >> updateDisplay [
 	| nodes_x nodes_y min_x min_y w h |
 	svgLinks

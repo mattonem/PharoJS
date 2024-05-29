@@ -1,31 +1,33 @@
 Class {
-	#name : #PjMinimalExpressClientApp,
-	#superclass : #PjFileBasedWebApp,
+	#name : 'PjMinimalExpressClientApp',
+	#superclass : 'PjFileBasedWebApp',
 	#traits : 'PjTWebClientApp',
 	#classTraits : 'PjTWebClientApp classTrait',
-	#category : #'PharoJs-Examples-ExpressJS'
+	#category : 'PharoJs-Examples-ExpressJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjMinimalExpressClientApp class >> serverAppClass [
 
 	<pharoJsSkip>
 	^ PjMinimalExpressApp
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjMinimalExpressClientApp >> data [
 
 	^ (self elementAt: #dataInput) value
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjMinimalExpressClientApp >> data: aString [
 
 	(self elementAt: #dataDisplaySpan) textContent: aString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjMinimalExpressClientApp >> initialize [
 
 	super initialize.

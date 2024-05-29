@@ -1,6 +1,6 @@
 Class {
-	#name : #PjAppTestCase,
-	#superclass : #ParametrizedTestCase,
+	#name : 'PjAppTestCase',
+	#superclass : 'ParametrizedTestCase',
 	#traits : 'PjTWaitUntilReady + PjTAppRunsInPharo',
 	#classTraits : 'PjTWaitUntilReady classTrait @ {#defaultWaitTimeoutDuration->#waitTimeoutDuration. #defaultWaitStepDuration->#waitStepDuration} + PjTAppRunsInPharo classTrait',
 	#instVars : [
@@ -14,57 +14,59 @@ Class {
 	#pools : [
 		'PjUniversalGlobals'
 	],
-	#category : #'PharoJs-TestFramework-Kernel'
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjAppTestCase class >> appClass [
 	^self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAppTestCase class >> isAbstract [
 	^self == PjAppTestCase or: [
 		#(currentApp appClassToExport) anySatisfy: [: selector |
 			(self canUnderstand: selector) not] ].
 ]
 
-{ #category : #waiting }
+{ #category : 'waiting' }
 PjAppTestCase class >> waitStepDuration [
 
 	^ WaitStepDuration ifNil: [ WaitStepDuration := self defaultWaitStepDuration ]
 ]
 
-{ #category : #waiting }
+{ #category : 'waiting' }
 PjAppTestCase class >> waitStepDuration: aDuration [
 
 	WaitStepDuration := aDuration
 ]
 
-{ #category : #waiting }
+{ #category : 'waiting' }
 PjAppTestCase class >> waitTimeoutDuration [
 
 	^ WaitTimeOutDuration ifNil: [
 		  WaitTimeOutDuration := self defaultWaitTimeoutDuration ]
 ]
 
-{ #category : #waiting }
+{ #category : 'waiting' }
 PjAppTestCase class >> waitTimeoutDuration: aDuration [
 
 		  WaitTimeOutDuration := aDuration 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAppTestCase >> app [
 	^app
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAppTestCase >> appClass [
 	^self class appClass
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjAppTestCase >> assert: aBlock evaluatesTo: expectedResult [
 
 	| actualResult |
@@ -74,7 +76,7 @@ PjAppTestCase >> assert: aBlock evaluatesTo: expectedResult [
 	self assert: actualResult equals: expectedResult
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjAppTestCase >> assert: aBlock evaluatesToRaw: expectedJsonString [
 
 	| actualResult |
@@ -82,12 +84,12 @@ PjAppTestCase >> assert: aBlock evaluatesToRaw: expectedJsonString [
 	self assert: actualResult asRawJSONString equals: expectedJsonString
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAppTestCase >> assertBlock: aBlock [ 
 	self assert: aBlock evaluatesTo: true
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjAppTestCase >> assertBlock: block1 equalsBlock: block2 [
 
 	| result1 result2 |
@@ -96,13 +98,13 @@ PjAppTestCase >> assertBlock: block1 equalsBlock: block2 [
 	self assert: result1 = result2
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjAppTestCase >> assertEquivalent: aBlock [
 
 	self assert: aBlock evaluatesTo: aBlock value
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjAppTestCase >> assertJavascript: expressionString evaluatesTo: expectedResultString [
 
 	self
@@ -110,23 +112,23 @@ PjAppTestCase >> assertJavascript: expressionString evaluatesTo: expectedResultS
 		equals: expectedResultString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAppTestCase >> bridge [
 	^self bridgeResource bridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAppTestCase >> bridgeResource [
 	^ self bridgeResourceClass current
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAppTestCase >> bridgeResourceClass [
 
 	^ bridgeResourceClass ifNil: [bridgeResourceClass := self defaultBridgeResourceClass ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjAppTestCase >> cleanUpInstanceVariables [
 	| ivsToReset |
 	ivsToReset := self class allInstVarNames copyWithoutAll: #(testSelector bridgeResourceClass).
@@ -134,28 +136,28 @@ PjAppTestCase >> cleanUpInstanceVariables [
 		self instVarNamed: name put: nil ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAppTestCase >> debug [
 	bridgeResourceClass := self debugBridgeResourceClass.
 	^super debug
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAppTestCase >> debugBridgeResourceClass [
 	^PjDebugBridgeTestResource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAppTestCase >> defaultBridgeResourceClass [
 	^PjBridgeTestResource
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAppTestCase >> denyBlock: aBlock [ 
 	self assert: aBlock evaluatesTo: false
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjAppTestCase >> denyBlock: block1 equalsBlock: block2 [
 
 	| result1 result2 |
@@ -164,44 +166,46 @@ PjAppTestCase >> denyBlock: block1 equalsBlock: block2 [
 	self deny: result1 equals: result2
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAppTestCase >> evalBlock: aBlock [
 	^self bridge evalBlock: aBlock
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAppTestCase >> resetApp [
 	self bridge resetClient.
 	self resetInstanceVariables
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAppTestCase >> resetInstanceVariables [
 	app := self currentApp.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAppTestCase >> resources [
 	^super resources, {self bridgeResourceClass}
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAppTestCase >> runCaseAsFailure: aSemaphore [
 	"Used for debug purpose. See TestCase>>#debugAsFailure"
 	bridgeResourceClass := self debugBridgeResourceClass.
 	super runCaseAsFailure: aSemaphore
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAppTestCase >> setUp [
 
 	super setUp.
-	self waitWhile: [ self currentApp isNil ] timeOut: self timeOutForAppStartUp.
-	self resetInstanceVariables.
-
+	self longTestCase.
+	self
+		waitWhile: [ self currentApp isNil ]
+		timeOut: self timeOutForAppStartUp.
+	self resetInstanceVariables
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAppTestCase >> tearDown [
 	super tearDown.
 	self appClass resetCurrentInstance.
@@ -209,7 +213,7 @@ PjAppTestCase >> tearDown [
 	"bridgeResourceClass := nil"
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAppTestCase >> timeOutForAppStartUp [
 	^ 20 seconds
 ]

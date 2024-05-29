@@ -1,21 +1,23 @@
 Class {
-	#name : #PjDebugBridgeTestResource,
-	#superclass : #PjBridgeTestResource,
-	#category : #'PharoJs-TestFramework-Kernel'
+	#name : 'PjDebugBridgeTestResource',
+	#superclass : 'PjBridgeTestResource',
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjDebugBridgeTestResource >> ensureFreshClient [
 
 	self startJsInterpreter
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjDebugBridgeTestResource >> resetClient [
 	self bridge resetClient
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjDebugBridgeTestResource >> setUpClient [
 	super setUpClient.
 	self bridge enableClientLogging

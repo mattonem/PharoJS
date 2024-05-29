@@ -1,18 +1,20 @@
 Class {
-	#name : #PjMinimalExpressApp,
-	#superclass : #PjExpressApp,
+	#name : 'PjMinimalExpressApp',
+	#superclass : 'PjExpressApp',
 	#instVars : [
 		'data'
 	],
-	#category : #'PharoJs-Examples-ExpressJS'
+	#category : 'PharoJs-Examples-ExpressJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #initialization }
-PjMinimalExpressApp class >> staticFilesFolderName [
+{ #category : 'accessing' }
+PjMinimalExpressApp class >> publicStaticFilesFolderName [
 	^#public
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjMinimalExpressApp >> initialize [
 
 	super initialize.

@@ -5,22 +5,23 @@ To open playground for concrete subclasses or run tests via PharoJS test framewo
 
 "
 Class {
-	#name : #PjNodeApplication,
-	#superclass : #PjApplication,
+	#name : 'PjNodeApplication',
+	#superclass : 'PjApplication',
 	#pools : [
 		'PjNodeGlobals'
 	],
-	#category : #'PharoJs-Base-App'
+	#category : 'PharoJs-Base-App',
+	#package : 'PharoJs-Base-App'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeApplication class >> headerLine [
 	<pharoJsSkip>
 	
 	^ '#! /usr/bin/env node'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjNodeApplication class >> isAbstract [
 
 	^ self = PjNodeApplication 
@@ -28,19 +29,19 @@ PjNodeApplication class >> isAbstract [
 		 		   ifFalse: [ super isAbstract ]
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjNodeApplication class >> npmPackageNames [
 "WebSocket is required during development for PharoJS bridge connection"
 	<pharoJsSkip>
 	^ #( ws )
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjNodeApplication class >> whenJsReady: aBlock [
 	aBlock value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeApplication >> dirName [
 
 "__dirname is an environment variable that tells you the absolute path of the directory containing the currently executing file."
@@ -48,14 +49,14 @@ PjNodeApplication >> dirName [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeApplication >> fullPathFor: relativePathName [
 	^self pathFactory
 		        join: self dirName
 		        with: relativePathName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNodeApplication >> pathFactory [
 
 	^ self require: 'path'

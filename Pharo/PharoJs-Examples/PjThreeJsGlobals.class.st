@@ -1,6 +1,6 @@
 Class {
-	#name : #PjThreeJsGlobals,
-	#superclass : #SharedPool,
+	#name : 'PjThreeJsGlobals',
+	#superclass : 'SharedPool',
 	#classVars : [
 		'BoxGeometry',
 		'Mesh',
@@ -14,10 +14,12 @@ Class {
 	#pools : [
 		'PjBrowserGlobals'
 	],
-	#category : #'PharoJs-Examples-ThreeJS'
+	#category : 'PharoJs-Examples-ThreeJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ThreeJS'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjThreeJsGlobals class >> javascriptInitialize [
 
 	THREE := window THREE.

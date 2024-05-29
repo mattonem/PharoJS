@@ -4,21 +4,23 @@ It shows how to use an existing JS library by relying on the matters.js library
 https://brm.io/matter-js/
 "
 Class {
-	#name : #PhysicsSim,
-	#superclass : #PjFileBasedWebApp,
+	#name : 'PhysicsSim',
+	#superclass : 'PjFileBasedWebApp',
 	#instVars : [
 		'engine'
 	],
-	#category : #'PharoJs-Examples-PhysicsSimulation'
+	#category : 'PharoJs-Examples-PhysicsSimulation',
+	#package : 'PharoJs-Examples',
+	#tag : 'PhysicsSimulation'
 }
 
-{ #category : #description }
+{ #category : 'description' }
 PhysicsSim class >> appJsSubFolder [
 	<pharoJsSkip>
 	^#js
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PhysicsSim >> addInitialBodies [
 	| boxA boxB ground |
 	boxA := self matterJsRoot Bodies rectangle: 400 y: 200 width: 80 height: 80.
@@ -27,12 +29,12 @@ PhysicsSim >> addInitialBodies [
 	self matterJsRoot World add: engine world bodies: { boxA. boxB. ground }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PhysicsSim >> bodies [
 	^ engine world bodies
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PhysicsSim >> createAndStartEngine [
 	| runner |
 	engine := self matterJsRoot Engine create.
@@ -40,7 +42,7 @@ PhysicsSim >> createAndStartEngine [
 	self matterJsRoot Runner run: runner with: engine
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PhysicsSim >> initialize [
 	super initialize.
 	self createAndStartEngine.
@@ -50,12 +52,12 @@ PhysicsSim >> initialize [
 		self matterJsRoot World clear: engine world keepStatic: true]
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PhysicsSim >> matterJsRoot [
 	^ window Matter
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PhysicsSim >> setupAndStartRendering [
 	| render simulationView |
 	simulationView := self elementAt: #simulationView.

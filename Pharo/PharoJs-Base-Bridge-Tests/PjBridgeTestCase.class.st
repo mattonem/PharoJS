@@ -10,8 +10,8 @@ to true.
 Otherwise it will create over 100 windows if you run all the tests.
 "
 Class {
-	#name : #PjBridgeTestCase,
-	#superclass : #PjAppTestCase,
+	#name : 'PjBridgeTestCase',
+	#superclass : 'PjAppTestCase',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
 	#instVars : [
@@ -22,16 +22,18 @@ Class {
 		'PjDomGlobals',
 		'PjUniversalGlobals'
 	],
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjBridgeTestCase class >> appClass [
 
 	^ PjMinimalWebApplication
 ]
 
-{ #category : #'test support' }
+{ #category : 'test support' }
 PjBridgeTestCase >> addToDOM: html [
 
 	self bridge evalBlock: [ 
@@ -41,7 +43,7 @@ PjBridgeTestCase >> addToDOM: html [
 		document body appendChild: div ]
 ]
 
-{ #category : #'test support' }
+{ #category : 'test support' }
 PjBridgeTestCase >> checkBasic: value [
 
 	self
@@ -51,7 +53,7 @@ PjBridgeTestCase >> checkBasic: value [
 		equals: value
 ]
 
-{ #category : #'test support' }
+{ #category : 'test support' }
 PjBridgeTestCase >> checkProxy: value [
 
 	self
@@ -62,7 +64,7 @@ PjBridgeTestCase >> checkProxy: value [
 		equals: value
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestCase >> setUp [
 
 	super setUp.
@@ -71,7 +73,7 @@ PjBridgeTestCase >> setUp [
 	classFactory := ClassFactoryForTestCase new
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestCase >> tearDown [
 
 	super tearDown.
@@ -79,7 +81,7 @@ PjBridgeTestCase >> tearDown [
 	Author uniqueInstance fullName: authorInitialName
 ]
 
-{ #category : #'test support' }
+{ #category : 'test support' }
 PjBridgeTestCase >> transpileMethod: aMethod [
 
 	^ self bridge transpiler transpileMethodToString: aMethod

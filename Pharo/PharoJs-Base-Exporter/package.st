@@ -1,1 +1,1 @@
-Package { #name : #'PharoJs-Base-Exporter' }
+Package { #name : 'PharoJs-Base-Exporter' }

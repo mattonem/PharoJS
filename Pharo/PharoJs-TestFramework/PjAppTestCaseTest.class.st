@@ -1,15 +1,17 @@
 Class {
-	#name : #PjAppTestCaseTest,
-	#superclass : #TestCase,
-	#category : #'PharoJs-TestFramework-Test'
+	#name : 'PjAppTestCaseTest',
+	#superclass : 'TestCase',
+	#category : 'PharoJs-TestFramework-Test',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Test'
 }
 
-{ #category : #assertions }
+{ #category : 'assertions' }
 PjAppTestCaseTest >> assertHasArrayAPI: jsArrayLikeClass [
 	self assert: (jsArrayLikeClass prototype js_hasOwnProperty: '_first')
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjAppTestCaseTest >> resetBridgeTestResources [
 	{PjBridgeTestResource. PjDebugBridgeTestResource} do: [ : resourceClass |
 		resourceClass reset.
@@ -17,19 +19,19 @@ PjAppTestCaseTest >> resetBridgeTestResources [
 	]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAppTestCaseTest >> setUp [
 	super setUp.
 	self resetBridgeTestResources
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAppTestCaseTest >> tearDown [
 	super tearDown.
 	self resetBridgeTestResources
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAppTestCaseTest >> testDebug [
 	| suite |
 	3 timesRepeat: [
@@ -41,7 +43,7 @@ PjAppTestCaseTest >> testDebug [
 	].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAppTestCaseTest >> testExportedCodeOfAppRunningJsSideIsComplete [
 	| remoteAppClass bridge jsMessage |
 	PjBridgeTestResource availableFor: PjNonMinmialAppRunningOnJsTest suite tests anyOne.
@@ -53,7 +55,7 @@ PjAppTestCaseTest >> testExportedCodeOfAppRunningJsSideIsComplete [
 	self deny: remoteAppClass currentInstance isNil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAppTestCaseTest >> testExportedCodeOfAppRunningPharoSideIsMinimal [
 	| bridge jsMessage jsSystemDict |
 	PjBridgeTestResource
@@ -74,7 +76,7 @@ PjAppTestCaseTest >> testExportedCodeOfAppRunningPharoSideIsMinimal [
 			self assertHasArrayAPI: jsArrayLikeClass ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAppTestCaseTest >> testPlainRun [
 	| result suite |
 	3 timesRepeat: [

@@ -1,7 +1,9 @@
 Class {
-	#name : #PjWebServerAppTestCase,
-	#superclass : #PjAppTestCase,
+	#name : 'PjWebServerAppTestCase',
+	#superclass : 'PjAppTestCase',
 	#traits : 'PjTAppRunsInJS + PjTWebServerApiTestCase',
 	#classTraits : 'PjTAppRunsInJS classTrait + PjTWebServerApiTestCase classTrait',
-	#category : #'PharoJs-TestFramework-Kernel'
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }

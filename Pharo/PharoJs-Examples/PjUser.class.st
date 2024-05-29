@@ -1,18 +1,20 @@
 Class {
-	#name : #PjUser,
-	#superclass : #Object,
+	#name : 'PjUser',
+	#superclass : 'Object',
 	#instVars : [
 		'name'
 	],
-	#category : #'PharoJs-Examples-HelloWorld'
+	#category : 'PharoJs-Examples-HelloWorld',
+	#package : 'PharoJs-Examples',
+	#tag : 'HelloWorld'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjUser >> name [
 	^name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjUser >> name: anObject [
 	name := anObject
 ]

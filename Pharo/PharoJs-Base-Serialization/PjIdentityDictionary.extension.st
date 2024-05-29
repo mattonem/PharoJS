@@ -1,6 +1,6 @@
-Extension { #name : #PjIdentityDictionary }
+Extension { #name : 'PjIdentityDictionary' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjIdentityDictionary class >> instantiateWithPhxJsonReader: reader instanceJsonObject: jsonObject [
 	| obj |
 	obj := self new.
@@ -10,7 +10,7 @@ PjIdentityDictionary class >> instantiateWithPhxJsonReader: reader instanceJsonO
 	^ obj 
 ]
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjIdentityDictionary class >> phxJsonClassName [
 	^ 'IdentityDictionary'
 ]

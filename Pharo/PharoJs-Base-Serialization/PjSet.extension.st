@@ -1,6 +1,6 @@
-Extension { #name : #PjSet }
+Extension { #name : 'PjSet' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 PjSet class >> phxJsonClassName [
 	^ 'Set'
 ]

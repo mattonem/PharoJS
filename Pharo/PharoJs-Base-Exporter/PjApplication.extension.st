@@ -1,13 +1,13 @@
-Extension { #name : #PjApplication }
+Extension { #name : 'PjApplication' }
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> afterExportApp [
 
 	<pharoJsSkip>
 	self inform: 'DONE exporting JS code for ' , self name
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> appFolder [
 	<pharoJsSkip>
 	
@@ -19,21 +19,21 @@ PjApplication class >> appFolder [
 	^ appFolder
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> appFolder: anObject [
 	<pharoJsSkip>
 	
 	appFolder := anObject
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> appFullJsFileName [
 	<pharoJsSkip>
 	
 	^ self appFullJsFolderPath / self appJsFileName
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> appFullJsFolderPath [
 
 	<pharoJsSkip>
@@ -42,14 +42,14 @@ PjApplication class >> appFullJsFolderPath [
 
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> appJsFileName [
 	<pharoJsSkip>
 	
 	^ 'index.js'
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> appJsSubFolder [
 	<pharoJsSkip>
 	"Subclass might return, e.g. 'js' if you want the javascript to be in the js sub-directory. 
@@ -58,14 +58,14 @@ PjApplication class >> appJsSubFolder [
 	^ nil
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjApplication class >> beforeExportApp [
 
 	<pharoJsSkip>
 	self ensureRequiredPackagesInstalled
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> defaultAppFolder [
 
 	<pharoJsSkip>
@@ -75,35 +75,36 @@ PjApplication class >> defaultAppFolder [
 	^ defaultAppFolder
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> defaultAppFolderName [
 	<pharoJsSkip>
 	
 	^ self name
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjApplication class >> defaultAppFolderParent [
 	<pharoJsSkip>
 	
 	^ self repositoryFolder / self defaultAppFolderParentName / self package name
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjApplication class >> defaultAppFolderParentName [
 	<pharoJsSkip>
 	
 	^'HTML'
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> defaultAppFolderPath [
 	<pharoJsSkip>
 
+	self defaultAppFolderName ifNil: [ ^ self defaultAppFolderParent ].
 	^ self defaultAppFolderParent / self defaultAppFolderName
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> ensureSubFolder: subFolder in: parentfolder [
 	| folder |
 	folder :=
@@ -113,7 +114,7 @@ PjApplication class >> ensureSubFolder: subFolder in: parentfolder [
 	
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> exportApp [
 
 	<pharoJsSkip>
@@ -121,7 +122,7 @@ PjApplication class >> exportApp [
 
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> exportApp: version [
 	<pharoJsSkip>
 	
@@ -129,7 +130,7 @@ PjApplication class >> exportApp: version [
 	self exportApp
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> exportVersion [
 	<pharoJsSkip>
 	
@@ -139,34 +140,34 @@ exportVersion
 	^ exportVersion'
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> exporterClass [
 	<pharoJsSkip>
 	
 	^ PjFileExporter
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> globalsPools [
 	<pharoJsSkip>
 	
 	^ self allSharedPoolsRecursive select: #isJavascriptGlobalsPool
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> ifInvalidFolder: folder do: aBlock [
 	<pharoJsSkip>
 	
 	(folder isNil or: [folder exists not]) ifTrue: aBlock
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjApplication class >> npmPackageLockFile [
 
 	^ self appFullJsFolderPath  / 'package-lock.json'
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> polyfill: aPolyfillClass withTranspiler: aTranspiler unlessIn: aSet [
 	<pharoJsSkip>
 	
@@ -180,7 +181,7 @@ PjApplication class >> polyfill: aPolyfillClass withTranspiler: aTranspiler unle
 	^ false
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjApplication class >> repository [
 	<pharoJsSkip>
 	
@@ -189,20 +190,20 @@ PjApplication class >> repository [
 	^IceRepository registry  detect: [: repo | repo includesPackageNamed: packageName].
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjApplication class >> repositoryFolder [
 	<pharoJsSkip>
 	
 	^self repository location
 ]
 
-{ #category : #'*PharoJs-Base-Exporter' }
+{ #category : '*PharoJs-Base-Exporter' }
 PjApplication class >> resetAppFolder [
 	<pharoJsSkip>
 	self appFolder: nil
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> setUpAppFolder [
 	<pharoJsSkip>
 	
@@ -213,7 +214,7 @@ PjApplication class >> setUpAppFolder [
 	self appFolder: folder.
 ]
 
-{ #category : #'*PharoJs-Base-Exporter-App' }
+{ #category : '*PharoJs-Base-Exporter-App' }
 PjApplication class >> setUpAppFolderPrompt [
 	<pharoJsSkip>
 	^ 'PharoJS: Folder for app ' , self name , ' please?'

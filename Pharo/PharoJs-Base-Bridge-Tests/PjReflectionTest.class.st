@@ -1,10 +1,12 @@
 Class {
-	#name : #PjReflectionTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#name : 'PjReflectionTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReflectionTest >> testClassName [
 
 	| class |
@@ -17,7 +19,7 @@ PjReflectionTest >> testClassName [
 	self assert: [ class new className ] evaluatesTo: class name asString
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReflectionTest >> testDirectSubclasses [
 
 	| objectInitialSubclassesSize objectNewSubclassesSize |
@@ -40,7 +42,7 @@ PjReflectionTest >> testDirectSubclasses [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReflectionTest >> testDirectSuperclass [
 	
 	self assertBlock: [PjClass superclass == PjFunction ].
@@ -55,7 +57,7 @@ PjReflectionTest >> testDirectSuperclass [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReflectionTest >> testMetaclassLink [
 	
 	self assertBlock: [( Object getPrototypeOf: PjClass prototype) == PjFunction prototype ].
@@ -69,7 +71,7 @@ PjReflectionTest >> testMetaclassLink [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReflectionTest >> testNestedRepeats [
 
 	| class tryNestedRepeatsSelector tryNestedRepeatsMethod |
@@ -86,7 +88,7 @@ PjReflectionTest >> testNestedRepeats [
 		evaluatesTo: self tryNestedRepeats
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReflectionTest >> testReflection [
 
 	self assertEquivalent: [ Number inheritsFrom: Object ].
@@ -107,7 +109,7 @@ PjReflectionTest >> testReflection [
 	self assertEquivalent: [ 42 respondsTo: #<= ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReflectionTest >> testTemporaries [
 	| class tryTemporariesSelector tryTemporariesMethod |
 	class := classFactory
@@ -123,7 +125,7 @@ PjReflectionTest >> testTemporaries [
 		evaluatesTo: self tryTemporaries
 ]
 
-{ #category : #'test support' }
+{ #category : 'test support' }
 PjReflectionTest >> tryNestedRepeats [
 
 	| someVar |
@@ -136,7 +138,7 @@ PjReflectionTest >> tryNestedRepeats [
 	^ someVar
 ]
 
-{ #category : #'test support' }
+{ #category : 'test support' }
 PjReflectionTest >> tryTemporaries [ 
 		| x b |
 		b := [ : a | | y |

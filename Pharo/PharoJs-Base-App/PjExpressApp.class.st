@@ -8,8 +8,8 @@ I assume that the target folder comply with the following :
 
 "
 Class {
-	#name : #PjExpressApp,
-	#superclass : #PjNodeApplication,
+	#name : 'PjExpressApp',
+	#superclass : 'PjNodeApplication',
 	#instVars : [
 		'server',
 		'port'
@@ -18,10 +18,11 @@ Class {
 		'expressConstructorFunction',
 		'bodyParserFactory'
 	],
-	#category : #'PharoJs-Base-App'
+	#category : 'PharoJs-Base-App',
+	#package : 'PharoJs-Base-App'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjExpressApp class >> isAbstract [
 
 	^ self = PjExpressApp 
@@ -29,28 +30,28 @@ PjExpressApp class >> isAbstract [
 		  ifFalse: [ super isAbstract ]
 ]
 
-{ #category : #'node package management' }
+{ #category : 'node package management' }
 PjExpressApp class >> npmPackageNames [
 
 	<pharoJsSkip>
 	| npmPackageNames |
 	npmPackageNames := super npmPackageNames, #( 'express' 'body-parser' ).
-	self staticFilesFolderName ifNil: [ ^ npmPackageNames ].
+	self publicStaticFilesFolderName ifNil: [ ^ npmPackageNames ].
 	^ npmPackageNames copyWith: 'serve-static'
 ]
 
-{ #category : #initialization }
-PjExpressApp class >> staticFilesFolderName [
+{ #category : 'accessing' }
+PjExpressApp class >> publicStaticFilesFolderName [
 	^nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjExpressApp >> bodyParser [
 
 	^ self require: 'body-parser'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjExpressApp >> bodyParserMiddleware [
 
 	"More options and alternatives such as json in body-parser module doc
@@ -59,41 +60,46 @@ PjExpressApp >> bodyParserMiddleware [
 	^ self bodyParser text
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjExpressApp >> defaultPort [
 	^4321
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjExpressApp >> initialize [
 
 	super initialize.
 	server := self newServer.
 	self port: self defaultPort.
 	server use: self bodyParserMiddleware.
-	self serveStaticFilesIn: self staticFilesFolderName.
+	self serveStaticFilesIn: self publicStaticFilesFolderName.
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjExpressApp >> newServer [
 
 	^ (self require: 'express') value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjExpressApp >> port [
 
 	^ port
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjExpressApp >> port: anObject [
 
 	port := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
+PjExpressApp >> publicStaticFilesFolderName [
+	^self class publicStaticFilesFolderName
+]
+
+{ #category : 'initialization' }
 PjExpressApp >> serveStaticFilesIn: localFolderName [
 
 	| path serveStatic |
@@ -103,26 +109,21 @@ PjExpressApp >> serveStaticFilesIn: localFolderName [
 	server use: serveStatic
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjExpressApp >> serveStaticFunction [
 
 	^ self require: 'serve-static'
 ]
 
-{ #category : #'start-stop' }
+{ #category : 'start-stop' }
 PjExpressApp >> start [ 
 	super start.
 	server listen: self port onStartDo: [ self startUpAction ]
 ]
 
-{ #category : #'start-stop' }
+{ #category : 'start-stop' }
 PjExpressApp >> startUpAction [
 
 	console log:
 		self className , ' web app started on port ' , self port asString
-]
-
-{ #category : #initialization }
-PjExpressApp >> staticFilesFolderName [
-	^self class staticFilesFolderName
 ]

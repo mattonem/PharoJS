@@ -7,8 +7,8 @@ PjThreeJsDemo exportApp.
 
 "
 Class {
-	#name : #PjThreeJsDemo,
-	#superclass : #PjFileBasedWebApp,
+	#name : 'PjThreeJsDemo',
+	#superclass : 'PjFileBasedWebApp',
 	#instVars : [
 		'scene',
 		'camera',
@@ -18,16 +18,18 @@ Class {
 	#pools : [
 		'PjThreeJsGlobals'
 	],
-	#category : #'PharoJs-Examples-ThreeJS'
+	#category : 'PharoJs-Examples-ThreeJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ThreeJS'
 }
 
-{ #category : #description }
+{ #category : 'description' }
 PjThreeJsDemo class >> appJsSubFolder [
 	<pharoJsSkip>
 	^#js
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjThreeJsDemo >> animate [
 
 	window requestAnimationFrame: [ self animate ].
@@ -35,7 +37,7 @@ PjThreeJsDemo >> animate [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjThreeJsDemo >> handleKeydown: keyboardEvent [
 
 	"https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event"
@@ -47,7 +49,7 @@ PjThreeJsDemo >> handleKeydown: keyboardEvent [
 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjThreeJsDemo >> initialize [
 
 	| geometry material texture canvasWidth canvasHeight canvas |
@@ -79,7 +81,7 @@ PjThreeJsDemo >> initialize [
 	self animate
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjThreeJsDemo >> rotateX: deltaX [
 
 	| previousRotation newRotation |
@@ -88,7 +90,7 @@ PjThreeJsDemo >> rotateX: deltaX [
 	cube rotation x: newRotation
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjThreeJsDemo >> rotateY: deltaY [
 
 	| previousRotation newRotation |

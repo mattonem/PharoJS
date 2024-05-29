@@ -1,14 +1,16 @@
 Class {
-	#name : #PjProxyForGlobalsTest,
-	#superclass : #TestCase,
+	#name : 'PjProxyForGlobalsTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'classFactory',
 		'authorInitialName'
 	],
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjProxyForGlobalsTest >> setUp [
 
 	super setUp.
@@ -17,7 +19,7 @@ PjProxyForGlobalsTest >> setUp [
 	classFactory := ClassFactoryForTestCase new
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjProxyForGlobalsTest >> tearDown [
 
 	super tearDown.
@@ -25,7 +27,7 @@ PjProxyForGlobalsTest >> tearDown [
 	Author uniqueInstance fullName: authorInitialName.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyForGlobalsTest >> testProxyForNewGlobalsCreated [
 
 	| globalsPool userClass |

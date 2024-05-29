@@ -4,12 +4,14 @@ I implement a minimal browser application.
 I am a version that needs a working DNU infrastructure.
 "
 Class {
-	#name : #PjDrawRectangleUseDnuApp,
-	#superclass : #PjDrawRectangleApp,
-	#category : #'PharoJs-Examples-DrawRectangle'
+	#name : 'PjDrawRectangleUseDnuApp',
+	#superclass : 'PjDrawRectangleApp',
+	#category : 'PharoJs-Examples-DrawRectangle',
+	#package : 'PharoJs-Examples',
+	#tag : 'DrawRectangle'
 }
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PjDrawRectangleUseDnuApp >> setupDOM [
 	rectangle := document createElement: 'div'.
 	rectangle id: 'grn'.
@@ -49,7 +51,7 @@ PjDrawRectangleUseDnuApp >> setupDOM [
 		]
 ]
 
-{ #category : #'initialize - release' }
+{ #category : 'initialize - release' }
 PjDrawRectangleUseDnuApp >> subscribeToDeviceEvents [
 	" Bind any events that are required on startup. Common events are:
     	 'load', 'deviceready', 'offline', and 'online'."

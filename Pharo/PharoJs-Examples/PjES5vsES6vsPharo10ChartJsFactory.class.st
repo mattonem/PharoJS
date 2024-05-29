@@ -1,13 +1,15 @@
 Class {
-	#name : #PjES5vsES6vsPharo10ChartJsFactory,
-	#superclass : #PjES5vsES6ChartJsFactory,
+	#name : 'PjES5vsES6vsPharo10ChartJsFactory',
+	#superclass : 'PjES5vsES6ChartJsFactory',
 	#instVars : [
 		'p10Data'
 	],
-	#category : #'PharoJs-Examples-ChartJS'
+	#category : 'PharoJs-Examples-ChartJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ChartJS'
 }
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6vsPharo10ChartJsFactory >> configDataSets [
 
 	^super configDataSets copyWith: (config datasets copyWith: PjConfig << [ :dataSet |
@@ -17,7 +19,7 @@ PjES5vsES6vsPharo10ChartJsFactory >> configDataSets [
 				 data: p10Data ]).
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6vsPharo10ChartJsFactory >> initDataFromRow: row unit: unitString [
 
 	row app == 'Pharo10' ifFalse: [
@@ -31,13 +33,13 @@ PjES5vsES6vsPharo10ChartJsFactory >> initDataFromRow: row unit: unitString [
 		es6Label: self p10DataLabel
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjES5vsES6vsPharo10ChartJsFactory >> initialize [ 
 	super initialize .
 p10Data := OrderedCollection new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjES5vsES6vsPharo10ChartJsFactory >> p10DataLabel [ ^'Pharo 10'.
 	
 ]

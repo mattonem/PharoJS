@@ -1,6 +1,6 @@
 Class {
-	#name : #PjBridgeTestResource,
-	#superclass : #TestResource,
+	#name : 'PjBridgeTestResource',
+	#superclass : 'TestResource',
 	#instVars : [
 		'bridge',
 		'appClass',
@@ -9,15 +9,17 @@ Class {
 	#classVars : [
 		'OpenWebBrowserInBackground'
 	],
-	#category : #'PharoJs-TestFramework-Kernel'
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource class >> appClassToExportFor: aTestAsserter [
 	^aTestAsserter appClassToExport 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource class >> availableFor: aTestAsserter [
 
 	super availableFor: aTestAsserter.
@@ -25,7 +27,7 @@ PjBridgeTestResource class >> availableFor: aTestAsserter [
 	self current ensureFreshClient
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource class >> ensureAppClassFor: aTestAsserter [
 
 	self current appClass == aTestAsserter appClassToExport ifTrue: [ 
@@ -34,66 +36,66 @@ PjBridgeTestResource class >> ensureAppClassFor: aTestAsserter [
 	current initFrom: aTestAsserter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource class >> isClientBrowserOpenedInBackground [
 	^OpenWebBrowserInBackground ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource class >> isClientBrowserOpenedInBackground: aBoolean [
 	^OpenWebBrowserInBackground := aBoolean 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource class >> setWebBrowserOpenedInBackground [
 
 	<script>
 	self isClientBrowserOpenedInBackground: true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource class >> setWebBrowserOpenedInForeground [
 
 	<script>
 	self isClientBrowserOpenedInBackground: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource >> appClass [
 	^appClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource >> bridge [
 	^ bridge
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource >> bridge: aBridge [
 	bridge := aBridge.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjBridgeTestResource >> bridgeForAppClass [
 
 	^ appClass bridge
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource >> ensureFreshClient [
 
 	self bridge isConnected ifTrue: [ ^ self resetClient ].
 	self startJsInterpreter
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridgeTestResource >> initBridge [
 
 	self bridge: self bridgeForAppClass.
 	PjBridge soleBridge: self bridge
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridgeTestResource >> initFrom: aTestAsserter [
 
 	appClass := aTestAsserter appClassToExport.
@@ -105,29 +107,29 @@ PjBridgeTestResource >> initFrom: aTestAsserter [
 		self bridge 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjBridgeTestResource >> initialize [
 	super initialize.
 	self description: 'I manage a bridge dedicated to testing a PharoJS app'.
 	self name: 'PharoJS Bridge TestResource'.
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource >> isClientBrowserOpenedInBackground [
 	^self class isClientBrowserOpenedInBackground
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource >> resetClient [
 	self bridge resetClient
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource >> setUpClient [
 	^self bridge client openBrowserInBackground: self isClientBrowserOpenedInBackground
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource >> startBridge: aBridge [
 
 	"Avoid bridge resource process being killed by test runner.
@@ -137,13 +139,13 @@ PjBridgeTestResource >> startBridge: aBridge [
 		aBridge startWithoutWaitingForClient ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource >> startJsInterpreter [
 	self bridge startJsInterpreter
 	
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjBridgeTestResource >> tearDown [
 	super tearDown.
 	self bridge

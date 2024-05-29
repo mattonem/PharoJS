@@ -11,8 +11,8 @@ Relies on PjPageViewerApp to open pages and eventually upon tearDown close them
 
 "
 Class {
-	#name : #PjMultipageExpressClientTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjMultipageExpressClientTest',
+	#superclass : 'PjWebAppTestCase',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
 	#instVars : [
@@ -21,53 +21,56 @@ Class {
 		'serverManagerBridge',
 		'pageBridgesDict'
 	],
-	#category : #'PharoJs-TestFramework-Kernel'
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjMultipageExpressClientTest class >> appClass [
 
 	^ PjPageViewerApp 
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjMultipageExpressClientTest class >> isAbstract [ 
 	^self == PjMultipageExpressClientTest 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMultipageExpressClientTest >> appClass [ 
 	self bridge ifNil: [ ^super appClass  ].
 	^self bridge appClass
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> assertShowingPage: anAppClass [
 
 	| otherBridges pageBridge |
-	pageBridge := pageBridgesDict
-		              at: anAppClass.
+	pageBridge := pageBridgesDict at: anAppClass.
 	self waitUntil: [ pageBridge isConnected ].
+	self waitWhile: [ pageBridge app isNil ].
 	self bridge: pageBridge.
 	self resetInstanceVariables.
+	self deny: app isNil.
 	self assert: app identicalTo: pageBridge app.
 	otherBridges := self pageBridges copyWithout: pageBridge.
 	otherBridges do: [ :each | self deny: each isConnected ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMultipageExpressClientTest >> bridge [
 	^activeBridge ifNil: [ super bridge ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMultipageExpressClientTest >> bridge: aBridge [
 
 	activeBridge := aBridge.
 	PjBridge soleBridge: activeBridge
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> createPageBridges [
 
 	pageBridgesDict := IdentityDictionary new.
@@ -76,27 +79,28 @@ PjMultipageExpressClientTest >> createPageBridges [
 		]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> openPage: anAppClass [
 
 	| pageBridge |
 	pageBridge := pageBridgesDict at: anAppClass.
 	pageViewer open: pageBridge client urlString.
+	"Refereshing bridge and app is done in the assertion, since it can often be called after some action that make the browser open another page"
 	self assertShowingPage: anAppClass
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> pageAppClasses [
 	self subclassResponsibility 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMultipageExpressClientTest >> pageBridges [
 
 	^pageBridgesDict values
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> setUp [
 
 	super setUp.
@@ -104,7 +108,7 @@ PjMultipageExpressClientTest >> setUp [
 	self setUpPageBridges
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> setUpOtherPageBridges [
 
 	| otherPageBridges serverBridge |
@@ -117,7 +121,7 @@ PjMultipageExpressClientTest >> setUpOtherPageBridges [
 		eachBridge startWithoutWaitingForClient ]
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> setUpPageBridges [
 
 	self createPageBridges.
@@ -125,7 +129,7 @@ PjMultipageExpressClientTest >> setUpPageBridges [
 	self setUpOtherPageBridges
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> setUpServerManagerBridge [
 
 	serverManagerBridge := self pageBridges anyOne.
@@ -134,14 +138,14 @@ PjMultipageExpressClientTest >> setUpServerManagerBridge [
 		startWithoutWaitingForClient
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> tearDown [
 
 	self tearDownPageBridges.
 	super tearDown
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientTest >> tearDownPageBridges [
 
 	self pageBridges do: [ :each |

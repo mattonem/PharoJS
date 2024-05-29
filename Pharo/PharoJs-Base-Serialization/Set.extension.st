@@ -1,6 +1,6 @@
-Extension { #name : #Set }
+Extension { #name : 'Set' }
 
-{ #category : #'*PharoJs-Base-Serialization' }
+{ #category : '*PharoJs-Base-Serialization' }
 Set class >> instantiateWithPhxJsonReader: reader instanceJsonObject: jsonObject [
 	| newCollection |
 	newCollection := self new.

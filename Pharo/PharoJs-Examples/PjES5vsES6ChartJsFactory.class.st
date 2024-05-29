@@ -1,16 +1,18 @@
 Class {
-	#name : #PjES5vsES6ChartJsFactory,
-	#superclass : #PjDomController,
+	#name : 'PjES5vsES6ChartJsFactory',
+	#superclass : 'PjDomController',
 	#instVars : [
 		'chartsContainer',
 		'config',
 		'es5Data',
 		'es6Data'
 	],
-	#category : #'PharoJs-Examples-ChartJS'
+	#category : 'PharoJs-Examples-ChartJS',
+	#package : 'PharoJs-Examples',
+	#tag : 'ChartJS'
 }
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory class >> chartData: csvData yLabel: yAxisLabel title: titleString unit: unitString [
 
 	^ self new
@@ -20,7 +22,7 @@ PjES5vsES6ChartJsFactory class >> chartData: csvData yLabel: yAxisLabel title: t
 		  unit: unitString
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> addTo: aCollection dataDictfrom: value stdDeviation: stdDeviation label: dataSetLabel unit: unitString [
 
 	| tootipLabel  |
@@ -46,7 +48,7 @@ PjES5vsES6ChartJsFactory >> addTo: aCollection dataDictfrom: value stdDeviation:
 	aCollection add: config
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> chartData: csvData yLabel: yAxisLabel title: titleString unit: unitString [
 
 	self initDataFrom: csvData unit: unitString.
@@ -54,7 +56,7 @@ PjES5vsES6ChartJsFactory >> chartData: csvData yLabel: yAxisLabel title: titleSt
 	^ self newChartWithTitle: titleString
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> configDataSets [
 	^{
 				(PjConfig << [ :dataSet |
@@ -69,19 +71,19 @@ PjES5vsES6ChartJsFactory >> configDataSets [
 					 data: es6Data ]) }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjES5vsES6ChartJsFactory >> es5DataLabel [
 
 	^ 'PharoJS ES5'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjES5vsES6ChartJsFactory >> es6DataLabel [
 
 	^ 'PharoJS ES6'
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> initConfigWithYLabel: yAxisLabel [
 
 	config type: #barWithErrorBars.
@@ -99,20 +101,20 @@ PjES5vsES6ChartJsFactory >> initConfigWithYLabel: yAxisLabel [
 		datasets: self configDataSets ]
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> initDataFrom: csvData unit: unitString [
 
 	csvData do: [ :row | self initDataFromRow: row unit: unitString ]
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> initDataFromRow: row unit: unitString [
 
 	self initDataFromRow: row unit: unitString es5: es5Data es5Label: self es5DataLabel es6: es6Data es6Label: self es6DataLabel
 
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> initDataFromRow: row unit: unitString es5: es5 es5Label: es5Label es6: es6 es6Label: es6Label [
 
 		self
@@ -129,7 +131,7 @@ PjES5vsES6ChartJsFactory >> initDataFromRow: row unit: unitString es5: es5 es5La
 			unit: unitString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjES5vsES6ChartJsFactory >> initialize [
 
 	super initialize.
@@ -138,7 +140,7 @@ PjES5vsES6ChartJsFactory >> initialize [
 	es6Data := OrderedCollection new
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> newCanvasWithTitle: titleString [
 
 	| card body title |
@@ -154,7 +156,7 @@ PjES5vsES6ChartJsFactory >> newCanvasWithTitle: titleString [
 			  (#height -> '300px') }
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> newChartWithTitle: titleString [
 
 	| canvas |
@@ -162,7 +164,7 @@ PjES5vsES6ChartJsFactory >> newChartWithTitle: titleString [
 	^ globalThis Chart new: canvas with: config becomeJsObject
 ]
 
-{ #category : #'chart creation' }
+{ #category : 'chart creation' }
 PjES5vsES6ChartJsFactory >> tooltipLabelFunction [
 
 	^ [ :context | context raw tootipLabel ]

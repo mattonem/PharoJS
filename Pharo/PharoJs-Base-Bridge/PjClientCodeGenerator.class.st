@@ -93,18 +93,18 @@ PjClientCodeGenerator >> favicon [
 { #category : 'generating' }
 PjClientCodeGenerator >> generateHtmlUsing: aHtmlGenerator [
 
-	(self appClass generateHtmlUsing: aHtmlGenerator) ifFalse: [ 
-		aHtmlGenerator title: 'PharoJS:' , self titleString.
-		aHtmlGenerator
-			add: 'h1'
-			contents: 'PharoJS: Develop in Pharo, run in JavaScript'.
-		aHtmlGenerator add: 'h2' contents: self titleString ].
+	aHtmlGenerator title: 'PharoJS:' , self titleString.
+	aHtmlGenerator
+		add: 'h1'
+		contents: 'PharoJS: Develop in Pharo, run in JavaScript'.
+	aHtmlGenerator add: 'h2' contents: self titleString.
 	aHtmlGenerator addScriptUrl: 'index.js'
 ]
 
 { #category : 'public' }
 PjClientCodeGenerator >> html [
 
+	self appClass isHtmlGenerator ifTrue: [ ^self appClass html ].
 	self generateHtmlUsing: self htmlGenerator.
 	^ self htmlGenerator html
 ]

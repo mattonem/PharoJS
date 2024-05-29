@@ -1,23 +1,25 @@
 Trait {
-	#name : #PjTWebServerApiTestCase,
+	#name : 'PjTWebServerApiTestCase',
 	#instVars : [
 		'rootUrlString'
 	],
-	#category : #'PharoJs-TestFramework-Kernel'
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjTWebServerApiTestCase >> get: pathString [
 
 	^ ZnEasy get: self rootUrlString , pathString
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjTWebServerApiTestCase >> port [
 	^self app port
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjTWebServerApiTestCase >> post: pathString text: aString [
 
 	^ ZnEasy
@@ -25,7 +27,7 @@ PjTWebServerApiTestCase >> post: pathString text: aString [
 		  data: (ZnEntity text: aString)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjTWebServerApiTestCase >> rootUrlString [
 
 	^rootUrlString ifNil: [rootUrlString := 'http://localhost:' , self port asString]

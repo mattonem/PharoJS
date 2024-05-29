@@ -7,21 +7,23 @@ To generate the javascript index.js file, evaluate the following expression:
 PjHelloWorldApp exportApp
 "
 Class {
-	#name : #PjHelloWorldApp,
-	#superclass : #PjFileBasedWebApp,
+	#name : 'PjHelloWorldApp',
+	#superclass : 'PjFileBasedWebApp',
 	#instVars : [
 		'user'
 	],
-	#category : #'PharoJs-Examples-HelloWorld'
+	#category : 'PharoJs-Examples-HelloWorld',
+	#package : 'PharoJs-Examples',
+	#tag : 'HelloWorld'
 }
 
-{ #category : #description }
+{ #category : 'description' }
 PjHelloWorldApp class >> appClasses [
 	<pharoJsSkip>
 	^super appClasses, { PjUser }
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 PjHelloWorldApp >> start [
 	| nameInput sayHelloButton greetingMessageContainer |
 	super start.

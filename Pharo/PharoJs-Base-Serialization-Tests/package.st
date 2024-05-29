@@ -1,1 +1,1 @@
-Package { #name : #'PharoJs-Base-Serialization-Tests' }
+Package { #name : 'PharoJs-Base-Serialization-Tests' }

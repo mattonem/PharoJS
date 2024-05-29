@@ -1,1 +1,1 @@
-Package { #name : #'PharoJs-Examples' }
+Package { #name : 'PharoJs-Examples' }

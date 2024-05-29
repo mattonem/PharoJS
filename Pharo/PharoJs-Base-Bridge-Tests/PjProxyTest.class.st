@@ -1,14 +1,16 @@
 Class {
-	#name : #PjProxyTest,
-	#superclass : #PjBridgeTestCase,
+	#name : 'PjProxyTest',
+	#superclass : 'PjBridgeTestCase',
 	#pools : [
 		'PjDomGlobals',
 		'PjUniversalGlobals'
 	],
-	#category : #'PharoJs-Base-Bridge-Tests-Tests'
+	#category : 'PharoJs-Base-Bridge-Tests-Tests',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testArrayEquality [
 
 	self assertBlock: [ #() ] equalsBlock: [ #() ].
@@ -22,7 +24,7 @@ PjProxyTest >> testArrayEquality [
 	self denyBlock: [ {{true. 'two'}. nil. 3.14.}] equalsBlock: [ {{false. 'abc'}. nil. 3.14.} ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testAsJson [
 
 	self assert: 42 asJSON equals: '42'.
@@ -30,7 +32,7 @@ PjProxyTest >> testAsJson [
 	self assert: nil asJSON equals: 'null'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testBlockClosures [
 
 	document body addEventListener: 'click' block: [ 42 ].
@@ -53,13 +55,13 @@ PjProxyTest >> testBlockClosures [
 		self bridge blockClosures size equals: 0.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testBrowser [
 
 	self assert: (window hasOwnProperty: 'document') description: 'window properies'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testChildren [
 
 	| rectangle other |
@@ -77,7 +79,7 @@ PjProxyTest >> testChildren [
 	self assert: ((document getElementsByTagName: 'span') at: 1) id equals: 'grn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testClick [
 
 	| rectangle count |
@@ -109,7 +111,7 @@ PjProxyTest >> testClick [
 	self assert: count = 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testClickWithEventTarget [
 
 	| rectangle1 rectangle2 lastClickedRectangle count listenerBlock |
@@ -144,7 +146,7 @@ PjProxyTest >> testClickWithEventTarget [
 	self assert: count = 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testGetElementById [
 
 	| rectangle |
@@ -156,7 +158,7 @@ PjProxyTest >> testGetElementById [
 	self assert: (document js_getElementById: 'grn') id equals: 'grn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testIterateOverChildren [
 
 	| container newChild |
@@ -169,7 +171,7 @@ PjProxyTest >> testIterateOverChildren [
 		each textContent: index].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testPrinting [
 
 	| proxyOnObject proxyOnArray |
@@ -181,7 +183,7 @@ PjProxyTest >> testPrinting [
 			 proxyOnArray printString)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testProxyGarbageCollection [
 
 	| b jsName |
@@ -194,7 +196,7 @@ PjProxyTest >> testProxyGarbageCollection [
 	self waitWhile: [globalThis includesKey: jsName]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testProxyMissingError [
 
 	1 to: 10 do: [ :num | 
@@ -202,7 +204,7 @@ PjProxyTest >> testProxyMissingError [
 		num milliSeconds wait ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjProxyTest >> testValueNonInterference [
 
 	| theInput |

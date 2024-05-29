@@ -4,16 +4,18 @@ This trait makes a test case export the app under test to JS and control it remo
 
 "
 Trait {
-	#name : #PjTAppRunsInJS,
-	#category : #'PharoJs-TestFramework-Kernel'
+	#name : 'PjTAppRunsInJS',
+	#category : 'PharoJs-TestFramework-Kernel',
+	#package : 'PharoJs-TestFramework',
+	#tag : 'Kernel'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTAppRunsInJS >> appClassToExport [
 	^self appClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTAppRunsInJS >> currentApp [
 
 	^ self bridge

@@ -1,17 +1,19 @@
 Class {
-	#name : #PjInstanceInitTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-Bridge-Tests-Initialization'
+	#name : 'PjInstanceInitTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-Bridge-Tests-Initialization',
+	#package : 'PharoJs-Base-Bridge-Tests',
+	#tag : 'Initialization'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInstanceInitTest >> jsNew: aClass [
 
 ^self bridge evalJavascript: 'new ',  aClass name.
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInstanceInitTest >> testInitializeSkippedWithBasicNew [
 
 	| jsObject |
@@ -21,7 +23,7 @@ PjInstanceInitTest >> testInitializeSkippedWithBasicNew [
 	self assert: jsObject y equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInstanceInitTest >> testInitializeWithJsNewOperator [
 
 	| jsObject |
@@ -32,7 +34,7 @@ PjInstanceInitTest >> testInitializeWithJsNewOperator [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInstanceInitTest >> testInitializeWithJsNewOperatorOnSubclass [
 
 	| jsObject |
@@ -42,7 +44,7 @@ PjInstanceInitTest >> testInitializeWithJsNewOperatorOnSubclass [
 	self assert: jsObject y equals: 'PharoJS'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjInstanceInitTest >> testInitializeWithNewMessage [
 
 	| jsObject |

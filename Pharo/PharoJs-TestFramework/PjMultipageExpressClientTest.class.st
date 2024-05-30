@@ -43,9 +43,11 @@ PjMultipageExpressClientTest >> appClass [
 
 { #category : #running }
 PjMultipageExpressClientTest >> assertShowingPage: anAppClass [
+	"Refereshing bridge and app is done here, since it can often be called after some action that make the browser open another page"
 
 	| otherBridges pageBridge |
 	pageBridge := pageBridgesDict at: anAppClass.
+	self resetTranspilerOf: anAppClass.
 	self waitUntil: [ pageBridge isConnected ].
 	self waitWhile: [ pageBridge app isNil ].
 	self bridge: pageBridge.
@@ -96,6 +98,15 @@ PjMultipageExpressClientTest >> pageAppClasses [
 PjMultipageExpressClientTest >> pageBridges [
 
 	^pageBridgesDict values
+]
+
+{ #category : #running }
+PjMultipageExpressClientTest >> resetTranspilerOf: pageAppClass [
+	"Dependent transpiler stores classes loaded dynamically by tests and DNU support methods installed in Object. This is an optimization to avoid sending several times the same code. But, the browser loses them each time it loads a new page. So, we need to reset the transpiler to ensure it sends them again if needed."
+
+	| pageBridge |
+	pageBridge := pageBridgesDict at: pageAppClass.
+	pageBridge exporter resetTranspiler 
 ]
 
 { #category : #running }

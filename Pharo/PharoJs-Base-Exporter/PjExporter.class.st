@@ -202,22 +202,21 @@ PjExporter >> headerLine [
 	^ self appClass headerLine
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 PjExporter >> initialize [
 
 	super initialize.
 	classes := Set new.
 	globalsPools := Set new.
-	self transpiler: self transpilerClass new.
-	self transpiler addAllOptionalConversions "Except: 0 to: 1/2".
-	self setUpForPolyfill
+
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 PjExporter >> initializeWithAppClass: aClass [
 
+	"Except: 0 to: 1/2"
 	appClass := aClass.
-	transpiler pharoJsSelectorPrefix: aClass pharoJsSelectorPrefix.
+	self resetTranspiler.
 	self addAllClasses: appClass appClasses.
 	self addAllPackages: appClass appPackages
 ]
@@ -303,7 +302,16 @@ PjExporter >> pharoJsSelectorPrefix [
 	^ self transpiler pharoJsSelectorPrefix
 ]
 
-{ #category : #'initialize-release' }
+{ #category : #initialization }
+PjExporter >> resetTranspiler [
+
+	self transpiler: self transpilerClass new.
+	self transpiler addAllOptionalConversions. "Except: 0 to: 1/2"
+	self setUpForPolyfill.
+	transpiler pharoJsSelectorPrefix: appClass pharoJsSelectorPrefix
+]
+
+{ #category : #initialization }
 PjExporter >> setUpForPolyfill [
 
 	self transpiler beforeCodeOutputHook: [: pools | self writeGlobalsPolyfills: pools]

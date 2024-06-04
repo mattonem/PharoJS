@@ -42,5 +42,5 @@ PjTWebClientApp classSide >> urlPathString [
 
 	<pharoJsSkip>
 	^ self appFullHtmlFileName pathString allButFirst:
-		  self defaultAppFolderParent size
+		  self defaultAppFolderParent pathString size
 ]

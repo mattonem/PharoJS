@@ -82,11 +82,18 @@ PjMultipageExpressClientTest >> createPageBridges [
 { #category : #running }
 PjMultipageExpressClientTest >> openPage: anAppClass [
 
+	self openPage: anAppClass assertShowing: anAppClass 
+]
+
+{ #category : #running }
+PjMultipageExpressClientTest >> openPage: providedAppClass assertShowing: landingAppClass [
+
 	| pageBridge |
-	pageBridge := pageBridgesDict at: anAppClass.
+	"Use the bridge client since it knows which port to use. Otherwise only url path is provided and we attempt to get the page from the viewer's server. See PjPageViewerApp"
+	pageBridge := pageBridgesDict at: providedAppClass.
 	pageViewer open: pageBridge client urlString.
 	"Refereshing bridge and app is done in the assertion, since it can often be called after some action that make the browser open another page"
-	self assertShowingPage: anAppClass
+	self assertShowingPage: landingAppClass
 ]
 
 { #category : #running }

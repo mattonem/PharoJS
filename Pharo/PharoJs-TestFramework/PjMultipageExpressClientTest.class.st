@@ -82,11 +82,11 @@ PjMultipageExpressClientTest >> createPageBridges [
 { #category : #running }
 PjMultipageExpressClientTest >> openPage: anAppClass [
 
-	self openPage: anAppClass assertShowing: anAppClass 
+	self openPage: anAppClass assertShowingPage: anAppClass 
 ]
 
 { #category : #running }
-PjMultipageExpressClientTest >> openPage: providedAppClass assertShowing: landingAppClass [
+PjMultipageExpressClientTest >> openPage: providedAppClass assertShowingPage: landingAppClass [
 
 	| pageBridge |
 	"Use the bridge client since it knows which port to use. Otherwise only url path is provided and we attempt to get the page from the viewer's server. See PjPageViewerApp"

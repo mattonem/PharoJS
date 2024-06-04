@@ -15,9 +15,9 @@ PjMultipageExpressClientExampleTest >> click: buttonID [
 ]
 
 { #category : #running }
-PjMultipageExpressClientExampleTest >> pageAppClasses [
+PjMultipageExpressClientExampleTest >> serverAppClass [
 
-	^PjMultipageExpressClientExampleApp subclasses
+	^ PjMultipageExpressExampleApp 
 ]
 
 { #category : #running }

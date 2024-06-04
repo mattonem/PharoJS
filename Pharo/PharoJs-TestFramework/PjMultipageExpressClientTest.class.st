@@ -98,7 +98,8 @@ PjMultipageExpressClientTest >> openPage: providedAppClass assertShowingPage: la
 
 { #category : #running }
 PjMultipageExpressClientTest >> pageAppClasses [
-	self subclassResponsibility 
+
+	^ self serverAppClass clientAppClasses
 ]
 
 { #category : #accessing }
@@ -114,6 +115,12 @@ PjMultipageExpressClientTest >> resetTranspilerOf: pageAppClass [
 	| pageBridge |
 	pageBridge := pageBridgesDict at: pageAppClass.
 	pageBridge exporter resetTranspiler 
+]
+
+{ #category : #running }
+PjMultipageExpressClientTest >> serverAppClass [
+
+	self subclassResponsibility
 ]
 
 { #category : #running }

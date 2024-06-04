@@ -15,17 +15,19 @@ PjTWebClientApp classSide >> bridgeClientClass [
 { #category : #exporting }
 PjTWebClientApp classSide >> defaultAppFolderName [
 	"Subclasses are likely to override this method."
-	"Assume by default that the HTML is located at the root of static files folder "
+
+	"Assume by default that the HTML is located at the root of static files folder 
+	See PjApplication class >> #defaultAppFolderPath "
+
 	<pharoJsSkip>
-	^ '.'
+	^ nil
 ]
 
 { #category : #exporting }
 PjTWebClientApp classSide >> defaultAppFolderParent [
 
 	<pharoJsSkip>
-	^ self serverAppClass appFolder
-	  / self serverAppClass publicStaticFilesFolderName
+	^ self serverAppClass rootPathForClientClass: self
 ]
 
 { #category : #exporting }
@@ -33,4 +35,12 @@ PjTWebClientApp classSide >> serverAppClass [
 
 	<pharoJsSkip>
 	^ self explicitRequirement 
+]
+
+{ #category : #exporting }
+PjTWebClientApp classSide >> urlPathString [
+
+	<pharoJsSkip>
+	^ self appFullHtmlFileName pathString allButFirst:
+		  self defaultAppFolderParent size
 ]

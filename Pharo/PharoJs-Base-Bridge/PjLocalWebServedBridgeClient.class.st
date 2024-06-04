@@ -16,7 +16,7 @@ PjLocalWebServedBridgeClient >> initUrlString [
 		             sentTo: self serverClass name.
 	serverPort := serverApp port.
 	self urlString:
-		'http://127.0.0.1:' , serverPort asString , self urlPath
+		'http://127.0.0.1:' , serverPort asString , self urlPathString
 ]
 
 { #category : #accessing }
@@ -66,11 +66,7 @@ PjLocalWebServedBridgeClient >> stop [
 ]
 
 { #category : #actions }
-PjLocalWebServedBridgeClient >> urlPath [
+PjLocalWebServedBridgeClient >> urlPathString [
 
-	| serverAppClass |
-	serverAppClass := self appClass serverAppClass.
-	^ self appClass appFullHtmlFileName pathString allButFirst:
-		  (serverAppClass appFolder / serverAppClass publicStaticFilesFolderName)
-			  pathString size
+	^self appClass urlPathString 
 ]

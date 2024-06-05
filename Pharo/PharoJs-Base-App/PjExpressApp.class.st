@@ -46,6 +46,13 @@ PjExpressApp class >> publicStaticFilesFolderName [
 ]
 
 { #category : 'accessing' }
+PjExpressApp class >> rootPathForClientClass: appClass [
+
+	<pharoJsSkip>
+	^ self appFolder / self publicStaticFilesFolderName 
+]
+
+{ #category : 'accessing' }
 PjExpressApp >> bodyParser [
 
 	^ self require: 'body-parser'

@@ -11,11 +11,6 @@ Class {
 	#tag : 'Kernel'
 }
 
-{ #category : 'class initialization' }
-PjArray class >> javascriptInitialize [ 
-	Smalltalk at: #OrderedCollection put: Array
-]
-
 { #category : 'instance creation' }
 PjArray class >> new: newSize [
 	| newArray |

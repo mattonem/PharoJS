@@ -46,6 +46,7 @@ if(jsonClassName == "Dictionary") { return "PjDictionary"}
 if(jsonClassName == "Association") { return "PjAssociation"}
 if(jsonClassName == "IdentityDictionary") { return "PjIdentityDictionary"}
 if(jsonClassName == "Set") { return "PjSet"}
+if(jsonClassName == "OrderedCollection") { return "PjOrderedCollection" }
 return jsonClassName;'>
 	^ jsonClassName
 ]

@@ -6,7 +6,6 @@ PjTArray classSide >> instantiateWithPhxJsonReader: reader instanceJsonObject: j
 	resultCollection := self new: jsonObject size.
 	reader addKnownObject: resultCollection.
 	elements := jsonObject collect: [ :each | reader readFromJsObjectOrDictionary: each ].
+	elements withIndexDo: [ : anElement : index | resultCollection at: index put: anElement ].
 	^resultCollection
-		addAll: elements;
-		yourself
 ]

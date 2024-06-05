@@ -29,7 +29,7 @@ PjTCollection classSide >> jsTranspilationImportMethodsCollection [
 			      asDictionary associationsDo: addAll: isEmptyOrNil
 			      removeAll: includesAll: includesAny: copyWith: )).
 		  (Collection class -> #( withAll: )).
-		  (OrderedCollection class -> #( newFrom: )) }
+		   }
 ]
 
 { #category : 'testing' }

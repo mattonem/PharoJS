@@ -55,7 +55,7 @@ PjTArray classSide >> jsTranspilationImportMethodsArray [
 			      printAsLiteralFormOn: isSelfEvaluating printAsSelfEvaluatingFormOn:
 			      isLiteral isSelfEvaluating:)).
 		  (ByteArray -> #( asString )).
-		  (OrderedCollection -> #( join: addAllLast: )).
+		  
 		  (Collection
 		   ->
 		   #( doWithIndex: printElementsOn: printNameOn: identityIncludes: )).

@@ -312,7 +312,7 @@ PhxBridgedJsonSerialisationTests >> testSerializeOrderedCollection [
 
 	self
 		assertAllWithInstantiationBlock: [ OrderedCollection new ]
-		literal: '{"class":"Array","instance":[]}'
+		literal: '{"class":"OrderedCollection","instance":[]}'
 		testEq: false "don't test because it's an Array client side"
 		test4Stages: true
 ]

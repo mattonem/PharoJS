@@ -3,7 +3,7 @@ I am the Javascript embodiment of SortedCollection.
 "
 Class {
 	#name : 'PjSortedCollection',
-	#superclass : 'PjArray',
+	#superclass : 'PjOrderedCollection',
 	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
 	#package : 'PharoJs-Base-JS-CoreLibraries',
 	#tag : 'Kernel'

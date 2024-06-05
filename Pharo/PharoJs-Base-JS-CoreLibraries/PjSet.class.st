@@ -3,7 +3,7 @@ I am the Javascript embodiment of Set.
 "
 Class {
 	#name : 'PjSet',
-	#superclass : 'PjArray',
+	#superclass : 'PjOrderedCollection',
 	#category : 'PharoJs-Base-JS-CoreLibraries-Kernel',
 	#package : 'PharoJs-Base-JS-CoreLibraries',
 	#tag : 'Kernel'

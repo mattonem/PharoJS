@@ -15,8 +15,7 @@ Class {
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
 	#instVars : [
-		'classFactory',
-		'authorInitialName'
+		'classFactory'
 	],
 	#pools : [
 		'PjDomGlobals',
@@ -68,17 +67,15 @@ PjBridgeTestCase >> checkProxy: value [
 PjBridgeTestCase >> setUp [
 
 	super setUp.
-	authorInitialName := Author uniqueInstance fullNamePerSe.
-	Author uniqueInstance fullName: 'PharoJS'.
 	classFactory := ClassFactoryForTestCase new
 ]
 
 { #category : 'running' }
 PjBridgeTestCase >> tearDown [
 
-	super tearDown.
 	classFactory ifNotNil: [ classFactory cleanUp ].
-	Author uniqueInstance fullName: authorInitialName
+	super tearDown.
+
 ]
 
 { #category : 'test support' }

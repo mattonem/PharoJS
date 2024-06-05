@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: Build with Pharo 12
+name: Build Dev version
 
 # Controls when the workflow will run
 on:
@@ -25,7 +25,7 @@ jobs:
       - uses: hpi-swa/setup-smalltalkCI@v1
         id: smalltalkci
         with:
-          smalltalk-image: 'Pharo64-12'
+          smalltalk-image: 'Pharo64-13'
           cache: 'smalltalk-image'
       - uses: browser-actions/setup-chrome@v1
         with:

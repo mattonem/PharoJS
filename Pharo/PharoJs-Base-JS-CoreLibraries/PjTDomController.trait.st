@@ -6,6 +6,8 @@ The API allows handling both DOM objects direclty or by providing their IDs.
 "
 Trait {
 	#name : #PjTDomController,
+	#traits : 'PjTDomNavigator',
+	#classTraits : 'PjTDomNavigator classTrait',
 	#category : #'PharoJs-Base-JS-CoreLibraries-Controllers'
 }
 
@@ -125,24 +127,6 @@ PjTDomController >> cssClassesStringElement: domElement [
 { #category : #css }
 PjTDomController >> cssClassesStringElement: domElement set: newClassesString [
 	self attribute: #class ofElement: domElement set: newClassesString
-]
-
-{ #category : #accessing }
-PjTDomController >> document [
-	self explicitRequirement
-]
-
-{ #category : #accessing }
-PjTDomController >> elementAt: elementId [
-	^self document getElementById: elementId
-]
-
-{ #category : #accessing }
-PjTDomController >> elementAt: childId in: container [
-	"Method querySelector: Returns the first child element that matches a specified 
-	CSS selector(s) of an element. To search for an element by Id, we need to use
-	a sharp (#) as prefix. A dot (.) should be used for searching by class"
-	^container querySelector: '#', childId.
 ]
 
 { #category : #visibility }

@@ -1,11 +1,13 @@
 Class {
-	#name : #PjMultipageExpressClientExampleTest,
-	#superclass : #PjMultipageExpressClientTest,
+	#name : 'PjMultipageExpressClientExampleTest',
+	#superclass : 'PjMultipageExpressClientTest',
 	#classTraits : 'PjTAppRunsInJS classTrait',
-	#category : #'PharoJs-Examples-Tests-ExpressJS'
+	#category : 'PharoJs-Examples-Tests-ExpressJS',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientExampleTest >> click: buttonID [
 
 	| button |
@@ -14,13 +16,13 @@ PjMultipageExpressClientExampleTest >> click: buttonID [
 	button click
 ]
 
-{ #category : #running }
-PjMultipageExpressClientExampleTest >> pageAppClasses [
+{ #category : 'running' }
+PjMultipageExpressClientExampleTest >> serverAppClass [
 
-	^PjMultipageExpressClientExampleApp subclasses
+	^ PjMultipageExpressExampleApp 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjMultipageExpressClientExampleTest >> testNavigateFromPage1ToPage2AndToPage3 [
 
 	self openPage: PjPage1InMultipageExpressExampleApp.

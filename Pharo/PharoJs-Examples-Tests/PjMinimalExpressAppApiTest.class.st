@@ -1,16 +1,18 @@
 Class {
-	#name : #PjMinimalExpressAppApiTest,
-	#superclass : #PjWebServerAppTestCase,
-	#category : #'PharoJs-Examples-Tests-ExpressJS'
+	#name : 'PjMinimalExpressAppApiTest',
+	#superclass : 'PjWebServerAppTestCase',
+	#category : 'PharoJs-Examples-Tests-ExpressJS',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjMinimalExpressAppApiTest class >> appClass [
 
 	^ PjMinimalExpressApp
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalExpressAppApiTest >> testGetStaticFile [
 
 	| response |
@@ -19,7 +21,7 @@ PjMinimalExpressAppApiTest >> testGetStaticFile [
 	self assert: response contents size equals: 31251
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalExpressAppApiTest >> testHttpGetAndPost [
 
 	| response |

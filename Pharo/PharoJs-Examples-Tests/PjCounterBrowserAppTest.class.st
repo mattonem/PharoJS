@@ -1,20 +1,22 @@
 Class {
-	#name : #PjCounterBrowserAppTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjCounterBrowserAppTest',
+	#superclass : 'PjWebAppTestCase',
 	#instVars : [
 		'countDisplay',
 		'incrementButton',
 		'resetButton'
 	],
-	#category : #'PharoJs-Examples-Tests-Counter'
+	#category : 'PharoJs-Examples-Tests-Counter',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'Counter'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjCounterBrowserAppTest class >> appClass [
 	^PjCounterBrowserApp
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCounterBrowserAppTest >> setUp [
 	super setUp.
 	countDisplay := app countDisplay.
@@ -22,7 +24,7 @@ PjCounterBrowserAppTest >> setUp [
 	incrementButton := app incrementButton.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCounterBrowserAppTest >> testClickOnIncrementButtonIncreasesCountAndUpdatesDisplay [
 	1 to: 10 do: [ : expectedCount |
 		incrementButton click.
@@ -30,14 +32,14 @@ PjCounterBrowserAppTest >> testClickOnIncrementButtonIncreasesCountAndUpdatesDis
 	]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCounterBrowserAppTest >> testClickOnResetButtonSetsCountTo0 [
 	3 timesRepeat: [incrementButton click.].
 	resetButton click.
 	self assert: countDisplay innerHTML equals: '0'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCounterBrowserAppTest >> testInitialCountDisplayIs0 [
 	self assert: countDisplay innerHTML equals: '0'
 ]

@@ -1,18 +1,20 @@
 Class {
-	#name : #PjES5vsES6BenchmarkChartsAppTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjES5vsES6BenchmarkChartsAppTest',
+	#superclass : 'PjWebAppTestCase',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
-	#category : #'PharoJs-Examples-Tests-ChartJS'
+	#category : 'PharoJs-Examples-Tests-ChartJS',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'ChartJS'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjES5vsES6BenchmarkChartsAppTest class >> appClass [
 
 	^ PjES5vsES6BenchmarkChartsApp 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjES5vsES6BenchmarkChartsAppTest >> testAllCanvasBuilt [
 
 	| allCanvas emptyCanvas emptyCanvasUrl aCanvas |

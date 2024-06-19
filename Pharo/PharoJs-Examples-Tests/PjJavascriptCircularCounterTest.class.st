@@ -1,10 +1,12 @@
 Class {
-	#name : #PjJavascriptCircularCounterTest,
-	#superclass : #PjJavascriptCounterBrowserAppTest,
-	#category : #'PharoJs-Examples-Tests-Counter'
+	#name : 'PjJavascriptCircularCounterTest',
+	#superclass : 'PjJavascriptCounterBrowserAppTest',
+	#category : 'PharoJs-Examples-Tests-Counter',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'Counter'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjJavascriptCircularCounterTest >> testDefaultCircularCounterDifferentForDefaultCounter [
 	"Ceration order is important!"
 

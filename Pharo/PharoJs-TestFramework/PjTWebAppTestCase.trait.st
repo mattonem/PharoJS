@@ -1,5 +1,7 @@
 Trait {
 	#name : 'PjTWebAppTestCase',
+	#traits : 'PjTDomNavigator',
+	#classTraits : 'PjTDomNavigator classTrait',
 	#category : 'PharoJs-TestFramework-Kernel',
 	#package : 'PharoJs-TestFramework',
 	#tag : 'Kernel'
@@ -88,11 +90,6 @@ PjTWebAppTestCase >> computedDisplayStyleOf: element [
 { #category : 'UI handling' }
 PjTWebAppTestCase >> dispatchEvent: eventName to: htmlElement [
 	htmlElement dispatchEvent: (self newEvent: eventName)
-]
-
-{ #category : 'accessing' }
-PjTWebAppTestCase >> document [
-	self explicitRequirement 
 ]
 
 { #category : 'asserting' }

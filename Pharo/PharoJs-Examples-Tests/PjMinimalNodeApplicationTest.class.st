@@ -1,27 +1,29 @@
 Class {
-	#name : #PjMinimalNodeApplicationTest,
-	#superclass : #PjAppTestCase,
-	#category : #'PharoJs-Examples-Tests-Minimal'
+	#name : 'PjMinimalNodeApplicationTest',
+	#superclass : 'PjAppTestCase',
+	#category : 'PharoJs-Examples-Tests-Minimal',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'Minimal'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjMinimalNodeApplicationTest class >> appClass [ 
 	^PjMinimalNodeApplication 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalNodeApplicationTest >> exportedAppJsFileChangeTime [
 
 	^ self appClass appFullJsFileName resolve changeTime
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalNodeApplicationTest >> testArithmeticOperations [
 	self assert: [ 1+2 ] evaluatesTo: 3.
 	self assert: [ 32 / 8 ] evaluatesTo: 4.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalNodeApplicationTest >> testLoadClass [
 	| jsCounter |
 	jsCounter := self evalBlock: [ PjCounter new ].
@@ -32,7 +34,7 @@ PjMinimalNodeApplicationTest >> testLoadClass [
 	]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMinimalNodeApplicationTest >> testResetApp [
 
 	| initialChangeTime latestChangeTime |

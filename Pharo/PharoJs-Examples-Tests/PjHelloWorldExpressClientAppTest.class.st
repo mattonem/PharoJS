@@ -1,18 +1,20 @@
 Class {
-	#name : #PjHelloWorldExpressClientAppTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjHelloWorldExpressClientAppTest',
+	#superclass : 'PjWebAppTestCase',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
-	#category : #'PharoJs-Examples-Tests-ExpressJS'
+	#category : 'PharoJs-Examples-Tests-ExpressJS',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjHelloWorldExpressClientAppTest class >> appClass [
 
 	^ PjHelloWorldExpressClientApp
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjHelloWorldExpressClientAppTest >> testDisplayGreetingsNoName [
 
 	self assert: app greetingsContainer textContent equals: '---'.
@@ -21,7 +23,7 @@ PjHelloWorldExpressClientAppTest >> testDisplayGreetingsNoName [
 		app greetingsContainer textContent = 'ExpressJS says: Hello!' ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjHelloWorldExpressClientAppTest >> testGreetingsUpdatedAfterSettingName [
 
 	self assert: app greetingsContainer textContent equals: '---'.

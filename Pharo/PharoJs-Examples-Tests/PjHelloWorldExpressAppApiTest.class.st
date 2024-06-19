@@ -1,16 +1,18 @@
 Class {
-	#name : #PjHelloWorldExpressAppApiTest,
-	#superclass : #PjWebServerAppTestCase,
-	#category : #'PharoJs-Examples-Tests-ExpressJS'
+	#name : 'PjHelloWorldExpressAppApiTest',
+	#superclass : 'PjWebServerAppTestCase',
+	#category : 'PharoJs-Examples-Tests-ExpressJS',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjHelloWorldExpressAppApiTest class >> appClass [
 
 	^ PjHelloWorldExpressApp 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjHelloWorldExpressAppApiTest >> testHttpGetGreetings [
 
 	| response |
@@ -21,7 +23,7 @@ PjHelloWorldExpressAppApiTest >> testHttpGetGreetings [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjHelloWorldExpressAppApiTest >> testHttpGetName [
 
 	| response providedName |
@@ -33,7 +35,7 @@ PjHelloWorldExpressAppApiTest >> testHttpGetName [
 	self assert: (self get: '/name') contents equals: providedName
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjHelloWorldExpressAppApiTest >> testHttpGetRoot [
 
 	| response |
@@ -43,7 +45,7 @@ PjHelloWorldExpressAppApiTest >> testHttpGetRoot [
 	self assert: (response contents includesSubstring: 'pharoJsLogo')
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjHelloWorldExpressAppApiTest >> testHttpPostName [
 
 	| response name |

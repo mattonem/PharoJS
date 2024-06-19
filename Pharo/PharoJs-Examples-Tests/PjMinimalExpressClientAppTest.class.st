@@ -1,17 +1,19 @@
 Class {
-	#name : #PjMinimalExpressClientAppTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjMinimalExpressClientAppTest',
+	#superclass : 'PjWebAppTestCase',
 	#traits : 'PjTAppRunsInJS',
 	#classTraits : 'PjTAppRunsInJS classTrait',
-	#category : #'PharoJs-Examples-Tests-ExpressJS'
+	#category : 'PharoJs-Examples-Tests-ExpressJS',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'ExpressJS'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjMinimalExpressClientAppTest class >> appClass [
 	^PjMinimalExpressClientApp 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjMinimalExpressClientAppTest >> testDataAccess [
 
 	| display |

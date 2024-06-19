@@ -1,20 +1,22 @@
 Class {
-	#name : #PjHelloWorldAppTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjHelloWorldAppTest',
+	#superclass : 'PjWebAppTestCase',
 	#instVars : [
 		'nameInput',
 		'sayHelloButton',
 		'greetingMessageContainer'
 	],
-	#category : #'PharoJs-Examples-Tests-HelloWorld'
+	#category : 'PharoJs-Examples-Tests-HelloWorld',
+	#package : 'PharoJs-Examples-Tests',
+	#tag : 'HelloWorld'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjHelloWorldAppTest class >> appClass [
 	^PjHelloWorldApp
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjHelloWorldAppTest >> setUp [
 	super setUp.
 	nameInput := document getElementById: #nameTextInput.
@@ -22,7 +24,7 @@ PjHelloWorldAppTest >> setUp [
 	greetingMessageContainer := document getElementById: #greetingMessageContainer.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjHelloWorldAppTest >> testSayHello [
 	#(Luke Yoda 'Obi One') do: [ : name |
 		self changeElement: nameInput value: name.

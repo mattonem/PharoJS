@@ -13,11 +13,6 @@ PjDebugBridgeTestResource >> ensureFreshClient [
 ]
 
 { #category : 'running' }
-PjDebugBridgeTestResource >> resetClient [
-	self bridge resetClient
-]
-
-{ #category : 'running' }
 PjDebugBridgeTestResource >> setUpClient [
 	super setUpClient.
 	self bridge enableClientLogging

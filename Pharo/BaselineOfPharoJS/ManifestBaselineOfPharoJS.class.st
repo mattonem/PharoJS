@@ -10,6 +10,13 @@ Class {
 }
 
 { #category : 'code-critics' }
+ManifestBaselineOfPharoJS class >> ruleLongMethodsRuleV1FalsePositive [
+
+	<ignoreForCoverage>
+	^ #(#(#(#RGPackageDefinition #(#BaselineOfPharoJS)) #'2024-06-19T15:32:48.204221+02:00') )
+]
+
+{ #category : 'code-critics' }
 ManifestBaselineOfPharoJS class >> ruleRBLongMethodsRuleV1FalsePositive [
 	^ #(#(#(#RGClassDefinition #(#BaselineOfPharoJS)) #'2020-02-14T19:08:56.237579-05:00') )
 ]

@@ -24,7 +24,7 @@ PjMinimalExpressAppApiTest >> testHttpGetAndPost [
 
 	| response |
 	self assert: (self get: '/data') contents isNil.
-	response := self post: '/data' text: 'PharoJS'.
+	response := self post: '/data' body: 'PharoJS'.
 	self assert: response code equals: 200.
 	self assert: (self get: '/data') contents equals: 'PharoJS'
 ]

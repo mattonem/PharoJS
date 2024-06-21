@@ -76,27 +76,46 @@ PjTWebClient >> logError: error onPost: path [
 	self logError: error on: 'POST' path: path
 ]
 
-{ #category : #'http operations' }
-PjTWebClient >> post: path text: aString [ 
-self post: path text: aString then: [ self log: 'Done POST to ', path ]
+{ #category : #'form support' }
+PjTWebClient >> newFormData [
+	<javascript: 'new FormData()'>
+]
+
+{ #category : #'form support' }
+PjTWebClient >> newFormDataWithAll: associations [
+
+	| formData |
+	formData := self newFormData.
+	associations asDictionary keysAndValuesDo: [ :key :value |
+		formData append: key value: value ].
+	^ formData
 ]
 
 { #category : #'http operations' }
-PjTWebClient >> post: path text: aString then: thenBlock [
+PjTWebClient >> post: path body: anObject [
 
 	self
 		post: path
-		text: aString
+		body: anObject
+		then: [ self log: 'Done POST to ' , path ]
+]
+
+{ #category : #'http operations' }
+PjTWebClient >> post: path body: anObject then: thenBlock [
+
+	self
+		post: path
+		body: anObject
 		then: thenBlock
 		catch: [ :error | self logError: error onPost: path ]
 ]
 
 { #category : #'http operations' }
-PjTWebClient >> post: path text: aString then: thenBlock catch: errorBlock [
+PjTWebClient >> post: path body: anObject then: thenBlock catch: errorBlock [
 
 	(self fetch: path with: {
 				 (#method -> 'POST').
-				 (#body -> aString) } asJsObject)
+				 (#body -> anObject) } asJsObject)
 		then: thenBlock;
 		catch: errorBlock
 ]

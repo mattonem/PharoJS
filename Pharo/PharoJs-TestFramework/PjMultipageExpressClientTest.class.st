@@ -19,7 +19,8 @@ Class {
 		'activeBridge',
 		'pageViewer',
 		'serverManagerBridge',
-		'pageBridgesDict'
+		'pageBridgesDict',
+		'serverBridge'
 	],
 	#category : #'PharoJs-TestFramework-Kernel'
 }
@@ -117,10 +118,21 @@ PjMultipageExpressClientTest >> resetTranspilerOf: pageAppClass [
 	pageBridge exporter resetTranspiler 
 ]
 
+{ #category : #accessing }
+PjMultipageExpressClientTest >> serverApp [
+
+	^ serverBridge app
+]
+
 { #category : #running }
 PjMultipageExpressClientTest >> serverAppClass [
 
 	self subclassResponsibility
+]
+
+{ #category : #accessing }
+PjMultipageExpressClientTest >> serverBridge [
+	^serverBridge 
 ]
 
 { #category : #running }
@@ -134,10 +146,8 @@ PjMultipageExpressClientTest >> setUp [
 { #category : #running }
 PjMultipageExpressClientTest >> setUpOtherPageBridges [
 
-	| otherPageBridges serverBridge |
-	serverBridge := serverManagerBridge client serverBridge.
-	otherPageBridges := self pageBridges copyWithout:
-		                    serverManagerBridge.
+	| otherPageBridges |
+	otherPageBridges := self pageBridges copyWithout: serverManagerBridge.
 	otherPageBridges do: [ :eachBridge |
 		eachBridge client serverBridge: serverBridge.
 		eachBridge shouldStartJsInterpreter: false.
@@ -158,7 +168,9 @@ PjMultipageExpressClientTest >> setUpServerManagerBridge [
 	serverManagerBridge := self pageBridges anyOne.
 	serverManagerBridge
 		shouldStartJsInterpreter: false;
-		startWithoutWaitingForClient
+		startWithoutWaitingForClient.
+	serverBridge := serverManagerBridge client serverBridge.
+
 ]
 
 { #category : #running }

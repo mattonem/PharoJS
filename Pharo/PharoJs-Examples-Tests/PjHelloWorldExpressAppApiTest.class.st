@@ -48,7 +48,7 @@ PjHelloWorldExpressAppApiTest >> testHttpPostName [
 
 	| response name |
 	name := 'PharoJS'.
-	response := self post: '/name' body: name.
+	response := self post: '/name' text: name.
 	self assert: response code equals: 200.
 	self assert: response contents equals: name.
 	self assert: (self get: '/name') contents equals: name.

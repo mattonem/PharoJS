@@ -4,6 +4,11 @@ Trait {
 }
 
 { #category : #'http support' }
+PjTWebClient >> dataFromForm: aDomForm [
+^self formDataClass new: aDomForm
+]
+
+{ #category : #'http support' }
 PjTWebClient >> fetch: path [
 	<javascript: 'return window.fetch(path)'>
 ]
@@ -13,6 +18,11 @@ PjTWebClient >> fetch: path with: data [
 
 	<javascript: 'return window.fetch(path, data)'>
 	
+]
+
+{ #category : #'http support' }
+PjTWebClient >> formDataClass [
+	<javascript: 'return FormData'>
 ]
 
 { #category : #'http operations' }
@@ -78,7 +88,9 @@ PjTWebClient >> logError: error onPost: path [
 
 { #category : #'form support' }
 PjTWebClient >> newFormData [
-	<javascript: 'new FormData()'>
+
+	<javascript: 'return new FormData()'>
+	
 ]
 
 { #category : #'form support' }
@@ -117,5 +129,25 @@ PjTWebClient >> post: path body: anObject then: thenBlock catch: errorBlock [
 				 (#method -> 'POST').
 				 (#body -> anObject) } asJsObject)
 		then: thenBlock;
+		catch: errorBlock
+]
+
+{ #category : #'http operations' }
+PjTWebClient >> post: path form: aDomForm then: thenBlock [ 
+
+	self
+		post: path
+		body: (self dataFromForm: aDomForm)
+		then: thenBlock
+
+]
+
+{ #category : #'http operations' }
+PjTWebClient >> post: path form: aDomForm then: thenBlock catch: errorBlock [
+
+	self
+		post: path
+		body: (self dataFromForm: aDomForm)
+		then: thenBlock
 		catch: errorBlock
 ]

@@ -51,7 +51,7 @@ PjHelloWorldExpressClientApp >> setName [
 	providedName := self nameInput value.
 	providedName size < 2 ifTrue: [
 		^ window alert: 'Please provide a name with at least 2 characters' ].
-	self post: '/name' text: providedName then: [ :response |
+	self post: '/name' body: providedName then: [ :response |
 		self setNameResponse: response ]
 ]
 

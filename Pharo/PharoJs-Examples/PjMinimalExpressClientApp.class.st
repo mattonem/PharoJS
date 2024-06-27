@@ -36,5 +36,5 @@ PjMinimalExpressClientApp >> initialize [
 		do: [ self get: '/data' withTextDo: [ :text | self data: text ] ].
 	self
 		onClick: #postDataButton
-		do: [ self post: '/data' text: self data ]
+		do: [ self post: '/data' body: self data ]
 ]

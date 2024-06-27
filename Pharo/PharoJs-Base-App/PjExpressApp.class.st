@@ -122,6 +122,11 @@ PjExpressApp >> serveStaticFunction [
 	^ self require: 'serve-static'
 ]
 
+{ #category : 'accessing' }
+PjExpressApp >> server [
+	^server
+]
+
 { #category : 'start-stop' }
 PjExpressApp >> start [ 
 	super start.

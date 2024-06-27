@@ -476,6 +476,7 @@ PjBridge >> resetClient [
 	| oldWebSocket |
 	oldWebSocket := self webSocket.
 	self client reset.
+	blockClosures := nil.
 	self
 		when: [ self webSocket ~~ oldWebSocket ]
 		do: [ oldWebSocket isConnected

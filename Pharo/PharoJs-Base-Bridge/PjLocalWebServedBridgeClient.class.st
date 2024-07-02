@@ -21,6 +21,12 @@ PjLocalWebServedBridgeClient >> initUrlString [
 		'http://127.0.0.1:' , serverPort asString , self urlPathString
 ]
 
+{ #category : 'initialization' }
+PjLocalWebServedBridgeClient >> reset [
+	self serverBridge resetClient.
+	super reset.
+]
+
 { #category : 'accessing' }
 PjLocalWebServedBridgeClient >> serverApp [
 

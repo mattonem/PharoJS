@@ -15,8 +15,7 @@ Class {
 		'port'
 	],
 	#classInstVars : [
-		'expressConstructorFunction',
-		'bodyParserFactory'
+		'isExportingClients'
 	],
 	#category : 'PharoJs-Base-App',
 	#package : 'PharoJs-Base-App'

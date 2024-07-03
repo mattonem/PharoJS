@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfLightweightObserverJS,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfLightweightObserverJS
+	#name : 'BaselineOfLightweightObserverJS',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfLightweightObserverJS',
+	#package : 'BaselineOfLightweightObserverJS'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfLightweightObserverJS >> baseline: spec [
 	<baseline>
 
@@ -15,7 +16,7 @@ BaselineOfLightweightObserverJS >> baseline: spec [
 					repository: 'github://PharoJS/PharoJS' ];
 			baseline: 'LightweightObserver' with: [
 				spec
-					repository: 'github://bouraqadi/PharoMisc' ].
+					repository: 'github://bouraqadi/PharoMisc:pharo12' ].
 		spec 
 			package: 'LightweightObserverJS' with: [
 				spec requires: #('PharoJS' 'LightweightObserver' ). ]

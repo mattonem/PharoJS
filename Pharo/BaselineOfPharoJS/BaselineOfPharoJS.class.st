@@ -132,15 +132,21 @@ BaselineOfPharoJS >> packages: spec [
 
 { #category : 'private - accessing' }
 BaselineOfPharoJS >> prerequisites: spec [
-	"Add the projects prerequisite definitions to the given spec"	
+	"Add the projects prerequisite definitions to the given spec"
 
 	"Prerequisite Baselines"
+
 	spec
-		baseline: 'PharoExtra' with: [ spec repository: 'github://bouraqadi/PharoMisc' ];
-		baseline: 'LightweightObserver' with: [ spec repository: 'github://bouraqadi/PharoMisc' ];
-		baseline: 'Seaside3' with: [ spec repository: 'github://SeasideSt/Seaside:master/repository' ].	
-			
-	"Prerequisite Packages"	
+		baseline: 'PharoExtra'
+		with: [ spec repository: 'github://bouraqadi/PharoMisc:pharo12' ];
+		baseline: 'LightweightObserver'
+		with: [ spec repository: 'github://bouraqadi/PharoMisc:pharo12' ];
+		baseline: 'Seaside3'
+		with: [
+			spec repository: 'github://SeasideSt/Seaside:master/repository' ].
+
+	"Prerequisite Packages"
 	spec
-		package: 'Zinc-WebSocket-Core' with: [ spec repository: 'github://svenvc/zinc' ]			 
+		package: 'Zinc-WebSocket-Core'
+		with: [ spec repository: 'github://svenvc/zinc' ]
 ]

@@ -267,7 +267,7 @@ PjBridge >> evalBlock: aBlock [
 PjBridge >> evalJavascript: javaScriptString [
 
 	| msg |
-	self isConnected ifFalse: [ ^ nil ].
+	self isConnected ifFalse: [ PjBridgeDisconnectedError signal ].
 	msg := PjMessageEvaluateJavascript newWithContents: javaScriptString.
 	^ self sendMessageAndWaitForResponse: msg
 ]
@@ -470,6 +470,14 @@ PjBridge >> proxies [
 	^ proxies ifNil: [ proxies := WeakValueDictionary new ]
 ]
 
+{ #category : 'bridge handling' }
+PjBridge >> removeFinalizeFor: proxy ifAbsent: aBlock [
+
+	^ [ self finalizationRegistry remove: proxy ifAbsent: aBlock ]
+		  on: PjBridgeDisconnectedError
+		  do: aBlock 
+]
+
 { #category : 'public' }
 PjBridge >> resetClient [
 
@@ -491,13 +499,13 @@ PjBridge >> resetProxiesImmediately [
 	"Leaving this to garbage collection leads to inpredictable results,
 	because finalizations might occur in a next (reloaded) client JS session"
 
-	self proxies do: [ :v | 
-		(self finalizationRegistry remove: v ifAbsent: [ nil ]) ifNotNil: [ 
-			:finalizerItem | "finalizerItem finalizeValues""For now, NOT executing the finalizations (which sends delete proxy messages to the client), because of unknown problems.
+	| finalizer |
+	self proxies do: [ : proxy |
+		finalizer := self removeFinalizeFor: proxy ifAbsent: [nil].
+		finalizer ifNotNil: [ "finlizer finalize""For now, NOT executing the finalizations (which sends delete proxy messages to the client), because of unknown problems.
 					This should be made synchronous anyway by waiting for acknowledgement from client.
 					For now, removing them (inactivating) is enough, we only execute this method when we no further need the client."
-			 ].
-		true ].
+			 ]].
 	proxies := nil
 	"Smalltalk garbageCollect. "
 ]

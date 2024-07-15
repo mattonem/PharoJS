@@ -1,19 +1,21 @@
 Class {
-	#name : #PjOrderedCollectionTest,
-	#superclass : #PjBridgeTestCase,
+	#name : 'PjOrderedCollectionTest',
+	#superclass : 'PjBridgeTestCase',
 	#instVars : [
 		'collection'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjOrderedCollectionTest >> setUp [
 	super setUp.
 	collection := self evalBlock: [ OrderedCollection new ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjOrderedCollectionTest >> testCircularReference [
 	self deny: (collection includes: collection).
 	collection add: 'A'.
@@ -23,7 +25,7 @@ PjOrderedCollectionTest >> testCircularReference [
 	self assert: collection size equals: 2.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjOrderedCollectionTest >> testConverstionToOrderedCollection [
 
 	self
@@ -31,7 +33,7 @@ PjOrderedCollectionTest >> testConverstionToOrderedCollection [
 		identicalTo: collection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjOrderedCollectionTest >> testInsertElementBeforeFirstOne [
 	collection addAll: #(1 2 3).
 	collection insert: 0 before: 1.
@@ -41,7 +43,7 @@ PjOrderedCollectionTest >> testInsertElementBeforeFirstOne [
 	]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjOrderedCollectionTest >> testJoin [
 	| temp |
 	collection addAll: #(4 5).
@@ -53,7 +55,7 @@ PjOrderedCollectionTest >> testJoin [
 	]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjOrderedCollectionTest >> testRemoveAll [
 	collection addAll: #(1 2 3 4 5).
 	collection removeAll: #(1 5).

@@ -1,10 +1,12 @@
 Class {
-	#name : #PjIdentityDictionaryTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjIdentityDictionaryTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testAsDictionary [
 	| original asDictResult |
 	original := self bridge evalBlock: [ IdentityDictionary new].
@@ -15,14 +17,14 @@ PjIdentityDictionaryTest >> testAsDictionary [
 	self assert: original == asDictResult
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testAtIfAbsent [
 	self assertEquivalent: [|d|
 		d := IdentityDictionary new.
 		d at: #x ifAbsent: [42]].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testAtIfAbsentPut [
 	self assertEquivalent: [|d|
 		d := IdentityDictionary new.
@@ -34,7 +36,7 @@ PjIdentityDictionaryTest >> testAtIfAbsentPut [
 		d at: #x].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testAtIfEmpty [
 	self assertEquivalent: [ IdentityDictionary new isEmpty ].
 	self assertEquivalent: [ (IdentityDictionary new at: #x put: 4;yourself) isEmpty ].
@@ -61,7 +63,7 @@ PjIdentityDictionaryTest >> testAtIfEmpty [
 		d ifNotEmpty: [ 3 ] ifEmpty: [42]].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testAtPut [
 	self assertEquivalent: [|d|
 		d := IdentityDictionary new.
@@ -73,7 +75,7 @@ PjIdentityDictionaryTest >> testAtPut [
 		d size]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testKeysAndValuesDo [
 	| dict |
 	dict := self bridge
@@ -99,21 +101,21 @@ PjIdentityDictionaryTest >> testKeysAndValuesDo [
 	self assert: [ IdentityDictionary new isEmpty ] evaluatesTo: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testNewFromPairs [
 	| d |
 	d := self bridge
 		evalBlock: [ IdentityDictionary newFromPairs: #(#x 17 #y 42) ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testNonInterference [
 	" make sure dictionary emulation doesn't interfere "
 	self assert: [document body classList add: 'hello'] evaluatesTo: nil.
 	self assert: [document body classList contains: 'hello'] evaluatesTo: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjIdentityDictionaryTest >> testUseObjectsAsKeysForIdentityDictionary [
 	self assert: [
 		|dict firstKey secondKey| 

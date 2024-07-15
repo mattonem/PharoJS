@@ -1,10 +1,12 @@
 Class {
-	#name : #PjObjectTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Objects'
+	#name : 'PjObjectTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Objects',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Objects'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> assert: parent andChild: child hasOrInheritProperty: ivName [
 	| objects |
 	child  instVarNamed: #'__proto__' put: parent. 
@@ -15,7 +17,7 @@ PjObjectTest >> assert: parent andChild: child hasOrInheritProperty: ivName [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testClassHasOrInheritProperty [
 	| jsObject jsArray |
 	jsArray := self evalBlock: [ Array ].
@@ -26,13 +28,13 @@ PjObjectTest >> testClassHasOrInheritProperty [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testNewObjectHasNoEnumeratableKeys [
 	"This is important for many JS third party libraries"
 	self assertBlock: [ Object new allEnumeratableKeys isEmpty ] .
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testObjectHasOrInheritProperty [
 	| parent child |
 	parent := self evalBlock: [ Object new ].
@@ -41,7 +43,7 @@ PjObjectTest >> testObjectHasOrInheritProperty [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testPrintStringArray [
 
 	self
@@ -65,7 +67,7 @@ PjObjectTest >> testPrintStringArray [
 		'an Array(an Object #(true nil) nil 12.4 ''someSymbol'' false a Block)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testPrintStringBasicCases [
 
 	self assert: [ Object new printString ] evaluatesTo: 'an Object'.
@@ -84,7 +86,7 @@ PjObjectTest >> testPrintStringBasicCases [
 		evaluatesTo: '''someSymbol'''
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testPrintStringException [
 
 	{ 
@@ -101,7 +103,7 @@ PjObjectTest >> testPrintStringException [
 			evaluatesTo: exceptionClass name , ': Some cause' ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testPrintStringNumbers [
 
 	self assert: [ 123 printString ] evaluatesTo: '123'.
@@ -113,7 +115,7 @@ PjObjectTest >> testPrintStringNumbers [
 		evaluatesTo: 'Float nan'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjObjectTest >> testShallowCopy [
 	self assertBlock: [
 		|original clone|

@@ -1,10 +1,12 @@
 Class {
-	#name : #PjDateAndTimeTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Objects'
+	#name : 'PjDateAndTimeTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Objects',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Objects'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDateAndTimeTest >> testConversion [
 
 	| today todayString |

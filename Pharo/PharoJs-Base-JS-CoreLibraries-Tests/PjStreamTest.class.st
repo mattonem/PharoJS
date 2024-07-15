@@ -2,12 +2,14 @@
 I contain test for the simplistic Read/Write Stream implementation
 "
 Class {
-	#name : #PjStreamTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjStreamTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testArrayRead [
 	self assertEquivalent: [#(1 2 3) readStream next].
 	self assertEquivalent: [#(1 2 3) readStream next;next].
@@ -16,24 +18,24 @@ PjStreamTest >> testArrayRead [
 	self assertEquivalent: [#(1 2 3) readStream next;next;next;atEnd].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testArrayReadWrite [
 	self assert: [#() writeStream nextPutAll: #(1 2 3);nextPutAll: #(4 5 6);next;next;next;next] evaluatesTo: 4.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testArrayWrite [
 	self assertEquivalent: [#(() writeStream nextPut: 3;nextPutAll: 'abc';contents) at: 2].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testStringNewWrite [
 
 	self assertEquivalent: [ 
 		String new: 10 streamContents: [ :stream | stream << 'hello world' ] ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testStringPeek [
 	self assertEquivalent: ['abc' readStream peek asString].
 	self assertEquivalent: [('abc' readStream peek;next) asString].
@@ -41,7 +43,7 @@ PjStreamTest >> testStringPeek [
 	self assertEquivalent: ['abc' readStream next;next;peek;atEnd].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testStringRead [
 	self assertEquivalent: ['abc' readStream next asString].
 	self assertEquivalent: [('abc' readStream next;next) asString].
@@ -50,12 +52,12 @@ PjStreamTest >> testStringRead [
 	self assertEquivalent: ['abc' readStream next;next;next;next].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testStringReadWrite [
 	self assert: [('' writeStream nextPutAll: 'abc';nextPutAll: 'def';next;next;next;next) asString] evaluatesTo: 'd'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStreamTest >> testStringWrite [
 	self assertEquivalent: ['' writeStream nextPut: $x;nextPutAll: 'abc';contents].
 ]

@@ -99,3 +99,13 @@ PjDictionary >> keyFrom: anObject [
 	anObject class == Number ifTrue: [ ^anObject ].
 	^anObject hash
 ]
+
+{ #category : 'enumerating' }
+PjDictionary >> values [
+
+	| values |
+	values := Set new.
+	self keysAndValuesDo: [ :key :value |
+		values add: value ].
+	^ values
+]

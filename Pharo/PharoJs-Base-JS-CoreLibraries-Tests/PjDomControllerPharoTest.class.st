@@ -1,26 +1,28 @@
 Class {
-	#name : #PjDomControllerPharoTest,
-	#superclass : #PjWebAppTestCase,
+	#name : 'PjDomControllerPharoTest',
+	#superclass : 'PjWebAppTestCase',
 	#traits : 'PjTAppRunsInPharo',
 	#classTraits : 'PjTAppRunsInPharo classTrait',
 	#instVars : [
 		'domElement'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Controllers'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Controllers',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Controllers'
 }
 
-{ #category : #'suite parameters' }
+{ #category : 'suite parameters' }
 PjDomControllerPharoTest class >> appClass [
 	^PjMinimalFileBasedWebApp
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjDomControllerPharoTest >> setUp [
 	super setUp.
 	domElement := app createElement: 'div'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjDomControllerPharoTest >> testCssClassARemoval [
 	app cssClassesStringElement: domElement set: 'a b c'.
 	self assert: (app cssClassesStringElement: domElement) equals: 'a b c'.
@@ -28,14 +30,14 @@ PjDomControllerPharoTest >> testCssClassARemoval [
 	self assert: (app cssClassesStringElement: domElement) trimBoth equals: 'b'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjDomControllerPharoTest >> testCssClassAddition [
 	self assert: (app cssClassesStringElement: domElement) equals: ''.
 	app cssClassesAddAll: #(a b c) element: domElement.
 	self assert: (app cssClassesStringElement: domElement) trimBoth equals: 'a b c'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjDomControllerPharoTest >> testCssClassReplacement [
 	app cssClassesStringElement: domElement set: 'a b c'.
 	self assert: (app cssClassesStringElement: domElement) equals: 'a b c'.

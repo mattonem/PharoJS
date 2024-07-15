@@ -1,6 +1,6 @@
 Class {
-	#name : #PjObjectForTestingAsJsObject,
-	#superclass : #Object,
+	#name : 'PjObjectForTestingAsJsObject',
+	#superclass : 'Object',
 	#instVars : [
 		'plainArray',
 		'associationArray',
@@ -8,17 +8,19 @@ Class {
 		'objectNoIvs',
 		'objectWithIvs'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjObjectForTestingAsJsObject class >> from: anAssociationArray [
 	^self new
 		from: anAssociationArray;
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjObjectForTestingAsJsObject >> from: anAssociationArray [
 	anAssociationArray asDictionary keysAndValuesDo: [ : key :value|
 		self instVarNamed: key put: value]

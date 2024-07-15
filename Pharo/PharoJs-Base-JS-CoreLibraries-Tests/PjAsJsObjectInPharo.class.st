@@ -1,31 +1,33 @@
 Class {
-	#name : #PjAsJsObjectInPharo,
-	#superclass : #TestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjAsJsObjectInPharo',
+	#superclass : 'TestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testBasicObjects [
 	{ 'abc'. true. false. nil. 3.14. 2000. $a } do: [ : each |
 		self assert: each asJsObject == each
 	]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testConvertingADictionary [
 	| dict |
 	dict := { #a -> 1. #b -> 2. #c -> 3 } asDictionary.
 	self assert: (dict asJsObject isKindOf: Dictionary)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testConvertingAnAssociationArray [
 	| converted |
 	converted := { #a -> 1. #b -> 2. #c -> 3 } asJsObject.
 	self assert: (converted isKindOf: Dictionary)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testConvertingCompositeArray [
 	| converted |
 	converted := { 
@@ -41,7 +43,7 @@ PjAsJsObjectInPharo >> testConvertingCompositeArray [
 	self assert: ((converted at: #dict) isKindOf: Dictionary).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testConvertingCompositeDictionary [
 	| converted |
 	converted := { 
@@ -57,7 +59,7 @@ PjAsJsObjectInPharo >> testConvertingCompositeDictionary [
 	self assert: ((converted at: #dict) isKindOf: Dictionary).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testConvertingObjectWithNestedDictionaryAndArray [
 	| original converted |
 	original := PjObjectForTestingAsJsObject from: { 
@@ -76,14 +78,14 @@ PjAsJsObjectInPharo >> testConvertingObjectWithNestedDictionaryAndArray [
 	self assert: ((converted at: #dict) isKindOf: Dictionary).
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testIgnoreArrayOfNonAssociations [
 	| array |
 	array := #(1 2 3).
 	self assert: array asJsObject == array
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInPharo >> testProxy [
 	| proxy |
 	proxy := PjProxy new.

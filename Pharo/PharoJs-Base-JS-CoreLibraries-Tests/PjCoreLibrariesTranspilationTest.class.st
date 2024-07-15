@@ -1,17 +1,19 @@
 Class {
-	#name : #PjCoreLibrariesTranspilationTest,
-	#superclass : #PjTranspilationClassCompilationTest,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjCoreLibrariesTranspilationTest',
+	#superclass : 'PjTranspilationClassCompilationTest',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCoreLibrariesTranspilationTest >> testPjStringClass [
 	self jsCode: (self convertClass: PjString).
 	self assertInstanceMethod: #= equals: '(other){return this==other}'.
 	self assertInstanceMethod: #, equals:  '(other){return this+other}'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCoreLibrariesTranspilationTest >> testPjUndefinedObjectClass [
 	self jsCode: (self convertClass: PjUndefinedObject).
 	self assertInstanceMethod: #= equals:  '(other){return null==other}'.

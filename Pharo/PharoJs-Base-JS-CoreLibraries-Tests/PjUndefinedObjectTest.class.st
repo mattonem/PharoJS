@@ -1,10 +1,12 @@
 Class {
-	#name : #PjUndefinedObjectTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Objects'
+	#name : 'PjUndefinedObjectTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Objects',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Objects'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjUndefinedObjectTest >> testNilCannotBeReplaced [
 
 	self evalBlock: [
@@ -17,14 +19,14 @@ PjUndefinedObjectTest >> testNilCannotBeReplaced [
 		(window at: #originalNil) == PjUndefinedObject uniqueInstance ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjUndefinedObjectTest >> testNilObjectDoesNotLeak [
 	self assertBlock: [
 		nil value == nil ].
 	self assertBlock: [ nil yourself == nil ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjUndefinedObjectTest >> testNilStructureCannotChange [
 
 	self should: [self evalBlock: [ nil at: #newProperty put: 42 ]] raise: Error.

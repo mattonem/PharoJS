@@ -1,26 +1,28 @@
 Class {
-	#name : #PjAsJsObjectInJs,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjAsJsObjectInJs',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testBoolean [
 	self assertBlock: [ true asJsObject == true].
 	self assertBlock: [ false asJsObject == false].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testConvertingADictionary [
 	self assertBlock: [{ #a -> 1. #b -> 2. #c -> 3 } asDictionary asJsObject class == Object].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testConvertingAnAssociationArray [
 	self assertBlock: [{ #a -> 1. #b -> 2. #c -> 3 } asJsObject class == Object].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testConvertingCompositeArray [
 	| converted convertedAssociations convertedDict |
 	converted := self evalBlock: [
@@ -43,7 +45,7 @@ PjAsJsObjectInJs >> testConvertingCompositeArray [
 		self assert: (convertedDict at: iv) equals: expectedValue].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testConvertingCompositeDictionary [
 	| converted |
 	converted := self evalBlock: [
@@ -60,7 +62,7 @@ PjAsJsObjectInJs >> testConvertingCompositeDictionary [
 	self assertBlock: [(converted at: #dict) class == Object].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testConvertingNestedDictionariesAndArrays [
 	| converted |
 	converted := self evalBlock: [
@@ -76,7 +78,7 @@ PjAsJsObjectInJs >> testConvertingNestedDictionariesAndArrays [
 	self assertBlock: [(converted first at: #arrays) fourth class == Array].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testConvertingObjectWithNestedDictionaryAndArray [
 	| original converted |
 	self bridge loadClass: PjObjectForTestingAsJsObject.
@@ -100,25 +102,25 @@ PjAsJsObjectInJs >> testConvertingObjectWithNestedDictionaryAndArray [
 	self assertBlock: [converted object class == Object].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testIfnil [
     self
         assertBlock: [ PjDummyTestObject string: ('Hello' ifNil: [ 'World' ]).
             PjDummyTestObject string = 'Hello' ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testIgnoreArrayOfNonAssociations [
 	self assertBlock: [#(1 2 3) asJsObject class == Array].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testNumber [
 	self assertBlock: [ 3.14 asJsObject == 3.14].
 	self assertBlock: [ 42 asJsObject == 42].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAsJsObjectInJs >> testString [
 	self assertBlock: [ 'Smalltalk Rocks!' asJsObject == 'Smalltalk Rocks!'].
 ]

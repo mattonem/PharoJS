@@ -1,29 +1,31 @@
 Class {
-	#name : #PjArrayLikeCollectionTest,
-	#superclass : #PjBridgeTestCase,
+	#name : 'PjArrayLikeCollectionTest',
+	#superclass : 'PjBridgeTestCase',
 	#instVars : [
 		'collection'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjArrayLikeCollectionTest class >> isAbstract [
 	^self == PjArrayLikeCollectionTest
 ]
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 PjArrayLikeCollectionTest >> defaultCollection [
 	self subclassResponsibility
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjArrayLikeCollectionTest >> setUp [
 	super setUp.
 	collection := self defaultCollection
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjArrayLikeCollectionTest >> testIndexOf [
 	| index |
 	index := collection indexOf: collection first.

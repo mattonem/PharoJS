@@ -1,10 +1,12 @@
 Class {
-	#name : #PjRectangleTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Objects'
+	#name : 'PjRectangleTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Objects',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Objects'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjRectangleTest >> testCorners [
 
 	self assertEquivalent: [
@@ -26,7 +28,7 @@ PjRectangleTest >> testCorners [
 		(Rectangle origin: 0 @ 10 corner: 20 @ 20) bottomRight y ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjRectangleTest >> testRectangleOriginConer [
 
 	self assertEquivalent: [
@@ -35,7 +37,7 @@ PjRectangleTest >> testRectangleOriginConer [
 		(Rectangle origin: 0 @ 10 corner: 20 @ 20) center y ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjRectangleTest >> testRectangleWidthHeight [
 
 	self assertEquivalent: [
@@ -44,7 +46,7 @@ PjRectangleTest >> testRectangleWidthHeight [
 		(Rectangle origin: 0 @ 10 corner: 20 @ 20) height ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjRectangleTest >> testtranslateBy [
 
 	self assertEquivalent: [

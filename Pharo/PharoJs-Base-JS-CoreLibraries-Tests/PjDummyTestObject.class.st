@@ -1,18 +1,20 @@
 Class {
-	#name : #PjDummyTestObject,
-	#superclass : #Object,
+	#name : 'PjDummyTestObject',
+	#superclass : 'Object',
 	#classInstVars : [
 		'string'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDummyTestObject class >> string [
 	^string
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjDummyTestObject class >> string: aString [
 	string := aString
 ]

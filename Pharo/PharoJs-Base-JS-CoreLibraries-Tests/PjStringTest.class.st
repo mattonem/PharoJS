@@ -1,17 +1,19 @@
 Class {
-	#name : #PjStringTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjStringTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testConversion [
 	self assertEquivalent: ['the Eiffel Tower' asUppercase].
 	self assertEquivalent: ['the Eiffel Tower' asLowercase].
 	self assertEquivalent: ['the Eiffel Tower' capitalized].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testConversionToNumbers [
 	self assertEquivalent: ['07' asInteger].
 	self assertEquivalent: ['3.14' asInteger].
@@ -20,33 +22,33 @@ PjStringTest >> testConversionToNumbers [
 	self assertEquivalent: ['1.41xyz' asNumber].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testFirst [
 	self assert: ['abc' first] evaluatesTo: 'a'.
 	self assert: ['CBA' first] evaluatesTo: 'C'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testIfEmpty [
 	self assertEquivalent: ['abc' ifEmpty: ['xyz']].
 	self assertEquivalent: ['' ifEmpty: ['xyz']].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testIsAlphanumeric [
 	| digits |
 	digits := Character allByteCharacters select: [: each | each isAlphaNumeric ].
 	self assertBlock: [digits allSatisfy: [: char |char isAlphaNumeric ]].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testIsDigit [
 	| digits |
 	digits := Character allByteCharacters select: [: each | each isDigit].
 	self assertBlock: [digits allSatisfy: [: char |char isDigit]].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testIsLetter [
 	| letters nonLetters |
 	letters := Character allByteCharacters select: [: each | each isLetter].
@@ -55,19 +57,19 @@ PjStringTest >> testIsLetter [
 	self assertBlock: [nonLetters noneSatisfy: [: char |  char isLetter]].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testLast [
 	self assert: ['abc' last] evaluatesTo: 'c'.
 	self assert: ['CBA' last] evaluatesTo: 'A'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testReversed [
 	self
 		assertEquivalent: ['abcd' reversed].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testSplit [
 	| splited |
 	splited := self evalBlock: ['.' split: 'a.b.c'].
@@ -76,14 +78,14 @@ PjStringTest >> testSplit [
 		self assert: (splited at: index) equals: expected]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testSplitOn [
 
 	self assertEquivalent: [
 		('a.b.c' splitOn: '.') asArray ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringTest >> testStringHasOrInheritProperty [
 
 	| ivName |

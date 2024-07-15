@@ -1,10 +1,12 @@
 Class {
-	#name : #PjAssociationTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjAssociationTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAssociationTest >> testEqualityForAssociations [
 	self assertEquivalent: [(1->#hello)=(2->#hello)].
 	self assertEquivalent: [(3->#hello)=(3->#hello)].
@@ -20,7 +22,7 @@ PjAssociationTest >> testEqualityForAssociations [
 	self assertEquivalent: [(3->8)=(3->8)].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAssociationTest >> testEqualityForKeys [
 	self assertEquivalent: [
 		| a b |
@@ -34,7 +36,7 @@ PjAssociationTest >> testEqualityForKeys [
 		a key = b key].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjAssociationTest >> testEqualityForValues [
 	self assertEquivalent: [
 		| a b |

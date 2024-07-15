@@ -1,10 +1,12 @@
 Class {
-	#name : #PjDictionaryTest,
-	#superclass : #PjBridgeTestCase,
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#name : 'PjDictionaryTest',
+	#superclass : 'PjBridgeTestCase',
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testAsDictionary [
 	| original asDictResult |
 	original := self bridge evalBlock: [ Dictionary new].
@@ -15,14 +17,14 @@ PjDictionaryTest >> testAsDictionary [
 	self assert: original == asDictResult
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testAtIfAbsent [
 	self assertEquivalent: [|d|
 		d := Dictionary new.
 		d at: #x ifAbsent: [42]].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testAtIfAbsentPut [
 	self assertEquivalent: [|d|
 		d := Dictionary new.
@@ -30,7 +32,7 @@ PjDictionaryTest >> testAtIfAbsentPut [
 		d at: #x].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testAtIfEmpty [
 	self assertEquivalent: [ Dictionary new isEmpty ].
 	self assertEquivalent: [ (Dictionary new at: #x put: 4;yourself) isEmpty ].
@@ -57,7 +59,7 @@ PjDictionaryTest >> testAtIfEmpty [
 		d ifNotEmpty: [ 3 ] ifEmpty: [42]].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testAtPut [
 	self assertEquivalent: [|d|
 		d := Dictionary new.
@@ -69,7 +71,7 @@ PjDictionaryTest >> testAtPut [
 		d] evaluatesToRaw: '{"x":42}'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testBridgeConstructor [
 	| eg |
 	eg := self bridge
@@ -85,7 +87,7 @@ PjDictionaryTest >> testBridgeConstructor [
 	self assert: [ eg keys ] evaluatesToRaw: '["a","b","c"]'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testBridgeConstructorSimple [
 	| eg |
 	eg := self bridge evalBlock: [ {(#a -> 3)} asDictionary ].
@@ -93,7 +95,7 @@ PjDictionaryTest >> testBridgeConstructorSimple [
 	self assert: [ eg keys ] evaluatesToRaw: '["a"]'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testDictionaryWithProxies [
 	| proxy dictionaryWithProxy |
 	proxy := self evalBlock: [ Object new ].
@@ -103,7 +105,7 @@ PjDictionaryTest >> testDictionaryWithProxies [
 		raise: Error
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testKeysAndValuesDo [
 	| eg |
 	eg := self bridge
@@ -126,7 +128,7 @@ PjDictionaryTest >> testKeysAndValuesDo [
 	self assert: [ Dictionary new isEmpty ] evaluatesTo: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testNewFromPairs [
 	| d |
 	d := self bridge
@@ -134,14 +136,14 @@ PjDictionaryTest >> testNewFromPairs [
 	self assert: d asRawJSONString equals: '{"x":17,"y":42}'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testNonInterference [
 	" make sure dictionary emulation doesn't interfere "
 	self assert: [document body classList add: 'hello'] evaluatesTo: nil.
 	self assert: [document body classList contains: 'hello'] evaluatesTo: true
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testUseEqualObjectsAsKeys [
 	self assert: [
 		|dict firstKey secondKey| 
@@ -154,7 +156,7 @@ PjDictionaryTest >> testUseEqualObjectsAsKeys [
 	] evaluatesTo: 'B'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjDictionaryTest >> testUseNonEqualObjectsAsKeys [
 	self assert: [
 		|dict firstKey secondKey| 
@@ -165,4 +167,14 @@ PjDictionaryTest >> testUseNonEqualObjectsAsKeys [
 		dict at: secondKey put: 'B'.
 		dict at: firstKey
 	] evaluatesTo: 'A'.
+]
+
+{ #category : 'tests' }
+PjDictionaryTest >> testValues [
+	| dict  |
+	dict := self bridge evalBlock: [ Dictionary new ].
+	dict
+		at: #a put: 1;
+		at: #b put: 2.
+	self assertCollection: dict values asLocalObject equals: #(1 2)
 ]

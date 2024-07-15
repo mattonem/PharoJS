@@ -1,35 +1,37 @@
 Class {
-	#name : #PjObjectForDictTest,
-	#superclass : #Object,
+	#name : 'PjObjectForDictTest',
+	#superclass : 'Object',
 	#instVars : [
 		'data'
 	],
-	#category : #'PharoJs-Base-JS-CoreLibraries-Tests-Collections'
+	#category : 'PharoJs-Base-JS-CoreLibraries-Tests-Collections',
+	#package : 'PharoJs-Base-JS-CoreLibraries-Tests',
+	#tag : 'Collections'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PjObjectForDictTest class >> data: anObject [
 	^self new
 		data: anObject;
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObjectForDictTest >> = other [
 	^data = other data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjObjectForDictTest >> data [
 	^ data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjObjectForDictTest >> data: anObject [
 	data := anObject
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 PjObjectForDictTest >> hash [
 	^data hash
 ]

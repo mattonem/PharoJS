@@ -1,26 +1,28 @@
 Class {
-	#name : #PjClassExtensionForTest,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#name : 'PjClassExtensionForTest',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClassExtensionForTest class >> exampleForTest [
 	^self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClassExtensionForTest class >> javascriptInitialize [
 	^self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClassExtensionForTest class >> javascriptName [
 	<pharoJsSkip>
 	^PjClassForTranspilationTest name
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 PjClassExtensionForTest class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
@@ -32,12 +34,12 @@ PjClassExtensionForTest class >> jsTranspilationImportMethods [
 		      new )) } asDictionary
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassExtensionForTest >> foo [
 
 	^ 42
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassExtensionForTest >> instanceMethod [
 ]

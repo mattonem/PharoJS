@@ -1,9 +1,11 @@
 Class {
-	#name : #PjClassEForPackageTranspilationTest,
-	#superclass : #PjClassDForPackageTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#name : 'PjClassEForPackageTranspilationTest',
+	#superclass : 'PjClassDForPackageTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassEForPackageTranspilationTest class >> initialize [
 ]

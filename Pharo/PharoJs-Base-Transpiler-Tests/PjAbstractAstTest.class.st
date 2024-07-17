@@ -2,8 +2,8 @@
 I define a set of instance variables used in a variety of tests
 "
 Class {
-	#name : #PjAbstractAstTest,
-	#superclass : #TestCase,
+	#name : 'PjAbstractAstTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'iv1ForTest',
 		'iv2ForTest',
@@ -36,32 +36,34 @@ Class {
 	#classVars : [
 		'ClassVarForTest'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAbstractAstTest class >> isAbstract [ 
 
 	^ self = PjAbstractAstTest
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjAbstractAstTest >> apply: aPjJavascriptAstNode selector: aSelector [
 	^ self apply: aPjJavascriptAstNode selector: aSelector nonNil: aPjJavascriptAstNode isNonNil
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjAbstractAstTest >> apply: aPjJavascriptAstNode selector: aSelector nonNil: nonNil [
 	^ PjApplyNode func: (PjFieldNode target: aPjJavascriptAstNode selectorNode: (PjMessageSelectorNode identifier: aSelector asSymbol) isNonNil: nonNil)
 		args: #()
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAbstractAstTest >> pharoJsSelectorPrefix [
 	^ '_'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAbstractAstTest >> setUp [
 	super setUp.
 	minusTwo := PjLiteralValueNode value: -2.
@@ -97,7 +99,7 @@ PjAbstractAstTest >> setUp [
 	iv2ForTest := PjInstanceVariableNode identifier: #iv2ForTest.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjAbstractAstTest >> simpleBlock: objectOrCollection locals: anArray [
 	^ PjBlockNode 
 		parameters: #()

@@ -1,12 +1,14 @@
 Class {
-	#name : #PjClassBForPackageTranspilationTest,
-	#superclass : #PjClassAForPackageTranspilationTest,
+	#name : 'PjClassBForPackageTranspilationTest',
+	#superclass : 'PjClassAForPackageTranspilationTest',
 	#classVars : [
 		'ClassVarB'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassBForPackageTranspilationTest class >> initialize [
 ]

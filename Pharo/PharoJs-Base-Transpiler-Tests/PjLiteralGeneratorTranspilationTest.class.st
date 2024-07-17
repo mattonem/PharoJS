@@ -1,15 +1,17 @@
 Class {
-	#name : #PjLiteralGeneratorTranspilationTest,
-	#superclass : #PjSingleClassTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjLiteralGeneratorTranspilationTest',
+	#superclass : 'PjSingleClassTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjLiteralGeneratorTranspilationTest >> classToTranspile [
 	^ PjClassForDefinitionTest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjLiteralGeneratorTranspilationTest >> testLiteralGeneratrion [
 	self assert: self jsCode includes: '_literal(){return 7}'.
 	self assert: self jsCode includes: 'static _literal(){return "abcdef"}'.

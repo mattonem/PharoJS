@@ -1,49 +1,51 @@
 Class {
-	#name : #PjStringGenerationTest,
-	#superclass : #PjAbstractAstTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjStringGenerationTest',
+	#superclass : 'PjAbstractAstTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjStringGenerationTest class >> classVariablesHolderName [
 
 	^ PjStringGenerator classVariablesHolderName
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjStringGenerationTest >> assert: aPjJavascriptAstNode asStringEquals: aString [
 	self
 		assert: (self generator asString: aPjJavascriptAstNode)
 		equals: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjStringGenerationTest >> classVariablesHolderName [
 	^ self class classVariablesHolderName
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 PjStringGenerationTest >> generator [
 	^ PjStringGenerator new transpiler: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjStringGenerationTest >> nilTestFunctionName [
 	^PjStringGenerator nilTestFunctionName
 ]
 
-{ #category : #'test mock' }
+{ #category : 'test mock' }
 PjStringGenerationTest >> poolReference: anUndefinedObject for: anUndefinedObject2 [
 
 	^ PjTranspiler classVarsPoolName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjStringGenerationTest >> selectorsPrefix [
 	^ '_'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testArray [
 	| x |
 	x := PjTempVariableNode identifier: #x.
@@ -52,7 +54,7 @@ PjStringGenerationTest >> testArray [
 		asStringEquals: '[1,2,$asNil$(x)._foo()]'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testBlock [
 	self
 		assert: (PjBlockNode parameters: #(a for) locals: #(d in) body: {
@@ -64,14 +66,14 @@ PjStringGenerationTest >> testBlock [
 		asStringEquals: '((a,$for)=>{var d,$in;$in=$for;return a})'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testClassCall [
 	self
 		assert: (self apply: (PjClassNode identifier: #Number) selector: #one)
 		asStringEquals: 'Number._one()'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testClassVariables [
 	| astAssignment classVar |
 	classVar := PjClassVariableNode identifier: #ClassVarForTest.
@@ -100,7 +102,7 @@ PjStringGenerationTest >> testClassVariables [
 		equals: 'cp$.ClassVarForTest=cp$.ClassVarForTest'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testField [
 	| x bar |
 	x := PjTempVariableNode identifier: #x.
@@ -128,7 +130,7 @@ PjStringGenerationTest >> testField [
 		asStringEquals: self nilTestFunctionName,'(x).foo'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testFieldForCall [
 	| x |
 	x := PjTempVariableNode identifier: #x.
@@ -161,14 +163,14 @@ PjStringGenerationTest >> testFieldForCall [
 		asStringEquals: self nilTestFunctionName,'(this.iv1ForTest)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testGlobalCall [
 	self
 		assert: (self apply: (PjGlobalNode identifier: #Number) selector: #one)
 		asStringEquals: self nilTestFunctionName,'(Number)._one()'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testLiteral [
 	self assert: (PjLiteralValueNode value: 42) asStringEquals: '42'.
 	self assert: (PjLiteralValueNode value: '42') asStringEquals: '"42"'.
@@ -181,7 +183,7 @@ x',(String with: Character null)) asStringEquals: '"\x07a\\b\"\rx\x00"'.
 xようこそy',(String with: (Character value:257)) ) asStringEquals: '"\x00a\\b\"\rx\u3088\u3046\u3053\u305Dy\u0101"'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testMethod [
 	self
 		assert:
@@ -221,14 +223,14 @@ PjStringGenerationTest >> testMethod [
 		asStringEquals: '_foo(a){var d;d=[()=>{1;2}];return a}'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testObject [
 	self
 		assert: (PjObjectNode dictionary: { #a -> selfNode. #* -> nilNode } asDictionary)
 		asStringEquals: '{"*":null,a:this}'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testOperatorPrecedence [
 	self assert: (PjBinaryNode operator: #+ left: (PjBinaryNode operator: #+ left: two right: three) right: one) asStringEquals: '2+3+1'.
 	self assert: (PjBinaryNode operator: #+ left: (PjBinaryNode operator: #- left: two right: three) right: one) asStringEquals: '2-3+1'.
@@ -242,7 +244,7 @@ PjStringGenerationTest >> testOperatorPrecedence [
 	self assert: (PjBinaryNode operator: #+ left: two right: (PjBinaryNode operator: #- left:  (PjBinaryNode operator: #* left: three right: one) right: (PjBinaryNode operator: #/ left: (PjLiteralValueNode value: 5) right: (PjLiteralValueNode value: 6)))) asStringEquals: '2+3*1-5/6'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testOptimizedJsX [
 	self
 		assert: (PjGlobalNode identifier: #this)
@@ -261,7 +263,7 @@ PjStringGenerationTest >> testOptimizedJsX [
 		asStringEquals: 'this["a.b"]=2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testPoolVariables [
 	| astAssignment poolVar |
 	poolVar := (PjPoolVariableNode identifier: #PoolVarForTest)
@@ -291,7 +293,7 @@ PjStringGenerationTest >> testPoolVariables [
 		equals: 'cp$.PoolVarForTest=cp$.PoolVarForTest'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testReservedWords [
 	self
 		assert: (PjFieldNode target: selfNode selectorNode: (PjInstanceVariableNode identifier: #in ) isNonNil: true)
@@ -337,12 +339,12 @@ PjStringGenerationTest >> testReservedWords [
 		asStringEquals: '.$prototype'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testReturn [
 	self assert: returnThree  asStringEquals: 'return 3'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testSelf [
 	self assert: selfNode asStringEquals: 'this'.
 	self
@@ -353,7 +355,7 @@ PjStringGenerationTest >> testSelf [
 		asStringEquals: PjStringGenerator selfName,'._value()'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testSuperCall [
 	self
 		assert: (self apply: (PjSuperNode myClass: Integer) selector: #value)
@@ -363,14 +365,14 @@ PjStringGenerationTest >> testSuperCall [
 		asStringEquals: 'super._value()'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testTry [
 	self
 		assert: (PjTryNode body: throwThree)
 		asStringEquals: 'var ', PjStringGenerator nonLocalReturnVariableName, '={};try{throw $_err_$=3}catch(e){if(e===', PjStringGenerator nonLocalReturnVariableName, ')return e;throw e}'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjStringGenerationTest >> testUnparsedString [
 	self
 		assert: (PjUnparsedStringNode string: 'a.b^c')

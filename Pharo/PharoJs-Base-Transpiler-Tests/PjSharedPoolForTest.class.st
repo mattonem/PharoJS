@@ -1,16 +1,18 @@
 Class {
-	#name : #PjSharedPoolForTest,
-	#superclass : #SharedPool,
+	#name : 'PjSharedPoolForTest',
+	#superclass : 'SharedPool',
 	#classVars : [
 		'A',
 		'B',
 		'C',
 		'X'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #'initialization-release' }
+{ #category : 'initialization-release' }
 PjSharedPoolForTest class >> initialize [
 	A := #sharedA.
 	B := #sharedB.

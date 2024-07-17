@@ -3,25 +3,27 @@ Provides a class factory and a default class to use in tests.
 Both are provided by a resource to avoid creating the default class upon each test run, which is too slow in Pharo 5 (was faster in Pharo 4).
 "
 Class {
-	#name : #PjGeneratedClassTranspilationTest,
-	#superclass : #PjTranspilationTest,
+	#name : 'PjGeneratedClassTranspilationTest',
+	#superclass : 'PjTranspilationTest',
 	#instVars : [
 		'class'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjGeneratedClassTranspilationTest class >> resources [
 	^{PjClassFactoryTestResource}
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjGeneratedClassTranspilationTest >> assertStCode: methodBodyString convertedIncludes: expectedJsSubstring [
 	self assertStMethodCode:  'm\' withCRs, methodBodyString convertedIncludes: expectedJsSubstring.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjGeneratedClassTranspilationTest >> assertStMethodCode: methodString convertedIncludes: expectedJsSubstring [
 	| jsCode |
 	class compile: methodString.
@@ -29,17 +31,17 @@ PjGeneratedClassTranspilationTest >> assertStMethodCode: methodString convertedI
 	self assert: jsCode includes: expectedJsSubstring.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjGeneratedClassTranspilationTest >> classFactory [
 	^PjClassFactoryTestResource current classFactory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjGeneratedClassTranspilationTest >> defaultClass [
 	^PjClassFactoryTestResource current defaultClass
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjGeneratedClassTranspilationTest >> setUp [
 	super setUp.
 	class := self defaultClass.

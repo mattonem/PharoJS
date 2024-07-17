@@ -1,10 +1,12 @@
 Class {
-	#name : #PjClassNamingTest,
-	#superclass : #TestCase,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjClassNamingTest',
+	#superclass : 'TestCase',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassNamingTest >> testClassNeedsCreation [
 	self deny: Object needsClassDeclaration.
 	self deny: BlockClosure needsClassDeclaration.

@@ -2,34 +2,36 @@
 I am a dummy PjOptimization to test the manager
 "
 Class {
-	#name : #PjNullMessageConversionForTest,
-	#superclass : #PjSpecialMessageConversion,
+	#name : 'PjNullMessageConversionForTest',
+	#superclass : 'PjSpecialMessageConversion',
 	#traits : 'TEquality',
 	#classTraits : 'TEquality classTrait',
 	#instVars : [
 		'selector'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #optimization }
+{ #category : 'optimization' }
 PjNullMessageConversionForTest >> convertReceiver: anObject args: aCollection [
 	anObject value < order ifTrue: [ ^ order ].
 	^ nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PjNullMessageConversionForTest >> order: aNumber selector: aString [ 
 	self order: aNumber.
 	selector := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNullMessageConversionForTest >> selector [
 	^ selector
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjNullMessageConversionForTest >> selectors [
 	^ {selector}
 ]

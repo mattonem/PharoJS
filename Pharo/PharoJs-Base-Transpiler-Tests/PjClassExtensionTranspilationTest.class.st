@@ -1,15 +1,17 @@
 Class {
-	#name : #PjClassExtensionTranspilationTest,
-	#superclass : #PjSingleClassTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjClassExtensionTranspilationTest',
+	#superclass : 'PjSingleClassTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClassExtensionTranspilationTest >> classToTranspile [
 	^ PjClassExtensionForTest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTranspilationTest >> testClassExtension [
 	self deny: self jsCode includes: self classToTranspile name.
 	self deny: self jsCode includes: 'function ', self classToTranspile name, '(){}'.
@@ -19,7 +21,7 @@ PjClassExtensionTranspilationTest >> testClassExtension [
 		self deny: self jsCode includes: selector]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassExtensionTranspilationTest >> testJavascriptInitialize [
 	self assertClassMethod: #javascriptInitialize equals: '(){return this}'.
 	self assert: self jsCode includes: PjClassForTranspilationTest name, '._javascriptInitialize()'.

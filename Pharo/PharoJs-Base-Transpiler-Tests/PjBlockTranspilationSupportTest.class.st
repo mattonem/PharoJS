@@ -1,13 +1,15 @@
 Class {
-	#name : #PjBlockTranspilationSupportTest,
-	#superclass : #TestCase,
+	#name : 'PjBlockTranspilationSupportTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'instVar'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> assertBlock: block externalVarValues: valuesDict [
 
 	| context actualTempValue variable allVariables scope |
@@ -22,21 +24,21 @@ PjBlockTranspilationSupportTest >> assertBlock: block externalVarValues: valuesD
 			equals: (valuesDict at: tempName) ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> innerClosedBlock: x [
 	| y |
 	y := 23.
 	^  [: other | [:v| |w| {v.w.x.y.instVar.123. other}] asClosedBlock] value: 986
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> openBlock: x [
 	| y |
 	y := 23.
 	^  [:v| |w| {v.w.x.y.instVar.123}]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test0ArgBlock1ExtenalVarLevel1 [
 
 	| block x valuesDict  |
@@ -46,7 +48,7 @@ PjBlockTranspilationSupportTest >> test0ArgBlock1ExtenalVarLevel1 [
 	self assertBlock: block externalVarValues: valuesDict 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test0ArgBlock2ExternalVarsLevel1 [
 
 	| block x a valuesDict |
@@ -67,7 +69,7 @@ PjBlockTranspilationSupportTest >> test0ArgBlock2ExternalVarsLevel1 [
 	self assertBlock: block externalVarValues: valuesDict
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test1ArgBlock1ExternalVarLevel1 [
 	
 	| block x valuesDict  |
@@ -77,7 +79,7 @@ PjBlockTranspilationSupportTest >> test1ArgBlock1ExternalVarLevel1 [
 	self assertBlock: block externalVarValues: valuesDict 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test1ArgBlock2ExternalVarsLevel1 [
 
 	| block x a valuesDict |
@@ -99,7 +101,7 @@ PjBlockTranspilationSupportTest >> test1ArgBlock2ExternalVarsLevel1 [
 	self assertBlock: block externalVarValues: valuesDict
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test1ArgBlock3ExternalVarsLevel2 [
 
 	| block x a valuesDict |
@@ -125,7 +127,7 @@ PjBlockTranspilationSupportTest >> test1ArgBlock3ExternalVarsLevel2 [
 	self should: [(block externalVariablesDict at: #block) signal] raise: PjJavascriptTranspilationError 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test1ArgClosedBlock3ExternalVarsLevel2 [
 
 	| outerBlock x a valuesDict closedBlock |
@@ -156,14 +158,14 @@ PjBlockTranspilationSupportTest >> test1ArgClosedBlock3ExternalVarsLevel2 [
 		assert: (closedBlock externalVariablesDict at: #closedBlock) isNil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test1ArgClosedBlockLevel1CreatedByAnotherMethod [
 	| closedBlock |
 	closedBlock := (self openBlock: 42) asClosedBlock.
 	self assertBlock: closedBlock externalVarValues: { #x -> 42. #y ->23 } asDictionary 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationSupportTest >> test1ArgClosedBlockLevel2CreatedByAnotherMethod [
 	| closedBlock |
 	closedBlock := self innerClosedBlock: 42.

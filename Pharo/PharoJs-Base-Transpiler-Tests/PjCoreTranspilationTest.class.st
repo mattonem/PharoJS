@@ -1,15 +1,17 @@
 Class {
-	#name : #PjCoreTranspilationTest,
-	#superclass : #PjSingleClassTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjCoreTranspilationTest',
+	#superclass : 'PjSingleClassTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjCoreTranspilationTest >> classToTranspile [
 	^ self transpilerClass coreClass
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCoreTranspilationTest >> testClassSideMethods [
 
 	self
@@ -17,12 +19,12 @@ PjCoreTranspilationTest >> testClassSideMethods [
 		equals: '(moduleName){return require(moduleName);}'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCoreTranspilationTest >> testInstanceSideMethods [
 	self assert: self classToTranspile methodDict size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjCoreTranspilationTest >> testOptimizedJsAt [
 	| method asNil |
 	asNil := PjStringGenerator nilTestFunctionName.

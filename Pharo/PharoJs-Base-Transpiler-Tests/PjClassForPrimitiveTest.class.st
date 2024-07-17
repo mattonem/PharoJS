@@ -1,10 +1,12 @@
 Class {
-	#name : #PjClassForPrimitiveTest,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#name : 'PjClassForPrimitiveTest',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForPrimitiveTest >> + aNumber [ 
 	"Primitive. Answer the sum of the receiver and aNumber. Essential.
 	Fail if the argument is not a Float. See Object documentation

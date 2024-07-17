@@ -1,20 +1,22 @@
 Class {
-	#name : #PjPrefixForTranspilationTest,
-	#superclass : #PjSingleClassTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjPrefixForTranspilationTest',
+	#superclass : 'PjSingleClassTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPrefixForTranspilationTest >> classToTranspile [
 	^ PjClassForDefinitionTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjPrefixForTranspilationTest >> selectorsPrefix [
 	^ 'altPrefix_'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjPrefixForTranspilationTest >> testPrefix [
 	| pjPrefix |
 	pjPrefix := self selectorsPrefix.

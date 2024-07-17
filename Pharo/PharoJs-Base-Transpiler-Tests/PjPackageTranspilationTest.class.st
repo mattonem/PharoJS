@@ -1,10 +1,12 @@
 Class {
-	#name : #PjPackageTranspilationTest,
-	#superclass : #PjTranspilationClassCompilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjPackageTranspilationTest',
+	#superclass : 'PjTranspilationClassCompilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjPackageTranspilationTest >> assert: firstClass classVariablesSetBefore: lastClass [
 	self 
 		assert: firstClass 
@@ -12,7 +14,7 @@ PjPackageTranspilationTest >> assert: firstClass classVariablesSetBefore: lastCl
 		before: lastClass
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjPackageTranspilationTest >> assert: firstClass inCodeWith: codeString before: lastClass [
 	| firstIndex lastIndex |
 	firstIndex := self jsCode indexOfSubCollection: firstClass nameToUseForJsConversion, codeString.
@@ -21,7 +23,7 @@ PjPackageTranspilationTest >> assert: firstClass inCodeWith: codeString before: 
 	self assert: firstIndex < lastIndex.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjPackageTranspilationTest >> assert: firstClass inCodeWithPrefix: codeString before: lastClass [
 	| firstIndex lastIndex |
 	firstIndex := self jsCode indexOfSubCollection: codeString, firstClass nameToUseForJsConversion.
@@ -30,23 +32,23 @@ PjPackageTranspilationTest >> assert: firstClass inCodeWithPrefix: codeString be
 	self assert: firstIndex < lastIndex.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjPackageTranspilationTest >> assert: firstClass initializedBefore: lastClass [
 	self assert: firstClass inCodeWith: '._initialize();' before: lastClass.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjPackageTranspilationTest >> assertClass: firstClass installedBefore: lastClass [
 	self assert: firstClass inCodeWithPrefix: 'class ' before: lastClass.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjPackageTranspilationTest >> assertClassExtension: firstClass installedBefore: lastClass [
 
 	self assert: firstClass inCodeWithPrefix: '},' before: lastClass
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testCircularClass [
 	self generateJsCodeForClasses: {
 	PjClassBForCircularTranspilationTest.
@@ -54,7 +56,7 @@ PjPackageTranspilationTest >> testCircularClass [
 	self deny: self jsCode includes: '.prototype.__proto__ = '
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testClientClassUsesJavascriptNameOfReferencedClass [
 	self generateJsCodeForClasses: {
 	PjClassBForReferenceTranspilationTest.
@@ -64,7 +66,7 @@ PjPackageTranspilationTest >> testClientClassUsesJavascriptNameOfReferencedClass
 	self deny: self jsCode includes: PjClassAForReferenceTranspilationTest name.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testDnuSetup [
 	self generateJsCodeForClasses: {
 	PjClassBForCircularTranspilationTest.
@@ -72,7 +74,7 @@ PjPackageTranspilationTest >> testDnuSetup [
 	self assert: self jsCode includes: '._registerDnuForAll_(["isNil","javascriptName"]);'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testDuplicateClasses [
 	| classesToConvert classDefintionString className classInitializationString|
 	classesToConvert := OrderedCollection new.
@@ -85,7 +87,7 @@ PjPackageTranspilationTest >> testDuplicateClasses [
 		self assert: (jsCode allRangesOfSubstring: each) size equals: 1] .
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testJavascriptInitializeOverridesClassInitialize [
 	self generateJsCodeForClasses: {
 	PjClientForJavascriptInitializationTest.
@@ -98,7 +100,7 @@ PjPackageTranspilationTest >> testJavascriptInitializeOverridesClassInitialize [
 		appearsBefore: PjClientForJavascriptInitializationTest name, '._javascriptInitialize()'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testProviderInitializedBeforeClient [
 	self generateJsCodeForClasses: {
 	PjClassCForPackageTranspilationTest.
@@ -108,7 +110,7 @@ PjPackageTranspilationTest >> testProviderInitializedBeforeClient [
 	self assert: PjClassBForPackageTranspilationTest initializedBefore: PjClassCForPackageTranspilationTest.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testProviderInitializedBeforeClientSubclass [
 	self generateJsCodeForClasses: {
 	PjClassEForPackageTranspilationTest.
@@ -119,7 +121,7 @@ PjPackageTranspilationTest >> testProviderInitializedBeforeClientSubclass [
 	self assert: PjClassBForPackageTranspilationTest initializedBefore: PjClassEForPackageTranspilationTest.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testSuperclassInitializedBeforeSubclass [
 	self generateJsCodeForClasses: {
 	PjClassBForPackageTranspilationTest.
@@ -128,7 +130,7 @@ PjPackageTranspilationTest >> testSuperclassInitializedBeforeSubclass [
 	self assert: PjClassAForPackageTranspilationTest initializedBefore: PjClassBForPackageTranspilationTest.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPackageTranspilationTest >> testSuperclassProtoSetBeforeSubclass [
 	self generateJsCodeForClasses: {
 	PjClassBForPackageTranspilationTest.

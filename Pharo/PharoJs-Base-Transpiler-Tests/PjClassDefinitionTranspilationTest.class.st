@@ -1,20 +1,22 @@
 Class {
-	#name : #PjClassDefinitionTranspilationTest,
-	#superclass : #PjSingleClassTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjClassDefinitionTranspilationTest',
+	#superclass : 'PjSingleClassTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClassDefinitionTranspilationTest >> classToTranspile [
 	^ PjClassForDefinitionTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjClassDefinitionTranspilationTest >> expectedClassName [
 	^self classToTranspile name
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClassDefinitionTranspilationTest >> testClassDefinedAsConstructor [
 	self assert: self jsCode includes: 'class ', className, ' extends Object{'.
 ]

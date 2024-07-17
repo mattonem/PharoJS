@@ -1,6 +1,6 @@
 Class {
-	#name : #PjBlockTranspilationTest,
-	#superclass : #PjTranspilationTest,
+	#name : 'PjBlockTranspilationTest',
+	#superclass : 'PjTranspilationTest',
 	#instVars : [
 		'instVar'
 	],
@@ -11,36 +11,38 @@ Class {
 		'PjDomGlobals',
 		'PjUniversalGlobals'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PjBlockTranspilationTest class >> initialize [
 	SomeClassVar := 'SomeClassVariable'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjBlockTranspilationTest >> closedBlock: x [
 	| y |
 	y := 23.
 	^  [:v| |w| {v.w.x.y.instVar.123}] asClosedBlock
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PjBlockTranspilationTest >> openBlock: x [
 	| y |
 	y := 23.
 	^  [:v| |w| {v.w.x.y.instVar.123}]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlock1Arg [
 	self 
 		assertStBlock: [ :x | 123]
 		convertsTo: '((x)=>{return 123})'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlock1ArgWithReturn [
 
 	self
@@ -48,7 +50,7 @@ PjBlockTranspilationTest >> testBlock1ArgWithReturn [
 		convertsTo: '((x)=>{throw $_err_$=123})'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlock2Args [
 
 	self
@@ -59,7 +61,7 @@ PjBlockTranspilationTest >> testBlock2Args [
 		convertsTo: '((x,y)=>{return [x,y]})'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlock2ArgsWithReturn [
 
 	self
@@ -70,14 +72,14 @@ PjBlockTranspilationTest >> testBlock2ArgsWithReturn [
 		convertsTo: '((x,y)=>{throw $_err_$=[x,y]})'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlockEmpty [
 	self 
 		assertStBlock: []
 		convertsTo: '(()=>{return ', self nilInJavascript, '})'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlockWithExternalVariables [
 
 	| x |
@@ -157,7 +159,7 @@ PjBlockTranspilationTest >> testBlockWithExternalVariables [
 		convertsTo: '((x1)=>{return ()=>{return x1}})(42)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlockWithNestedScopes [
 
 	| openBlock closedBlock x a |
@@ -235,7 +237,7 @@ PjBlockTranspilationTest >> testBlockWithNestedScopes [
 		'((x,y,instVar)=>{return (v)=>{var w;return [v,w,x,y,instVar,123]}})(42,23,1492)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlockWithNestedScopesToFix [
 	<expectedFailure>
 	self 
@@ -246,7 +248,7 @@ PjBlockTranspilationTest >> testBlockWithNestedScopesToFix [
 		convertsTo: '(function(w,y){return function(){return [w,y,2]}})(17,4)'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testBlockWithReferencedScopes [
 
 	| x y superClosed |
@@ -265,7 +267,7 @@ PjBlockTranspilationTest >> testBlockWithReferencedScopes [
 		'((superClosed,x)=>{return ()=>{var w;w=$asNil$(superClosed)._value();return [w,x,123]}})(((y)=>{return ()=>{return y}})(17),1337)'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBlockTranspilationTest >> testValuedBlock [
 
 	self

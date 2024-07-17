@@ -2,8 +2,8 @@
 I am a superclass with a pool dictionary to be validated with PjTranspilerTest
 "
 Class {
-	#name : #PjSuperClassForTranspilationTest,
-	#superclass : #Object,
+	#name : 'PjSuperClassForTranspilationTest',
+	#superclass : 'Object',
 	#classVars : [
 		'B',
 		'S'
@@ -11,10 +11,12 @@ Class {
 	#pools : [
 		'PjSharedPoolForTest'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PjSuperClassForTranspilationTest class >> initialize [
 	B := #superB.
 ]

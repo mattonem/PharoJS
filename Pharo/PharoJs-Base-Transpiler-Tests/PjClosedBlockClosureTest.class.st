@@ -1,13 +1,15 @@
 Class {
-	#name : #PjClosedBlockClosureTest,
-	#superclass : #TestCase,
+	#name : 'PjClosedBlockClosureTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'instVar'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClosedBlockClosureTest >> testBlockFreeVariables [
 	|x block closedBlock |
 	x := 1.
@@ -21,7 +23,7 @@ PjClosedBlockClosureTest >> testBlockFreeVariables [
 	self assert: closedBlock externalVariablesDict equals: {#x->1. #instVar->42. #block->block. #closedBlock-> nil. #testSelector->testSelector. #expectedFails->expectedFails} asDictionary.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClosedBlockClosureTest >> testBlockReferencingTempInMethod [
 	|x closedBlock |
 	x := 1.
@@ -30,14 +32,14 @@ PjClosedBlockClosureTest >> testBlockReferencingTempInMethod [
 	self assert: x equals: 1.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClosedBlockClosureTest >> testClosingClosedBlock [
 	| closedBlock |
 	closedBlock := [] asClosedBlock.
 	self assert: closedBlock asClosedBlock == closedBlock.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClosedBlockClosureTest >> testNestedBlockReferencingTempInMethod [
 	|x closedBlock |
 	x := 1.
@@ -46,7 +48,7 @@ PjClosedBlockClosureTest >> testNestedBlockReferencingTempInMethod [
 	self assert: x equals: 1.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjClosedBlockClosureTest >> testNestedBlockReferencingTempInOuterBlock [
 	| xBlock closedBlock |
 	xBlock := [|x|

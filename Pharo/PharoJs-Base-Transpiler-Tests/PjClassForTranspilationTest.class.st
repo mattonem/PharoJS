@@ -2,8 +2,8 @@
 I am a class to be validated with PjTranspilerTest
 "
 Class {
-	#name : #PjClassForTranspilationTest,
-	#superclass : #PjSuperClassForTranspilationTest,
+	#name : 'PjClassForTranspilationTest',
+	#superclass : 'PjSuperClassForTranspilationTest',
 	#classVars : [
 		'A',
 		'X',
@@ -13,66 +13,68 @@ Class {
 	#pools : [
 		'PjDomGlobals'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 PjClassForTranspilationTest class >> a [
 	^ A
 ]
 
-{ #category : #'accessing structure variables' }
+{ #category : 'accessing structure variables' }
 PjClassForTranspilationTest class >> b [
 	^ B
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest class >> c1 [
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest class >> c2 [
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjClassForTranspilationTest class >> classMethod_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^self name asJSON
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest class >> click: ev [
 	| m |
 	m := self setupMessage ifNil: [^ self].
 	^ m
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest class >> initialize [
 	A := #testA.
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjClassForTranspilationTest class >> instanceMethod_jsGenerator: transpiler [
 	<pharoJsSkip>
 	^'return 1', ' + ', '2;'
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjClassForTranspilationTest class >> isJsClassPlaceholder [
 
 	<pharoJsSkip>
 	^ false
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjClassForTranspilationTest class >> javascriptName [
 
 	<pharoJsSkip>
 	^ #JsClass
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjClassForTranspilationTest class >> jsTranspilationImportMethods [
 	<pharoJsSkip>
 	^ {
@@ -81,7 +83,7 @@ PjClassForTranspilationTest class >> jsTranspilationImportMethods [
 	}
 ]
 
-{ #category : #'pharojs support' }
+{ #category : 'pharojs support' }
 PjClassForTranspilationTest class >> jsTranspilationImportMethodsNonstandard [
 	<pharoJsSkip>
 	^ {
@@ -90,19 +92,19 @@ PjClassForTranspilationTest class >> jsTranspilationImportMethodsNonstandard [
 	}
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest class >> m1 [
 	X := prototype.
 	S := S.
 	C := C.
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest class >> methodWithJsGenerator [
 	<jsGenerator: #classMethod_jsGenerator:>
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest class >> setupMessage [
 	^ (self == PjClassForTranspilationTest ifTrue: [
 				''
@@ -111,141 +113,141 @@ PjClassForTranspilationTest class >> setupMessage [
 		'Click anywhere'
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> @ op [
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> add: op1 and: op2 [
 	^op2
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> alias [
 	<jsAlias: #myAlias>
 	^ 42
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> alias1: arg [
 	<jsAlias: #myAlias1 >
 	^ arg + 1
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> alias1Caller [
 	<javascript: 'return this.myAlias1(41)'>
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> alias1Caller: arg [ 
 	<javascript: 'return this.myAlias1(arg)'>
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> alias2 [
 	<jsAlias: #myAlias2 and: #andAlias2>
 	^ 21
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> alias2Caller [
 	<javascript: 'return this.myAlias2() + this.andAlias2()'>
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> aliasCaller [
 	<javascript: 'return this.myAlias()'>
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> aliasSpecialName [
 	<jsAlias: #'_$$_special'>
 	^ 42
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> aliasSpecialNameCaller [
 	<javascript: 'return this._$$_special()'>
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> blockWithNamedParameter [
 "	self m2 ifNotNil: [ : foo | foo m2 ].
 "	^ self m1 ifNotNil: [ : foo | foo m1 ]
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> blockWithUnnamedParameter [
 	^ self m1 ifNil: [ 42 ]
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> blockWithUnnamedParameterNonTail [
 	^ 3+(self m1 ifNil: [ 42 ])
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> blocksReferencingSelf [
 	[self].
 	^self
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> cascade: x [
 	^ x foo bar;yourself
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> cascadeNested [
 	^ self m1;m:(self m1; m2);yourself
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> cascadeSelf [
 	^ self m1;m:4;yourself
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> cascadeSuper [
 	^ super isNil;yourself
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> composedCalls [
 	^ (self m1 m:4) m2
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> instanceMethodWithJsGenerator [
 		<jsGenerator: #instanceMethod_jsGenerator:>
 	^self
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> m1 [
 	X := prototype.
 	S := S.
 	C := C.
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> m2 [
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> m: in [
 	<javascript: 'console.log("abc")'>
 	^self
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> methodToSkip [
 		<pharoJsSkip>
 		^#ThisShouldBeSkipped
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> methodWithPoolVars [
 	A := A.
 	B := B.
@@ -255,7 +257,7 @@ PjClassForTranspilationTest >> methodWithPoolVars [
 	Y := Y.
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> native [
 	| x |
 	x := x js_at: 4.
@@ -265,24 +267,24 @@ PjClassForTranspilationTest >> native [
 	x js_m: 17
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> nestedBlocksReferencingSelf [
 	[[self]].
 	^1
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> optimizeAtTest [
 	| selectorCache aSelector |
 	(selectorCache js_at: aSelector) ifNotNil: [ self ].
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> toDoWithObjectAsParameter [
 	1 to: 10 do: Object
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> twoPragmaWithAliases [
 
 	<jsAlias: #firstAlias>
@@ -290,13 +292,13 @@ PjClassForTranspilationTest >> twoPragmaWithAliases [
 	^ 200
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> whileAtEnd [
 	self m: [:x|	[ x m1 ] whileTrue].
 	[ self m2 ] whileTrue.
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassForTranspilationTest >> whileNotAtEnd [
 	self m: [:x|	[ x m1 ] whileTrue].
 	[ self m2 ] whileTrue.

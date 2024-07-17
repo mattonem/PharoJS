@@ -1,20 +1,22 @@
 Class {
-	#name : #PjSharedPoolDefinitionTranspilationTest,
-	#superclass : #PjSingleClassTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjSharedPoolDefinitionTranspilationTest',
+	#superclass : 'PjSingleClassTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSharedPoolDefinitionTranspilationTest >> classToTranspile [
 	^ PjSharedPoolForTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSharedPoolDefinitionTranspilationTest >> expectedClassName [
 	^ self classToTranspile name
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSharedPoolDefinitionTranspilationTest >> expectedFullClassDefinition [
 
 	| superclassName |
@@ -29,7 +31,7 @@ static cp$=\{"C":null,"X":null,"A":null,"B":null\}\},\{\},\{\});{1}._initialize(
 			  superclassName }
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSharedPoolDefinitionTranspilationTest >> testClassVariables [
 
 	

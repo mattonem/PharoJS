@@ -1,14 +1,16 @@
 Class {
-	#name : #PjClientForInitializationTest,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#name : 'PjClientForInitializationTest',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #initializing }
+{ #category : 'initializing' }
 PjClientForInitializationTest class >> initialize [
 ]
 
-{ #category : #any }
+{ #category : 'any' }
 PjClientForInitializationTest >> m [
 	PjProviderForInitializationTest new
 ]

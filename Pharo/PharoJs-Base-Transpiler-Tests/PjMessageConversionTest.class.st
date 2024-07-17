@@ -1,32 +1,34 @@
 Class {
-	#name : #PjMessageConversionTest,
-	#superclass : #TestCase,
+	#name : 'PjMessageConversionTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'converter'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMessageConversionTest >> addSome [
 	converter addAllConversions: (#(2 6 4) collect: [ : i | PjNullMessageConversionForTest new order: i selector: #foo]).
 	converter addAllConversions: (#(8 4) collect: [ : i | PjNullMessageConversionForTest new order: i selector: #bar])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMessageConversionTest >> convert: selector receiver: aLiteral args: args [
 	| receiverAstNode |
 	receiverAstNode := RBLiteralNode value: aLiteral.
 	^converter convert: selector receiver: receiverAstNode args: args
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMessageConversionTest >> setUp [
 	super setUp.
 	converter := PjMessageConverter new.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMessageConversionTest >> testAdd [
 	self addSome.
 	self assert: (self convert: #bar receiver: 5 args: #()) equals: 8.
@@ -34,12 +36,12 @@ PjMessageConversionTest >> testAdd [
 	self assert: (self convert: #bar receiver: 5 args: #()) equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMessageConversionTest >> testEmpty [
 	self assert: (self convert: #foo receiver: nil args: #()) equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMessageConversionTest >> testRemove [
 	self addSome.
 	self assert: (self convert: #foo receiver: 3 args: #()) equals: 4.
@@ -50,7 +52,7 @@ PjMessageConversionTest >> testRemove [
 	self assert: (self convert: #foo receiver: 3 args: #()) equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjMessageConversionTest >> testSome [
 	self addSome.
 	self assert: (self convert: #foo receiver: 3 args: #()) equals: 4.

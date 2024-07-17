@@ -1,23 +1,25 @@
 Class {
-	#name : #PjSingleClassTranspilationTest,
-	#superclass : #PjTranspilationClassCompilationTest,
+	#name : 'PjSingleClassTranspilationTest',
+	#superclass : 'PjTranspilationClassCompilationTest',
 	#instVars : [
 		'className'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSingleClassTranspilationTest >> classToTranspile [
 	^ PjClassForTranspilationTest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjSingleClassTranspilationTest >> expectedClassName [
 	^classToTranspile nameToUseForJsConversion
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjSingleClassTranspilationTest >> setUp [
 	super setUp.
 	transpiler poolFor: self classToTranspile.
@@ -26,12 +28,12 @@ PjSingleClassTranspilationTest >> setUp [
 	className := self expectedClassName
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testBlockReferencingSelf [
 	self assertInstanceMethod: #blocksReferencingSelf equals: '(){var ',PjStringGenerator selfName,'=this;(()=>{return ',PjStringGenerator selfName,'});return this}'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testCascade [
 	self assertInstanceMethod: #cascadeSelf equals: '(){return (this._m1(),this._m_(4),this._yourself())}'.
 	self assertInstanceMethod: #cascadeSuper equals: '(){return (super._isNil(),super._yourself())}'.
@@ -39,7 +41,7 @@ PjSingleClassTranspilationTest >> testCascade [
 	self assertInstanceMethod: #cascadeNested equals: '(){return (this._m1(),this._m_((this._m1(),this._m2())),this._yourself())}'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testClassAndPoolVariableDefinition [
 
 	| sharedPoolVarsHolder superVarsHolder classVarHolder |
@@ -62,7 +64,7 @@ PjSingleClassTranspilationTest >> testClassAndPoolVariableDefinition [
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testClassSideMethods [
 	| superclassName sharedPoolName |
 	sharedPoolName := transpiler poolReference: PjSharedPoolForTest for: self classToTranspile.
@@ -80,12 +82,12 @@ PjSingleClassTranspilationTest >> testClassSideMethods [
 	self assertClassMethod: #methodWithJsGenerator equals: '(){', (self classToTranspile classMethod_jsGenerator: transpiler),'}'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testCompose [
 	self assertInstanceMethod: #composedCalls equals: '(){return $asNil$($asNil$(this._m1())._m_(4))._m2()}'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testInstanceSideMethods [
 	| superclassName sharedPoolName |
 	sharedPoolName := transpiler poolReference: PjSharedPoolForTest for: self classToTranspile.
@@ -104,14 +106,14 @@ PjSingleClassTranspilationTest >> testInstanceSideMethods [
 	self assertInstanceMethod: #instanceMethodWithJsGenerator equals:  '(){', (self classToTranspile instanceMethod_jsGenerator: transpiler), '}'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testMethodAlias [
 	self assert: self jsCode includes: '"_alias":["myAlias"]'.
 	self assert: self jsCode includes: '"_alias2":["andAlias2","myAlias2"]'.
 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testNative [
 	| method |
 	method := self instanceMethod: #native.
@@ -122,7 +124,7 @@ PjSingleClassTranspilationTest >> testNative [
 	self assert: method includes: 'x.m(17)'.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSingleClassTranspilationTest >> testToDoExpr [
 	self assertInstanceMethod: #toDoWithObjectAsParameter equals: '(){(1)._to_do_(10,Object);return this}'
 ]

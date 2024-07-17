@@ -2,87 +2,89 @@
 I contain utility methods for transpilation tests
 "
 Class {
-	#name : #PjTranspilationTest,
-	#superclass : #TestCase,
+	#name : 'PjTranspilationTest',
+	#superclass : 'TestCase',
 	#traits : 'PjTJavascriptCodeAnalyser',
 	#classTraits : 'PjTJavascriptCodeAnalyser classTrait',
 	#instVars : [
 		'transpiler',
 		'classToTranspile'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjTranspilationTest class >> isAbstract [
 
 	^ self = PjTranspilationTest
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjTranspilationTest >> assertStBlock: aBlock convertsTo: expectedJsString [
 	self assert: (transpiler convertToJs: aBlock) equals: expectedJsString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> classToTranspile [
 	^ classToTranspile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> classToTranspile: aClass [
 	classToTranspile := aClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> classVariablesHolderName [
 	^ PjStringGenerator classVariablesHolderName
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 PjTranspilationTest >> convertClass: aClass [
 	self classToTranspile: aClass.
 	^ transpiler convertToJs: aClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> lineEnding [
 	^self transpilerClass lineEnding
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> method: aString [ 
 	self shouldBeImplemented.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> nilInJavascript [
 	^PjStringGenerator nilInJavascript
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> nilTestFunctionName [
 	^PjStringGenerator nilTestFunctionName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> pharoJsSelectorPrefix [
 
 	^ transpiler pharoJsSelectorPrefix
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> selectorsPrefix [
 	^  '_'
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjTranspilationTest >> setUp [
 	super setUp.
 	transpiler := self transpilerClass new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjTranspilationTest >> transpilerClass [
 	^PjTranspiler
 ]

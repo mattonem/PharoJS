@@ -2,17 +2,19 @@
 I have tests relating to classes that have implementations of some methods in another class
 "
 Class {
-	#name : #PjReplacedClassTranspilationTest,
-	#superclass : #PjSingleClassTranspilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjReplacedClassTranspilationTest',
+	#superclass : 'PjSingleClassTranspilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjReplacedClassTranspilationTest >> classToTranspile [
 	^ PjReplacedClassForTest
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjReplacedClassTranspilationTest >> testClassReplacement [
 	self deny: self jsCode includes: 'function ', className, '(){}'.
 "We use defineProperty. See PjTranspiler>>#writeMethodsOf:named:with:"

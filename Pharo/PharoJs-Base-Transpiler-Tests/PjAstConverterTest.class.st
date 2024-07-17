@@ -2,54 +2,56 @@
 I'm an abstract test class
 "
 Class {
-	#name : #PjAstConverterTest,
-	#superclass : #PjAbstractAstTest,
+	#name : 'PjAstConverterTest',
+	#superclass : 'PjAbstractAstTest',
 	#instVars : [
 		'converter'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjAstConverterTest class >> isAbstract [ 
 
 	^ self = PjAstConverterTest
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjAstConverterTest >> assertContentsOf: aBlock convertsTo: expectedJsAst [
 	| actualJsAst |
 	actualJsAst := self convertFirstStatementOfBlock: aBlock.
 	self assert: actualJsAst equals: expectedJsAst.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjAstConverterTest >> assertMethod: methodSymbol convertsTo: expectedJsAst [
 	| actualJsAst |
 	actualJsAst := converter convertFirstStatementOfBlock: (PjClassForAstConversionTest>>methodSymbol) ast.
 	self assert: actualJsAst equals: expectedJsAst.
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjAstConverterTest >> convertFirstStatementOfBlock: aBlock [
 	^ converter convertFirstStatementOfBlock: aBlock firstAstNode
 ]
 
-{ #category : #'test mock' }
+{ #category : 'test mock' }
 PjAstConverterTest >> discoveredMessage: aString [
 	" just here so tests don't fail "
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PjAstConverterTest >> discoveredReferenceToClass: aClass [
 ]
 
-{ #category : #checking }
+{ #category : 'checking' }
 PjAstConverterTest >> failConverting: aBlock [
 	self should: [ self convertFirstStatementOfBlock: aBlock ] raise: Exception
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjAstConverterTest >> setUp [
 	super setUp.
 	converter := PjAstConverter new transpiler: self;yourself.

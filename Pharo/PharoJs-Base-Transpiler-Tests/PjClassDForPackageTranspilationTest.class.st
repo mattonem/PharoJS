@@ -1,10 +1,12 @@
 Class {
-	#name : #PjClassDForPackageTranspilationTest,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#name : 'PjClassDForPackageTranspilationTest',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #any }
+{ #category : 'any' }
 PjClassDForPackageTranspilationTest >> m [
 	PjClassBForPackageTranspilationTest.
 ]

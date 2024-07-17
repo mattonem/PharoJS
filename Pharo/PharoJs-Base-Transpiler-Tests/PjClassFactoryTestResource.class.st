@@ -1,36 +1,35 @@
 Class {
-	#name : #PjClassFactoryTestResource,
-	#superclass : #TestResource,
+	#name : 'PjClassFactoryTestResource',
+	#superclass : 'TestResource',
 	#instVars : [
 		'classFactory',
-		'defaultClass',
-		'authorInitialName'
+		'defaultClass'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjClassFactoryTestResource >> classFactory [
 	^classFactory
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjClassFactoryTestResource >> defaultClass [
 	^defaultClass
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjClassFactoryTestResource >> setUp [
 	super setUp.
-	authorInitialName := Author uniqueInstance fullNamePerSe.
-	Author uniqueInstance fullName: 'PharoJS'.
 	classFactory := ClassFactoryForTestCase new.
-	defaultClass := classFactory silentlyNewClassInCategory: classFactory packageName.
+	defaultClass := classFactory silentlyNewClass
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 PjClassFactoryTestResource >> tearDown [
-	super tearDown.
 	classFactory cleanUp.
-	Author uniqueInstance fullName: authorInitialName.
+	super tearDown.
+
 ]

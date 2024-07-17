@@ -1,52 +1,54 @@
 Class {
-	#name : #PjExtensionClassForAliasTest,
-	#superclass : #Object,
-	#category : #'PharoJs-Base-Transpiler-Tests-Support'
+	#name : 'PjExtensionClassForAliasTest',
+	#superclass : 'Object',
+	#category : 'PharoJs-Base-Transpiler-Tests-Support',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Support'
 }
 
-{ #category : #aliasing }
+{ #category : 'aliasing' }
 PjExtensionClassForAliasTest class >> classM1 [
 
 	<jsAlias: #classM1alias>
 	^ #classM1
 ]
 
-{ #category : #aliasing }
+{ #category : 'aliasing' }
 PjExtensionClassForAliasTest class >> classM2 [
 
 	<jsAlias: #classM2alias1 with: #classM2alias2>
 	^ #classM2
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjExtensionClassForAliasTest class >> isJsClassPlaceholder [
 
 	<pharoJsSkip>
 	^ true
 ]
 
-{ #category : #transpiling }
+{ #category : 'transpiling' }
 PjExtensionClassForAliasTest class >> javascriptName [ 
 
 	<pharoJsSkip>
 	^ #Object
 ]
 
-{ #category : #aliasing }
+{ #category : 'aliasing' }
 PjExtensionClassForAliasTest >> m1 [
 
 	<jsAlias: #m1alias>
 	^ #instanceM1
 ]
 
-{ #category : #aliasing }
+{ #category : 'aliasing' }
 PjExtensionClassForAliasTest >> m2 [
 
 	<jsAlias: #m2alias1 with: #m2alias2 with: #m2alias3>
 	^ #instanceM2
 ]
 
-{ #category : #aliasing }
+{ #category : 'aliasing' }
 PjExtensionClassForAliasTest >> twoPragmaWithAliases [
 
 	<jsAlias: #firstAlias>

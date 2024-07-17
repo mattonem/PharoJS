@@ -2,17 +2,19 @@
 I have tests for basic ast conversions
 "
 Class {
-	#name : #PjBasicConverterTest,
-	#superclass : #PjAstConverterTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjBasicConverterTest',
+	#superclass : 'PjAstConverterTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #'test mock' }
+{ #category : 'test mock' }
 PjBasicConverterTest >> addPoolReference: aClass [ 
 	^ 'mock$'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testArray [
 	| x |
 	x := PjTempVariableNode identifier: #x.
@@ -20,7 +22,7 @@ PjBasicConverterTest >> testArray [
 	self assertContentsOf: [ #(1 2 x) ] convertsTo: (PjArrayNode expressions: { one. two. PjLiteralValueNode value: #x })
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testBlockBasics [
 	| expectedAst xVariable assignment returnAssignment blockReturningOne |
 	self assertContentsOf: [ nil ] convertsTo: nilNode.
@@ -67,7 +69,7 @@ PjBasicConverterTest >> testBlockBasics [
 		convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testBlockNonLocalReturns [
 	| expectedAst innerBlockAst |
 	expectedAst := self simpleBlock: {throwOne} locals: #().
@@ -90,7 +92,7 @@ PjBasicConverterTest >> testBlockNonLocalReturns [
 			[ ^ 2 ] ] ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testBlockRelatedFlags [
 	self deny: converter isInBlock.
 	self deny: converter hasInBlockSelfReferences.
@@ -112,7 +114,7 @@ PjBasicConverterTest >> testBlockRelatedFlags [
 	self deny: converter hasNonLocalReturns.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testBlockReturns [
 	| expectedAst innerBlockAst |
 	expectedAst := self
@@ -152,7 +154,7 @@ PjBasicConverterTest >> testBlockReturns [
 		convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testExpressionNonLocalReturns [
 	| expectedAst  |
 	expectedAst := PjArrayNode expressions: {throwOne}.
@@ -162,26 +164,26 @@ PjBasicConverterTest >> testExpressionNonLocalReturns [
 	self failConverting: [ { ^1 } ].
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testInteger [
 	self assertContentsOf: [ 1 ] convertsTo: one
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testLiteralArrayOfIntegers [
 	| literalNodes |
 	literalNodes := #(3 5 21) collect: [ : each | PjLiteralValueNode value: each ].
 	self assertContentsOf: [ #(3 5 21) ] convertsTo: (PjArrayNode expressions: literalNodes)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testMessageWithoutOptimizationManager [
 	| expectedAst |
 	expectedAst := self apply: three selector: #foo.
 	self assertContentsOf: [ 3 foo ] convertsTo: expectedAst.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testMethodBasic1 [
 	| expectedAst |
 	expectedAst := PjMethodNode
@@ -192,7 +194,7 @@ PjBasicConverterTest >> testMethodBasic1 [
 	self assertMethod: #basic1 convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testMethodBasic2 [
 	| expectedAst |
 	expectedAst := PjMethodNode
@@ -201,7 +203,7 @@ PjBasicConverterTest >> testMethodBasic2 [
 	self assertMethod: #basic2 convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testMethodBasic3 [
 	| expectedBody expectedAst |
 	expectedBody := {(PjUnparsedStringNode string: 'return 3')}.
@@ -211,7 +213,7 @@ PjBasicConverterTest >> testMethodBasic3 [
 	self assertMethod: #basic3 convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testMethodBasic4 [
 	| expectedBody expectedAst |
 	expectedBody := {three.
@@ -225,7 +227,7 @@ PjBasicConverterTest >> testMethodBasic4 [
 	self assertMethod: #basic4 convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testMethodBasic5 [
 	| expectedBody expectedAst |
 	expectedBody := {three.
@@ -240,7 +242,7 @@ PjBasicConverterTest >> testMethodBasic5 [
 	self assertMethod: #basic5 convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testMethodBasic6 [
 	| expectedBody expectedAst |
 	expectedBody := {(self
@@ -254,7 +256,7 @@ PjBasicConverterTest >> testMethodBasic6 [
 	self assertMethod: #basic6 convertsTo: expectedAst
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testReadWriteClassVariables [
 	| astAssignment classVar |
 	converter classForConversion: PjAbstractAstTest.
@@ -266,7 +268,7 @@ PjBasicConverterTest >> testReadWriteClassVariables [
 	self assertContentsOf: [ ClassVarForTest := ClassVarForTest ] convertsTo: astAssignment.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testReadWriteInstanceVariables [
 	| astAssignment |
 	self assertContentsOf: [ iv1ForTest ] convertsTo: (PjFieldNode target: selfNode selectorNode: iv1ForTest isNonNil: true).
@@ -276,7 +278,7 @@ PjBasicConverterTest >> testReadWriteInstanceVariables [
 	self assertContentsOf: [ iv1ForTest := iv2ForTest ] convertsTo: astAssignment.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testReadWriteVariable [
 	| astAssignment |
 	self assertContentsOf: [ |x| x ] convertsTo: (PjTempVariableNode identifier: #x).
@@ -286,12 +288,12 @@ PjBasicConverterTest >> testReadWriteVariable [
 	self assertContentsOf: [ |x y| x := y ] convertsTo: astAssignment.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testSelf [
 	self assertContentsOf: [ self ] convertsTo: selfNode
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjBasicConverterTest >> testSpecialVariables [
 	| expectedAst |
 	expectedAst := self apply: (PjClassNode identifier: #Number) selector: #one.

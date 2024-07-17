@@ -1,10 +1,12 @@
 Class {
-	#name : #PjPrimitiveTranspilationTest,
-	#superclass : #PjTranspilationClassCompilationTest,
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#name : 'PjPrimitiveTranspilationTest',
+	#superclass : 'PjTranspilationClassCompilationTest',
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPrimitiveTranspilationTest >> testPrimitiveFailing [
 	self should: [
 		self generateJsCodeForClasses: {
@@ -13,7 +15,7 @@ PjPrimitiveTranspilationTest >> testPrimitiveFailing [
 	] raise: PjJavascriptTranspilationError description: 'fail for primitive'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PjPrimitiveTranspilationTest >> testPrimitiveWithFallback [
 	self generateJsCodeForClasses: {
 		PjClassForPrimitiveTest.

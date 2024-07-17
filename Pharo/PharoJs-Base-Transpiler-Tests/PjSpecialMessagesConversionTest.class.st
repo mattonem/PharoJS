@@ -2,21 +2,23 @@
 I have tests for ast conversions that use the optimizer.
 "
 Class {
-	#name : #PjSpecialMessagesConversionTest,
-	#superclass : #PjAstConverterTest,
+	#name : 'PjSpecialMessagesConversionTest',
+	#superclass : 'PjAstConverterTest',
 	#instVars : [
 		'messageConverter'
 	],
-	#category : #'PharoJs-Base-Transpiler-Tests-Tests'
+	#category : 'PharoJs-Base-Transpiler-Tests-Tests',
+	#package : 'PharoJs-Base-Transpiler-Tests',
+	#tag : 'Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 PjSpecialMessagesConversionTest >> setUp [
 	super setUp.
 	messageConverter := converter messageConverter.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSpecialMessagesConversionTest >> testCascade [
 	| temp assignment |
 	messageConverter addAllConversions: { PjJsAtConversion. PjJsAtPutConversion}.
@@ -39,25 +41,25 @@ PjSpecialMessagesConversionTest >> testCascade [
 			})
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSpecialMessagesConversionTest >> testJsAt [
 	messageConverter addConversion: PjJsAtConversion.
 	self assertContentsOf: [ self js_at:  3 ] convertsTo: (PjFieldNode target: selfNode selectorNode: three isNonNil: true)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSpecialMessagesConversionTest >> testJsAtPut [
 	messageConverter addConversion: PjJsAtPutConversion.
 	self assertContentsOf: [ self js_at:  3 put: 2] convertsTo: (PjAssignNode target: (PjFieldNode target: selfNode selectorNode: three isNonNil: true) expression: two)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSpecialMessagesConversionTest >> testJsThis [
 	messageConverter addConversion: PjJsThisConversion.
 	self assertContentsOf: [ self js_this ] convertsTo: (PjGlobalNode identifier: #this)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 PjSpecialMessagesConversionTest >> testMessageConversionPerformed [
 	messageConverter addAllConversions: (#(2 6 4) collect: [ : i | PjNullMessageConversionForTest new order: i selector: #foo]).
 	self assertContentsOf: [ 3 foo ] convertsTo: 4.

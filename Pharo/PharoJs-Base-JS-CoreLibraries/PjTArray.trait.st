@@ -53,12 +53,12 @@ PjTArray classSide >> jsTranspilationImportMethodsArray [
 		  (Array
 		   -> #( isArray shouldBePrintedAsLiteral shouldBePrintedAsLiteral:
 			      printAsLiteralFormOn: isSelfEvaluating printAsSelfEvaluatingFormOn:
-			      isLiteral isSelfEvaluating:)).
+			      isLiteral isSelfEvaluating: )).
 		  (ByteArray -> #( asString )).
-		  
+
 		  (Collection
 		   ->
-		   #( doWithIndex: printElementsOn: printNameOn: identityIncludes: )).
+		   #( doWithIndex: printElementsOn: printNameOn: identityIncludes: asSortedCollection:)).
 		  (SequenceableCollection
 		   ->
 			   #( withIndexDo: allButFirst allButFirst: allButLast allButLast:
@@ -259,6 +259,17 @@ PjTArray >> sixth [
 { #category : 'enumerating' }
 PjTArray >> size [
 	<javascript: 'return this.length'>
+]
+
+{ #category : 'sorting' }
+PjTArray >> sorted [
+	^self species withAll: self asSortedCollection 
+]
+
+{ #category : 'sorting' }
+PjTArray >> sorted: aBlock [
+
+	^ self species withAll: (self asSortedCollection: aBlock)
 ]
 
 { #category : 'accessing' }

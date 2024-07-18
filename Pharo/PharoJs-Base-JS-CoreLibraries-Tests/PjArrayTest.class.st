@@ -312,3 +312,38 @@ PjArrayTest >> testSize [
 	self assertEquivalent: [#(11 22) size].
 	self assertEquivalent: [#(11 22 33) size].
 ]
+
+{ #category : 'tests' }
+PjArrayTest >> testSorted [
+
+	| unsorted sortedAscending sortBlock sortedDescending |
+	unsorted := self bridge evalBlock: [ #( 30 10 40 20 ) ].
+	sortedAscending := unsorted sorted.
+	self assert: sortedAscending className equals: unsorted className.
+	self
+		assertCollection: sortedAscending asLocalObject
+		equals: #( 10 20 30 40 ).
+	sortBlock := self bridge evalBlock: [ [ :a :b | a >= b ] ].
+	sortedDescending := unsorted sorted: sortBlock.
+	self assert: sortedDescending className equals: unsorted className.
+	self
+		assertCollection: sortedDescending asLocalObject
+		equals: #( 40 30 20 10 )
+]
+
+{ #category : 'tests' }
+PjArrayTest >> testSortedCollection [
+
+	| unsorted sortedCollectionAscend sortedCollectionDescend sortBlock |
+	unsorted := self bridge evalBlock: [ #( 30 10 40 20 ) ].
+
+	sortedCollectionAscend := unsorted asSortedCollection.
+	self
+		assertCollection: sortedCollectionAscend asLocalObject
+		equals: #( 10 20 30 40 ).
+	sortBlock := self bridge evalBlock: [ [ :a :b | a >= b ] ].
+	sortedCollectionDescend := unsorted asSortedCollection: sortBlock.
+	self
+		assertCollection: sortedCollectionDescend asLocalObject
+		equals: #( 40 30 20 10 )
+]

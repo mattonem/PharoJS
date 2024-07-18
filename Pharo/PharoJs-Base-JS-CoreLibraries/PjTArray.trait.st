@@ -75,6 +75,15 @@ PjTArray classSide >> select_jsGenerator: transpiler [
 	^'var result=[];for(var i=0,max=this.length;i<max;++i){if(true==(typeof aBlock=="string"?$asNil$(this[i]).', transpiler pharoJsSelectorPrefix, 'perform_(aBlock):aBlock(this[i])))result.push(this[i])}return result'
 ]
 
+{ #category : 'instance creation' }
+PjTArray classSide >> withAll: aCollection [
+	"In native JS Arrays can grow just like Smalltalk's OrderedCollections"
+
+	^ self new
+		  addAll: aCollection;
+		  yourself
+]
+
 { #category : 'copying' }
 PjTArray >> , other [
 	^ self class new addAll: self; addAll: other; yourself

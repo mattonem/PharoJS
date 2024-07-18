@@ -162,6 +162,15 @@ PjArrayTest >> testCopyWith [
 ]
 
 { #category : 'tests' }
+PjArrayTest >> testCreationWithAll [
+
+	| jsArray |
+	jsArray := self bridge evalBlock: [ Array withAll: #( 42 37 255 ) ].
+	self assert: jsArray size equals: 3.
+	self assertCollection: jsArray asLocalObject equals: #( 42 37 255 )
+]
+
+{ #category : 'tests' }
 PjArrayTest >> testDetectIfFound [
 	self
 		assertEquivalent: [|array found|

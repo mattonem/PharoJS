@@ -99,13 +99,12 @@ PjExporter >> classes [
 { #category : 'adding' }
 PjExporter >> classesInPackageNamed: packageName [
 
-	| package tagName tag |
-	package := RPackage organizer packageMatchingExtensionName:
+	| package tag |
+	package := PackageOrganizer default packageMatchingExtensionName: 
 		           packageName.
-	packageName == packageName ifTrue: [ ^ package classes ].
-tagName := packageName allButFirst:  package name size + 1.
-tag := package classTagNamed: tagName.
-^tag classes.
+	packageName = package name ifTrue: [ ^ package classes ].
+	tag := package tags detect: [ : pkgTag | pkgTag categoryName = packageName ].
+	^tag classes.
 ]
 
 { #category : 'loading' }

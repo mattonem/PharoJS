@@ -53,12 +53,12 @@ PjTArray classSide >> jsTranspilationImportMethodsArray [
 		  (Array
 		   -> #( isArray shouldBePrintedAsLiteral shouldBePrintedAsLiteral:
 			      printAsLiteralFormOn: isSelfEvaluating printAsSelfEvaluatingFormOn:
-			      isLiteral isSelfEvaluating:)).
+			      isLiteral isSelfEvaluating: )).
 		  (ByteArray -> #( asString )).
-		  
+
 		  (Collection
 		   ->
-		   #( doWithIndex: printElementsOn: printNameOn: identityIncludes: )).
+		   #( doWithIndex: printElementsOn: printNameOn: identityIncludes: asSortedCollection:)).
 		  (SequenceableCollection
 		   ->
 			   #( withIndexDo: allButFirst allButFirst: allButLast allButLast:
@@ -73,6 +73,15 @@ PjTArray classSide >> jsTranspilationImportMethodsArray [
 PjTArray classSide >> select_jsGenerator: transpiler [
 	<pharoJsSkip> 
 	^'var result=[];for(var i=0,max=this.length;i<max;++i){if(true==(typeof aBlock=="string"?$asNil$(this[i]).', transpiler pharoJsSelectorPrefix, 'perform_(aBlock):aBlock(this[i])))result.push(this[i])}return result'
+]
+
+{ #category : 'instance creation' }
+PjTArray classSide >> withAll: aCollection [
+	"In native JS Arrays can grow just like Smalltalk's OrderedCollections"
+
+	^ self new
+		  addAll: aCollection;
+		  yourself
 ]
 
 { #category : 'copying' }
@@ -250,6 +259,17 @@ PjTArray >> sixth [
 { #category : 'enumerating' }
 PjTArray >> size [
 	<javascript: 'return this.length'>
+]
+
+{ #category : 'sorting' }
+PjTArray >> sorted [
+	^self species withAll: self asSortedCollection 
+]
+
+{ #category : 'sorting' }
+PjTArray >> sorted: aBlock [
+
+	^ self species withAll: (self asSortedCollection: aBlock)
 ]
 
 { #category : 'accessing' }

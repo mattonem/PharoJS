@@ -10,10 +10,10 @@ Class {
 PjReflectionTest >> testClassName [
 
 	| class |
-	class := classFactory
-		silentlyNewSubclassOf: PjObject
-		instanceVariableNames: 'x y'
-		classVariableNames: ''.
+	class := classFactory  silentlyMake: [ :aBuilder |
+		  aBuilder
+			  superclass: PjObject;
+			  slotsFromString: 'x y' ].
 	self bridge loadClass: class.
 	self assert: [ class name ] evaluatesTo: class name asString.
 	self assert: [ class new className ] evaluatesTo: class name asString
@@ -75,10 +75,10 @@ PjReflectionTest >> testMetaclassLink [
 PjReflectionTest >> testNestedRepeats [
 
 	| class tryNestedRepeatsSelector tryNestedRepeatsMethod |
-	class := classFactory
-		silentlyNewSubclassOf: PjObject
-		instanceVariableNames: 'x y'
-		classVariableNames: ''.
+	class := classFactory  silentlyMake: [ :aBuilder |
+		         aBuilder
+			         superclass: PjObject;
+			         slotsFromString: 'x y' ].
 	tryNestedRepeatsSelector := #tryNestedRepeats.
 	tryNestedRepeatsMethod := self class compiledMethodAt: tryNestedRepeatsSelector.
 	class compile: tryNestedRepeatsMethod sourceCode.
@@ -111,13 +111,15 @@ PjReflectionTest >> testReflection [
 
 { #category : 'tests' }
 PjReflectionTest >> testTemporaries [
+
 	| class tryTemporariesSelector tryTemporariesMethod |
-	class := classFactory
-		silentlyNewSubclassOf: PjObject
-		instanceVariableNames: 'x y'
-		classVariableNames: ''.
+	class := classFactory  silentlyMake: [ :aBuilder |
+		         aBuilder
+			         superclass: PjObject;
+			         slotsFromString: 'x y' ].
 	tryTemporariesSelector := #tryTemporaries.
-	tryTemporariesMethod := self class compiledMethodAt: tryTemporariesSelector.
+	tryTemporariesMethod := self class compiledMethodAt:
+		                        tryTemporariesSelector.
 	class compile: tryTemporariesMethod sourceCode.
 	self bridge loadClass: class.
 	self

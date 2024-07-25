@@ -84,7 +84,13 @@ PjTWebAppTestCase >> clickElementById: aString [
 { #category : 'UI handling' }
 PjTWebAppTestCase >> computedDisplayStyleOf: element [
 
-	^ (self window getComputedStyle: element) display
+	^ (self computedStyleOf: element) display
+]
+
+{ #category : 'UI handling' }
+PjTWebAppTestCase >> computedStyleOf: element [
+
+	^ self window getComputedStyle: element
 ]
 
 { #category : 'UI handling' }

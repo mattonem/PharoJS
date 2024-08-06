@@ -133,7 +133,8 @@ PjTDomController >> cssClassesStringElement: domElement set: newClassesString [
 
 { #category : 'visibility' }
 PjTDomController >> hide: domElement [
-	domElement style display: 'none'
+
+	domElement style setProperty: 'display' value: 'none' flag: 'important'
 ]
 
 { #category : 'visibility' }

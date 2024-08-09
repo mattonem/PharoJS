@@ -220,7 +220,9 @@ PjTDomController >> setElement: domElement style: cssStyleAssociations [
 
 { #category : 'visibility' }
 PjTDomController >> show: domElement [
-	domElement style display: ''
+
+	"We assume that 'display' property is introduce by the #hide: method"
+	domElement style removeProperty: 'display'
 ]
 
 { #category : 'visibility' }

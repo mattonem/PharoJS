@@ -2,8 +2,7 @@ Class {
 	#name : 'PjProxyForGlobalsTest',
 	#superclass : 'TestCase',
 	#instVars : [
-		'classFactory',
-		'authorInitialName'
+		'classFactory'
 	],
 	#category : 'PharoJs-Base-Bridge-Tests-Tests',
 	#package : 'PharoJs-Base-Bridge-Tests',
@@ -14,8 +13,6 @@ Class {
 PjProxyForGlobalsTest >> setUp [
 
 	super setUp.
-	authorInitialName := Author uniqueInstance fullNamePerSe.
-	Author uniqueInstance fullName: 'PharoJS'.
 	classFactory := ClassFactoryForTestCase new
 ]
 
@@ -24,7 +21,7 @@ PjProxyForGlobalsTest >> tearDown [
 
 	super tearDown.
 	classFactory ifNotNil: [ classFactory cleanUp ].
-	Author uniqueInstance fullName: authorInitialName.
+
 ]
 
 { #category : 'tests' }

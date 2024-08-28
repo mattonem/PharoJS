@@ -10,7 +10,7 @@ Trait {
 { #category : 'asserting' }
 PjTWebAppTestCase >> assert: element hasCssClass: cssClassString [
 
-	element classList contains: cssClassString 
+	self assert: (element classList contains: cssClassString)
 ]
 
 { #category : 'asserting' }

@@ -68,7 +68,15 @@ PjDictionaryTest >> testAtPut [
 	self assert: [|d|
 		d := Dictionary new.
 		d at: #x put: 42.
-		d] evaluatesToRaw: '{"x":42}'
+		d] evaluatesToRaw: '{"x":42}'.
+	self assert: [|d|
+		d := Dictionary new.
+		d at: (1@1) put: '42'.
+		d at: (1@1)] evaluatesToRaw: '42'.
+		self assert: [|d|
+		d := Dictionary new.
+		d at: Object put: '42'.
+		d at: Object] evaluatesToRaw: '42'
 ]
 
 { #category : 'tests' }

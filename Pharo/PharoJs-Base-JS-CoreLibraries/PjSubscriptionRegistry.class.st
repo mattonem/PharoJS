@@ -21,6 +21,11 @@ PjSubscriptionRegistry class >> jsTranspilationImportMethods [
 		      deliver: subscriptionsHandling: deliver:to: deliver:to:startingAt:)) }
 ]
 
+{ #category : 'pharoJs support' }
+PjSubscriptionRegistry class >> phxJsonClassName [
+	^ 'SubscriptionRegistry'
+]
+
 { #category : 'private' }
 PjSubscriptionRegistry >> initialize [
 

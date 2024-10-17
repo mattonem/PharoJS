@@ -12,3 +12,8 @@ PjAnnouncer class >> jsTranspilationImportMethods [
 	<pharoJsSkip>
 	^ { (Announcer -> #( initialize when:do:for: announce: isSuspended preventedAnnouncements unsubscribe:)) }
 ]
+
+{ #category : 'pharoJs support' }
+PjAnnouncer class >> phxJsonClassName [
+	^ 'Announcer'
+]

@@ -19,6 +19,11 @@ PjAnnouncementSubscription class >> jsTranspilationImportMethods [
 		  (AbstractAnnouncementSubscription -> #( announcer: announcementClass: action: handlesAnnouncement:)) }
 ]
 
+{ #category : 'pharoJs support' }
+PjAnnouncementSubscription class >> phxJsonClassName [
+	^ 'AnnouncementSubscription'
+]
+
 { #category : 'announcing' }
 PjAnnouncementSubscription >> deliver: anAnnouncement [
 

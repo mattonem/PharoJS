@@ -21,10 +21,7 @@ PjAnnouncementSubscription class >> jsTranspilationImportMethods [
 
 { #category : 'announcing' }
 PjAnnouncementSubscription >> deliver: anAnnouncement [
-	"Deliver an announcement to receiver. In case of failure, it will be handled in separate process"
 
 	(self handlesAnnouncement: anAnnouncement) ifTrue: [
-		[ action cull: anAnnouncement cull: announcer ]
-			on: (Error new: 'UnhandledError')
-			do: [ :ex |  ] ]
+		action cull: anAnnouncement cull: announcer ]
 ]

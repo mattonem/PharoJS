@@ -28,7 +28,7 @@ PjClass class >> hasClassMethod_jsGenerator: transpiler [
 PjClass class >> jsTranspilationImportMethods [
 	<pharoJsSkip>
 	^{
-		Behavior -> #( subclassesDo: allSubclasses allSubclassesDo: isBehavior ).
+		Behavior -> #( subclassesDo: allSubclasses allSubclassesDo: isBehavior includesBehavior: ).
 		Class -> #( isClass classVarNames).
 	}
 ]

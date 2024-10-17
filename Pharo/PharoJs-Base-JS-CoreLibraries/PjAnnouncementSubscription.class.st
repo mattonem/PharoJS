@@ -1,0 +1,30 @@
+Class {
+	#name : 'PjAnnouncementSubscription',
+	#superclass : 'Object',
+	#instVars : [
+		'action',
+		'announcer'
+	],
+	#category : 'PharoJs-Base-JS-CoreLibraries-Announcements',
+	#package : 'PharoJs-Base-JS-CoreLibraries',
+	#tag : 'Announcements'
+}
+
+{ #category : 'pharoJs support' }
+PjAnnouncementSubscription class >> jsTranspilationImportMethods [
+
+	<pharoJsSkip>
+	^ {
+		  (AnnouncementSubscription -> #( subscriber subscriber: unregister )).
+		  (AbstractAnnouncementSubscription -> #( announcer: announcementClass: action: handlesAnnouncement:)) }
+]
+
+{ #category : 'announcing' }
+PjAnnouncementSubscription >> deliver: anAnnouncement [
+	"Deliver an announcement to receiver. In case of failure, it will be handled in separate process"
+
+	(self handlesAnnouncement: anAnnouncement) ifTrue: [
+		[ action cull: anAnnouncement cull: announcer ]
+			on: (Error new: 'UnhandledError')
+			do: [ :ex |  ] ]
+]

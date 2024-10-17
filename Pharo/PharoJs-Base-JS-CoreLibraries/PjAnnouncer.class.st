@@ -10,5 +10,5 @@ Class {
 PjAnnouncer class >> jsTranspilationImportMethods [
 
 	<pharoJsSkip>
-	^ { (Announcer -> #( initialize when:do:for: announce: isSuspended preventedAnnouncements )) }
+	^ { (Announcer -> #( initialize when:do:for: announce: isSuspended preventedAnnouncements unsubscribe:)) }
 ]

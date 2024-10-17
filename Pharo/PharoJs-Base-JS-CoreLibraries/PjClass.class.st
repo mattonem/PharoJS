@@ -66,6 +66,12 @@ PjClass >> hasClassMethod: aSymbol [
 ]
 
 { #category : 'testing' }
+PjClass >> identityHash [
+	^ (self instVarNamed: #_js_hash) ifNil: [
+		self instVarNamed: #_js_hash putHidden: self nextIdentityHash ]
+]
+
+{ #category : 'testing' }
 PjClass >> isBlock [
 	^ false
 ]

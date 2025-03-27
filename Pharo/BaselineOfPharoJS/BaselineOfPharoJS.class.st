@@ -143,8 +143,10 @@ BaselineOfPharoJS >> prerequisites: spec [
 		with: [ spec repository: 'github://bouraqadi/PharoMisc:pharo12' ];
 		baseline: 'Seaside3'
 		with: [
-			spec repository: 'github://SeasideSt/Seaside:master/repository' ].
-
+			spec repository: 'github://SeasideSt/Seaside:master/repository' ];
+		baseline: 'OSSubprocess' with: [
+			spec repository:
+					'github://pharo-contributions/OSSubprocess:master/repository' ].
 	"Prerequisite Packages"
 	spec
 		package: 'Zinc-WebSocket-Core'

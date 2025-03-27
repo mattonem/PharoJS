@@ -23,9 +23,12 @@ WBUnixWebBrowser class >> openBrowser: browserName on: anURLString inBackground:
 { #category : '*PharoJs-Base-Bridge' }
 WBUnixWebBrowser class >> openNativeWebBrowserOn: anURLString [
 
-	| openCommand |
-	openCommand := 'chromium ''{1}'' &' format: { anURLString }.
-	self system: openCommand
+	| process |
+	process := OSSUnixSubprocess new
+		           command: 'chromium ' , anURLString;
+		           redirectStdin;
+		           redirectStdout;
+		           run
 ]
 
 { #category : '*PharoJs-Base-Bridge' }

@@ -38,9 +38,7 @@ jobs:
           cache-dependency-path: '**/package-lock.json'
 
       - name: test
-        uses: coactions/setup-xvfb@v1.0.1
-        with: 
-          run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
+        run: xvfb-run --auto-servernum smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
         
 
 

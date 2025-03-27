@@ -41,6 +41,7 @@ jobs:
         uses: Wandalen/wretry.action@master
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BROWSER: chromium
         with:
           action: coactions/setup-xvfb@v1.0.1
           with: |

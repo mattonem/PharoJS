@@ -39,9 +39,14 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
-      - name: test
-        run: xvfb-run --auto-servernum smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
-          
-  
+      - name: run tests
+        uses: coactions/setup-xvfb@v1.0.1
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: 
+          run: smalltalkci -s ${{ steps.smalltalkci.outputs.smalltalk-image }}
+        
+
+
 
         

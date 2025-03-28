@@ -25,10 +25,11 @@ WBUnixWebBrowser class >> openNativeWebBrowserOn: anURLString [
 
 	| process |
 	Stdio stdout
-		nextPutAll: 'chromium "' , anURLString, '"';
+		nextPutAll: 'chromium "' , anURLString , '"';
 		lf.
 	process := OSSUnixSubprocess new
-		           command: 'chromium "' , anURLString, '"';
+		           command: 'chromium';
+		           arguments: #( 'anURLString' );
 		           redirectStdin;
 		           redirectStdout;
 		           run

@@ -25,11 +25,11 @@ WBUnixWebBrowser class >> openNativeWebBrowserOn: anURLString [
 
 	| process |
 	Stdio stdout
-		nextPutAll: 'chromium "' , anURLString , '"';
+		nextPutAll: 'xdg-open "' , anURLString , '"';
 		lf.
 	process := OSSUnixSubprocess new
-		           command: 'chromium';
-		           arguments: #( 'anURLString' );
+		           command: 'xdg-open';
+		           arguments: { anURLString };
 		           redirectStdin;
 		           redirectStdout;
 		           run

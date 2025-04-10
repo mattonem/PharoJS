@@ -139,7 +139,9 @@ PjBridgeTestResource >> startBridge: aBridge [
 
 	"Avoid bridge resource process being killed by test runner.
 	So, we force DefaultExecutionEnvironment  instead of the implicit TestExecutionEnvironment "
-
+	Stdio stdout
+		nextPutAll: 'PjBridgeTestResource startBridge';
+		lf .
 	DefaultExecutionEnvironment beActiveDuring: [ 
 		aBridge startWithoutWaitingForClient ]
 ]

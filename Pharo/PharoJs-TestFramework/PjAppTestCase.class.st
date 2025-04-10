@@ -149,6 +149,9 @@ PjAppTestCase >> debugBridgeResourceClass [
 
 { #category : 'accessing' }
 PjAppTestCase >> defaultBridgeResourceClass [
+	Stdio stdout
+		nextPutAll: 'defaultBridgeResourceClass >> ^ PjBridgeTestResource';
+		lf .
 	^PjBridgeTestResource
 ]
 

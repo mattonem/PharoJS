@@ -29,5 +29,5 @@ PJWebBrowser class >> initChrome [
 PJWebBrowser class >> openOn: urlString inBackground: aBoolean [
 
 	chromePath ifNil: [ self initChrome ].
-	LibC system: '"' , chromePath , '" ' , urlString , '&'
+	LibC system: '"' , chromePath , '" --headless ' , urlString , '&'
 ]

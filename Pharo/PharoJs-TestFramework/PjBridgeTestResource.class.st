@@ -83,7 +83,10 @@ PjBridgeTestResource >> bridgeForAppClass [
 
 { #category : 'running' }
 PjBridgeTestResource >> ensureFreshClient [
-
+	super initialize.
+		Stdio stdout
+		nextPutAll: 'PjBridgeTestResource >> ensureFreshClient';
+		lf .
 	self bridge isConnected ifTrue: [ ^ self resetClient ].
 	self startJsInterpreter
 ]
@@ -110,6 +113,9 @@ PjBridgeTestResource >> initFrom: aTestAsserter [
 { #category : 'initialization' }
 PjBridgeTestResource >> initialize [
 	super initialize.
+		Stdio stdout
+		nextPutAll: 'PjBridgeTestResource >> init';
+		lf .
 	self description: 'I manage a bridge dedicated to testing a PharoJS app'.
 	self name: 'PharoJS Bridge TestResource'.
 ]
@@ -131,6 +137,10 @@ PjBridgeTestResource >> resetClient [
 
 { #category : 'running' }
 PjBridgeTestResource >> setUpClient [
+	super initialize.
+		Stdio stdout
+		nextPutAll: 'PjBridgeTestResource >> setUpClient';
+		lf .
 	^self bridge client openBrowserInBackground: self isClientBrowserOpenedInBackground
 ]
 
@@ -140,7 +150,7 @@ PjBridgeTestResource >> startBridge: aBridge [
 	"Avoid bridge resource process being killed by test runner.
 	So, we force DefaultExecutionEnvironment  instead of the implicit TestExecutionEnvironment "
 	Stdio stdout
-		nextPutAll: 'PjBridgeTestResource startBridge';
+		nextPutAll: 'PjBridgeTestResource >> startBridge';
 		lf .
 	DefaultExecutionEnvironment beActiveDuring: [ 
 		aBridge startWithoutWaitingForClient ]
@@ -148,6 +158,10 @@ PjBridgeTestResource >> startBridge: aBridge [
 
 { #category : 'running' }
 PjBridgeTestResource >> startJsInterpreter [
+	super initialize.
+		Stdio stdout
+		nextPutAll: 'PjBridgeTestResource >> startJsInterpreter';
+		lf .
 	self bridge startJsInterpreter
 	
 ]

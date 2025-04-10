@@ -8,4 +8,5 @@ newRepository register.
 TestCase defaultTimeLimit: 2 minutes.
 PjAppTestCase 
 	waitTimeoutDuration: 1 minute;
-	waitStepDuration: 100 milliSeconds
+	waitStepDuration: 100 milliSeconds.
+PJWebBrowser initChrome.

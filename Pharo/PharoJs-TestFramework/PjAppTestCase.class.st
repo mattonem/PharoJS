@@ -114,17 +114,25 @@ PjAppTestCase >> assertJavascript: expressionString evaluatesTo: expectedResultS
 
 { #category : 'accessing' }
 PjAppTestCase >> bridge [
+	Stdio stdout
+		nextPutAll: 'PjAppTestCase >> ^ bridge';
+		lf .
 	^self bridgeResource bridge
 ]
 
 { #category : 'accessing' }
 PjAppTestCase >> bridgeResource [
+	Stdio stdout
+		nextPutAll: 'PjAppTestCase >> ^ bridgeResource';
+		lf .
 	^ self bridgeResourceClass current
 ]
 
 { #category : 'accessing' }
 PjAppTestCase >> bridgeResourceClass [
-
+	Stdio stdout
+		nextPutAll: 'defaultBridgeResourceClass >> ^ bridgeResourceClass';
+		lf .
 	^ bridgeResourceClass ifNil: [bridgeResourceClass := self defaultBridgeResourceClass ]
 ]
 
@@ -200,6 +208,10 @@ PjAppTestCase >> runCaseAsFailure: aSemaphore [
 { #category : 'running' }
 PjAppTestCase >> setUp [
 
+	super initialize.
+		Stdio stdout
+		nextPutAll: 'PjAppTestCase >> setUp';
+		lf .
 	super setUp.
 	self timeLimit: 60 seconds.
 	self

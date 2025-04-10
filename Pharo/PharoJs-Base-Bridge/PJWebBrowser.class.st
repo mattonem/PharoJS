@@ -31,7 +31,7 @@ PJWebBrowser class >> openOn: urlString inBackground: aBoolean [
 	chromePath ifNil: [ self initChrome ].
 	Stdio stdout
 		nextPutAll: 'command to be ran: ';
-		nextPutAll: '"' , chromePath , '" --headless ' , urlString , '&';
+		nextPutAll: '"' , chromePath , '" --headless ' , urlString , ' &';
 		lf.
-	LibC system: '"' , chromePath , '" --headless ' , urlString , '&'
+	LibC system: '"' , chromePath , '" --headless ' , urlString , ' &'
 ]

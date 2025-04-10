@@ -15,10 +15,14 @@ PJWebBrowser class >> initChrome [
 	LibC resultOfCommand: 'npm init -y'.
 	LibC resultOfCommand: 'npm i @puppeteer/browsers'.
 	LibC resultOfCommand: 'npm install @puppeteer/browsers'.
-	^ chromePath := (' (.*)\n' asRegex matchesIn:
-		                 (LibC resultOfCommand:
-			                  'npx @puppeteer/browsers install chrome@stable'))
-		                first allButLast allButFirst
+	chromePath := (' (.*)\n' asRegex matchesIn:
+		               (LibC resultOfCommand:
+			                'npx @puppeteer/browsers install chrome@stable'))
+		              first allButLast allButFirst.
+	Stdio stdout
+		nextPutAll: 'chrome path set: ';
+		nextPutAll: chromePath;
+		lf
 ]
 
 { #category : 'as yet unclassified' }
